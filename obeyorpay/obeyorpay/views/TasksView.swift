@@ -11,18 +11,14 @@ struct TasksView: View {
     
     @State var task_type = TaskTypes.personal
     
+    @EnvironmentObject var tasks_data: TasksDataModel
+    
     var body: some View {
         TasksTypeView(task_type: $task_type)
         
         Spacer()
         
-        if task_type == TaskTypes.personal {
-            Text("Personal tasks")
-        } else if task_type == TaskTypes.joint {
-            Text("Joint tasks")
-        } else if task_type == TaskTypes.shared {
-            Text("Shared tasks")
-        }
+        TasksListView(tasks: tasks_data.tasks[task_type] ?? [])
         
         Spacer()
     }
