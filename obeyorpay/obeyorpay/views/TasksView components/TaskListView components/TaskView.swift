@@ -7,16 +7,19 @@
 
 import SwiftUI
 
+
 struct TaskView: View {
     
-    var task: TaskDataModel
+    @State var task: TaskDataModel
     
     var body: some View {
+        
         
         VStack {
             Text("\(task.title): \(task.count)/\(task.goal)")
             Divider()
         }
+
     }
 }
 
