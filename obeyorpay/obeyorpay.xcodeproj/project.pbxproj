@@ -13,6 +13,12 @@
 		B67749FF28C4D43400B94B7C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B67749FE28C4D43400B94B7C /* Preview Assets.xcassets */; };
 		B6774A0128C4D43400B94B7C /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A0028C4D43400B94B7C /* Persistence.swift */; };
 		B6774A0428C4D43400B94B7C /* obeyorpay.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B6774A0228C4D43400B94B7C /* obeyorpay.xcdatamodeld */; };
+		B6774A0B28C4DB4800B94B7C /* AppTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A0A28C4DB4800B94B7C /* AppTabView.swift */; };
+		B6774A0D28C4DBBB00B94B7C /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A0C28C4DBBB00B94B7C /* TasksView.swift */; };
+		B6774A0F28C4DECF00B94B7C /* TasksTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A0E28C4DECF00B94B7C /* TasksTypeView.swift */; };
+		B6774A1128C4E1AD00B94B7C /* TabItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A1028C4E1AD00B94B7C /* TabItems.swift */; };
+		B6774A1328C4E46900B94B7C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A1228C4E46900B94B7C /* MainView.swift */; };
+		B6774A1528C4E89800B94B7C /* TaskTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A1428C4E89800B94B7C /* TaskTypes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +29,12 @@
 		B67749FE28C4D43400B94B7C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B6774A0028C4D43400B94B7C /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		B6774A0328C4D43400B94B7C /* obeyorpay.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = obeyorpay.xcdatamodel; sourceTree = "<group>"; };
+		B6774A0A28C4DB4800B94B7C /* AppTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabView.swift; sourceTree = "<group>"; };
+		B6774A0C28C4DBBB00B94B7C /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
+		B6774A0E28C4DECF00B94B7C /* TasksTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTypeView.swift; sourceTree = "<group>"; };
+		B6774A1028C4E1AD00B94B7C /* TabItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItems.swift; sourceTree = "<group>"; };
+		B6774A1228C4E46900B94B7C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		B6774A1428C4E89800B94B7C /* TaskTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTypes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +69,12 @@
 			children = (
 				B67749F728C4D43200B94B7C /* obeyorpayApp.swift */,
 				B67749F928C4D43200B94B7C /* ContentView.swift */,
+				B6774A1228C4E46900B94B7C /* MainView.swift */,
+				B6774A0A28C4DB4800B94B7C /* AppTabView.swift */,
+				B6774A1028C4E1AD00B94B7C /* TabItems.swift */,
+				B6774A1428C4E89800B94B7C /* TaskTypes.swift */,
+				B6774A0C28C4DBBB00B94B7C /* TasksView.swift */,
+				B6774A0E28C4DECF00B94B7C /* TasksTypeView.swift */,
 				B67749FB28C4D43400B94B7C /* Assets.xcassets */,
 				B6774A0028C4D43400B94B7C /* Persistence.swift */,
 				B6774A0228C4D43400B94B7C /* obeyorpay.xcdatamodeld */,
@@ -143,6 +161,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6774A0F28C4DECF00B94B7C /* TasksTypeView.swift in Sources */,
+				B6774A1328C4E46900B94B7C /* MainView.swift in Sources */,
+				B6774A0B28C4DB4800B94B7C /* AppTabView.swift in Sources */,
+				B6774A1128C4E1AD00B94B7C /* TabItems.swift in Sources */,
+				B6774A1528C4E89800B94B7C /* TaskTypes.swift in Sources */,
+				B6774A0D28C4DBBB00B94B7C /* TasksView.swift in Sources */,
 				B6774A0428C4D43400B94B7C /* obeyorpay.xcdatamodeld in Sources */,
 				B6774A0128C4D43400B94B7C /* Persistence.swift in Sources */,
 				B67749FA28C4D43200B94B7C /* ContentView.swift in Sources */,
