@@ -10,31 +10,19 @@ import Firebase
 
 struct LoginView: View {
     
-    @State var email = ""
-    @State var password = ""
+    @State var appleSignInDelegates: SignInAppleModel! = nil
     
     @EnvironmentObject var user: UserModel
     
     var body: some View {
         
         VStack {
-            
-            TextField("Email", text: $email)
-            SecureField("Password", text: $password)
-            
-            Text(email)
-            
-            Button {
-                user.signin(email: email, password: password)
-            } label: {
-                Text("sign in")
-            }
-            
-            Button {
-                user.signup(email: email, password: password)
-            } label: {
-                Text("sign up")
-            }
+        
+            SignInAppleButtonView()
+                .frame(width: 200, height: 60, alignment: .center)
+                .onTapGesture {
+                    SignInAppleModel(parent: self).didTapButton()
+                }
         }
     }
 }

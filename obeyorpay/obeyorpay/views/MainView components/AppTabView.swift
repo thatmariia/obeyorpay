@@ -7,6 +7,12 @@
 
 import SwiftUI
 
+
+enum TabItems {
+    case tasks
+    case settings
+}
+
 struct AppTabView: View {
     
     @Binding var tab: TabItems

@@ -16,7 +16,6 @@
 		B6774A0B28C4DB4800B94B7C /* AppTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A0A28C4DB4800B94B7C /* AppTabView.swift */; };
 		B6774A0D28C4DBBB00B94B7C /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A0C28C4DBBB00B94B7C /* TasksView.swift */; };
 		B6774A0F28C4DECF00B94B7C /* TasksTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A0E28C4DECF00B94B7C /* TasksTypeView.swift */; };
-		B6774A1128C4E1AD00B94B7C /* TabItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A1028C4E1AD00B94B7C /* TabItems.swift */; };
 		B6774A1328C4E46900B94B7C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A1228C4E46900B94B7C /* MainView.swift */; };
 		B6774A1528C4E89800B94B7C /* TaskTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A1428C4E89800B94B7C /* TaskTypes.swift */; };
 		B6774A1728C4EBCF00B94B7C /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A1628C4EBCF00B94B7C /* TaskView.swift */; };
@@ -39,6 +38,8 @@
 		B6774A4328C5468200B94B7C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A4228C5468200B94B7C /* LoginView.swift */; };
 		B6774A4928C54D5200B94B7C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A4828C54D5200B94B7C /* UserModel.swift */; };
 		B6774A4B28C61A1D00B94B7C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A4A28C61A1D00B94B7C /* SettingsView.swift */; };
+		B6774A4E28C6231000B94B7C /* SignInAppleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A4D28C6231000B94B7C /* SignInAppleButtonView.swift */; };
+		B6774A5328C62B4000B94B7C /* SignInAppleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A5228C62B4000B94B7C /* SignInAppleModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,7 +53,6 @@
 		B6774A0A28C4DB4800B94B7C /* AppTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabView.swift; sourceTree = "<group>"; };
 		B6774A0C28C4DBBB00B94B7C /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
 		B6774A0E28C4DECF00B94B7C /* TasksTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTypeView.swift; sourceTree = "<group>"; };
-		B6774A1028C4E1AD00B94B7C /* TabItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItems.swift; sourceTree = "<group>"; };
 		B6774A1228C4E46900B94B7C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		B6774A1428C4E89800B94B7C /* TaskTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTypes.swift; sourceTree = "<group>"; };
 		B6774A1628C4EBCF00B94B7C /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
@@ -65,6 +65,9 @@
 		B6774A4228C5468200B94B7C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		B6774A4828C54D5200B94B7C /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		B6774A4A28C61A1D00B94B7C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		B6774A4D28C6231000B94B7C /* SignInAppleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAppleButtonView.swift; sourceTree = "<group>"; };
+		B6774A5228C62B4000B94B7C /* SignInAppleModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInAppleModel.swift; sourceTree = "<group>"; };
+		B6D0BD1628C64EBC00B0946D /* obeyorpay.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = obeyorpay.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,13 +110,12 @@
 		B67749F628C4D43200B94B7C /* obeyorpay */ = {
 			isa = PBXGroup;
 			children = (
+				B6D0BD1628C64EBC00B0946D /* obeyorpay.entitlements */,
 				B67749F728C4D43200B94B7C /* obeyorpayApp.swift */,
 				B6774A2928C5183D00B94B7C /* PopupView.swift */,
 				B6774A1E28C4EDAF00B94B7C /* views */,
 				B6774A2028C4EDC400B94B7C /* view-models */,
 				B6774A1F28C4EDB800B94B7C /* models */,
-				B6774A1428C4E89800B94B7C /* TaskTypes.swift */,
-				B6774A1028C4E1AD00B94B7C /* TabItems.swift */,
 				B67749FB28C4D43400B94B7C /* Assets.xcassets */,
 				B6774A0028C4D43400B94B7C /* Persistence.swift */,
 				B6774A0228C4D43400B94B7C /* obeyorpay.xcdatamodeld */,
@@ -136,6 +138,7 @@
 			children = (
 				B67749F928C4D43200B94B7C /* ContentView.swift */,
 				B6774A4228C5468200B94B7C /* LoginView.swift */,
+				B6774A4D28C6231000B94B7C /* SignInAppleButtonView.swift */,
 				B6774A1228C4E46900B94B7C /* MainView.swift */,
 				B6774A4C28C61A3800B94B7C /* MainView components */,
 			);
@@ -145,9 +148,8 @@
 		B6774A1F28C4EDB800B94B7C /* models */ = {
 			isa = PBXGroup;
 			children = (
-				B6774A4828C54D5200B94B7C /* UserModel.swift */,
-				B6774A1A28C4EC4300B94B7C /* TasksDataModel.swift */,
-				B6774A1C28C4EC9200B94B7C /* TaskDataModel.swift */,
+				B6D0BD1728C6514E00B0946D /* users */,
+				B6D0BD1828C6515900B0946D /* tasks */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -182,11 +184,30 @@
 			isa = PBXGroup;
 			children = (
 				B6774A0A28C4DB4800B94B7C /* AppTabView.swift */,
-				B6774A0C28C4DBBB00B94B7C /* TasksView.swift */,
 				B6774A4A28C61A1D00B94B7C /* SettingsView.swift */,
+				B6774A0C28C4DBBB00B94B7C /* TasksView.swift */,
 				B6774A2128C4F3A500B94B7C /* TasksView components */,
 			);
 			path = "MainView components";
+			sourceTree = "<group>";
+		};
+		B6D0BD1728C6514E00B0946D /* users */ = {
+			isa = PBXGroup;
+			children = (
+				B6774A5228C62B4000B94B7C /* SignInAppleModel.swift */,
+				B6774A4828C54D5200B94B7C /* UserModel.swift */,
+			);
+			path = users;
+			sourceTree = "<group>";
+		};
+		B6D0BD1828C6515900B0946D /* tasks */ = {
+			isa = PBXGroup;
+			children = (
+				B6774A1428C4E89800B94B7C /* TaskTypes.swift */,
+				B6774A1A28C4EC4300B94B7C /* TasksDataModel.swift */,
+				B6774A1C28C4EC9200B94B7C /* TaskDataModel.swift */,
+			);
+			path = tasks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,7 +299,6 @@
 				B6774A0F28C4DECF00B94B7C /* TasksTypeView.swift in Sources */,
 				B6774A1328C4E46900B94B7C /* MainView.swift in Sources */,
 				B6774A0B28C4DB4800B94B7C /* AppTabView.swift in Sources */,
-				B6774A1128C4E1AD00B94B7C /* TabItems.swift in Sources */,
 				B6774A1D28C4EC9200B94B7C /* TaskDataModel.swift in Sources */,
 				B6774A1528C4E89800B94B7C /* TaskTypes.swift in Sources */,
 				B6774A0D28C4DBBB00B94B7C /* TasksView.swift in Sources */,
@@ -286,12 +306,14 @@
 				B6774A2428C5141A00B94B7C /* TaskEditingView.swift in Sources */,
 				B6774A2A28C5183D00B94B7C /* PopupView.swift in Sources */,
 				B6774A4328C5468200B94B7C /* LoginView.swift in Sources */,
+				B6774A4E28C6231000B94B7C /* SignInAppleButtonView.swift in Sources */,
 				B6774A0128C4D43400B94B7C /* Persistence.swift in Sources */,
 				B67749FA28C4D43200B94B7C /* ContentView.swift in Sources */,
 				B6774A1728C4EBCF00B94B7C /* TaskView.swift in Sources */,
 				B67749F828C4D43200B94B7C /* obeyorpayApp.swift in Sources */,
 				B6774A1928C4EBDE00B94B7C /* TasksListView.swift in Sources */,
 				B6774A4928C54D5200B94B7C /* UserModel.swift in Sources */,
+				B6774A5328C62B4000B94B7C /* SignInAppleModel.swift in Sources */,
 				B6774A1B28C4EC4300B94B7C /* TasksDataModel.swift in Sources */,
 				B6774A4B28C61A1D00B94B7C /* SettingsView.swift in Sources */,
 			);
@@ -419,6 +441,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = obeyorpay/obeyorpay.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"obeyorpay/Preview Content\"";
@@ -438,6 +462,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mariia.obeyorpay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -449,6 +474,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = obeyorpay/obeyorpay.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"obeyorpay/Preview Content\"";
@@ -468,6 +495,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mariia.obeyorpay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

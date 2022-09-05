@@ -7,8 +7,3 @@
 
 import Foundation
 
-enum TabItems {
-    case tasks
-    case settings
-}
-

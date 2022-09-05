@@ -12,11 +12,14 @@ struct TasksView: View {
     @State var task_type = TaskTypes.personal
     
     @EnvironmentObject var tasks_data: TasksDataModel
+    @EnvironmentObject var user: UserModel
     
     var body: some View {
         TasksTypeView(task_type: $task_type)
         
         Spacer()
+        
+        Text(user.uid)
         
         TasksListView(tasks: tasks_data.tasks[task_type] ?? [])
         

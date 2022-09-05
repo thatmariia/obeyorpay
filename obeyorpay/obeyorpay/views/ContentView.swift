@@ -21,7 +21,6 @@ struct ContentView: View {
             } else {
                 MainView()
             }
-            
         }
         .padding()
         

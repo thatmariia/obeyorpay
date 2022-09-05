@@ -14,7 +14,7 @@ struct SettingsView: View {
     var body: some View {
         
         Button {
-            user.signout()
+            // TODO:: sign out?
         } label: {
             Text("sign out")
         }
