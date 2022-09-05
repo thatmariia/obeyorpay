@@ -8,11 +8,7 @@
 import Foundation
 
 enum AccountModelKeys: String, CaseIterable {
-    case uid = "accountId"
-//        case username = "username"
-//        case email = "email"
-//        case firstName = "firstName"
-//        case lastName = "lastName"
+    case uid = "uid"
     case personalTasks = "personalTasks"
     case jointTasks = "jointTasks"
     case sharedTasks = "sharedTasks"

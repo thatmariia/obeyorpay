@@ -9,7 +9,7 @@ import Foundation
 
 
 enum UserModelKeys: String, CaseIterable {
-    case uid = "accountId"
+    case uid = "uid"
     case username = "username"
     case email = "email"
     case firstName = "firstName"
