@@ -36,13 +36,13 @@ class SignInAppleModel: NSObject, ASAuthorizationControllerDelegate, ASAuthoriza
     }
     
     private func registerNewAccount(credential: ASAuthorizationAppleIDCredential) {
-        self.parent?.user.uid = credential.user
+        self.parent?.SignedInUser.uid = credential.user
         // TODO:: save this somewhere
     }
     
     private func signInWithExistingAccount(credential: ASAuthorizationAppleIDCredential) {
         // TODO:: retrieve
-        self.parent?.user.uid = credential.user
+        self.parent?.SignedInUser.uid = credential.user
     }
     
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {

@@ -12,7 +12,7 @@ struct LoginView: View {
     
     @State var appleSignInDelegates: SignInAppleModel! = nil
     
-    @EnvironmentObject var user: UserModel
+    @EnvironmentObject var SignedInUser: SignedInUserModel
     
     var body: some View {
         

@@ -10,13 +10,13 @@ import SwiftUI
 
 struct TaskView: View {
     
-    @State var task: TaskDataModel
+    @State var task: TaskModel
     
     var body: some View {
         
         
         VStack {
-            Text("\(task.title): \(task.count)/\(task.goal)")
+            Text("\(task.title): \(task.currentCount)/\(task.target)")
             Divider()
         }
 
@@ -26,7 +26,7 @@ struct TaskView: View {
 struct TaskView_Previews: PreviewProvider {
     static var previews: some View {
         TaskView(
-            task: TaskDataModel(title: "personal task number 1", count: 5, goal: 10)
+            task: TaskModel()
         )
     }
 }

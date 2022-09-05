@@ -10,13 +10,13 @@ import CoreData
 
 struct ContentView: View {
 
-    @EnvironmentObject var user: UserModel
+    @EnvironmentObject var SignedInUser: SignedInUserModel
     
     var body: some View {
         
         Group {
         
-            if user.uid == "" {
+            if SignedInUser.uid == "" {
                 LoginView()
             } else {
                 MainView()

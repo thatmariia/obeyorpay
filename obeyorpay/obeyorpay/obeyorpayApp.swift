@@ -16,18 +16,18 @@ struct obeyorpayApp: App {
     let persistenceController = PersistenceController.shared
     
     var tasksData: TasksDataModel
-    var user: UserModel
+    var signedInUser: SignedInUserModel
     
     init() {
         tasksData = TasksDataModel()
-        user = UserModel()
+        signedInUser = SignedInUserModel()
     }
 
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(tasksData)
-                .environmentObject(user)
+                .environmentObject(signedInUser)
                 //.environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
