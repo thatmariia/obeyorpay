@@ -35,12 +35,12 @@ class SignInAppleModel: NSObject, ASAuthorizationControllerDelegate, ASAuthoriza
         authorizationController.performRequests()
     }
     
-    private func register_new_account(credential: ASAuthorizationAppleIDCredential) {
+    private func registerNewAccount(credential: ASAuthorizationAppleIDCredential) {
         self.parent?.user.uid = credential.user
         // TODO:: save this somewhere
     }
     
-    private func sign_in_with_existing_account(credential: ASAuthorizationAppleIDCredential) {
+    private func signInWithExistingAccount(credential: ASAuthorizationAppleIDCredential) {
         // TODO:: retrieve
         self.parent?.user.uid = credential.user
     }
@@ -56,9 +56,9 @@ class SignInAppleModel: NSObject, ASAuthorizationControllerDelegate, ASAuthoriza
             
         case let appleIdCredential as ASAuthorizationAppleIDCredential:
             if let _ = appleIdCredential.email, let _ = appleIdCredential.fullName {
-                register_new_account(credential: appleIdCredential)
+                registerNewAccount(credential: appleIdCredential)
             } else {
-                sign_in_with_existing_account(credential: appleIdCredential)
+                signInWithExistingAccount(credential: appleIdCredential)
             }
             
             break

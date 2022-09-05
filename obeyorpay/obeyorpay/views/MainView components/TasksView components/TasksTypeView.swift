@@ -9,14 +9,14 @@ import SwiftUI
 
 struct TasksTypeView: View {
     
-    @Binding var task_type: TaskTypes
+    @Binding var taskType: TaskTypes
     
     
     var body: some View {
         HStack {
             
             Button {
-                task_type = TaskTypes.personal
+                taskType = TaskTypes.personal
             } label: {
                 Text("personal")
             }
@@ -25,7 +25,7 @@ struct TasksTypeView: View {
             Spacer()
             
             Button {
-                task_type = TaskTypes.joint
+                taskType = TaskTypes.joint
             } label: {
                 Text("joint")
             }
@@ -33,7 +33,7 @@ struct TasksTypeView: View {
             Spacer()
             
             Button {
-                task_type = TaskTypes.shared
+                taskType = TaskTypes.shared
             } label: {
                 Text("shared")
             }
@@ -46,6 +46,6 @@ struct TasksTypeView_Previews: PreviewProvider {
     @State static var task_type = TaskTypes.personal
     
     static var previews: some View {
-        TasksTypeView(task_type: $task_type)
+        TasksTypeView(taskType: $task_type)
     }
 }

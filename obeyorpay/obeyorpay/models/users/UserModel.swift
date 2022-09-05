@@ -13,15 +13,15 @@ class UserModel: ObservableObject {
     @Published var uid: String
     @Published var username: String
     @Published var email: String
-    @Published var first_name: String
-    @Published var last_name: String
+    @Published var firstName: String
+    @Published var lastName: String
     
     
     init() {
         self.uid = ""
         self.username = ""
         self.email = ""
-        self.first_name = ""
-        self.last_name = ""
+        self.firstName = ""
+        self.lastName = ""
     }
 }

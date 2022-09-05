@@ -11,17 +11,17 @@ struct TasksView: View {
     
     @State var task_type = TaskTypes.personal
     
-    @EnvironmentObject var tasks_data: TasksDataModel
+    @EnvironmentObject var tasksData: TasksDataModel
     @EnvironmentObject var user: UserModel
     
     var body: some View {
-        TasksTypeView(task_type: $task_type)
+        TasksTypeView(taskType: $task_type)
         
         Spacer()
         
         Text(user.uid)
         
-        TasksListView(tasks: tasks_data.tasks[task_type] ?? [])
+        TasksListView(tasks: tasksData.tasks[task_type] ?? [])
         
         Spacer()
     }
