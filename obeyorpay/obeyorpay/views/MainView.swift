@@ -17,7 +17,7 @@ struct MainView: View {
         if tab == TabItems.tasks {
             TasksView()
         } else if tab == TabItems.settings {
-            Text("Settings")
+            SettingsView()
         }
         
         Spacer()
