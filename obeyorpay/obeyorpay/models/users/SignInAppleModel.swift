@@ -45,7 +45,7 @@ class SignInAppleModel {
         }
     }
     
-    private func registerNewAccount(credential: ASAuthorizationAppleIDCredential){
+    private func registerNewAccount(credential: ASAuthorizationAppleIDCredential) {
         
         let user = UserModel(
             uid: credential.user,
@@ -55,25 +55,26 @@ class SignInAppleModel {
             lastName: credential.fullName?.familyName ?? "lastname N/A"
         )
         CKDataUserModel().addUserRecord(of: user) { (result) in
-            switch result {
-            case .success(let signedInUser):
-                self.parent?.signedInUser.user = signedInUser
-                self.parent?.signedInUser.status = .signedIn
-            case .failure(let err):
-                self.parent?.signedInUser.status = .notSignedIn
-                print(err.localizedDescription)
-            }
+            self.hangleResult(of: result)
         }
     }
     
-    private func signInWithExistingAccount(credential: ASAuthorizationAppleIDCredential){
+    private func signInWithExistingAccount(credential: ASAuthorizationAppleIDCredential) {
         
         CKDataUserModel().fetchUserRecord(with: credential.user) { (result) in
-            switch result {
-            case .success(let signedInUser):
+            self.hangleResult(of: result)
+        }
+    }
+    
+    private func hangleResult(of result: Result<UserModel, Error>) {
+        switch result {
+        case .success(let signedInUser):
+            DispatchQueue.main.async {
                 self.parent?.signedInUser.user = signedInUser
                 self.parent?.signedInUser.status = .signedIn
-            case .failure(let err):
+            }
+        case .failure(let err):
+            DispatchQueue.main.async {
                 self.parent?.signedInUser.status = .notSignedIn
                 print(err.localizedDescription)
             }
