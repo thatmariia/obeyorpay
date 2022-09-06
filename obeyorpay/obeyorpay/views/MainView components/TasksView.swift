@@ -14,14 +14,23 @@ struct TasksView: View {
     @EnvironmentObject var tasksData: TasksDataModel
     
     var body: some View {
-        TasksTypeView(taskType: $task_type)
         
-        Spacer()
-        
-        // TODO:: pass tasks of the $task_type
-        TasksListView(tasks: tasksData.tasks)
-        
-        Spacer()
+        VStack {
+            HStack {
+                TasksTypeView(taskType: $task_type)
+                
+                Spacer()
+                
+                AddTaskView()
+            }
+            
+            Spacer()
+            
+            // TODO:: pass tasks of the $task_type
+            TasksListView(tasks: tasksData.tasks)
+            
+            Spacer()
+        }
     }
 }
 

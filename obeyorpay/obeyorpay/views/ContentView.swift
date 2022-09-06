@@ -20,6 +20,7 @@ struct ContentView: View {
                 SignInView()
             } else {
                 MainView()
+                    .preferredColorScheme(.light)
             }
         }
         .padding()

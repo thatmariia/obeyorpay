@@ -51,6 +51,7 @@
 		B6D0BD3728C7931500B0946D /* globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD3628C7931500B0946D /* globals.swift */; };
 		B6D0BD3928C7943F00B0946D /* UsernameSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD3828C7943F00B0946D /* UsernameSettingsModel.swift */; };
 		B6D0BD3B28C79C3500B0946D /* SettingsEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD3A28C79C3500B0946D /* SettingsEditingView.swift */; };
+		B6D0BD3E28C7E3AE00B0946D /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD3D28C7E3AE00B0946D /* AddTaskView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +91,7 @@
 		B6D0BD3628C7931500B0946D /* globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = globals.swift; sourceTree = "<group>"; };
 		B6D0BD3828C7943F00B0946D /* UsernameSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameSettingsModel.swift; sourceTree = "<group>"; };
 		B6D0BD3A28C79C3500B0946D /* SettingsEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEditingView.swift; sourceTree = "<group>"; };
+		B6D0BD3D28C7E3AE00B0946D /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				B6774A0E28C4DECF00B94B7C /* TasksTypeView.swift */,
+				B6D0BD3D28C7E3AE00B0946D /* AddTaskView.swift */,
 				B6774A1828C4EBDE00B94B7C /* TasksListView.swift */,
 				B6774A2328C5141A00B94B7C /* TaskEditingView.swift */,
 				B6774A2228C4F3C200B94B7C /* TaskListView components */,
@@ -204,8 +207,8 @@
 			children = (
 				B6774A0A28C4DB4800B94B7C /* AppTabView.swift */,
 				B6774A4A28C61A1D00B94B7C /* SettingsView.swift */,
-				B6D0BD3C28C79CA500B0946D /* SettingsView components */,
 				B6774A0C28C4DBBB00B94B7C /* TasksView.swift */,
+				B6D0BD3C28C79CA500B0946D /* SettingsView components */,
 				B6774A2128C4F3A500B94B7C /* TasksView components */,
 			);
 			path = "MainView components";
@@ -384,6 +387,7 @@
 				B6D0BD3528C7036400B0946D /* SignInAppleModel.swift in Sources */,
 				B6774A1B28C4EC4300B94B7C /* TasksDataModel.swift in Sources */,
 				B6774A4B28C61A1D00B94B7C /* SettingsView.swift in Sources */,
+				B6D0BD3E28C7E3AE00B0946D /* AddTaskView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
