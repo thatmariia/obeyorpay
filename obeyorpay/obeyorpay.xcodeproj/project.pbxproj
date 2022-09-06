@@ -216,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				B6774A5228C62B4000B94B7C /* SignInAppleModel.swift */,
+				B6D0BD2528C6C09E00B0946D /* SignedInUserModel.swift */,
 			);
 			path = users;
 			sourceTree = "<group>";
@@ -225,7 +226,6 @@
 			children = (
 				B6774A1428C4E89800B94B7C /* TaskTypes.swift */,
 				B6774A1A28C4EC4300B94B7C /* TasksDataModel.swift */,
-				B6D0BD2528C6C09E00B0946D /* SignedInUserModel.swift */,
 			);
 			path = tasks;
 			sourceTree = "<group>";
