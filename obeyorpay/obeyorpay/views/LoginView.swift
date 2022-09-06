@@ -21,7 +21,7 @@ struct LoginView: View {
             SignInAppleButtonView()
                 .frame(width: 200, height: 60, alignment: .center)
                 .onTapGesture {
-                    SignInAppleModel(parent: self).didTapButton()
+                    SignInViewModel().signin(from: self)
                 }
         }
     }
