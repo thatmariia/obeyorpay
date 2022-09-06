@@ -19,19 +19,23 @@ struct UsernameComment {
 }
 
 enum UsernameNotes: String {
-    case allowedCharacters = "Username can only contain latin letters, digits, and underscores (_)"
+    case allowedCharacters = "Username can only contain latin lowercase letters, digits, and underscores (_)"
     case minLength = "Username should contain at least 2 symbols"
     case maxLength = "Username should contain at most 30 symbols"
     case alreadyExists = "Username already exists"
 }
 
 
-struct UsernameSettingModel {
+class UsernameSettingModel {
     
-    var usernameallowedCharacters = lowercaseLetters + uppercaseLetters + "_"
+    var usernameallowedCharacters = lowercaseLetters + digits + "_"
     var usernameMinLength = 2
     var usernameMaxLength = 30
     var usernameDefaultLength = 16
+    
+    // supporting
+    private var noUsersWithUsername = true
+    private var updatedUser = UserModel()
     
     func getDefaultUsername() -> String {
         return getRandomUsername()
@@ -40,25 +44,19 @@ struct UsernameSettingModel {
     func getRandomUsername() -> String {
         return String((0..<self.usernameDefaultLength).map{ _ in self.usernameallowedCharacters.randomElement()! })
     }
-    
-    func updateUser(user: UserModel, with newUsername: String) -> UserModel {
-        var updatedUser = user
-//        userDB.editUserRecord(with: user.recordID!, edit: newUsername) { result in
-//            switch result {
-//            case .success(let user):
-//                DispatchQueue.main.async {
-//                    updatedUser = user
-//                }
-//                break
-//            case .failure(let err):
-//                print(err.localizedDescription)
-//                break
-//            }
-//        }
-        return updatedUser
+
+    func updateUser(signedInUser: SignedInUserModel, with newUsername: String) async throws {
+        self.updatedUser = signedInUser.user
+        do {
+            self.updatedUser = try await userDB.editUserRecord(with: signedInUser.user.recordID!, edit: newUsername)
+        } catch { }
+        DispatchQueue.main.async {
+            signedInUser.user = self.updatedUser
+            self.updatedUser = UserModel()
+        }
     }
     
-    func isCorrectUsername(currUsername: String, newUsername: String) -> UsernameComment {
+    func isCorrectUsername(currUsername: String, newUsername: String) async throws -> UsernameComment {
         // no change
         if currUsername == newUsername {
             return UsernameComment(isCorrect: true, note: nil)
@@ -82,25 +80,16 @@ struct UsernameSettingModel {
         }
         
         // already exists
-        var noUsersWithUsername: Bool = false
-//        DispatchQueue.main.sync {
-//            userDB.fetchUserRecords(with: newUsername) { result in
-//                switch result {
-//                case .success(let nrUsers):
-//                    noUsersWithUsername = nrUsers == 0
-//                    print("*********", nrUsers, noUsersWithUsername)
-//                    break
-//                case .failure(let err):
-//                    print(err.localizedDescription)
-//                    break
-//                }
-//            }
-//        }
-        if !noUsersWithUsername {
-            print("********* returning", noUsersWithUsername)
+        self.noUsersWithUsername = true
+        do {
+            let nrUsers = try await userDB.fetchUserRecords(with: newUsername)
+            self.noUsersWithUsername = nrUsers == 0
+        } catch { }
+        if !self.noUsersWithUsername {
             return UsernameComment(isCorrect: false, note: UsernameNotes.alreadyExists.rawValue)
         }
         
+        // all good
         return UsernameComment(isCorrect: true, note: nil)
     }
 }

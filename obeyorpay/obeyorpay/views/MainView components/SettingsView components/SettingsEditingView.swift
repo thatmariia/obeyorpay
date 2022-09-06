@@ -24,7 +24,6 @@ struct SettingsEditingView: View {
         ZStack {
             
             Color.red
-                
             
             VStack {
                 TextField("Username", text: $newUsername)
@@ -36,20 +35,7 @@ struct SettingsEditingView: View {
                 Spacer()
                 
                 Button {
-                    let usernameComment = usernameSettings.isCorrectUsername(currUsername: currUsername, newUsername: newUsername)
-                    if usernameComment.isCorrect {
-                        // TODO:: change username (db + envi)
-                        if newUsername != currUsername {
-                            signedInUser.user = usernameSettings.updateUser(user: signedInUser.user, with: newUsername)
-                        }
-                        
-                        editing = false
-                        isDisplayNotePresent = false
-                        displayNote = ""
-                    } else {
-                        isDisplayNotePresent = true
-                        displayNote = usernameComment.note!
-                    }
+                    attemptUsernameChange()
                 } label: {
                     Text("done")
                 }
@@ -57,6 +43,28 @@ struct SettingsEditingView: View {
             }
         }
         
+    }
+    
+    fileprivate func attemptUsernameChange() {
+        DispatchQueue.main.async {
+            Task.init {
+                do {
+                    let usernameComment = try await usernameSettings.isCorrectUsername(currUsername: currUsername, newUsername: newUsername)
+                    
+                    if usernameComment.isCorrect {
+                        if newUsername != currUsername {
+                            try await usernameSettings.updateUser(signedInUser: signedInUser, with: newUsername)
+                        }
+                        editing = false
+                        isDisplayNotePresent = false
+                        displayNote = ""
+                    } else {
+                        isDisplayNotePresent = true
+                        displayNote = usernameComment.note!
+                    }
+                } catch {}
+            }
+        }
     }
 }
 
