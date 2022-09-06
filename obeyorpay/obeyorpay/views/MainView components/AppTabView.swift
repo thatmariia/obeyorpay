@@ -8,7 +8,7 @@
 import SwiftUI
 
 
-enum TabItems {
+enum TabItems: CaseIterable {
     case tasks
     case settings
 }

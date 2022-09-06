@@ -29,55 +29,93 @@ class SignInAppleModel {
                     as? ASAuthorizationAppleIDCredential
             else { return }
             
-            // try signing in
-            signInWithExistingAccount(credential: credential)
-            
-            if let _ = credential.email, let _ = credential.fullName {
-                // if can't sign in, sign up
-                if self.parent?.signedInUser.status == .notSignedIn {
-                    registerNewAccount(credential: credential)
+            Task.init {
+                do {
+                    try await handleCredential(credential: credential)
+                } catch {
+                    // handle error
                 }
-            } else {
-                // TODO:: remove account? (eg: signed in on the phone but no record in db)
             }
+            
+//            // try signing in
+//            signInWithExistingAccount(credential: credential)
+//
+//            if let _ = credential.email, let _ = credential.fullName {
+//                // if can't sign in, sign up
+//                if self.parent?.signedInUser.status == .notSignedIn {
+//                    registerNewAccount(credential: credential)
+//                }
+//            } else {
+//                // TODO:: remove account? (eg: signed in on the phone but no record in db)
+//            }
         case .failure (let error):
             print("Authorization failed: " + error.localizedDescription)
         }
     }
     
-    private func registerNewAccount(credential: ASAuthorizationAppleIDCredential) {
+    private func handleCredential(credential: ASAuthorizationAppleIDCredential) async throws {
+        do {
+            try await signInWithExistingAccount(credential: credential)
+            if let _ = credential.email, let _ = credential.fullName {
+                // if can't sign in, sign up
+                if await self.parent?.signedInUser.status == .notSignedIn {
+                    try await registerNewAccount(credential: credential)
+                }
+            } else {
+                // TODO:: remove account? (eg: signed in on the phone but no record in db)
+            }
+        } catch let err {
+            throw err
+        }
+    }
+    
+    private func registerNewAccount(credential: ASAuthorizationAppleIDCredential) async throws {
         
-        let user = UserModel(
+        var user = UserModel(
             uid: credential.user,
             username: usernameSettings.getDefaultUsername(),
             email: credential.email ?? "email N/A",
             firstName: credential.fullName?.givenName ?? "name N/A",
             lastName: credential.fullName?.familyName ?? "lastname N/A"
         )
-        CKDataUserModel().addUserRecord(of: user) { (result) in
-            self.hangleResult(of: result)
+        //        CKDataUserModel().addUserRecord(of: user) { (result) in
+        //            self.hangleResult(of: result)
+        //        }
+        do {
+            user = try await userDB.addUserRecord(of: user)
+            updateSignedInUser(user: user)
+        } catch let err {
+            throw err
         }
     }
     
-    private func signInWithExistingAccount(credential: ASAuthorizationAppleIDCredential) {
+    func updateSignedInUser(user: UserModel) {
+        self.parent?.signedInUser.user = user
+        self.parent?.signedInUser.status = .signedIn
+    }
+    
+    private func signInWithExistingAccount(credential: ASAuthorizationAppleIDCredential) async throws {
         
-        CKDataUserModel().fetchUserRecord(with: credential.user) { (result) in
-            self.hangleResult(of: result)
+        do {
+            let user = try await userDB.fetchUserRecord(with: credential.user)
+            updateSignedInUser(user: user)
+        } catch let err {
+            throw err
         }
     }
     
-    private func hangleResult(of result: Result<UserModel, Error>) {
-        switch result {
-        case .success(let signedInUser):
-            DispatchQueue.main.async {
-                self.parent?.signedInUser.user = signedInUser
-                self.parent?.signedInUser.status = .signedIn
-            }
-        case .failure(let err):
-            DispatchQueue.main.async {
-                self.parent?.signedInUser.status = .notSignedIn
-                print(err.localizedDescription)
-            }
-        }
-    }
+//    private func hangleResult(of result: Result<UserModel, Error>) {
+//        switch result {
+//        case .success(let signedInUser):
+//            DispatchQueue.main.async {
+//                self.parent?.signedInUser.user = signedInUser
+//                self.parent?.signedInUser.status = .signedIn
+//            }
+//        case .failure(let err):
+//            DispatchQueue.main.async {
+//                self.parent?.signedInUser.status = .notSignedIn
+//                print(err.localizedDescription)
+//            }
+//        }
+//    }
 }

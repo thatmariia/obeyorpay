@@ -9,19 +9,30 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    @EnvironmentObject var SignedInUser: SignedInUserModel
+    @EnvironmentObject var signedInUser: SignedInUserModel
+    
+    @State var editing = false
     
     var body: some View {
         
+        
         VStack {
             
-            Text(SignedInUser.user.username)
+            Text(signedInUser.user.username)
         
+            Spacer()
+            
             Button {
-                // TODO:: sign out?
+                editing = true
             } label: {
-                Text("sign out")
+                Text("edit (username)")
             }
+
+            
+            Spacer()
+        }
+        .popup(isPresented: $editing) {
+            SettingsEditingView(editing: $editing, currUsername: signedInUser.user.username, newUsername: signedInUser.user.username)
         }
 
     }

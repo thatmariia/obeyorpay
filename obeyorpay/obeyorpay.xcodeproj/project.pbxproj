@@ -50,6 +50,7 @@
 		B6D0BD3528C7036400B0946D /* SignInAppleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD3428C7036400B0946D /* SignInAppleModel.swift */; };
 		B6D0BD3728C7931500B0946D /* globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD3628C7931500B0946D /* globals.swift */; };
 		B6D0BD3928C7943F00B0946D /* UsernameSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD3828C7943F00B0946D /* UsernameSettingsModel.swift */; };
+		B6D0BD3B28C79C3500B0946D /* SettingsEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD3A28C79C3500B0946D /* SettingsEditingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +89,7 @@
 		B6D0BD3428C7036400B0946D /* SignInAppleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAppleModel.swift; sourceTree = "<group>"; };
 		B6D0BD3628C7931500B0946D /* globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = globals.swift; sourceTree = "<group>"; };
 		B6D0BD3828C7943F00B0946D /* UsernameSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameSettingsModel.swift; sourceTree = "<group>"; };
+		B6D0BD3A28C79C3500B0946D /* SettingsEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEditingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +204,7 @@
 			children = (
 				B6774A0A28C4DB4800B94B7C /* AppTabView.swift */,
 				B6774A4A28C61A1D00B94B7C /* SettingsView.swift */,
+				B6D0BD3C28C79CA500B0946D /* SettingsView components */,
 				B6774A0C28C4DBBB00B94B7C /* TasksView.swift */,
 				B6774A2128C4F3A500B94B7C /* TasksView components */,
 			);
@@ -255,6 +258,14 @@
 				B6D0BD3028C6D29B00B0946D /* CKDataUserModel.swift */,
 			);
 			path = database;
+			sourceTree = "<group>";
+		};
+		B6D0BD3C28C79CA500B0946D /* SettingsView components */ = {
+			isa = PBXGroup;
+			children = (
+				B6D0BD3A28C79C3500B0946D /* SettingsEditingView.swift */,
+			);
+			path = "SettingsView components";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -353,6 +364,7 @@
 				B6774A1D28C4EC9200B94B7C /* TaskModel.swift in Sources */,
 				B6774A1528C4E89800B94B7C /* TaskTypes.swift in Sources */,
 				B6774A0D28C4DBBB00B94B7C /* TasksView.swift in Sources */,
+				B6D0BD3B28C79C3500B0946D /* SettingsEditingView.swift in Sources */,
 				B6D0BD3928C7943F00B0946D /* UsernameSettingsModel.swift in Sources */,
 				B6774A0428C4D43400B94B7C /* obeyorpay.xcdatamodeld in Sources */,
 				B6774A2428C5141A00B94B7C /* TaskEditingView.swift in Sources */,

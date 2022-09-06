@@ -13,18 +13,22 @@ struct MainView: View {
     
     var body: some View {
         
-
-        if tab == TabItems.tasks {
-            TasksView()
-        } else if tab == TabItems.settings {
-            SettingsView()
+        Group {
+            
+            if tab == TabItems.tasks {
+                TasksView()
+            } else if tab == TabItems.settings {
+                SettingsView()
+            }
+            
+            Spacer()
+            
+            AppTabView(tab: $tab)
         }
         
-        Spacer()
-        
-        AppTabView(tab: $tab)
-        
     }
+    
+    
 }
 
 struct MainView_Previews: PreviewProvider {

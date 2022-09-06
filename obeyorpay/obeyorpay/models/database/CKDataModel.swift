@@ -37,35 +37,55 @@ class CKDataModel {
         privateDB = container.privateCloudDatabase
     }
     
-    func fetchRecord(with recordID: CKRecord.ID, completion: @escaping (Result<CKRecord, Error>) -> ()) {
+    func fetchRecord(with recordID: CKRecord.ID) async throws -> CKRecord {
         
-        publicDB.fetch(withRecordID: recordID) { record, err in
-            if let err = err {
-                completion(.failure(err))
-                return
-            }
-            guard let record = record else {
-                completion(.failure(CKHelperError.recordFailure))
-                return
-            }
-            completion(.success(record))
+        do {
+            let record = try await publicDB.record(for: recordID)
+            return record
+        } catch let err {
+            throw err
         }
     }
     
-    func saveRecord(record: CKRecord, completion: @escaping (Result<Bool, Error>) -> ()) {
+//    func fetchRecord(with recordID: CKRecord.ID, completion: @escaping (Result<CKRecord, Error>) -> ()) {
+//
+//        publicDB.fetch(withRecordID: recordID) { record, err in
+//            if let err = err {
+//                completion(.failure(err))
+//                return
+//            }
+//            guard let record = record else {
+//                completion(.failure(CKHelperError.recordFailure))
+//                return
+//            }
+//            completion(.success(record))
+//        }
+//    }
+    
+    func saveRecord(record: CKRecord) async throws -> Bool {
         
-        publicDB.save(record) { record, err in
-            
-            if let err = err {
-                completion(.failure(err))
-                return
-            }
-            guard let _ = record else {
-                completion(.failure(CKHelperError.recordFailure))
-                return
-            }
-            completion(.success(true))
+        do {
+            let _ = try await publicDB.save(record)
+            return true
+        } catch let err {
+            throw err
         }
     }
+    
+//    func saveRecord(record: CKRecord, completion: @escaping (Result<Bool, Error>) -> ()) {
+//
+//        publicDB.save(record) { record, err in
+//
+//            if let err = err {
+//                completion(.failure(err))
+//                return
+//            }
+//            guard let _ = record else {
+//                completion(.failure(CKHelperError.recordFailure))
+//                return
+//            }
+//            completion(.success(true))
+//        }
+//    }
     
 }

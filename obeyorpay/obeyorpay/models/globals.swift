@@ -12,5 +12,9 @@ let lowercaseLetters = "abcdefghijklmnopqrstuvwxyz"
 let uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 let digits = "0123456789"
 
+// MARK: - database models
+
+let userDB = CKDataUserModel()
+
 // MARK: - settings
 let usernameSettings = UsernameSettingModel()

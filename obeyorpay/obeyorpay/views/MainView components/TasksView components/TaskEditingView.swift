@@ -16,19 +16,19 @@ struct TaskEditingView: View {
         ZStack {
             
             Color.red.frame(width: 200, height: 200)
-        
-        VStack {
-        
-            Text("Editing")
             
-            Button {
-                editing = false
-            } label: {
-                Text("done")
+            VStack {
+                
+                Text("Editing")
+                
+                Button {
+                    editing = false
+                } label: {
+                    Text("done")
+                }
             }
         }
-        }
-
+        
     }
 }
 
