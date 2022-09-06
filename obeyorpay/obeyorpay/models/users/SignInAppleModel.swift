@@ -49,7 +49,7 @@ class SignInAppleModel {
         
         let user = UserModel(
             uid: credential.user,
-            username: "woof",
+            username: usernameSettings.getDefaultUsername(),
             email: credential.email ?? "email N/A",
             firstName: credential.fullName?.givenName ?? "name N/A",
             lastName: credential.fullName?.familyName ?? "lastname N/A"

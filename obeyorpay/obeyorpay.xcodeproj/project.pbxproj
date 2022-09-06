@@ -48,6 +48,8 @@
 		B6D0BD2F28C6D1E700B0946D /* CKDataAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD2E28C6D1E700B0946D /* CKDataAccountModel.swift */; };
 		B6D0BD3128C6D29B00B0946D /* CKDataUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD3028C6D29B00B0946D /* CKDataUserModel.swift */; };
 		B6D0BD3528C7036400B0946D /* SignInAppleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD3428C7036400B0946D /* SignInAppleModel.swift */; };
+		B6D0BD3728C7931500B0946D /* globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD3628C7931500B0946D /* globals.swift */; };
+		B6D0BD3928C7943F00B0946D /* UsernameSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD3828C7943F00B0946D /* UsernameSettingsModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +86,8 @@
 		B6D0BD2E28C6D1E700B0946D /* CKDataAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKDataAccountModel.swift; sourceTree = "<group>"; };
 		B6D0BD3028C6D29B00B0946D /* CKDataUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKDataUserModel.swift; sourceTree = "<group>"; };
 		B6D0BD3428C7036400B0946D /* SignInAppleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAppleModel.swift; sourceTree = "<group>"; };
+		B6D0BD3628C7931500B0946D /* globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = globals.swift; sourceTree = "<group>"; };
+		B6D0BD3828C7943F00B0946D /* UsernameSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameSettingsModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +172,8 @@
 				B6D0BD1C28C6A5BC00B0946D /* record types */,
 				B6D0BD1728C6514E00B0946D /* users */,
 				B6D0BD1828C6515900B0946D /* tasks */,
+				B6D0BD3628C7931500B0946D /* globals.swift */,
+				B6D0BD3828C7943F00B0946D /* UsernameSettingsModel.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -347,6 +353,7 @@
 				B6774A1D28C4EC9200B94B7C /* TaskModel.swift in Sources */,
 				B6774A1528C4E89800B94B7C /* TaskTypes.swift in Sources */,
 				B6774A0D28C4DBBB00B94B7C /* TasksView.swift in Sources */,
+				B6D0BD3928C7943F00B0946D /* UsernameSettingsModel.swift in Sources */,
 				B6774A0428C4D43400B94B7C /* obeyorpay.xcdatamodeld in Sources */,
 				B6774A2428C5141A00B94B7C /* TaskEditingView.swift in Sources */,
 				B6774A2A28C5183D00B94B7C /* PopupView.swift in Sources */,
@@ -357,6 +364,7 @@
 				B6774A0128C4D43400B94B7C /* Persistence.swift in Sources */,
 				B67749FA28C4D43200B94B7C /* ContentView.swift in Sources */,
 				B6774A1728C4EBCF00B94B7C /* TaskView.swift in Sources */,
+				B6D0BD3728C7931500B0946D /* globals.swift in Sources */,
 				B67749F828C4D43200B94B7C /* obeyorpayApp.swift in Sources */,
 				B6774A1928C4EBDE00B94B7C /* TasksListView.swift in Sources */,
 				B6774A4928C54D5200B94B7C /* AccountModel.swift in Sources */,

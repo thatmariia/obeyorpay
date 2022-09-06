@@ -69,5 +69,4 @@ class UserModel: Identifiable, Equatable, Hashable {
         self.firstName = ""
         self.lastName = ""
     }
-    
 }
