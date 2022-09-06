@@ -12,7 +12,7 @@ import SwiftUI
 class SignInViewModel {
     
     func signin(from view: LoginView) {
-        SignInAppleModel(parent: view).didTapButton()
+        // SignInAppleModel(parent: view).didTapButton()
     }
     
 }

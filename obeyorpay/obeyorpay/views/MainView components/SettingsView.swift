@@ -9,12 +9,19 @@ import SwiftUI
 
 struct SettingsView: View {
     
+    @EnvironmentObject var SignedInUser: SignedInUserModel
+    
     var body: some View {
         
-        Button {
-            // TODO:: sign out?
-        } label: {
-            Text("sign out")
+        VStack {
+            
+            Text(SignedInUser.user.username)
+        
+            Button {
+                // TODO:: sign out?
+            } label: {
+                Text("sign out")
+            }
         }
 
     }

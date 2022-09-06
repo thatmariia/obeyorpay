@@ -8,8 +8,9 @@
 import Foundation
 import CloudKit
 
+
 enum CKDataRecordTypes: String, CaseIterable {
-    case user = "Users"
+    case user = "User"
     case account = "Account"
     case entry = "Entry"
     case evaluation = "Evaluation"
@@ -17,6 +18,12 @@ enum CKDataRecordTypes: String, CaseIterable {
     case task = "Task"
 }
 
+enum CKHelperError: Error {
+    case recordFailure
+    case recordIDFailure
+    case castFailure
+    case cursorFailure
+}
 
 class CKDataModel {
     

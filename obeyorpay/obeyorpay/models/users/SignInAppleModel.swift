@@ -1,74 +1,82 @@
 //
-//  SignInWithAppleDelegates.swift
+//  SignInAppleModel.swift
 //  obeyorpay
 //
-//  Created by Mariia Steeghs-Turchina on 05/09/2022.
+//  Created by Mariia Steeghs-Turchina on 06/09/2022.
 //
 
-// https://levelup.gitconnected.com/swiftui-login-or-sign-in-with-apple-b540f9ded52f
-
-import UIKit
+import Foundation
 import AuthenticationServices
 
-class SignInAppleModel: NSObject, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
-    var parent: LoginView?
+
+class SignInAppleModel {
     
-    init(parent: LoginView) {
+    var parent: SignInView?
+    
+    init(parent: SignInView) {
         self.parent = parent
-        super.init()
     }
     
-    //@objc
-    func didTapButton() {
-        // https://www.raywenderlich.com/4875322-sign-in-with-apple-using-swiftui
-        
-        // 1 - All sign in requests need an ASAuthorizationAppleIDRequest.
-        let request = ASAuthorizationAppleIDProvider().createRequest()
-        
-        // 2 - Specify the type of end user data you need to know.
+    
+    func onRequest(_ request: ASAuthorizationAppleIDRequest) {
         request.requestedScopes = [.fullName, .email]
-        
-        //Make the request
-        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-        authorizationController.presentationContextProvider = self
-        authorizationController.delegate = self
-        authorizationController.performRequests()
     }
     
-    private func registerNewAccount(credential: ASAuthorizationAppleIDCredential) {
-        self.parent?.SignedInUser.uid = credential.user
-        // TODO:: save this somewhere
-    }
-    
-    private func signInWithExistingAccount(credential: ASAuthorizationAppleIDCredential) {
-        // TODO:: retrieve
-        self.parent?.SignedInUser.uid = credential.user
-    }
-    
-    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-        let vc = UIApplication.shared.windows.last?.rootViewController
-        return (vc?.view.window!)!
-    }
-    
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-        
-        switch authorization.credential {
+    func onCompletion(_ result: Result<ASAuthorization, Error>) {
+        switch result {
+        case .success (let authResults):
+            guard let credential = authResults.credential
+                    as? ASAuthorizationAppleIDCredential
+            else { return }
             
-        case let appleIdCredential as ASAuthorizationAppleIDCredential:
-            if let _ = appleIdCredential.email, let _ = appleIdCredential.fullName {
-                registerNewAccount(credential: appleIdCredential)
+            // try signing in
+            signInWithExistingAccount(credential: credential)
+            
+            if let _ = credential.email, let _ = credential.fullName {
+                // if can't sign in, sign up
+                if self.parent?.signedInUser.status == .notSignedIn {
+                    registerNewAccount(credential: credential)
+                }
             } else {
-                signInWithExistingAccount(credential: appleIdCredential)
+                // TODO:: remove account? (eg: signed in on the phone but no record in db)
             }
-            
-            break
-            
-        default:
-            break
+        case .failure (let error):
+            print("Authorization failed: " + error.localizedDescription)
         }
     }
     
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        // Handle error.
+    private func registerNewAccount(credential: ASAuthorizationAppleIDCredential){
+        
+        let user = UserModel(
+            uid: credential.user,
+            username: "woof",
+            email: credential.email ?? "email N/A",
+            firstName: credential.fullName?.givenName ?? "name N/A",
+            lastName: credential.fullName?.familyName ?? "lastname N/A"
+        )
+        CKDataUserModel().addRecord(of: user) { (result) in
+            switch result {
+            case .success(let signedInUser):
+                self.parent?.signedInUser.user = signedInUser
+                self.parent?.signedInUser.status = .signedIn
+            case .failure(let err):
+                self.parent?.signedInUser.status = .notSignedIn
+                print(err.localizedDescription)
+            }
+        }
+    }
+    
+    private func signInWithExistingAccount(credential: ASAuthorizationAppleIDCredential){
+        
+        CKDataUserModel().fetchRecord(with: credential.user) { (result) in
+            switch result {
+            case .success(let signedInUser):
+                self.parent?.signedInUser.user = signedInUser
+                self.parent?.signedInUser.status = .signedIn
+            case .failure(let err):
+                self.parent?.signedInUser.status = .notSignedIn
+                print(err.localizedDescription)
+            }
+        }
     }
 }

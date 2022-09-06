@@ -6,13 +6,23 @@
 //
 
 import Foundation
+import CloudKit
 
+
+enum signInStatus {
+    case signedIn
+    case notSignedIn
+}
 
 class SignedInUserModel: ObservableObject {
     
-    @Published var uid: String
+    @Published var testname: String
+    @Published var user: UserModel
+    @Published var status: signInStatus
     
     init() {
-        self.uid = ""
+        self.testname = "N/A"
+        self.user = UserModel(uid: "", username: "", email: "", firstName: "", lastName: "")
+        self.status = .notSignedIn
     }
 }
