@@ -19,9 +19,9 @@ struct SignInView: View {
         ZStack {
             
             SignInWithAppleButton(.signIn) { request in
-                SignInAppleModel(parent: self).onRequest(request)
+                authentificator.onRequest(request)
             } onCompletion: { result in
-                SignInAppleModel(parent: self).onCompletion(result)
+                authentificator.onCompletion(result, signedInUser: signedInUser)
             }
             .signInWithAppleButtonStyle(colorScheme == .dark ? .white : .black)
             .frame(width: 200, height: 60, alignment: .center)

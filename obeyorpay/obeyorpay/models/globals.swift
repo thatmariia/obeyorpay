@@ -12,6 +12,10 @@ let lowercaseLetters = "abcdefghijklmnopqrstuvwxyz"
 let uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 let digits = "0123456789"
 
+
+// MARK: - auth
+let authentificator = SignInAppleModel()
+
 // MARK: - database models
 
 let userDB = CKDataUserModel()

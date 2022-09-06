@@ -11,18 +11,11 @@ import AuthenticationServices
 
 class SignInAppleModel {
     
-    var parent: SignInView?
-    
-    init(parent: SignInView) {
-        self.parent = parent
-    }
-    
-    
     func onRequest(_ request: ASAuthorizationAppleIDRequest) {
         request.requestedScopes = [.fullName, .email]
     }
     
-    func onCompletion(_ result: Result<ASAuthorization, Error>) {
+    func onCompletion(_ result: Result<ASAuthorization, Error>, signedInUser: SignedInUserModel) {
         switch result {
         case .success (let authResults):
             guard let credential = authResults.credential
@@ -31,45 +24,26 @@ class SignInAppleModel {
             
             Task.init {
                 do {
-                    try await handleCredential(credential: credential)
+                    //try await handleCredential(credential: credential)
+                    try await signInWithExistingAccount(credential: credential, signedInUser: signedInUser)
+                    if let _ = credential.email, let _ = credential.fullName {
+                        // if can't sign in, sign up
+                        if signedInUser.status == .notSignedIn {
+                            try await registerNewAccount(credential: credential, signedInUser: signedInUser)
+                        }
+                    } else {
+                        // TODO:: remove account? (eg: signed in on the phone but no record in db)
+                    }
                 } catch {
                     // handle error
                 }
             }
-            
-//            // try signing in
-//            signInWithExistingAccount(credential: credential)
-//
-//            if let _ = credential.email, let _ = credential.fullName {
-//                // if can't sign in, sign up
-//                if self.parent?.signedInUser.status == .notSignedIn {
-//                    registerNewAccount(credential: credential)
-//                }
-//            } else {
-//                // TODO:: remove account? (eg: signed in on the phone but no record in db)
-//            }
         case .failure (let error):
             print("Authorization failed: " + error.localizedDescription)
         }
     }
     
-    private func handleCredential(credential: ASAuthorizationAppleIDCredential) async throws {
-        do {
-            try await signInWithExistingAccount(credential: credential)
-            if let _ = credential.email, let _ = credential.fullName {
-                // if can't sign in, sign up
-                if await self.parent?.signedInUser.status == .notSignedIn {
-                    try await registerNewAccount(credential: credential)
-                }
-            } else {
-                // TODO:: remove account? (eg: signed in on the phone but no record in db)
-            }
-        } catch let err {
-            throw err
-        }
-    }
-    
-    private func registerNewAccount(credential: ASAuthorizationAppleIDCredential) async throws {
+    private func registerNewAccount(credential: ASAuthorizationAppleIDCredential, signedInUser: SignedInUserModel) async throws {
         
         var user = UserModel(
             uid: credential.user,
@@ -80,26 +54,26 @@ class SignInAppleModel {
         )
         do {
             user = try await userDB.addUserRecord(of: user)
-            updateSignedInUser(user: user)
+            updateSignedInUser(user: user, signedInUser: signedInUser)
         } catch let err {
             throw err
         }
     }
     
-    func updateSignedInUser(user: UserModel) {
-        DispatchQueue.main.async {
-            self.parent?.signedInUser.user = user
-            self.parent?.signedInUser.status = .signedIn
-        }
-    }
-    
-    private func signInWithExistingAccount(credential: ASAuthorizationAppleIDCredential) async throws {
+    private func signInWithExistingAccount(credential: ASAuthorizationAppleIDCredential, signedInUser: SignedInUserModel) async throws {
         
         do {
             let user = try await userDB.fetchUserRecord(with: credential.user)
-            updateSignedInUser(user: user)
+            updateSignedInUser(user: user, signedInUser: signedInUser)
         } catch let err {
             throw err
+        }
+    }
+    
+    private func updateSignedInUser(user: UserModel, signedInUser: SignedInUserModel) {
+        DispatchQueue.main.async {
+            signedInUser.user = user
+            signedInUser.status = .signedIn
         }
     }
 }
