@@ -54,7 +54,7 @@ class SignInAppleModel {
             firstName: credential.fullName?.givenName ?? "name N/A",
             lastName: credential.fullName?.familyName ?? "lastname N/A"
         )
-        CKDataUserModel().addRecord(of: user) { (result) in
+        CKDataUserModel().addUserRecord(of: user) { (result) in
             switch result {
             case .success(let signedInUser):
                 self.parent?.signedInUser.user = signedInUser
@@ -68,7 +68,7 @@ class SignInAppleModel {
     
     private func signInWithExistingAccount(credential: ASAuthorizationAppleIDCredential){
         
-        CKDataUserModel().fetchRecord(with: credential.user) { (result) in
+        CKDataUserModel().fetchUserRecord(with: credential.user) { (result) in
             switch result {
             case .success(let signedInUser):
                 self.parent?.signedInUser.user = signedInUser

@@ -15,7 +15,7 @@ class CKDataUserModel: CKDataModel {
     
     // MARK: - record modifications
     
-    func fillRecord(into itemRecord: CKRecord, with user: UserModel) -> CKRecord {
+    func fillUserRecord(into itemRecord: CKRecord, with user: UserModel) -> CKRecord {
         itemRecord[UserModelKeys.uid.rawValue]          = user.uid          as CKRecordValue
         itemRecord[UserModelKeys.username.rawValue]     = user.username     as CKRecordValue
         itemRecord[UserModelKeys.email.rawValue]        = user.email        as CKRecordValue
@@ -24,7 +24,7 @@ class CKDataUserModel: CKDataModel {
         return itemRecord
     }
     
-    func extractRecord(from record: CKRecord) -> UserModel? {
+    func extractUserRecord(from record: CKRecord) -> UserModel? {
         let recordID = record.recordID
         guard let uid       = record[UserModelKeys.uid.rawValue]        as? String else { return nil }
         guard let username  = record[UserModelKeys.username.rawValue]   as? String else { return nil }
@@ -37,39 +37,88 @@ class CKDataUserModel: CKDataModel {
         return user
     }
     
-    // MARK: - database actions
+    // MARK: - supporting database actions
     
-    func addRecord(of user: UserModel, completion: @escaping (Result<UserModel, Error>) -> ()) {
+    func saveUserRecord(record: CKRecord, completion: @escaping (Result<UserModel, Error>) -> ()) {
         
-        let itemRecord = fillRecord(
-            into: CKRecord(recordType: userRecordType),
-            with: user
-        )
-        
-        publicDB.save(itemRecord) { record, err in
-            DispatchQueue.main.async {
-                
-                if let err = err {
-                    completion(.failure(err))
-                    return
-                }
-                guard let record = record else {
-                    completion(.failure(CKHelperError.recordFailure))
-                    return
-                }
-                
-                let extractedRecord = self.extractRecord(from: record)
+        saveRecord(record: record) { result in
+            switch result {
+            case .success(_):
+                let extractedRecord = self.extractUserRecord(from: record)
                 if extractedRecord == nil {
                     completion(.failure(CKHelperError.castFailure))
                     return
                 }
                 completion(.success(extractedRecord!))
+                break
+            case .failure(let err):
+                completion(.failure(err))
+                print(err.localizedDescription)
+                break
+            }
+            
+        }
+    }
+    
+    // MARK: - database actions
+    
+    func addUserRecord(of user: UserModel, completion: @escaping (Result<UserModel, Error>) -> ()) {
+        
+        // create record
+        let itemRecord = fillUserRecord(
+            into: CKRecord(recordType: userRecordType),
+            with: user
+        )
+        
+        // save record
+        saveUserRecord(record: itemRecord) { result in
+            switch result {
+            case .success(let record):
+                completion(.success(record))
+                break
+            case .failure(let err):
+                completion(.failure(err))
+                print(err.localizedDescription)
+                break
             }
         }
+    }
+    
+    func fetchUserRecords(with username: String, completion: @escaping (Result<Int, Error>) -> ()) {
+        let predicate = NSPredicate(format: "%K == %@", UserModelKeys.username.rawValue, username)
+        let query = CKQuery(recordType: userRecordType, predicate: predicate)
+        
+        let operation = CKQueryOperation(query: query)
+        operation.desiredKeys = [UserModelKeys.username.rawValue]
+        operation.resultsLimit = 1000
+        
+        var nrReturnedUsers: Int = 0
+        
+        operation.recordMatchedBlock = { _, result in
+            switch result {
+            case .success(_):
+                nrReturnedUsers += 1
+                break
+            case .failure(let err):
+                completion(.failure(err))
+                break
+            }
+        }
+        operation.queryResultBlock = { result in
+            switch result {
+            case .success(_):
+                completion(.success(nrReturnedUsers))
+                break
+            case .failure(let err):
+                completion(.failure(err))
+                break
+            }
+        }
+        publicDB.add(operation)
         
     }
     
-    func fetchRecord(with uid: String, completion: @escaping (Result<UserModel, Error>) -> ()) {
+    func fetchUserRecord(with uid: String, completion: @escaping (Result<UserModel, Error>) -> ()) {
         let predicate = NSPredicate(format: "%K == %@", UserModelKeys.uid.rawValue, uid)
         let query = CKQuery(recordType: userRecordType, predicate: predicate)
         
@@ -79,60 +128,89 @@ class CKDataUserModel: CKDataModel {
         
         var returnedUser = UserModel()
         
-        operation.recordMatchedBlock = { recordID, result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let record):
-                    let extractedRecord = self.extractRecord(from: record)
-                    if extractedRecord == nil {
-                        completion(.failure(CKHelperError.castFailure))
-                        return
-                    }
-                    returnedUser = extractedRecord!
-                    break
-                case .failure(let err):
-                    completion(.failure(err))
-                    break
+        operation.recordMatchedBlock = { _, result in
+            switch result {
+            case .success(let record):
+                let extractedRecord = self.extractUserRecord(from: record)
+                if extractedRecord == nil {
+                    completion(.failure(CKHelperError.castFailure))
+                    return
                 }
+                returnedUser = extractedRecord!
+                break
+            case .failure(let err):
+                completion(.failure(err))
+                break
             }
         }
         
         operation.queryResultBlock = { result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(_):
-                    if returnedUser.uid != "" {
-                        completion(.success(returnedUser))
-                    } else {
-                        completion(.failure(CKHelperError.cursorFailure))
-                    }
-                    break
-                case .failure(let err):
-                    completion(.failure(err))
-                    break
+            switch result {
+            case .success(_):
+                if returnedUser.uid != "" {
+                    completion(.success(returnedUser))
+                } else {
+                    completion(.failure(CKHelperError.cursorFailure))
                 }
+                break
+            case .failure(let err):
+                completion(.failure(err))
+                break
             }
         }
         publicDB.add(operation)
     }
     
-    func fetchRecord(with recordID: CKRecord.ID, completion: @escaping (Result<UserModel, Error>) -> ()) {
-        publicDB.fetch(withRecordID: recordID) { record, err in
-            DispatchQueue.main.async {
-                if let err = err {
-                    completion(.failure(err))
-                    return
-                }
-                guard let record = record else {
-                    completion(.failure(CKHelperError.recordFailure))
-                    return
-                }
-                let extractedRecord = self.extractRecord(from: record)
+    func fetchUserRecord(with recordID: CKRecord.ID, completion: @escaping (Result<UserModel, Error>) -> ()) {
+        
+        // fetch record with id
+        fetchRecord(with: recordID) { (result) in
+            switch result {
+            case .success(let record):
+                
+                let extractedRecord = self.extractUserRecord(from: record)
                 if extractedRecord == nil {
                     completion(.failure(CKHelperError.castFailure))
                     return
                 }
                 completion(.success(extractedRecord!))
+                
+                
+                break
+            case .failure(let err):
+                completion(.failure(err))
+                print(err.localizedDescription)
+                break
+            }
+        }
+    }
+    
+    func editUserRecord(with recordID: CKRecord.ID, edit username: String, completion: @escaping (Result<UserModel, Error>) -> ()) {
+        
+        // fetch record with id
+        fetchRecord(with: recordID) { (result) in
+            switch result {
+            case .success(let record):
+                // change username in the record
+                record[UserModelKeys.username.rawValue] = username as CKRecordValue
+                
+                // save changes
+                self.saveUserRecord(record: record) { result in
+                    switch result {
+                    case .success(let record):
+                        completion(.success(record))
+                        break
+                    case .failure(let err):
+                        completion(.failure(err))
+                        print(err.localizedDescription)
+                        break
+                    }
+                }
+                break
+            case .failure(let err):
+                completion(.failure(err))
+                print(err.localizedDescription)
+                break
             }
         }
     }

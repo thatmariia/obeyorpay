@@ -32,9 +32,40 @@ class CKDataModel {
     let privateDB: CKDatabase
     
     init() {
-      container = CKContainer.default()
-      publicDB = container.publicCloudDatabase
-      privateDB = container.privateCloudDatabase
+        container = CKContainer.default()
+        publicDB = container.publicCloudDatabase
+        privateDB = container.privateCloudDatabase
+    }
+    
+    func fetchRecord(with recordID: CKRecord.ID, completion: @escaping (Result<CKRecord, Error>) -> ()) {
+        
+        publicDB.fetch(withRecordID: recordID) { record, err in
+            if let err = err {
+                completion(.failure(err))
+                return
+            }
+            guard let record = record else {
+                completion(.failure(CKHelperError.recordFailure))
+                return
+            }
+            completion(.success(record))
+        }
+    }
+    
+    func saveRecord(record: CKRecord, completion: @escaping (Result<Bool, Error>) -> ()) {
+        
+        publicDB.save(record) { record, err in
+            
+            if let err = err {
+                completion(.failure(err))
+                return
+            }
+            guard let _ = record else {
+                completion(.failure(CKHelperError.recordFailure))
+                return
+            }
+            completion(.success(true))
+        }
     }
     
 }
