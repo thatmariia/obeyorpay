@@ -48,7 +48,7 @@ class SignInAppleModel {
             lastName: credential.fullName?.familyName ?? "lastname N/A"
         )
         do {
-            user = try await userDB.addUserRecord(of: user)
+            user = try await userDB.addUser(user: user)
             updateSignedInUser(user: user, signedInUser: signedInUser)
         } catch let err {
             throw err
@@ -58,7 +58,7 @@ class SignInAppleModel {
     private func signInWithExistingAccount(credential: ASAuthorizationAppleIDCredential, signedInUser: SignedInUserModel) async throws {
         
         do {
-            let user = try await userDB.queryUserRecord(withKey: UserModelKeys.uid, .equal, to: credential.user)
+            let user = try await userDB.queryUser(withKey: UserModelKeys.uid, .equal, to: credential.user)
             updateSignedInUser(user: user, signedInUser: signedInUser)
         } catch let err {
             throw err

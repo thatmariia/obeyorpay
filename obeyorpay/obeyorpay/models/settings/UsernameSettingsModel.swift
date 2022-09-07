@@ -39,7 +39,7 @@ class UsernameSettingModel {
         self.updatedUser = signedInUser.user
         self.updatedUser.username = newUsername
         do {
-            self.updatedUser = try await userDB.changeUserRecord(with: signedInUser.user.recordName!, to: self.updatedUser)
+            self.updatedUser = try await userDB.changeUser(with: signedInUser.user.recordName!, to: self.updatedUser)
         } catch { }
         DispatchQueue.main.async {
             signedInUser.user = self.updatedUser

@@ -46,7 +46,7 @@ struct obeyorpayApp: App {
         DispatchQueue.main.async {
             Task.init {
                 do {
-                    let user = try await userDB.queryUserRecord(withKey: UserModelKeys.uid, .equal, to: uid!)
+                    let user = try await userDB.queryUser(withKey: UserModelKeys.uid, .equal, to: uid!)
                     signedInUser.user = user
                     signedInUser.status = .signedIn
                     signedInUser.checkedStatusOnStart = true

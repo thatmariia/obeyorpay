@@ -9,7 +9,7 @@ import Foundation
 import CloudKit
 
 
-enum CKDataRecordTypes: String, CaseIterable {
+enum CKDataRecordType: String, CaseIterable {
     case user = "User"
     case account = "Account"
     case entry = "Entry"
@@ -22,7 +22,7 @@ enum CKQueryOperation: String {
     case equal = "=="
 }
 
-enum CKHelperError: Error {
+enum CKError: Error {
     case recordFailure
     case recordIDFailure
     case castFailure
@@ -53,8 +53,20 @@ class CKDataModel {
         }
     }
     
+    func fetchObject(with recordName: String, fromCKRecordToObject: (CKRecord) -> AnyObject?) async throws -> AnyObject {
+        do {
+            let record = try await fetchRecord(with: CKRecord.ID(recordName: recordName))
+            let object = fromCKRecordToObject(record)
+            if object == nil {
+                throw CKError.castFailure
+            }
+            return object!
+        } catch let err {
+            throw err
+        }
+    }
     
-    func queryRecords(in recordType: CKDataRecordTypes, with predicate: NSPredicate, fromCKRecordToObject: (CKRecord) -> AnyObject?) async throws -> [AnyObject] {
+    func queryObjects(of recordType: CKDataRecordType, with predicate: NSPredicate, fromCKRecordToObject: (CKRecord) -> AnyObject?) async throws -> [AnyObject] {
         let query = CKQuery(recordType: recordType.rawValue, predicate: predicate)
         
         do {
@@ -81,23 +93,23 @@ class CKDataModel {
     }
     
     
-    func saveRecord(of record: CKRecord, fromCKRecordToObject: (CKRecord) -> AnyObject?) async throws -> AnyObject {
+    func saveObject(of record: CKRecord, fromCKRecordToObject: (CKRecord) -> AnyObject?) async throws -> AnyObject {
         do {
             try await publicDB.save(record)
-            let data = fromCKRecordToObject(record)
-            if data == nil { throw CKHelperError.castFailure }
-            return data!
+            let object = fromCKRecordToObject(record)
+            if object == nil { throw CKError.castFailure }
+            return object!
         } catch let err {
             throw err
         }
     }
     
-    func addRecord(of recordType: CKDataRecordTypes, with data: AnyObject, fromObjectToCKRecord: (AnyObject, CKRecord) -> CKRecord, fromCKRecordToObject: (CKRecord) -> AnyObject?) async throws -> AnyObject {
-        let record = fromObjectToCKRecord(data, CKRecord(recordType: recordType.rawValue))
+    func addObject(of recordType: CKDataRecordType, with object: AnyObject, fromObjectToCKRecord: (AnyObject, CKRecord) -> CKRecord, fromCKRecordToObject: (CKRecord) -> AnyObject?) async throws -> AnyObject {
+        let record = fromObjectToCKRecord(object, CKRecord(recordType: recordType.rawValue))
         
         do {
-            let data = try await saveRecord(of: record, fromCKRecordToObject: fromCKRecordToObject)
-            return data
+            let object = try await saveObject(of: record, fromCKRecordToObject: fromCKRecordToObject)
+            return object
         } catch let err {
             throw err
         }

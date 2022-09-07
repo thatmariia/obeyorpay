@@ -11,7 +11,7 @@ import CloudKit
 
 class CKDataUserModel: CKDataModel {
     
-    var userRecordType = CKDataRecordTypes.user.rawValue
+    var userRecordType = CKDataRecordType.user.rawValue
     
     // MARK: - record modifications
     
@@ -40,24 +40,24 @@ class CKDataUserModel: CKDataModel {
     
     // MARK: - database actions
     
-    func addUserRecord(of user: UserModel) async throws -> UserModel {
+    func addUser(user: UserModel) async throws -> UserModel {
         
         do {
-            let user = try await addRecord(of: .user, with: user, fromObjectToCKRecord: fromUserToCKRecord, fromCKRecordToObject: fromCKRecordToUser) as! UserModel
+            let user = try await addObject(of: .user, with: user, fromObjectToCKRecord: fromUserToCKRecord, fromCKRecordToObject: fromCKRecordToUser) as! UserModel
             return user
         } catch let err {
             throw err
         }
     }
     
-    func changeUserRecord(with recordName: String, to user: UserModel) async throws -> UserModel {
+    func changeUser(with recordName: String, to user: UserModel) async throws -> UserModel {
         do {
             // fetch record with id
             var record = try await fetchRecord(with: CKRecord.ID(recordName: recordName))
             // change username in the record
             record = fromUserToCKRecord(from: user, to: record)
             // save changes
-            let user = try await saveRecord(of: record, fromCKRecordToObject: fromCKRecordToUser)
+            let user = try await saveObject(of: record, fromCKRecordToObject: fromCKRecordToUser)
             return user as! UserModel
         } catch let err {
             throw err
@@ -68,20 +68,20 @@ class CKDataUserModel: CKDataModel {
         let predicate = NSPredicate(format: "%K == %@", UserModelKeys.username.rawValue, username)
         
         do {
-            let users = try await queryRecords(in: .user, with: predicate, fromCKRecordToObject: fromCKRecordToUser)
+            let users = try await queryObjects(of: .user, with: predicate, fromCKRecordToObject: fromCKRecordToUser)
             return users.count
         } catch let err {
             throw err
         }
     }
     
-    func queryUserRecord(withKey key: UserModelKeys, _ operation: CKQueryOperation, to value: String) async throws -> UserModel {
+    func queryUser(withKey key: UserModelKeys, _ operation: CKQueryOperation, to value: String) async throws -> UserModel {
         let predicate = NSPredicate(format: "%K \(operation.rawValue) %@", key.rawValue, value)
         
         do {
-            let users = try await queryRecords(in: .user, with: predicate, fromCKRecordToObject: fromCKRecordToUser) as! [UserModel]
+            let users = try await queryObjects(of: .user, with: predicate, fromCKRecordToObject: fromCKRecordToUser) as! [UserModel]
             if users.count == 0 {
-                throw CKHelperError.noRecords
+                throw CKError.noRecords
             }
             return users.first!
         } catch let err {
@@ -89,18 +89,12 @@ class CKDataUserModel: CKDataModel {
         }
     }
     
-//    func fetchUserRecord(with recordName: String) async throws -> UserModel {
-//
-//        do {
-//            let record = try await fetchRecord(with: CKRecord.ID(recordName: recordName))
-//            let user = self.unwrapUserRecord(from: record)
-//            if user == nil {
-//                throw CKHelperError.castFailure
-//            }
-//            return user as! UserModel
-//        } catch let err {
-//            throw err
-//        }
-//
-//    }
+    func fetchUser(with recordName: String) async throws -> UserModel {
+        do {
+            let user = try await fetchObject(with: recordName, fromCKRecordToObject: fromCKRecordToUser)
+            return user as! UserModel
+        } catch let err {
+            throw err
+        }
+    }
 }

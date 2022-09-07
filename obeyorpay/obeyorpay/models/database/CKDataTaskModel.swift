@@ -10,7 +10,7 @@ import CloudKit
 
 class CKDataTaskModel: CKDataModel {
     
-    var taskRecordType = CKDataRecordTypes.task.rawValue
+    var taskRecordType = CKDataRecordType.task.rawValue
     
     // MARK: - record modifications
     
