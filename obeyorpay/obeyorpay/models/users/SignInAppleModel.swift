@@ -24,15 +24,10 @@ class SignInAppleModel {
             
             Task.init {
                 do {
-                    //try await handleCredential(credential: credential)
-                    try await signInWithExistingAccount(credential: credential, signedInUser: signedInUser)
                     if let _ = credential.email, let _ = credential.fullName {
-                        // if can't sign in, sign up
-                        if signedInUser.status == .notSignedIn {
-                            try await registerNewAccount(credential: credential, signedInUser: signedInUser)
-                        }
+                        try await registerNewAccount(credential: credential, signedInUser: signedInUser)
                     } else {
-                        // TODO:: remove account? (eg: signed in on the phone but no record in db)
+                        try await signInWithExistingAccount(credential: credential, signedInUser: signedInUser)
                     }
                 } catch {
                     // handle error

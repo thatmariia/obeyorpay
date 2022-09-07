@@ -29,6 +29,8 @@
 		B6774A4B28C61A1D00B94B7C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A4A28C61A1D00B94B7C /* SettingsView.swift */; };
 		B688DE4D28C838A100500C7E /* AddTaskSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE4C28C838A100500C7E /* AddTaskSettingsModel.swift */; };
 		B688DE5128C839D500500C7E /* CorrectnessComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE5028C839D500500C7E /* CorrectnessComment.swift */; };
+		B688DE5328C8D1E400500C7E /* CKDataTaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE5228C8D1E300500C7E /* CKDataTaskModel.swift */; };
+		B688DE5528C8D6E000500C7E /* misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE5428C8D6E000500C7E /* misc.swift */; };
 		B6B4327E28C7F1CD002F8B2F /* CDDataUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4327D28C7F1CD002F8B2F /* CDDataUserModel.swift */; };
 		B6B4328128C81E31002F8B2F /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4328028C81E31002F8B2F /* LoadingView.swift */; };
 		B6B4328528C82DE3002F8B2F /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4328428C82DE3002F8B2F /* AddTaskView.swift */; };
@@ -73,6 +75,8 @@
 		B6774A4A28C61A1D00B94B7C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B688DE4C28C838A100500C7E /* AddTaskSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskSettingsModel.swift; sourceTree = "<group>"; };
 		B688DE5028C839D500500C7E /* CorrectnessComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrectnessComment.swift; sourceTree = "<group>"; };
+		B688DE5228C8D1E300500C7E /* CKDataTaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKDataTaskModel.swift; sourceTree = "<group>"; };
+		B688DE5428C8D6E000500C7E /* misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = misc.swift; sourceTree = "<group>"; };
 		B6B4327D28C7F1CD002F8B2F /* CDDataUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDDataUserModel.swift; sourceTree = "<group>"; };
 		B6B4328028C81E31002F8B2F /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		B6B4328428C82DE3002F8B2F /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
@@ -170,6 +174,7 @@
 				B6D0BD1828C6515900B0946D /* tasks */,
 				B688DE4E28C838CD00500C7E /* settings */,
 				B6D0BD3628C7931500B0946D /* globals.swift */,
+				B688DE5428C8D6E000500C7E /* misc.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -278,6 +283,7 @@
 				B6D0BD2928C6C50300B0946D /* CKDataModel.swift */,
 				B6D0BD2E28C6D1E700B0946D /* CKDataAccountModel.swift */,
 				B6D0BD3028C6D29B00B0946D /* CKDataUserModel.swift */,
+				B688DE5228C8D1E300500C7E /* CKDataTaskModel.swift */,
 			);
 			path = database;
 			sourceTree = "<group>";
@@ -372,6 +378,7 @@
 				B6D0BD2A28C6C50300B0946D /* CKDataModel.swift in Sources */,
 				B6774A0B28C4DB4800B94B7C /* AppTabView.swift in Sources */,
 				B6D0BD2628C6C09E00B0946D /* SignedInUserModel.swift in Sources */,
+				B688DE5328C8D1E400500C7E /* CKDataTaskModel.swift in Sources */,
 				B6774A1D28C4EC9200B94B7C /* TaskModel.swift in Sources */,
 				B6774A1528C4E89800B94B7C /* TaskTypes.swift in Sources */,
 				B6774A0D28C4DBBB00B94B7C /* TasksView.swift in Sources */,
@@ -381,6 +388,7 @@
 				B6774A0428C4D43400B94B7C /* obeyorpay.xcdatamodeld in Sources */,
 				B6B4328128C81E31002F8B2F /* LoadingView.swift in Sources */,
 				B6774A2428C5141A00B94B7C /* TaskEditingView.swift in Sources */,
+				B688DE5528C8D6E000500C7E /* misc.swift in Sources */,
 				B6774A2A28C5183D00B94B7C /* PopupView.swift in Sources */,
 				B6D0BD3128C6D29B00B0946D /* CKDataUserModel.swift in Sources */,
 				B6774A4328C5468200B94B7C /* SignInView.swift in Sources */,

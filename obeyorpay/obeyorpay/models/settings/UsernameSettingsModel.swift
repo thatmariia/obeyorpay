@@ -37,8 +37,9 @@ class UsernameSettingModel {
 
     func updateUser(signedInUser: SignedInUserModel, with newUsername: String) async throws {
         self.updatedUser = signedInUser.user
+        self.updatedUser.username = newUsername
         do {
-            self.updatedUser = try await userDB.editUserRecord(with: signedInUser.user.recordID!, edit: newUsername)
+            self.updatedUser = try await userDB.changeUserRecord(with: signedInUser.user.recordName!, to: self.updatedUser)
         } catch { }
         DispatchQueue.main.async {
             signedInUser.user = self.updatedUser

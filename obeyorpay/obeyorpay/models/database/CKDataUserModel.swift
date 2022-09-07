@@ -15,60 +15,50 @@ class CKDataUserModel: CKDataModel {
     
     // MARK: - record modifications
     
-    func wrapUserRecord(into itemRecord: CKRecord, with user: UserModel) -> CKRecord {
-        itemRecord[UserModelKeys.uid.rawValue]          = user.uid          as CKRecordValue
-        itemRecord[UserModelKeys.username.rawValue]     = user.username     as CKRecordValue
-        itemRecord[UserModelKeys.email.rawValue]        = user.email        as CKRecordValue
-        itemRecord[UserModelKeys.firstName.rawValue]    = user.firstName    as CKRecordValue
-        itemRecord[UserModelKeys.lastName.rawValue]     = user.lastName     as CKRecordValue
-        return itemRecord
+    func fromUserToCKRecord(from user: AnyObject, to record: CKRecord) -> CKRecord {
+        let user = user as! UserModel
+        record[UserModelKeys.uid.rawValue]          = user.uid          as CKRecordValue
+        record[UserModelKeys.username.rawValue]     = user.username     as CKRecordValue
+        record[UserModelKeys.email.rawValue]        = user.email        as CKRecordValue
+        record[UserModelKeys.firstName.rawValue]    = user.firstName    as CKRecordValue
+        record[UserModelKeys.lastName.rawValue]     = user.lastName     as CKRecordValue
+        return record
     }
     
-    func unwrapUserRecord(from record: CKRecord) -> UserModel? {
-        let recordID = record.recordID
+    func fromCKRecordToUser(from record: CKRecord) -> AnyObject? {
+        let recordName = record.recordID.recordName
         guard let uid       = record[UserModelKeys.uid.rawValue]        as? String else { return nil }
         guard let username  = record[UserModelKeys.username.rawValue]   as? String else { return nil }
         guard let email     = record[UserModelKeys.email.rawValue]      as? String else { return nil }
         guard let firstName = record[UserModelKeys.firstName.rawValue]  as? String else { return nil }
         guard let lastName  = record[UserModelKeys.lastName.rawValue]   as? String else { return nil }
         let user = UserModel(
-            recordID: recordID, uid: uid, username: username, email: email, firstName: firstName, lastName: lastName
+            recordName: recordName, uid: uid, username: username, email: email, firstName: firstName, lastName: lastName
         )
         return user
-    }
-    
-    // MARK: - supporting database actions
-    
-    func saveUserRecord(record: CKRecord) async throws -> UserModel {
-        
-        do {
-            let _ = try await saveRecord(record: record)
-
-            let user = self.unwrapUserRecord(from: record)
-            if user == nil {
-                throw CKHelperError.castFailure
-            }
-            return user!
-            
-        } catch let err {
-            throw err
-        }
     }
     
     // MARK: - database actions
     
     func addUserRecord(of user: UserModel) async throws -> UserModel {
         
-        // create record
-        let record = wrapUserRecord(
-            into: CKRecord(recordType: userRecordType),
-            with: user
-        )
-        
-        // save record
         do {
-            let user = try await saveUserRecord(record: record)
+            let user = try await addRecord(of: .user, with: user, fromObjectToCKRecord: fromUserToCKRecord, fromCKRecordToObject: fromCKRecordToUser) as! UserModel
             return user
+        } catch let err {
+            throw err
+        }
+    }
+    
+    func changeUserRecord(with recordName: String, to user: UserModel) async throws -> UserModel {
+        do {
+            // fetch record with id
+            var record = try await fetchRecord(with: CKRecord.ID(recordName: recordName))
+            // change username in the record
+            record = fromUserToCKRecord(from: user, to: record)
+            // save changes
+            let user = try await saveRecord(of: record, fromCKRecordToObject: fromCKRecordToUser)
+            return user as! UserModel
         } catch let err {
             throw err
         }
@@ -76,11 +66,10 @@ class CKDataUserModel: CKDataModel {
     
     func countUsers(with username: String) async throws -> Int {
         let predicate = NSPredicate(format: "%K == %@", UserModelKeys.username.rawValue, username)
-        let query = CKQuery(recordType: userRecordType, predicate: predicate)
         
         do {
-            let (returnedUsers, _) = try await publicDB.records(matching: query)
-            return returnedUsers.count
+            let users = try await queryRecords(in: .user, with: predicate, fromCKRecordToObject: fromCKRecordToUser)
+            return users.count
         } catch let err {
             throw err
         }
@@ -88,53 +77,30 @@ class CKDataUserModel: CKDataModel {
     
     func queryUserRecord(withKey key: UserModelKeys, _ operation: CKQueryOperation, to value: String) async throws -> UserModel {
         let predicate = NSPredicate(format: "%K \(operation.rawValue) %@", key.rawValue, value)
-        let query = CKQuery(recordType: userRecordType, predicate: predicate)
         
         do {
-            let (returnedResults, _) = try await publicDB.records(matching: query)
-            let result = returnedResults[0].1
-            switch result {
-            case .success(let record):
-                let user = self.unwrapUserRecord(from: record)
-                if user == nil {
-                    throw CKHelperError.castFailure
-                }
-                return user!
-            case .failure(let err):
-                throw err
+            let users = try await queryRecords(in: .user, with: predicate, fromCKRecordToObject: fromCKRecordToUser) as! [UserModel]
+            if users.count == 0 {
+                throw CKHelperError.noRecords
             }
+            return users.first!
         } catch let err {
             throw err
         }
     }
     
-    func fetchUserRecord(with recordID: CKRecord.ID) async throws -> UserModel {
-        
-        do {
-            let record = try await fetchRecord(with: recordID)
-            let user = self.unwrapUserRecord(from: record)
-            if user == nil {
-                throw CKHelperError.castFailure
-            }
-            return user!
-        } catch let err {
-            throw err
-        }
-        
-    }
-    
-    func editUserRecord(with recordID: CKRecord.ID, edit username: String) async throws -> UserModel {
-        do {
-            // fetch record with id
-            let record = try await fetchRecord(with: recordID)
-            // change username in the record
-            record[UserModelKeys.username.rawValue] = username as CKRecordValue
-            // save changes
-            let user = try await saveUserRecord(record: record)
-            return user
-        } catch let err {
-            throw err
-        }
-    }
-    
+//    func fetchUserRecord(with recordName: String) async throws -> UserModel {
+//
+//        do {
+//            let record = try await fetchRecord(with: CKRecord.ID(recordName: recordName))
+//            let user = self.unwrapUserRecord(from: record)
+//            if user == nil {
+//                throw CKHelperError.castFailure
+//            }
+//            return user as! UserModel
+//        } catch let err {
+//            throw err
+//        }
+//
+//    }
 }

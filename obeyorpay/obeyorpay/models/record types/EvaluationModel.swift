@@ -23,7 +23,7 @@ class EvaluationModel: Identifiable, Equatable, Hashable {
     
     // conforms to Equatable
     static func == (lhs: EvaluationModel, rhs: EvaluationModel) -> Bool {
-        return (lhs.periodStartDate == rhs.periodStartDate) && (lhs.periodEndDate == rhs.periodEndDate) && (lhs.jointUsers == rhs.jointUsers) && (lhs.payments == rhs.payments) && (lhs.task == rhs.task) && (lhs.count == rhs.count) && (lhs.target == rhs.count) && (lhs.totalCost == rhs.totalCost) && (lhs.build = rhs.build)
+        return (lhs.periodStartDate == rhs.periodStartDate) && (lhs.periodEndDate == rhs.periodEndDate) && (lhs.jointUsers == rhs.jointUsers) && (lhs.payments == rhs.payments) && (lhs.task == rhs.task) && (lhs.count == rhs.count) && (lhs.target == rhs.count) && (lhs.totalCost == rhs.totalCost) && (lhs.build == rhs.build)
     }
     
     // conforms to Hashable

@@ -22,12 +22,12 @@ class UserModel: Identifiable, Equatable, Hashable {
     
     // conforms to Equatable
     static func == (lhs: UserModel, rhs: UserModel) -> Bool {
-        return (lhs.recordID == rhs.recordID) && (lhs.uid == rhs.uid) && (lhs.username == rhs.username) && (lhs.email == rhs.email) && (lhs.firstName == rhs.firstName) && (lhs.lastName == rhs.lastName)
+        return (lhs.recordName == rhs.recordName) && (lhs.uid == rhs.uid) && (lhs.username == rhs.username) && (lhs.email == rhs.email) && (lhs.firstName == rhs.firstName) && (lhs.lastName == rhs.lastName)
     }
     
     // conforms to Hashable
     func hash(into hasher: inout Hasher) {
-        hasher.combine(recordID)
+        hasher.combine(recordName)
         hasher.combine(uid)
         hasher.combine(username)
         hasher.combine(email)
@@ -35,7 +35,7 @@ class UserModel: Identifiable, Equatable, Hashable {
         hasher.combine(lastName)
     }
     
-    var recordID: CKRecord.ID?
+    var recordName: String?
     var uid: String
     var username: String
     var email: String
@@ -43,8 +43,8 @@ class UserModel: Identifiable, Equatable, Hashable {
     var lastName: String
     
     
-    init(recordID: CKRecord.ID, uid: String, username: String, email: String, firstName: String, lastName: String) {
-        self.recordID = recordID
+    init(recordName: String, uid: String, username: String, email: String, firstName: String, lastName: String) {
+        self.recordName = recordName
         self.uid = uid
         self.username = username
         self.email = email
@@ -53,7 +53,7 @@ class UserModel: Identifiable, Equatable, Hashable {
     }
     
     init(uid: String, username: String, email: String, firstName: String, lastName: String) {
-        self.recordID = nil
+        self.recordName = nil
         self.uid = uid
         self.username = username
         self.email = email
@@ -62,7 +62,7 @@ class UserModel: Identifiable, Equatable, Hashable {
     }
     
     init() {
-        self.recordID = nil
+        self.recordName = nil
         self.uid = ""
         self.username = ""
         self.email = ""
