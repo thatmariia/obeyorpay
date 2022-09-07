@@ -8,59 +8,62 @@
 import Foundation
 
 enum AccountModelKeys: String, CaseIterable {
-    case uid = "uid"
-    case personalTasks = "personalTasks"
-    case jointTasks = "jointTasks"
-    case sharedTasks = "sharedTasks"
-    case payments = "payments"
-    case entries = "entries"
-    case evaluations = "evaluations"
-    case jointInvitedTasks = "jointInvitedTasks"
-    case sharedInvitedTasks = "sharedInvitedTasks"
+    case personalTasksRefs = "personalTasks"
+    case jointTasksRefs = "jointTasks"
+    case sharedTasksRefs = "sharedTasks"
+    case paymentsRefs = "payments"
+    case entriesRefs = "entries"
+    case evaluationsRefs = "evaluations"
+    case jointInvitedTasksRefs = "jointInvitedTasks"
+    case sharedInvitedTasksRefs = "sharedInvitedTasks"
 }
 
 
 class AccountModel: Identifiable, Equatable, Hashable {
     
-    
     // conforms to Equatable
     static func == (lhs: AccountModel, rhs: AccountModel) -> Bool {
-        return (lhs.uid == rhs.uid) && (lhs.personalTasks == rhs.personalTasks) && (lhs.jointTasks == rhs.jointTasks) && (lhs.sharedTasks == rhs.sharedTasks) && (lhs.payments == rhs.payments) && (lhs.entries == rhs.entries) && (lhs.entries == rhs.entries) && (lhs.evaluations == rhs.evaluations) && (lhs.jointInvitedTasks == rhs.jointInvitedTasks) && (lhs.sharedInvitedTasks == rhs.sharedInvitedTasks)
+        return (lhs.personalTasksRefs == rhs.personalTasksRefs) &&
+        (lhs.jointTasksRefs == rhs.jointTasksRefs) &&
+        (lhs.sharedTasksRefs == rhs.sharedTasksRefs) &&
+        (lhs.paymentsRefs == rhs.paymentsRefs) &&
+        (lhs.entriesRefs == rhs.entriesRefs) &&
+        (lhs.entriesRefs == rhs.entriesRefs) &&
+        (lhs.evaluationsRefs == rhs.evaluationsRefs) &&
+        (lhs.jointInvitedTasksRefs == rhs.jointInvitedTasksRefs) &&
+        (lhs.sharedInvitedTasksRefs == rhs.sharedInvitedTasksRefs)
     }
     
     // conforms to Hashable
     func hash(into hasher: inout Hasher) {
-        hasher.combine(uid)
-        hasher.combine(personalTasks)
-        hasher.combine(jointTasks)
-        hasher.combine(sharedTasks)
-        hasher.combine(payments)
-        hasher.combine(entries)
-        hasher.combine(evaluations)
-        hasher.combine(jointInvitedTasks)
-        hasher.combine(sharedInvitedTasks)
+        hasher.combine(personalTasksRefs)
+        hasher.combine(jointTasksRefs)
+        hasher.combine(sharedTasksRefs)
+        hasher.combine(paymentsRefs)
+        hasher.combine(entriesRefs)
+        hasher.combine(evaluationsRefs)
+        hasher.combine(jointInvitedTasksRefs)
+        hasher.combine(sharedInvitedTasksRefs)
     }
     
-    var uid: String
-    var personalTasks: [TaskModel]
-    var jointTasks: [TaskModel]
-    var sharedTasks: [TaskModel]
-    var payments: [PaymentModel]
-    var entries: [EntryModel]
-    var evaluations: [EvaluationModel]
-    var jointInvitedTasks: [TaskModel]
-    var sharedInvitedTasks: [TaskModel]
+    var personalTasksRefs: [String]
+    var jointTasksRefs: [String]
+    var sharedTasksRefs: [String]
+    var paymentsRefs: [String]
+    var entriesRefs: [String]
+    var evaluationsRefs: [String]
+    var jointInvitedTasksRefs: [String]
+    var sharedInvitedTasksRefs: [String]
     
     init() {
-        self.uid = ""
-        self.personalTasks = []
-        self.jointTasks = []
-        self.sharedTasks = []
-        self.payments = []
-        self.entries = []
-        self.evaluations = []
-        self.jointInvitedTasks = []
-        self.sharedInvitedTasks = []
+        self.personalTasksRefs = []
+        self.jointTasksRefs = []
+        self.sharedTasksRefs = []
+        self.paymentsRefs = []
+        self.entriesRefs = []
+        self.evaluationsRefs = []
+        self.jointInvitedTasksRefs = []
+        self.sharedInvitedTasksRefs = []
     }
     
 }
