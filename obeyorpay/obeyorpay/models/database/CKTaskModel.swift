@@ -83,4 +83,14 @@ class CKTaskModel: CKModel {
     }
     
     // MARK: - database actions
+    
+    func addTask(task: TaskModel) async throws -> TaskModel {
+        
+        do {
+            let task = try await addObject(of: .task, object: task, fromObjectToCKRecord: fromTaskToCKRecord, fromCKRecordToObject: fromCKRecordToTask) as! TaskModel
+            return task
+        } catch let err {
+            throw err
+        }
+    }
 }

@@ -104,7 +104,7 @@ class CKModel {
         }
     }
     
-    func addObject(of recordType: CKRecordType, with object: AnyObject, fromObjectToCKRecord: (AnyObject, CKRecord) -> CKRecord, fromCKRecordToObject: (CKRecord) -> AnyObject?) async throws -> AnyObject {
+    func addObject(of recordType: CKRecordType, object: AnyObject, fromObjectToCKRecord: (AnyObject, CKRecord) -> CKRecord, fromCKRecordToObject: (CKRecord) -> AnyObject?) async throws -> AnyObject {
         let record = fromObjectToCKRecord(object, CKRecord(recordType: recordType.rawValue))
         
         do {

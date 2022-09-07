@@ -41,7 +41,7 @@ class CKUserModel: CKModel {
     func addUser(user: UserModel) async throws -> UserModel {
         
         do {
-            let user = try await addObject(of: .user, with: user, fromObjectToCKRecord: fromUserToCKRecord, fromCKRecordToObject: fromCKRecordToUser) as! UserModel
+            let user = try await addObject(of: .user, object: user, fromObjectToCKRecord: fromUserToCKRecord, fromCKRecordToObject: fromCKRecordToUser) as! UserModel
             return user
         } catch let err {
             throw err
