@@ -37,14 +37,12 @@ struct obeyorpayApp: App {
     private func checkIfUserSignedIn() {
         // check if the core data contains a user
         let uid = userCD.fetchUser()
-        print("*_*_*_*_*_* app start checking for \(uid)")
         if uid == nil {
             signedInUser.checkedStatusOnStart = true
             return
         }
         
         // if so, fetch its data
-        print("*_*_*_*_*_* app start fetching for \(uid)")
         DispatchQueue.main.async {
             Task.init {
                 do {

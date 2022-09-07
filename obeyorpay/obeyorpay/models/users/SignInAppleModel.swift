@@ -71,9 +71,7 @@ class SignInAppleModel {
     }
     
     private func updateSignedInUser(user: UserModel, signedInUser: SignedInUserModel) {
-        print("*_*_*_*_*_* clearing \(user.uid)")
         userCD.clearCDEntity()
-        print("*_*_*_*_*_* adding \(user.uid)")
         userCD.addUser(with: user.uid)
         DispatchQueue.main.async {
             signedInUser.user = user
@@ -82,7 +80,6 @@ class SignInAppleModel {
     }
     
     func signOut(signedInUser: SignedInUserModel) {
-        print("*_*_*_*_*_* clearing signing out")
         userCD.clearCDEntity()
         DispatchQueue.main.async {
             signedInUser.user = UserModel()

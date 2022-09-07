@@ -35,10 +35,9 @@ class CDDataUserModel {
     
     private func saveContext() {
         do {
-            print("*_*_*_*_*_* trying to save, changed? ", managedObjectContext.hasChanges)
             try managedObjectContext.save()
         } catch let err {
-            print(":(", err.localizedDescription)
+            print(err.localizedDescription)
         }
     }
     
@@ -47,10 +46,9 @@ class CDDataUserModel {
         fetchRequest = CDUser.fetchRequest()
         do {
             let objects = try managedObjectContext.fetch(fetchRequest)
-            print("*_*_*_*_*_* fetched objects: \(objects)")
             return objects
         } catch let err {
-            print("*_*_*_*_*_* :(", err.localizedDescription)
+            print(err.localizedDescription)
         }
         return []
     }
