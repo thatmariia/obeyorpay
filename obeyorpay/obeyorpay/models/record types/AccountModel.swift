@@ -15,6 +15,8 @@ enum AccountModelKeys: String, CaseIterable {
     case payments = "payments"
     case entries = "entries"
     case evaluations = "evaluations"
+    case jointInvitedTasks = "jointInvitedTasks"
+    case sharedInvitedTasks = "sharedInvitedTasks"
 }
 
 
@@ -23,7 +25,7 @@ class AccountModel: Identifiable, Equatable, Hashable {
     
     // conforms to Equatable
     static func == (lhs: AccountModel, rhs: AccountModel) -> Bool {
-        return (lhs.uid == rhs.uid) && (lhs.personalTasks == rhs.personalTasks) && (lhs.jointTasks == rhs.jointTasks) && (lhs.sharedTasks == rhs.sharedTasks) && (lhs.payments == rhs.payments) && (lhs.entries == rhs.entries) && (lhs.entries == rhs.entries) && (lhs.evaluations == rhs.evaluations)
+        return (lhs.uid == rhs.uid) && (lhs.personalTasks == rhs.personalTasks) && (lhs.jointTasks == rhs.jointTasks) && (lhs.sharedTasks == rhs.sharedTasks) && (lhs.payments == rhs.payments) && (lhs.entries == rhs.entries) && (lhs.entries == rhs.entries) && (lhs.evaluations == rhs.evaluations) && (lhs.jointInvitedTasks == rhs.jointInvitedTasks) && (lhs.sharedInvitedTasks == rhs.sharedInvitedTasks)
     }
     
     // conforms to Hashable
@@ -35,6 +37,8 @@ class AccountModel: Identifiable, Equatable, Hashable {
         hasher.combine(payments)
         hasher.combine(entries)
         hasher.combine(evaluations)
+        hasher.combine(jointInvitedTasks)
+        hasher.combine(sharedInvitedTasks)
     }
     
     var uid: String
@@ -44,6 +48,8 @@ class AccountModel: Identifiable, Equatable, Hashable {
     var payments: [PaymentModel]
     var entries: [EntryModel]
     var evaluations: [EvaluationModel]
+    var jointInvitedTasks: [TaskModel]
+    var sharedInvitedTasks: [TaskModel]
     
     init() {
         self.uid = ""
@@ -53,6 +59,8 @@ class AccountModel: Identifiable, Equatable, Hashable {
         self.payments = []
         self.entries = []
         self.evaluations = []
+        self.jointInvitedTasks = []
+        self.sharedInvitedTasks = []
     }
     
 }

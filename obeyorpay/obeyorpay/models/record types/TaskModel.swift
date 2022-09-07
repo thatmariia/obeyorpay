@@ -79,7 +79,7 @@ struct TaskModel: Identifiable, Equatable, Hashable {
         self.currentCount = 0
         self.evaluations = []
         self.color = 0
-        self.build = false
+        self.build = true
         self.jointInvitedUsers = []
         self.sharedInvitedUsers = []
     }
