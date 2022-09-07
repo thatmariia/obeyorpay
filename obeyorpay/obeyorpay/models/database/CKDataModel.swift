@@ -18,6 +18,10 @@ enum CKDataRecordTypes: String, CaseIterable {
     case task = "Task"
 }
 
+enum CKQueryOperation: String {
+    case equal = "=="
+}
+
 enum CKHelperError: Error {
     case recordFailure
     case recordIDFailure

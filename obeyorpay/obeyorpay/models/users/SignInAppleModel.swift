@@ -63,7 +63,7 @@ class SignInAppleModel {
     private func signInWithExistingAccount(credential: ASAuthorizationAppleIDCredential, signedInUser: SignedInUserModel) async throws {
         
         do {
-            let user = try await userDB.fetchUserRecord(with: credential.user)
+            let user = try await userDB.queryUserRecord(withKey: UserModelKeys.uid, .equal, to: credential.user)
             updateSignedInUser(user: user, signedInUser: signedInUser)
         } catch let err {
             throw err

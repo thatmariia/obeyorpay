@@ -74,7 +74,7 @@ class CKDataUserModel: CKDataModel {
         }
     }
     
-    func fetchUserRecords(with username: String) async throws -> Int {
+    func countUsers(with username: String) async throws -> Int {
         let predicate = NSPredicate(format: "%K == %@", UserModelKeys.username.rawValue, username)
         let query = CKQuery(recordType: userRecordType, predicate: predicate)
         
@@ -86,8 +86,8 @@ class CKDataUserModel: CKDataModel {
         }
     }
     
-    func fetchUserRecord(with uid: String) async throws -> UserModel {
-        let predicate = NSPredicate(format: "%K == %@", UserModelKeys.uid.rawValue, uid)
+    func queryUserRecord(withKey key: UserModelKeys, _ operation: CKQueryOperation, to value: String) async throws -> UserModel {
+        let predicate = NSPredicate(format: "%K \(operation.rawValue) %@", key.rawValue, value)
         let query = CKQuery(recordType: userRecordType, predicate: predicate)
         
         do {

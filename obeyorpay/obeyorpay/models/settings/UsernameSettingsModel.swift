@@ -72,7 +72,7 @@ class UsernameSettingModel {
         // already exists
         self.noUsersWithUsername = true
         do {
-            let nrUsers = try await userDB.fetchUserRecords(with: newUsername)
+            let nrUsers = try await userDB.countUsers(with: newUsername)
             self.noUsersWithUsername = nrUsers == 0
         } catch { }
         if !self.noUsersWithUsername {
