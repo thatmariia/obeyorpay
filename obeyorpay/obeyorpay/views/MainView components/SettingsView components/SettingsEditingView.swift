@@ -11,6 +11,8 @@ struct SettingsEditingView: View {
     
     @Binding var editing: Bool
     
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    
     @EnvironmentObject var signedInUser: SignedInUserModel
     
     var currUsername: String
@@ -50,6 +52,8 @@ struct SettingsEditingView: View {
                 
             }
         }
+        .navigationTitle("")
+        .navigationBarHidden(true)
         
     }
     
@@ -63,9 +67,10 @@ struct SettingsEditingView: View {
                         if newUsername != currUsername {
                             try await usernameSettings.updateUser(signedInUser: signedInUser, with: newUsername)
                         }
-                        editing = false
+                        // editing = false
                         isDisplayNotePresent = false
                         displayNote = ""
+                        self.mode.wrappedValue.dismiss()
                     } else {
                         isDisplayNotePresent = true
                         displayNote = usernameComment.note!

@@ -21,7 +21,7 @@ struct TasksView: View {
                 
                 Spacer()
                 
-                AddTaskView()
+                AddTaskButtonView()
             }
             
             Spacer()

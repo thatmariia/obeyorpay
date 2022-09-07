@@ -42,7 +42,7 @@
 		B6D0BD3728C7931500B0946D /* globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD3628C7931500B0946D /* globals.swift */; };
 		B6D0BD3928C7943F00B0946D /* UsernameSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD3828C7943F00B0946D /* UsernameSettingsModel.swift */; };
 		B6D0BD3B28C79C3500B0946D /* SettingsEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD3A28C79C3500B0946D /* SettingsEditingView.swift */; };
-		B6D0BD3E28C7E3AE00B0946D /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD3D28C7E3AE00B0946D /* AddTaskView.swift */; };
+		B6D0BD3E28C7E3AE00B0946D /* AddTaskButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD3D28C7E3AE00B0946D /* AddTaskButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,7 +83,7 @@
 		B6D0BD3628C7931500B0946D /* globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = globals.swift; sourceTree = "<group>"; };
 		B6D0BD3828C7943F00B0946D /* UsernameSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameSettingsModel.swift; sourceTree = "<group>"; };
 		B6D0BD3A28C79C3500B0946D /* SettingsEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEditingView.swift; sourceTree = "<group>"; };
-		B6D0BD3D28C7E3AE00B0946D /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
+		B6D0BD3D28C7E3AE00B0946D /* AddTaskButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,7 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				B6774A0E28C4DECF00B94B7C /* TasksTypeView.swift */,
-				B6D0BD3D28C7E3AE00B0946D /* AddTaskView.swift */,
+				B6D0BD3D28C7E3AE00B0946D /* AddTaskButtonView.swift */,
 				B6774A1828C4EBDE00B94B7C /* TasksListView.swift */,
 				B6774A2328C5141A00B94B7C /* TaskEditingView.swift */,
 				B6774A2228C4F3C200B94B7C /* TaskListView components */,
@@ -368,7 +368,7 @@
 				B6D0BD3528C7036400B0946D /* SignInAppleModel.swift in Sources */,
 				B6774A1B28C4EC4300B94B7C /* TasksDataModel.swift in Sources */,
 				B6774A4B28C61A1D00B94B7C /* SettingsView.swift in Sources */,
-				B6D0BD3E28C7E3AE00B0946D /* AddTaskView.swift in Sources */,
+				B6D0BD3E28C7E3AE00B0946D /* AddTaskButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,6 +505,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -538,6 +540,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

@@ -13,17 +13,23 @@ struct MainView: View {
     
     var body: some View {
         
-        Group {
+        NavigationView {
             
-            if tab == TabItems.tasks {
-                TasksView()
-            } else if tab == TabItems.settings {
-                SettingsView()
+            VStack {
+        
+            
+                if tab == TabItems.tasks {
+                    TasksView()
+                } else if tab == TabItems.settings {
+                    SettingsView()
+                }
+                
+                Spacer()
+                
+                AppTabView(tab: $tab)
             }
-            
-            Spacer()
-            
-            AppTabView(tab: $tab)
+            .navigationTitle("")
+            .navigationBarHidden(true)
         }
         
     }

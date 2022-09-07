@@ -22,18 +22,24 @@ struct SettingsView: View {
         
             Spacer()
             
-            Button {
+            /*Button {
                 editing = true
+            } label: {
+                Text("edit (username)")
+            }*/
+            NavigationLink {
+                SettingsEditingView(editing: $editing, currUsername: signedInUser.user.username, newUsername: signedInUser.user.username)
             } label: {
                 Text("edit (username)")
             }
 
+
             
             Spacer()
         }
-        .popup(isPresented: $editing) {
-            SettingsEditingView(editing: $editing, currUsername: signedInUser.user.username, newUsername: signedInUser.user.username)
-        }
+//        .popup(isPresented: $editing) {
+//            SettingsEditingView(editing: $editing, currUsername: signedInUser.user.username, newUsername: signedInUser.user.username)
+//        }
 
     }
 }
