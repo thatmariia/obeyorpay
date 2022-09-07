@@ -38,7 +38,10 @@ struct obeyorpayApp: App {
         // check if the core data contains a user
         let uid = userCD.fetchUser()
         print("*_*_*_*_*_* app start checking for \(uid)")
-        if uid == nil { return }
+        if uid == nil {
+            signedInUser.checkedStatusOnStart = true
+            return
+        }
         
         // if so, fetch its data
         print("*_*_*_*_*_* app start fetching for \(uid)")
@@ -48,7 +51,10 @@ struct obeyorpayApp: App {
                     let user = try await userDB.fetchUserRecord(with: uid!)
                     signedInUser.user = user
                     signedInUser.status = .signedIn
-                } catch {}
+                    signedInUser.checkedStatusOnStart = true
+                } catch {
+                    signedInUser.checkedStatusOnStart = true
+                }
             }
         }
     }

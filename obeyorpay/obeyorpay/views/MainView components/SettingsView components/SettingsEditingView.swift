@@ -40,6 +40,14 @@ struct SettingsEditingView: View {
                     Text("done")
                 }
                 
+                Spacer()
+                
+                Button {
+                    authentificator.signOut(signedInUser: signedInUser)
+                } label: {
+                    Text("sign out")
+                }
+                
             }
         }
         

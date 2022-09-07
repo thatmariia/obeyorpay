@@ -80,4 +80,13 @@ class SignInAppleModel {
             signedInUser.status = .signedIn
         }
     }
+    
+    func signOut(signedInUser: SignedInUserModel) {
+        print("*_*_*_*_*_* clearing signing out")
+        userCD.clearCDEntity()
+        DispatchQueue.main.async {
+            signedInUser.user = UserModel()
+            signedInUser.status = .notSignedIn
+        }
+    }
 }

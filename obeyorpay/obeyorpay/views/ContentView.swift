@@ -15,8 +15,10 @@ struct ContentView: View {
     var body: some View {
         
         Group {
-        
-            if signedInUser.status == .notSignedIn {
+            
+            if !signedInUser.checkedStatusOnStart {
+                // LoadingView
+            } else if signedInUser.status == .notSignedIn {
                 SignInView()
             } else {
                 MainView()

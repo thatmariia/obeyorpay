@@ -28,6 +28,7 @@
 		B6774A4928C54D5200B94B7C /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A4828C54D5200B94B7C /* AccountModel.swift */; };
 		B6774A4B28C61A1D00B94B7C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A4A28C61A1D00B94B7C /* SettingsView.swift */; };
 		B6B4327E28C7F1CD002F8B2F /* CDDataUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4327D28C7F1CD002F8B2F /* CDDataUserModel.swift */; };
+		B6B4328128C81E31002F8B2F /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4328028C81E31002F8B2F /* LoadingView.swift */; };
 		B6D0BD1B28C6542200B0946D /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D0BD1A28C6542200B0946D /* CloudKit.framework */; };
 		B6D0BD1E28C6AE1300B0946D /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD1D28C6AE1300B0946D /* UserModel.swift */; };
 		B6D0BD2028C6B54900B0946D /* EntryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD1F28C6B54900B0946D /* EntryModel.swift */; };
@@ -67,6 +68,7 @@
 		B6774A4828C54D5200B94B7C /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
 		B6774A4A28C61A1D00B94B7C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B6B4327D28C7F1CD002F8B2F /* CDDataUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDDataUserModel.swift; sourceTree = "<group>"; };
+		B6B4328028C81E31002F8B2F /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		B6D0BD1628C64EBC00B0946D /* obeyorpay.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = obeyorpay.entitlements; sourceTree = "<group>"; };
 		B6D0BD1A28C6542200B0946D /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		B6D0BD1D28C6AE1300B0946D /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				B67749F928C4D43200B94B7C /* ContentView.swift */,
+				B6B4328028C81E31002F8B2F /* LoadingView.swift */,
 				B6774A4228C5468200B94B7C /* SignInView.swift */,
 				B6774A1228C4E46900B94B7C /* MainView.swift */,
 				B6774A4C28C61A3800B94B7C /* MainView components */,
@@ -347,6 +350,7 @@
 				B6D0BD3B28C79C3500B0946D /* SettingsEditingView.swift in Sources */,
 				B6D0BD3928C7943F00B0946D /* UsernameSettingsModel.swift in Sources */,
 				B6774A0428C4D43400B94B7C /* obeyorpay.xcdatamodeld in Sources */,
+				B6B4328128C81E31002F8B2F /* LoadingView.swift in Sources */,
 				B6774A2428C5141A00B94B7C /* TaskEditingView.swift in Sources */,
 				B6774A2A28C5183D00B94B7C /* PopupView.swift in Sources */,
 				B6D0BD3128C6D29B00B0946D /* CKDataUserModel.swift in Sources */,

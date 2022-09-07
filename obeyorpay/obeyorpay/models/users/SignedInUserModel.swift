@@ -17,13 +17,13 @@ enum signInStatus {
 
 class SignedInUserModel: ObservableObject {
     
-    @Published var testname: String
     @Published var user: UserModel
     @Published var status: signInStatus
+    @Published var checkedStatusOnStart: Bool
     
     init() {
-        self.testname = "N/A"
         self.user = UserModel(uid: "", username: "", email: "", firstName: "", lastName: "")
         self.status = .notSignedIn
+        self.checkedStatusOnStart = false
     }
 }
