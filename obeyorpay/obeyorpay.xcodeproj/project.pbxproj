@@ -17,33 +17,37 @@
 		B6774A0D28C4DBBB00B94B7C /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A0C28C4DBBB00B94B7C /* TasksView.swift */; };
 		B6774A0F28C4DECF00B94B7C /* TasksTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A0E28C4DECF00B94B7C /* TasksTypeView.swift */; };
 		B6774A1328C4E46900B94B7C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A1228C4E46900B94B7C /* MainView.swift */; };
-		B6774A1528C4E89800B94B7C /* TaskTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A1428C4E89800B94B7C /* TaskTypes.swift */; };
 		B6774A1728C4EBCF00B94B7C /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A1628C4EBCF00B94B7C /* TaskView.swift */; };
 		B6774A1928C4EBDE00B94B7C /* TasksListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A1828C4EBDE00B94B7C /* TasksListView.swift */; };
-		B6774A1B28C4EC4300B94B7C /* TasksDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A1A28C4EC4300B94B7C /* TasksDataModel.swift */; };
-		B6774A1D28C4EC9200B94B7C /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A1C28C4EC9200B94B7C /* TaskModel.swift */; };
+		B6774A1D28C4EC9200B94B7C /* TaskCKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A1C28C4EC9200B94B7C /* TaskCKModel.swift */; };
 		B6774A2428C5141A00B94B7C /* TaskEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A2328C5141A00B94B7C /* TaskEditingView.swift */; };
 		B6774A2A28C5183D00B94B7C /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A2928C5183D00B94B7C /* PopupView.swift */; };
 		B6774A4328C5468200B94B7C /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A4228C5468200B94B7C /* SignInView.swift */; };
-		B6774A4928C54D5200B94B7C /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A4828C54D5200B94B7C /* AccountModel.swift */; };
+		B6774A4928C54D5200B94B7C /* AccountCKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A4828C54D5200B94B7C /* AccountCKModel.swift */; };
 		B6774A4B28C61A1D00B94B7C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A4A28C61A1D00B94B7C /* SettingsView.swift */; };
 		B688DE4D28C838A100500C7E /* AddTaskSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE4C28C838A100500C7E /* AddTaskSettingsModel.swift */; };
 		B688DE5128C839D500500C7E /* CorrectnessComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE5028C839D500500C7E /* CorrectnessComment.swift */; };
-		B688DE5328C8D1E400500C7E /* CKTaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE5228C8D1E300500C7E /* CKTaskModel.swift */; };
+		B688DE5328C8D1E400500C7E /* CKTaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE5228C8D1E300500C7E /* CKTaskManager.swift */; };
 		B688DE5528C8D6E000500C7E /* misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE5428C8D6E000500C7E /* misc.swift */; };
+		B688DE5728C9487700500C7E /* AccountStoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE5628C9487700500C7E /* AccountStoreModel.swift */; };
+		B688DE5928C94A3F00500C7E /* TaskStoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE5828C94A3F00500C7E /* TaskStoreModel.swift */; };
+		B688DE5B28C94AE300500C7E /* EntryStoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE5A28C94AE300500C7E /* EntryStoreModel.swift */; };
+		B688DE5D28C94B5600500C7E /* EvaluationStoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE5C28C94B5600500C7E /* EvaluationStoreModel.swift */; };
+		B688DE5F28C94BD600500C7E /* PaymentStoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE5E28C94BD600500C7E /* PaymentStoreModel.swift */; };
+		B688DE6128C94C0F00500C7E /* UserStoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE6028C94C0F00500C7E /* UserStoreModel.swift */; };
 		B6B4327E28C7F1CD002F8B2F /* CDDataUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4327D28C7F1CD002F8B2F /* CDDataUserModel.swift */; };
 		B6B4328128C81E31002F8B2F /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4328028C81E31002F8B2F /* LoadingView.swift */; };
 		B6B4328528C82DE3002F8B2F /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4328428C82DE3002F8B2F /* AddTaskView.swift */; };
 		B6B4328928C82EF6002F8B2F /* SpanButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4328828C82EF6002F8B2F /* SpanButtonView.swift */; };
 		B6D0BD1B28C6542200B0946D /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D0BD1A28C6542200B0946D /* CloudKit.framework */; };
-		B6D0BD1E28C6AE1300B0946D /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD1D28C6AE1300B0946D /* UserModel.swift */; };
+		B6D0BD1E28C6AE1300B0946D /* UserCKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD1D28C6AE1300B0946D /* UserCKModel.swift */; };
 		B6D0BD2028C6B54900B0946D /* EntryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD1F28C6B54900B0946D /* EntryModel.swift */; };
-		B6D0BD2228C6B7FB00B0946D /* EvaluationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD2128C6B7FB00B0946D /* EvaluationModel.swift */; };
+		B6D0BD2228C6B7FB00B0946D /* EvaluationCKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD2128C6B7FB00B0946D /* EvaluationCKModel.swift */; };
 		B6D0BD2428C6B91800B0946D /* PaymentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD2328C6B91800B0946D /* PaymentModel.swift */; };
 		B6D0BD2628C6C09E00B0946D /* SignedInUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD2528C6C09E00B0946D /* SignedInUserModel.swift */; };
-		B6D0BD2A28C6C50300B0946D /* CKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD2928C6C50300B0946D /* CKModel.swift */; };
-		B6D0BD2F28C6D1E700B0946D /* CKAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD2E28C6D1E700B0946D /* CKAccountModel.swift */; };
-		B6D0BD3128C6D29B00B0946D /* CKUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD3028C6D29B00B0946D /* CKUserModel.swift */; };
+		B6D0BD2A28C6C50300B0946D /* CKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD2928C6C50300B0946D /* CKManager.swift */; };
+		B6D0BD2F28C6D1E700B0946D /* CKAccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD2E28C6D1E700B0946D /* CKAccountManager.swift */; };
+		B6D0BD3128C6D29B00B0946D /* CKUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD3028C6D29B00B0946D /* CKUserManager.swift */; };
 		B6D0BD3528C7036400B0946D /* SignInAppleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD3428C7036400B0946D /* SignInAppleModel.swift */; };
 		B6D0BD3728C7931500B0946D /* globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD3628C7931500B0946D /* globals.swift */; };
 		B6D0BD3928C7943F00B0946D /* UsernameSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD3828C7943F00B0946D /* UsernameSettingsModel.swift */; };
@@ -63,34 +67,38 @@
 		B6774A0C28C4DBBB00B94B7C /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
 		B6774A0E28C4DECF00B94B7C /* TasksTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTypeView.swift; sourceTree = "<group>"; };
 		B6774A1228C4E46900B94B7C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		B6774A1428C4E89800B94B7C /* TaskTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTypes.swift; sourceTree = "<group>"; };
 		B6774A1628C4EBCF00B94B7C /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
 		B6774A1828C4EBDE00B94B7C /* TasksListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListView.swift; sourceTree = "<group>"; };
-		B6774A1A28C4EC4300B94B7C /* TasksDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksDataModel.swift; sourceTree = "<group>"; };
-		B6774A1C28C4EC9200B94B7C /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
+		B6774A1C28C4EC9200B94B7C /* TaskCKModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCKModel.swift; sourceTree = "<group>"; };
 		B6774A2328C5141A00B94B7C /* TaskEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskEditingView.swift; sourceTree = "<group>"; };
 		B6774A2928C5183D00B94B7C /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		B6774A4228C5468200B94B7C /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
-		B6774A4828C54D5200B94B7C /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
+		B6774A4828C54D5200B94B7C /* AccountCKModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCKModel.swift; sourceTree = "<group>"; };
 		B6774A4A28C61A1D00B94B7C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B688DE4C28C838A100500C7E /* AddTaskSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskSettingsModel.swift; sourceTree = "<group>"; };
 		B688DE5028C839D500500C7E /* CorrectnessComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrectnessComment.swift; sourceTree = "<group>"; };
-		B688DE5228C8D1E300500C7E /* CKTaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKTaskModel.swift; sourceTree = "<group>"; };
+		B688DE5228C8D1E300500C7E /* CKTaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKTaskManager.swift; sourceTree = "<group>"; };
 		B688DE5428C8D6E000500C7E /* misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = misc.swift; sourceTree = "<group>"; };
+		B688DE5628C9487700500C7E /* AccountStoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountStoreModel.swift; sourceTree = "<group>"; };
+		B688DE5828C94A3F00500C7E /* TaskStoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStoreModel.swift; sourceTree = "<group>"; };
+		B688DE5A28C94AE300500C7E /* EntryStoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryStoreModel.swift; sourceTree = "<group>"; };
+		B688DE5C28C94B5600500C7E /* EvaluationStoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationStoreModel.swift; sourceTree = "<group>"; };
+		B688DE5E28C94BD600500C7E /* PaymentStoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentStoreModel.swift; sourceTree = "<group>"; };
+		B688DE6028C94C0F00500C7E /* UserStoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStoreModel.swift; sourceTree = "<group>"; };
 		B6B4327D28C7F1CD002F8B2F /* CDDataUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDDataUserModel.swift; sourceTree = "<group>"; };
 		B6B4328028C81E31002F8B2F /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		B6B4328428C82DE3002F8B2F /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
 		B6B4328828C82EF6002F8B2F /* SpanButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpanButtonView.swift; sourceTree = "<group>"; };
 		B6D0BD1628C64EBC00B0946D /* obeyorpay.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = obeyorpay.entitlements; sourceTree = "<group>"; };
 		B6D0BD1A28C6542200B0946D /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		B6D0BD1D28C6AE1300B0946D /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		B6D0BD1D28C6AE1300B0946D /* UserCKModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCKModel.swift; sourceTree = "<group>"; };
 		B6D0BD1F28C6B54900B0946D /* EntryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryModel.swift; sourceTree = "<group>"; };
-		B6D0BD2128C6B7FB00B0946D /* EvaluationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationModel.swift; sourceTree = "<group>"; };
+		B6D0BD2128C6B7FB00B0946D /* EvaluationCKModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationCKModel.swift; sourceTree = "<group>"; };
 		B6D0BD2328C6B91800B0946D /* PaymentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentModel.swift; sourceTree = "<group>"; };
 		B6D0BD2528C6C09E00B0946D /* SignedInUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignedInUserModel.swift; sourceTree = "<group>"; };
-		B6D0BD2928C6C50300B0946D /* CKModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKModel.swift; sourceTree = "<group>"; };
-		B6D0BD2E28C6D1E700B0946D /* CKAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKAccountModel.swift; sourceTree = "<group>"; };
-		B6D0BD3028C6D29B00B0946D /* CKUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKUserModel.swift; sourceTree = "<group>"; };
+		B6D0BD2928C6C50300B0946D /* CKManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKManager.swift; sourceTree = "<group>"; };
+		B6D0BD2E28C6D1E700B0946D /* CKAccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKAccountManager.swift; sourceTree = "<group>"; };
+		B6D0BD3028C6D29B00B0946D /* CKUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKUserManager.swift; sourceTree = "<group>"; };
 		B6D0BD3428C7036400B0946D /* SignInAppleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAppleModel.swift; sourceTree = "<group>"; };
 		B6D0BD3628C7931500B0946D /* globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = globals.swift; sourceTree = "<group>"; };
 		B6D0BD3828C7943F00B0946D /* UsernameSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameSettingsModel.swift; sourceTree = "<group>"; };
@@ -170,8 +178,8 @@
 				B6B4327F28C80ACB002F8B2F /* core data */,
 				B6D0BD2D28C6D12C00B0946D /* database */,
 				B6D0BD1C28C6A5BC00B0946D /* record types */,
+				B6D0BD1828C6515900B0946D /* store */,
 				B6D0BD1728C6514E00B0946D /* users */,
-				B6D0BD1828C6515900B0946D /* tasks */,
 				B688DE4E28C838CD00500C7E /* settings */,
 				B6D0BD3628C7931500B0946D /* globals.swift */,
 				B688DE5428C8D6E000500C7E /* misc.swift */,
@@ -247,13 +255,17 @@
 			path = users;
 			sourceTree = "<group>";
 		};
-		B6D0BD1828C6515900B0946D /* tasks */ = {
+		B6D0BD1828C6515900B0946D /* store */ = {
 			isa = PBXGroup;
 			children = (
-				B6774A1428C4E89800B94B7C /* TaskTypes.swift */,
-				B6774A1A28C4EC4300B94B7C /* TasksDataModel.swift */,
+				B688DE5628C9487700500C7E /* AccountStoreModel.swift */,
+				B688DE6028C94C0F00500C7E /* UserStoreModel.swift */,
+				B688DE5828C94A3F00500C7E /* TaskStoreModel.swift */,
+				B688DE5A28C94AE300500C7E /* EntryStoreModel.swift */,
+				B688DE5C28C94B5600500C7E /* EvaluationStoreModel.swift */,
+				B688DE5E28C94BD600500C7E /* PaymentStoreModel.swift */,
 			);
-			path = tasks;
+			path = store;
 			sourceTree = "<group>";
 		};
 		B6D0BD1928C6542200B0946D /* Frameworks */ = {
@@ -267,12 +279,12 @@
 		B6D0BD1C28C6A5BC00B0946D /* record types */ = {
 			isa = PBXGroup;
 			children = (
-				B6D0BD1D28C6AE1300B0946D /* UserModel.swift */,
-				B6774A4828C54D5200B94B7C /* AccountModel.swift */,
+				B6D0BD1D28C6AE1300B0946D /* UserCKModel.swift */,
+				B6774A4828C54D5200B94B7C /* AccountCKModel.swift */,
 				B6D0BD1F28C6B54900B0946D /* EntryModel.swift */,
-				B6D0BD2128C6B7FB00B0946D /* EvaluationModel.swift */,
+				B6D0BD2128C6B7FB00B0946D /* EvaluationCKModel.swift */,
 				B6D0BD2328C6B91800B0946D /* PaymentModel.swift */,
-				B6774A1C28C4EC9200B94B7C /* TaskModel.swift */,
+				B6774A1C28C4EC9200B94B7C /* TaskCKModel.swift */,
 			);
 			path = "record types";
 			sourceTree = "<group>";
@@ -280,10 +292,10 @@
 		B6D0BD2D28C6D12C00B0946D /* database */ = {
 			isa = PBXGroup;
 			children = (
-				B6D0BD2928C6C50300B0946D /* CKModel.swift */,
-				B6D0BD2E28C6D1E700B0946D /* CKAccountModel.swift */,
-				B6D0BD3028C6D29B00B0946D /* CKUserModel.swift */,
-				B688DE5228C8D1E300500C7E /* CKTaskModel.swift */,
+				B6D0BD2928C6C50300B0946D /* CKManager.swift */,
+				B6D0BD2E28C6D1E700B0946D /* CKAccountManager.swift */,
+				B6D0BD3028C6D29B00B0946D /* CKUserManager.swift */,
+				B688DE5228C8D1E300500C7E /* CKTaskManager.swift */,
 			);
 			path = database;
 			sourceTree = "<group>";
@@ -372,39 +384,43 @@
 			files = (
 				B6774A0F28C4DECF00B94B7C /* TasksTypeView.swift in Sources */,
 				B6B4327E28C7F1CD002F8B2F /* CDDataUserModel.swift in Sources */,
-				B6D0BD2F28C6D1E700B0946D /* CKAccountModel.swift in Sources */,
-				B6D0BD1E28C6AE1300B0946D /* UserModel.swift in Sources */,
+				B6D0BD2F28C6D1E700B0946D /* CKAccountManager.swift in Sources */,
+				B6D0BD1E28C6AE1300B0946D /* UserCKModel.swift in Sources */,
 				B6774A1328C4E46900B94B7C /* MainView.swift in Sources */,
-				B6D0BD2A28C6C50300B0946D /* CKModel.swift in Sources */,
+				B6D0BD2A28C6C50300B0946D /* CKManager.swift in Sources */,
 				B6774A0B28C4DB4800B94B7C /* AppTabView.swift in Sources */,
 				B6D0BD2628C6C09E00B0946D /* SignedInUserModel.swift in Sources */,
-				B688DE5328C8D1E400500C7E /* CKTaskModel.swift in Sources */,
-				B6774A1D28C4EC9200B94B7C /* TaskModel.swift in Sources */,
-				B6774A1528C4E89800B94B7C /* TaskTypes.swift in Sources */,
+				B688DE5328C8D1E400500C7E /* CKTaskManager.swift in Sources */,
+				B6774A1D28C4EC9200B94B7C /* TaskCKModel.swift in Sources */,
 				B6774A0D28C4DBBB00B94B7C /* TasksView.swift in Sources */,
 				B6D0BD3B28C79C3500B0946D /* SettingsEditingView.swift in Sources */,
 				B6D0BD3928C7943F00B0946D /* UsernameSettingsModel.swift in Sources */,
+				B688DE5728C9487700500C7E /* AccountStoreModel.swift in Sources */,
 				B6B4328528C82DE3002F8B2F /* AddTaskView.swift in Sources */,
 				B6774A0428C4D43400B94B7C /* obeyorpay.xcdatamodeld in Sources */,
 				B6B4328128C81E31002F8B2F /* LoadingView.swift in Sources */,
 				B6774A2428C5141A00B94B7C /* TaskEditingView.swift in Sources */,
 				B688DE5528C8D6E000500C7E /* misc.swift in Sources */,
 				B6774A2A28C5183D00B94B7C /* PopupView.swift in Sources */,
-				B6D0BD3128C6D29B00B0946D /* CKUserModel.swift in Sources */,
+				B6D0BD3128C6D29B00B0946D /* CKUserManager.swift in Sources */,
 				B6774A4328C5468200B94B7C /* SignInView.swift in Sources */,
+				B688DE5F28C94BD600500C7E /* PaymentStoreModel.swift in Sources */,
 				B6D0BD2428C6B91800B0946D /* PaymentModel.swift in Sources */,
-				B6D0BD2228C6B7FB00B0946D /* EvaluationModel.swift in Sources */,
+				B6D0BD2228C6B7FB00B0946D /* EvaluationCKModel.swift in Sources */,
 				B6774A0128C4D43400B94B7C /* Persistence.swift in Sources */,
 				B67749FA28C4D43200B94B7C /* ContentView.swift in Sources */,
+				B688DE5928C94A3F00500C7E /* TaskStoreModel.swift in Sources */,
 				B6774A1728C4EBCF00B94B7C /* TaskView.swift in Sources */,
 				B6D0BD3728C7931500B0946D /* globals.swift in Sources */,
+				B688DE5D28C94B5600500C7E /* EvaluationStoreModel.swift in Sources */,
 				B67749F828C4D43200B94B7C /* obeyorpayApp.swift in Sources */,
 				B688DE5128C839D500500C7E /* CorrectnessComment.swift in Sources */,
 				B6774A1928C4EBDE00B94B7C /* TasksListView.swift in Sources */,
-				B6774A4928C54D5200B94B7C /* AccountModel.swift in Sources */,
+				B688DE5B28C94AE300500C7E /* EntryStoreModel.swift in Sources */,
+				B6774A4928C54D5200B94B7C /* AccountCKModel.swift in Sources */,
 				B6D0BD2028C6B54900B0946D /* EntryModel.swift in Sources */,
 				B6D0BD3528C7036400B0946D /* SignInAppleModel.swift in Sources */,
-				B6774A1B28C4EC4300B94B7C /* TasksDataModel.swift in Sources */,
+				B688DE6128C94C0F00500C7E /* UserStoreModel.swift in Sources */,
 				B688DE4D28C838A100500C7E /* AddTaskSettingsModel.swift in Sources */,
 				B6774A4B28C61A1D00B94B7C /* SettingsView.swift in Sources */,
 				B6B4328928C82EF6002F8B2F /* SpanButtonView.swift in Sources */,

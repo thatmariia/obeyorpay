@@ -40,7 +40,7 @@ class SignInAppleModel {
     
     private func registerNewAccount(credential: ASAuthorizationAppleIDCredential, signedInUser: SignedInUserModel) async throws {
         
-        var user = UserModel(
+        var user = UserCKModel(
             uid: credential.user,
             username: usernameSettings.getDefaultUsername(),
             email: credential.email ?? "email N/A",
@@ -58,18 +58,18 @@ class SignInAppleModel {
     private func signInWithExistingAccount(credential: ASAuthorizationAppleIDCredential, signedInUser: SignedInUserModel) async throws {
         
         do {
-            let user = try await userDB.queryUser(withKey: UserModelKeys.uid, .equal, to: credential.user)
+            let user = try await userDB.queryUser(withKey: UserCKKeys.uid, .equal, to: credential.user)
             updateSignedInUser(user: user, signedInUser: signedInUser)
         } catch let err {
             throw err
         }
     }
     
-    private func updateSignedInUser(user: UserModel, signedInUser: SignedInUserModel) {
+    private func updateSignedInUser(user: UserCKModel, signedInUser: SignedInUserModel) {
         userCD.clearCDEntity()
         userCD.addUser(with: user.uid)
         DispatchQueue.main.async {
-            signedInUser.user = user
+            signedInUser.user_old = user
             signedInUser.status = .signedIn
         }
     }
@@ -77,7 +77,7 @@ class SignInAppleModel {
     func signOut(signedInUser: SignedInUserModel) {
         userCD.clearCDEntity()
         DispatchQueue.main.async {
-            signedInUser.user = UserModel()
+            signedInUser.user_old = UserCKModel()
             signedInUser.status = .notSignedIn
         }
     }

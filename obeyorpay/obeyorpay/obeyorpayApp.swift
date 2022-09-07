@@ -15,11 +15,9 @@ struct obeyorpayApp: App {
     
     //@StateObject private var userController = CDDataUserModel()
     
-    var tasksData: TasksDataModel
     var signedInUser: SignedInUserModel
     
     init() {
-        tasksData = TasksDataModel()
         signedInUser = SignedInUserModel()
         checkIfUserSignedIn()
     }
@@ -27,7 +25,6 @@ struct obeyorpayApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(tasksData)
                 .environmentObject(signedInUser)
             //.environment(\.managedObjectContext, persistenceController.container.viewContext)
             //.environment(\.managedObjectContext, userController.container.viewContext)
@@ -46,8 +43,8 @@ struct obeyorpayApp: App {
         DispatchQueue.main.async {
             Task.init {
                 do {
-                    let user = try await userDB.queryUser(withKey: UserModelKeys.uid, .equal, to: uid!)
-                    signedInUser.user = user
+                    let user = try await userDB.queryUser(withKey: UserCKKeys.uid, CKQueryOperation.equal, to: uid!)
+                    signedInUser.user_old = user
                     signedInUser.status = .signedIn
                     signedInUser.checkedStatusOnStart = true
                 } catch {

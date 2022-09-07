@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TasksListView: View {
     
-    var tasks: [TaskModel]
+    var tasks: [TaskCKModel]
     
     @State var editing = false
     

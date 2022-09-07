@@ -17,12 +17,18 @@ enum signInStatus {
 
 class SignedInUserModel: ObservableObject {
     
-    @Published var user: UserModel
+    @Published var user_old: UserCKModel
+    @Published var user: UserStoreModel
+    @Published var account: AccountCKModel
+    @Published var accountStore: Any
     @Published var status: signInStatus
     @Published var checkedStatusOnStart: Bool
     
     init() {
-        self.user = UserModel()
+        self.user_old = UserCKModel()
+        self.user = UserStoreModel()
+        self.account = AccountCKModel()
+        self.accountStore = 5
         self.status = .notSignedIn
         self.checkedStatusOnStart = false
     }

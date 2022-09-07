@@ -1,5 +1,5 @@
 //
-//  UserModel.swift
+//  UserCKModel.swift
 //  obeyorpay
 //
 //  Created by Mariia Steeghs-Turchina on 06/09/2022.
@@ -9,7 +9,7 @@ import Foundation
 import CloudKit
 
 
-enum UserModelKeys: String, CaseIterable {
+enum UserCKKeys: String, CaseIterable {
     case uid = "uid"
     case username = "username"
     case email = "email"
@@ -19,10 +19,10 @@ enum UserModelKeys: String, CaseIterable {
 }
 
 
-class UserModel: Identifiable, Equatable, Hashable {
+class UserCKModel: Identifiable, Equatable, Hashable {
     
     // conforms to Equatable
-    static func == (lhs: UserModel, rhs: UserModel) -> Bool {
+    static func == (lhs: UserCKModel, rhs: UserCKModel) -> Bool {
         return (lhs.recordName == rhs.recordName) && (lhs.uid == rhs.uid) && (lhs.username == rhs.username) && (lhs.email == rhs.email) && (lhs.firstName == rhs.firstName) && (lhs.lastName == rhs.lastName) && (lhs.accountRef == rhs.accountRef)
     }
     

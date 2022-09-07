@@ -7,11 +7,15 @@
 
 import SwiftUI
 
+enum TaskTypes {
+    case personal
+    case joint
+    case shared
+}
+
 struct TasksView: View {
     
     @State var task_type = TaskTypes.personal
-    
-    @EnvironmentObject var tasksData: TasksDataModel
     
     var body: some View {
         
@@ -27,7 +31,7 @@ struct TasksView: View {
             Spacer()
             
             // TODO:: pass tasks of the $task_type
-            TasksListView(tasks: tasksData.tasks)
+            // TasksListView(tasks: tasksData.tasks)
             
             Spacer()
         }

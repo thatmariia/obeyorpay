@@ -1,5 +1,5 @@
 //
-//  TaskData.swift
+//  TaskCKModel.swift
 //  obeyorpay
 //
 //  Created by Mariia Steeghs-Turchina on 04/09/2022.
@@ -28,7 +28,7 @@ enum TaskSpan: String, CaseIterable {
     }
 }
 
-enum TaskModelKeys: String, CaseIterable {
+enum TaskCKKeys: String, CaseIterable {
     case title = "title"
     case creatorUserRef = "creatorUser"
     case createdDate = "createdDate"
@@ -50,10 +50,10 @@ enum TaskModelKeys: String, CaseIterable {
     case sharedInvitedUsersRefs = "sharedInvitedUsers"
 }
 
-class TaskModel: Identifiable, Equatable, Hashable {
+class TaskCKModel: Identifiable, Equatable, Hashable {
     
     // conforms to Equatable
-    static func == (lhs: TaskModel, rhs: TaskModel) -> Bool {
+    static func == (lhs: TaskCKModel, rhs: TaskCKModel) -> Bool {
         return (lhs.recordName == rhs.recordName) &&
                 (lhs.title == rhs.title) &&
                 (lhs.creatorUserRef == rhs.creatorUserRef) &&
@@ -146,7 +146,7 @@ class TaskModel: Identifiable, Equatable, Hashable {
     }
     
     init(
-        user: UserModel,
+        user: UserCKModel,
         title: String,
         span: TaskSpan,
         spanStartDate: Date,

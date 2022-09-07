@@ -1,5 +1,5 @@
 //
-//  CKDataModel.swift
+//  CKManager.swift
 //  obeyorpay
 //
 //  Created by Mariia Steeghs-Turchina on 06/09/2022.
@@ -31,7 +31,7 @@ enum CKError: Error {
     case noRecords
 }
 
-class CKModel {
+class CKManager {
     
     let container: CKContainer
     let publicDB: CKDatabase

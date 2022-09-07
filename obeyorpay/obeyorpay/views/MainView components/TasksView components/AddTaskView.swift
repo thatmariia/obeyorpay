@@ -73,7 +73,7 @@ struct AddTaskView: View {
                     showingCountCostNote = false
                     countCostNote = ""
                     
-                    let task = TaskModel(
+                    let task = TaskCKModel(
                         user: signedInUser.user,
                         title: title,
                         span: span,

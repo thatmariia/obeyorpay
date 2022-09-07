@@ -1,5 +1,5 @@
 //
-//  AccountModel.swift
+//  AccountCKModel.swift
 //  obeyorpay
 //
 //  Created by Mariia Steeghs-Turchina on 04/09/2022.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum AccountModelKeys: String, CaseIterable {
+enum AccountCKKeys: String, CaseIterable {
     case personalTasksRefs = "personalTasks"
     case jointTasksRefs = "jointTasks"
     case sharedTasksRefs = "sharedTasks"
@@ -19,10 +19,10 @@ enum AccountModelKeys: String, CaseIterable {
 }
 
 
-class AccountModel: Identifiable, Equatable, Hashable {
+class AccountCKModel: Identifiable, Equatable, Hashable {
     
     // conforms to Equatable
-    static func == (lhs: AccountModel, rhs: AccountModel) -> Bool {
+    static func == (lhs: AccountCKModel, rhs: AccountCKModel) -> Bool {
         return (lhs.personalTasksRefs == rhs.personalTasksRefs) &&
         (lhs.jointTasksRefs == rhs.jointTasksRefs) &&
         (lhs.sharedTasksRefs == rhs.sharedTasksRefs) &&

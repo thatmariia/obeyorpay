@@ -1,5 +1,5 @@
 //
-//  EvaluationModel.swift
+//  EvaluationCKModel.swift
 //  obeyorpay
 //
 //  Created by Mariia Steeghs-Turchina on 06/09/2022.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum EvaluationModelKeys: String, CaseIterable {
+enum EvaluationCKKeys: String, CaseIterable {
     case periodStartDate = "periodStartDate"
     case periodEndDate = "periodEndDate"
     case jointUsers = "jointUsers"
@@ -19,10 +19,10 @@ enum EvaluationModelKeys: String, CaseIterable {
     case build = "build"
 }
 
-class EvaluationModel: Identifiable, Equatable, Hashable {
+class EvaluationCKModel: Identifiable, Equatable, Hashable {
     
     // conforms to Equatable
-    static func == (lhs: EvaluationModel, rhs: EvaluationModel) -> Bool {
+    static func == (lhs: EvaluationCKModel, rhs: EvaluationCKModel) -> Bool {
         return (lhs.periodStartDate == rhs.periodStartDate) && (lhs.periodEndDate == rhs.periodEndDate) && (lhs.jointUsers == rhs.jointUsers) && (lhs.payments == rhs.payments) && (lhs.task == rhs.task) && (lhs.count == rhs.count) && (lhs.target == rhs.count) && (lhs.totalCost == rhs.totalCost) && (lhs.build == rhs.build)
     }
     
@@ -41,9 +41,9 @@ class EvaluationModel: Identifiable, Equatable, Hashable {
     
     var periodStartDate: Date
     var periodEndDate: Date
-    var jointUsers: [UserModel]
+    var jointUsers: [UserCKModel]
     var payments: [PaymentModel]
-    var task: TaskModel
+    var task: TaskCKModel
     var count: Int
     var target: Int
     var totalCost: Double
@@ -54,7 +54,7 @@ class EvaluationModel: Identifiable, Equatable, Hashable {
         self.periodEndDate = Date.now
         self.jointUsers = []
         self.payments = []
-        self.task = TaskModel()
+        self.task = TaskCKModel()
         self.count = 0
         self.target = 0
         self.totalCost = 0
