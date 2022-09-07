@@ -31,7 +31,7 @@ enum CKError: Error {
     case noRecords
 }
 
-class CKDataModel {
+class CKModel {
     
     let container: CKContainer
     let publicDB: CKDatabase

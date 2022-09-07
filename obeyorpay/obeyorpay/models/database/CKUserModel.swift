@@ -9,7 +9,7 @@ import Foundation
 import CloudKit
 
 
-class CKDataUserModel: CKDataModel {
+class CKUserModel: CKModel {
     
     var userRecordType = CKDataRecordType.user.rawValue
     

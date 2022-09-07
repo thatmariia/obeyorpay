@@ -20,7 +20,7 @@ let authentificator = SignInAppleModel()
 let userCD = CDDataUserModel()
 
 // MARK: - database models
-let userDB = CKDataUserModel()
+let userDB = CKUserModel()
 
 // MARK: - settings
 let usernameSettings = UsernameSettingModel()

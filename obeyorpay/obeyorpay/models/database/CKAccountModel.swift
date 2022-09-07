@@ -8,6 +8,6 @@
 import Foundation
 
 
-class CKDataAccountModel: CKDataModel {
+class CKAccountModel: CKModel {
     
 }

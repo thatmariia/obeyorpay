@@ -8,7 +8,7 @@
 import Foundation
 import CloudKit
 
-class CKDataTaskModel: CKDataModel {
+class CKTaskModel: CKModel {
     
     var taskRecordType = CKDataRecordType.task.rawValue
     
