@@ -50,10 +50,55 @@ enum TaskModelKeys: String, CaseIterable {
     case sharedInvitedUsersRefs = "sharedInvitedUsers"
 }
 
-struct TaskModel: Identifiable, Equatable, Hashable {
+class TaskModel: Identifiable, Equatable, Hashable {
     
-    // conforms to Identifiable
-    var id = UUID().uuidString
+    // conforms to Equatable
+    static func == (lhs: TaskModel, rhs: TaskModel) -> Bool {
+        return (lhs.recordName == rhs.recordName) &&
+                (lhs.title == rhs.title) &&
+                (lhs.creatorUserRef == rhs.creatorUserRef) &&
+                (lhs.createdDate == rhs.createdDate) &&
+                (lhs.jointUsersRefs == rhs.jointUsersRefs) &&
+                (lhs.sharedUsersRefs == rhs.sharedUsersRefs) &&
+                (lhs.span == rhs.span) &&
+                (lhs.spanStartDate == rhs.spanStartDate) &&
+                (lhs.lastPeriodStartDate == rhs.lastPeriodStartDate) &&
+                (lhs.countCost == rhs.countCost) &&
+                (lhs.entriesRefs == rhs.entriesRefs) &&
+                (lhs.trackBeforeStart == rhs.trackBeforeStart) &&
+                (lhs.paymentsRefs == rhs.paymentsRefs) &&
+                (lhs.target == rhs.target) &&
+                (lhs.currentCount == rhs.currentCount) &&
+                (lhs.evaluationsRefs == rhs.evaluationsRefs) &&
+                (lhs.color == rhs.color) &&
+                (lhs.build == rhs.build) &&
+                (lhs.jointInvitedUsersRefs == rhs.jointInvitedUsersRefs) &&
+                (lhs.sharedInvitedUsersRefs == rhs.sharedInvitedUsersRefs)
+    }
+    
+    // conforms to Hashable
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(recordName)
+        hasher.combine(title)
+        hasher.combine(creatorUserRef)
+        hasher.combine(createdDate)
+        hasher.combine(jointUsersRefs)
+        hasher.combine(sharedUsersRefs)
+        hasher.combine(span)
+        hasher.combine(spanStartDate)
+        hasher.combine(lastPeriodStartDate)
+        hasher.combine(countCost)
+        hasher.combine(entriesRefs)
+        hasher.combine(trackBeforeStart)
+        hasher.combine(paymentsRefs)
+        hasher.combine(target)
+        hasher.combine(currentCount)
+        hasher.combine(evaluationsRefs)
+        hasher.combine(color)
+        hasher.combine(build)
+        hasher.combine(jointInvitedUsersRefs)
+        hasher.combine(sharedInvitedUsersRefs)
+    }
     
     var recordName: String?
     var title: String
@@ -100,7 +145,17 @@ struct TaskModel: Identifiable, Equatable, Hashable {
         self.sharedInvitedUsersRefs = []
     }
     
-    init(user: UserModel, title: String, span: TaskSpan, spanStartDate: Date, trackBeforeStart: Bool, target: Int, build: Bool, countCost: Double, color: Int) {
+    init(
+        user: UserModel,
+        title: String,
+        span: TaskSpan,
+        spanStartDate: Date,
+        trackBeforeStart: Bool,
+        target: Int,
+        build: Bool,
+        countCost: Double,
+        color: Int
+    ) {
         self.recordName = nil
         self.title = title
         self.span = span

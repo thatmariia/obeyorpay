@@ -9,7 +9,7 @@ import Foundation
 import CloudKit
 
 
-enum CKDataRecordType: String, CaseIterable {
+enum CKRecordType: String, CaseIterable {
     case user = "User"
     case account = "Account"
     case entry = "Entry"
@@ -66,7 +66,7 @@ class CKModel {
         }
     }
     
-    func queryObjects(of recordType: CKDataRecordType, with predicate: NSPredicate, fromCKRecordToObject: (CKRecord) -> AnyObject?) async throws -> [AnyObject] {
+    func queryObjects(of recordType: CKRecordType, with predicate: NSPredicate, fromCKRecordToObject: (CKRecord) -> AnyObject?) async throws -> [AnyObject] {
         let query = CKQuery(recordType: recordType.rawValue, predicate: predicate)
         
         do {
@@ -104,7 +104,7 @@ class CKModel {
         }
     }
     
-    func addObject(of recordType: CKDataRecordType, with object: AnyObject, fromObjectToCKRecord: (AnyObject, CKRecord) -> CKRecord, fromCKRecordToObject: (CKRecord) -> AnyObject?) async throws -> AnyObject {
+    func addObject(of recordType: CKRecordType, with object: AnyObject, fromObjectToCKRecord: (AnyObject, CKRecord) -> CKRecord, fromCKRecordToObject: (CKRecord) -> AnyObject?) async throws -> AnyObject {
         let record = fromObjectToCKRecord(object, CKRecord(recordType: recordType.rawValue))
         
         do {

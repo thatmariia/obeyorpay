@@ -11,8 +11,6 @@ import CloudKit
 
 class CKUserModel: CKModel {
     
-    var userRecordType = CKDataRecordType.user.rawValue
-    
     // MARK: - record modifications
     
     func fromUserToCKRecord(from user: AnyObject, to record: CKRecord) -> CKRecord {

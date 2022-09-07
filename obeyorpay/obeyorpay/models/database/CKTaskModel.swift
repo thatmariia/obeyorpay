@@ -10,11 +10,10 @@ import CloudKit
 
 class CKTaskModel: CKModel {
     
-    var taskRecordType = CKDataRecordType.task.rawValue
-    
     // MARK: - record modifications
     
-    func wrapTaskRecord(into record: CKRecord, with task: TaskModel) -> CKRecord {
+    func fromTaskToCKRecord(from task: AnyObject, to record: CKRecord) -> CKRecord {
+        let task = task as! TaskModel
         record[TaskModelKeys.title.rawValue]                    = task.title                    as CKRecordValue
         record[TaskModelKeys.creatorUserRef.rawValue]           = task.creatorUserRef           as CKRecordValue
         record[TaskModelKeys.createdDate.rawValue]              = task.createdDate              as CKRecordValue
@@ -37,7 +36,7 @@ class CKTaskModel: CKModel {
         return record
     }
     
-    func unwrapTaskRecord(from record: CKRecord) -> TaskModel? {
+    func fromCKRecordToTask(from record: CKRecord) -> AnyObject? {
         let recordName = record.recordID.recordName
         guard let title                     = record[TaskModelKeys.title.rawValue]                  as? String      else { return nil }
         guard let creatorUserRef            = record[TaskModelKeys.creatorUserRef.rawValue]         as? String      else { return nil }
@@ -82,21 +81,6 @@ class CKTaskModel: CKModel {
         )
         return task
     }
-    
-    // MARK: - supporting database actions
-//
-//    func saveTaskRecord(record: CKRecord) async throws -> TaskModel {
-//        do {
-//            let _ = try await saveRecord(record: record)
-//
-//            let task = self.unwrapTaskRecord(from: record)
-//            if task == nil {
-//                throw CK
-//            }
-//        } catch let err {
-//            throw err
-//        }
-//    }
     
     // MARK: - database actions
 }
