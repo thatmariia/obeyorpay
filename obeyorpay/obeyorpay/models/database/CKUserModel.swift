@@ -20,18 +20,26 @@ class CKUserModel: CKModel {
         record[UserModelKeys.email.rawValue]        = user.email        as CKRecordValue
         record[UserModelKeys.firstName.rawValue]    = user.firstName    as CKRecordValue
         record[UserModelKeys.lastName.rawValue]     = user.lastName     as CKRecordValue
+        record[UserModelKeys.accountRef.rawValue]   = user.accountRef   as CKRecordValue
         return record
     }
     
     func fromCKRecordToUser(from record: CKRecord) -> AnyObject? {
         let recordName = record.recordID.recordName
-        guard let uid       = record[UserModelKeys.uid.rawValue]        as? String else { return nil }
-        guard let username  = record[UserModelKeys.username.rawValue]   as? String else { return nil }
-        guard let email     = record[UserModelKeys.email.rawValue]      as? String else { return nil }
-        guard let firstName = record[UserModelKeys.firstName.rawValue]  as? String else { return nil }
-        guard let lastName  = record[UserModelKeys.lastName.rawValue]   as? String else { return nil }
+        guard let uid           = record[UserModelKeys.uid.rawValue]        as? String else { return nil }
+        guard let username      = record[UserModelKeys.username.rawValue]   as? String else { return nil }
+        guard let email         = record[UserModelKeys.email.rawValue]      as? String else { return nil }
+        guard let firstName     = record[UserModelKeys.firstName.rawValue]  as? String else { return nil }
+        guard let lastName      = record[UserModelKeys.lastName.rawValue]   as? String else { return nil }
+        guard let accountRef    = record[UserModelKeys.accountRef.rawValue] as? String else { return nil }
         let user = UserModel(
-            recordName: recordName, uid: uid, username: username, email: email, firstName: firstName, lastName: lastName
+            recordName: recordName,
+            uid: uid,
+            username: username,
+            email: email,
+            firstName: firstName,
+            lastName: lastName,
+            accountRef: accountRef
         )
         return user
     }

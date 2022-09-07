@@ -22,7 +22,7 @@ class SignedInUserModel: ObservableObject {
     @Published var checkedStatusOnStart: Bool
     
     init() {
-        self.user = UserModel(uid: "", username: "", email: "", firstName: "", lastName: "")
+        self.user = UserModel()
         self.status = .notSignedIn
         self.checkedStatusOnStart = false
     }
