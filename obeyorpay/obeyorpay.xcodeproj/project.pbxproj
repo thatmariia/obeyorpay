@@ -27,6 +27,7 @@
 		B6774A4328C5468200B94B7C /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A4228C5468200B94B7C /* SignInView.swift */; };
 		B6774A4928C54D5200B94B7C /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A4828C54D5200B94B7C /* AccountModel.swift */; };
 		B6774A4B28C61A1D00B94B7C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A4A28C61A1D00B94B7C /* SettingsView.swift */; };
+		B6B4327E28C7F1CD002F8B2F /* CDDataUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4327D28C7F1CD002F8B2F /* CDDataUserModel.swift */; };
 		B6D0BD1B28C6542200B0946D /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D0BD1A28C6542200B0946D /* CloudKit.framework */; };
 		B6D0BD1E28C6AE1300B0946D /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD1D28C6AE1300B0946D /* UserModel.swift */; };
 		B6D0BD2028C6B54900B0946D /* EntryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD1F28C6B54900B0946D /* EntryModel.swift */; };
@@ -65,6 +66,7 @@
 		B6774A4228C5468200B94B7C /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		B6774A4828C54D5200B94B7C /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
 		B6774A4A28C61A1D00B94B7C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		B6B4327D28C7F1CD002F8B2F /* CDDataUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDDataUserModel.swift; sourceTree = "<group>"; };
 		B6D0BD1628C64EBC00B0946D /* obeyorpay.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = obeyorpay.entitlements; sourceTree = "<group>"; };
 		B6D0BD1A28C6542200B0946D /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		B6D0BD1D28C6AE1300B0946D /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 		B6774A1F28C4EDB800B94B7C /* models */ = {
 			isa = PBXGroup;
 			children = (
+				B6B4327F28C80ACB002F8B2F /* core data */,
 				B6D0BD2D28C6D12C00B0946D /* database */,
 				B6D0BD1C28C6A5BC00B0946D /* record types */,
 				B6D0BD1728C6514E00B0946D /* users */,
@@ -189,6 +192,14 @@
 				B6774A2128C4F3A500B94B7C /* TasksView components */,
 			);
 			path = "MainView components";
+			sourceTree = "<group>";
+		};
+		B6B4327F28C80ACB002F8B2F /* core data */ = {
+			isa = PBXGroup;
+			children = (
+				B6B4327D28C7F1CD002F8B2F /* CDDataUserModel.swift */,
+			);
+			path = "core data";
 			sourceTree = "<group>";
 		};
 		B6D0BD1728C6514E00B0946D /* users */ = {
@@ -323,6 +334,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6774A0F28C4DECF00B94B7C /* TasksTypeView.swift in Sources */,
+				B6B4327E28C7F1CD002F8B2F /* CDDataUserModel.swift in Sources */,
 				B6D0BD2F28C6D1E700B0946D /* CKDataAccountModel.swift in Sources */,
 				B6D0BD1E28C6AE1300B0946D /* UserModel.swift in Sources */,
 				B6774A1328C4E46900B94B7C /* MainView.swift in Sources */,

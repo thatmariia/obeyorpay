@@ -16,6 +16,9 @@ let digits = "0123456789"
 // MARK: - auth
 let authentificator = SignInAppleModel()
 
+// MARK: - core data
+let userCD = CDDataUserModel()
+
 // MARK: - database models
 
 let userDB = CKDataUserModel()

@@ -16,7 +16,7 @@ struct ContentView: View {
         
         Group {
         
-            if signedInUser.user.uid == "" {
+            if signedInUser.status == .notSignedIn {
                 SignInView()
             } else {
                 MainView()
