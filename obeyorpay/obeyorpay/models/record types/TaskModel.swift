@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum TaskSpan: String {
+enum TaskSpan: String, CaseIterable {
     case day = "daily"
     case week = "weekly"
     case month = "monthly"
@@ -31,6 +31,9 @@ enum TaskDataModelKeys: String, CaseIterable {
     case currentCount = "currentCount"
     case evaluations = "evaluations"
     case color = "color"
+    case build = "build"
+    case jointInvitedUsers = "jointInvitedUsers"
+    case sharedInvitedUsers = "sharedInvitedUsers"
 }
 
 struct TaskModel: Identifiable, Equatable, Hashable {
@@ -54,17 +57,20 @@ struct TaskModel: Identifiable, Equatable, Hashable {
     var currentCount: Int
     var evaluations: [EvaluationModel]
     var color: Int
+    var build: Bool
+    var jointInvitedUsers: [UserModel]
+    var sharedInvitedUsers: [UserModel]
     
     
     init() {
         self.title = ""
         self.creatorUser = UserModel()
-        self.createdDate = Date.now
+        self.createdDate = Date()
         self.jointUsers = []
         self.sharedUsers = []
         self.span = TaskSpan.day
-        self.spanStartDate = Date.now
-        self.lastPeriodStartDate = Date.now
+        self.spanStartDate = Date()
+        self.lastPeriodStartDate = Date.distantPast
         self.countCost = 0
         self.entries = []
         self.trackBeforeStart = false
@@ -73,5 +79,31 @@ struct TaskModel: Identifiable, Equatable, Hashable {
         self.currentCount = 0
         self.evaluations = []
         self.color = 0
+        self.build = false
+        self.jointInvitedUsers = []
+        self.sharedInvitedUsers = []
+    }
+    
+    init(user: UserModel, title: String, span: TaskSpan, spanStartDate: Date, trackBeforeStart: Bool, target: Int, build: Bool, countCost: Double, color: Int) {
+        self.title = title
+        self.span = span
+        self.spanStartDate = spanStartDate
+        self.trackBeforeStart = trackBeforeStart
+        self.target = target
+        self.build = build
+        self.countCost = countCost
+        self.color = color
+        
+        self.creatorUser = user
+        self.createdDate = Date()
+        self.jointUsers = []
+        self.sharedUsers = []
+        self.jointInvitedUsers = []
+        self.sharedInvitedUsers = []
+        self.lastPeriodStartDate = Date.distantPast
+        self.entries = []
+        self.payments = []
+        self.currentCount = 0
+        self.evaluations = []
     }
 }

@@ -27,8 +27,12 @@
 		B6774A4328C5468200B94B7C /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A4228C5468200B94B7C /* SignInView.swift */; };
 		B6774A4928C54D5200B94B7C /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A4828C54D5200B94B7C /* AccountModel.swift */; };
 		B6774A4B28C61A1D00B94B7C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A4A28C61A1D00B94B7C /* SettingsView.swift */; };
+		B688DE4D28C838A100500C7E /* AddTaskSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE4C28C838A100500C7E /* AddTaskSettingsModel.swift */; };
+		B688DE5128C839D500500C7E /* CorrectnessComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE5028C839D500500C7E /* CorrectnessComment.swift */; };
 		B6B4327E28C7F1CD002F8B2F /* CDDataUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4327D28C7F1CD002F8B2F /* CDDataUserModel.swift */; };
 		B6B4328128C81E31002F8B2F /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4328028C81E31002F8B2F /* LoadingView.swift */; };
+		B6B4328528C82DE3002F8B2F /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4328428C82DE3002F8B2F /* AddTaskView.swift */; };
+		B6B4328928C82EF6002F8B2F /* SpanButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4328828C82EF6002F8B2F /* SpanButtonView.swift */; };
 		B6D0BD1B28C6542200B0946D /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D0BD1A28C6542200B0946D /* CloudKit.framework */; };
 		B6D0BD1E28C6AE1300B0946D /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD1D28C6AE1300B0946D /* UserModel.swift */; };
 		B6D0BD2028C6B54900B0946D /* EntryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD1F28C6B54900B0946D /* EntryModel.swift */; };
@@ -67,8 +71,12 @@
 		B6774A4228C5468200B94B7C /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		B6774A4828C54D5200B94B7C /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
 		B6774A4A28C61A1D00B94B7C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		B688DE4C28C838A100500C7E /* AddTaskSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskSettingsModel.swift; sourceTree = "<group>"; };
+		B688DE5028C839D500500C7E /* CorrectnessComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrectnessComment.swift; sourceTree = "<group>"; };
 		B6B4327D28C7F1CD002F8B2F /* CDDataUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDDataUserModel.swift; sourceTree = "<group>"; };
 		B6B4328028C81E31002F8B2F /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		B6B4328428C82DE3002F8B2F /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
+		B6B4328828C82EF6002F8B2F /* SpanButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpanButtonView.swift; sourceTree = "<group>"; };
 		B6D0BD1628C64EBC00B0946D /* obeyorpay.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = obeyorpay.entitlements; sourceTree = "<group>"; };
 		B6D0BD1A28C6542200B0946D /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		B6D0BD1D28C6AE1300B0946D /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -142,6 +150,7 @@
 		B6774A1E28C4EDAF00B94B7C /* views */ = {
 			isa = PBXGroup;
 			children = (
+				B6B4328728C82EDD002F8B2F /* elements */,
 				B67749F928C4D43200B94B7C /* ContentView.swift */,
 				B6B4328028C81E31002F8B2F /* LoadingView.swift */,
 				B6774A4228C5468200B94B7C /* SignInView.swift */,
@@ -159,8 +168,8 @@
 				B6D0BD1C28C6A5BC00B0946D /* record types */,
 				B6D0BD1728C6514E00B0946D /* users */,
 				B6D0BD1828C6515900B0946D /* tasks */,
+				B688DE4E28C838CD00500C7E /* settings */,
 				B6D0BD3628C7931500B0946D /* globals.swift */,
-				B6D0BD3828C7943F00B0946D /* UsernameSettingsModel.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -168,10 +177,11 @@
 		B6774A2128C4F3A500B94B7C /* TasksView components */ = {
 			isa = PBXGroup;
 			children = (
-				B6774A0E28C4DECF00B94B7C /* TasksTypeView.swift */,
 				B6D0BD3D28C7E3AE00B0946D /* AddTaskButtonView.swift */,
-				B6774A1828C4EBDE00B94B7C /* TasksListView.swift */,
+				B6B4328428C82DE3002F8B2F /* AddTaskView.swift */,
+				B6774A0E28C4DECF00B94B7C /* TasksTypeView.swift */,
 				B6774A2328C5141A00B94B7C /* TaskEditingView.swift */,
+				B6774A1828C4EBDE00B94B7C /* TasksListView.swift */,
 				B6774A2228C4F3C200B94B7C /* TaskListView components */,
 			);
 			path = "TasksView components";
@@ -197,12 +207,30 @@
 			path = "MainView components";
 			sourceTree = "<group>";
 		};
+		B688DE4E28C838CD00500C7E /* settings */ = {
+			isa = PBXGroup;
+			children = (
+				B6D0BD3828C7943F00B0946D /* UsernameSettingsModel.swift */,
+				B688DE5028C839D500500C7E /* CorrectnessComment.swift */,
+				B688DE4C28C838A100500C7E /* AddTaskSettingsModel.swift */,
+			);
+			path = settings;
+			sourceTree = "<group>";
+		};
 		B6B4327F28C80ACB002F8B2F /* core data */ = {
 			isa = PBXGroup;
 			children = (
 				B6B4327D28C7F1CD002F8B2F /* CDDataUserModel.swift */,
 			);
 			path = "core data";
+			sourceTree = "<group>";
+		};
+		B6B4328728C82EDD002F8B2F /* elements */ = {
+			isa = PBXGroup;
+			children = (
+				B6B4328828C82EF6002F8B2F /* SpanButtonView.swift */,
+			);
+			path = elements;
 			sourceTree = "<group>";
 		};
 		B6D0BD1728C6514E00B0946D /* users */ = {
@@ -349,6 +377,7 @@
 				B6774A0D28C4DBBB00B94B7C /* TasksView.swift in Sources */,
 				B6D0BD3B28C79C3500B0946D /* SettingsEditingView.swift in Sources */,
 				B6D0BD3928C7943F00B0946D /* UsernameSettingsModel.swift in Sources */,
+				B6B4328528C82DE3002F8B2F /* AddTaskView.swift in Sources */,
 				B6774A0428C4D43400B94B7C /* obeyorpay.xcdatamodeld in Sources */,
 				B6B4328128C81E31002F8B2F /* LoadingView.swift in Sources */,
 				B6774A2428C5141A00B94B7C /* TaskEditingView.swift in Sources */,
@@ -362,12 +391,15 @@
 				B6774A1728C4EBCF00B94B7C /* TaskView.swift in Sources */,
 				B6D0BD3728C7931500B0946D /* globals.swift in Sources */,
 				B67749F828C4D43200B94B7C /* obeyorpayApp.swift in Sources */,
+				B688DE5128C839D500500C7E /* CorrectnessComment.swift in Sources */,
 				B6774A1928C4EBDE00B94B7C /* TasksListView.swift in Sources */,
 				B6774A4928C54D5200B94B7C /* AccountModel.swift in Sources */,
 				B6D0BD2028C6B54900B0946D /* EntryModel.swift in Sources */,
 				B6D0BD3528C7036400B0946D /* SignInAppleModel.swift in Sources */,
 				B6774A1B28C4EC4300B94B7C /* TasksDataModel.swift in Sources */,
+				B688DE4D28C838A100500C7E /* AddTaskSettingsModel.swift in Sources */,
 				B6774A4B28C61A1D00B94B7C /* SettingsView.swift in Sources */,
+				B6B4328928C82EF6002F8B2F /* SpanButtonView.swift in Sources */,
 				B6D0BD3E28C7E3AE00B0946D /* AddTaskButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

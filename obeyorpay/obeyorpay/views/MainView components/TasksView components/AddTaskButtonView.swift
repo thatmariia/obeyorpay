@@ -10,16 +10,17 @@ import SwiftUI
 struct AddTaskButtonView: View {
     var body: some View {
         
-        Button {
-            // TODO:: add task
+        NavigationLink {
+            AddTaskView()
         } label: {
-            Text("+")
+            Text("add+")
         }
+
 
     }
 }
 
-struct AddTaskView_Previews: PreviewProvider {
+struct AddTaskButtonView_Previews: PreviewProvider {
     static var previews: some View {
         AddTaskButtonView()
     }

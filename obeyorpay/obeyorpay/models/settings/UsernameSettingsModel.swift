@@ -8,20 +8,10 @@
 import Foundation
 
 
-struct UsernameComment {
-    var isCorrect: Bool
-    var note: String?
-    
-    init(isCorrect: Bool, note: String?) {
-        self.isCorrect = isCorrect
-        self.note = note
-    }
-}
-
 enum UsernameNotes: String {
     case allowedCharacters = "Username can only contain latin lowercase letters, digits, and underscores (_)"
-    case minLength = "Username should contain at least 2 symbols"
-    case maxLength = "Username should contain at most 30 symbols"
+    case minLength = "Username should contain at least 2 characters"
+    case maxLength = "Username should contain at most 30 characters"
     case alreadyExists = "Username already exists"
 }
 
@@ -56,27 +46,27 @@ class UsernameSettingModel {
         }
     }
     
-    func isCorrectUsername(currUsername: String, newUsername: String) async throws -> UsernameComment {
+    func isCorrectUsername(currUsername: String, newUsername: String) async throws -> CorrectnessComment {
         // no change
         if currUsername == newUsername {
-            return UsernameComment(isCorrect: true, note: nil)
+            return CorrectnessComment(isCorrect: true, note: nil)
         }
         
         // allower characters - not met
         for character in newUsername {
             if !self.usernameallowedCharacters.contains(character) {
-                return UsernameComment(isCorrect: false, note: UsernameNotes.allowedCharacters.rawValue)
+                return CorrectnessComment(isCorrect: false, note: UsernameNotes.allowedCharacters.rawValue)
             }
         }
         
         // min length - not met
         if newUsername.count < self.usernameMinLength {
-            return UsernameComment(isCorrect: false, note: UsernameNotes.minLength.rawValue)
+            return CorrectnessComment(isCorrect: false, note: UsernameNotes.minLength.rawValue)
         }
         
         // max length - not met
         if newUsername.count > self.usernameMaxLength {
-            return UsernameComment(isCorrect: false, note: UsernameNotes.maxLength.rawValue)
+            return CorrectnessComment(isCorrect: false, note: UsernameNotes.maxLength.rawValue)
         }
         
         // already exists
@@ -86,10 +76,10 @@ class UsernameSettingModel {
             self.noUsersWithUsername = nrUsers == 0
         } catch { }
         if !self.noUsersWithUsername {
-            return UsernameComment(isCorrect: false, note: UsernameNotes.alreadyExists.rawValue)
+            return CorrectnessComment(isCorrect: false, note: UsernameNotes.alreadyExists.rawValue)
         }
         
         // all good
-        return UsernameComment(isCorrect: true, note: nil)
+        return CorrectnessComment(isCorrect: true, note: nil)
     }
 }

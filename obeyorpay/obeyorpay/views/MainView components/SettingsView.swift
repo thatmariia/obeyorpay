@@ -11,8 +11,6 @@ struct SettingsView: View {
     
     @EnvironmentObject var signedInUser: SignedInUserModel
     
-    @State var editing = false
-    
     var body: some View {
         
         
@@ -22,24 +20,14 @@ struct SettingsView: View {
         
             Spacer()
             
-            /*Button {
-                editing = true
-            } label: {
-                Text("edit (username)")
-            }*/
             NavigationLink {
-                SettingsEditingView(editing: $editing, currUsername: signedInUser.user.username, newUsername: signedInUser.user.username)
+                SettingsEditingView(currUsername: signedInUser.user.username, newUsername: signedInUser.user.username)
             } label: {
                 Text("edit (username)")
             }
-
-
             
             Spacer()
         }
-//        .popup(isPresented: $editing) {
-//            SettingsEditingView(editing: $editing, currUsername: signedInUser.user.username, newUsername: signedInUser.user.username)
-//        }
 
     }
 }

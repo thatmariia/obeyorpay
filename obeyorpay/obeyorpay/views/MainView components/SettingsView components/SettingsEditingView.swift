@@ -9,8 +9,6 @@ import SwiftUI
 
 struct SettingsEditingView: View {
     
-    @Binding var editing: Bool
-    
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     @EnvironmentObject var signedInUser: SignedInUserModel
@@ -18,7 +16,7 @@ struct SettingsEditingView: View {
     var currUsername: String
     @State var newUsername: String
     
-    @State var isDisplayNotePresent = false
+    @State var showingNote = false
     @State var displayNote = ""
     
     var body: some View {
@@ -30,7 +28,7 @@ struct SettingsEditingView: View {
             VStack {
                 TextField("Username", text: $newUsername)
                 
-                if isDisplayNotePresent {
+                if showingNote {
                     Text(displayNote)
                 }
                 
@@ -67,12 +65,11 @@ struct SettingsEditingView: View {
                         if newUsername != currUsername {
                             try await usernameSettings.updateUser(signedInUser: signedInUser, with: newUsername)
                         }
-                        // editing = false
-                        isDisplayNotePresent = false
+                        showingNote = false
                         displayNote = ""
                         self.mode.wrappedValue.dismiss()
                     } else {
-                        isDisplayNotePresent = true
+                        showingNote = true
                         displayNote = usernameComment.note!
                     }
                 } catch {}
