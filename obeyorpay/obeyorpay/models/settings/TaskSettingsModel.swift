@@ -25,6 +25,22 @@ class TaskSettingsModel {
     // title
     var titleMinLength = 1
     
+    func addTask(signedInUser: SignedInUserModel, task: TaskStoreModel) throws {
+        DispatchQueue.main.async {
+            Task.init {
+                do {
+                    let newTask = try await taskDB.addTask(task: task)
+                    
+                    let updatedAccount = signedInUser.user.account
+                    updatedAccount.personalTasks.append(newTask)
+                    signedInUser.user.account = try await accountDB.changeAccount(with: signedInUser.user.account.recordName!, to: updatedAccount)
+                } catch let err {
+                    throw err
+                }
+            }
+        }
+    }
+    
     
     func isTitleCorrect(title: String) -> CorrectnessComment {
         // min length - not met

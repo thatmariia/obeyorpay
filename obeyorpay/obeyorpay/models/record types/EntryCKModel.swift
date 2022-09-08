@@ -15,21 +15,7 @@ enum EntryCKKeys: String, CaseIterable {
     case evaluationRef = "evaluation"
 }
 
-class EntryCKModel: Identifiable, Equatable, Hashable {
-    
-    // conforms to Equatable
-    static func == (lhs: EntryCKModel, rhs: EntryCKModel) -> Bool {
-        return (lhs.recordName == rhs.recordName) && (lhs.userRef == rhs.userRef) && (lhs.taskRef == rhs.taskRef) && (lhs.timestamp == rhs.timestamp) && (lhs.evaluationRef == rhs.evaluationRef)
-    }
-    
-    // conforms to Hashable
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(recordName)
-        hasher.combine(userRef)
-        hasher.combine(taskRef)
-        hasher.combine(timestamp)
-        hasher.combine(evaluationRef)
-    }
+class EntryCKModel {
     
     var recordName: String?
     var userRef: String

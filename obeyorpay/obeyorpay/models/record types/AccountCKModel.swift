@@ -19,34 +19,7 @@ enum AccountCKKeys: String, CaseIterable {
 }
 
 
-class AccountCKModel: Identifiable, Equatable, Hashable {
-    
-    // conforms to Equatable
-    static func == (lhs: AccountCKModel, rhs: AccountCKModel) -> Bool {
-        return (lhs.recordName == rhs.recordName) &&
-        (lhs.personalTasksRefs == rhs.personalTasksRefs) &&
-        (lhs.jointTasksRefs == rhs.jointTasksRefs) &&
-        (lhs.sharedTasksRefs == rhs.sharedTasksRefs) &&
-        (lhs.paymentsRefs == rhs.paymentsRefs) &&
-        (lhs.entriesRefs == rhs.entriesRefs) &&
-        (lhs.entriesRefs == rhs.entriesRefs) &&
-        (lhs.evaluationsRefs == rhs.evaluationsRefs) &&
-        (lhs.jointInvitedTasksRefs == rhs.jointInvitedTasksRefs) &&
-        (lhs.sharedInvitedTasksRefs == rhs.sharedInvitedTasksRefs)
-    }
-    
-    // conforms to Hashable
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(recordName)
-        hasher.combine(personalTasksRefs)
-        hasher.combine(jointTasksRefs)
-        hasher.combine(sharedTasksRefs)
-        hasher.combine(paymentsRefs)
-        hasher.combine(entriesRefs)
-        hasher.combine(evaluationsRefs)
-        hasher.combine(jointInvitedTasksRefs)
-        hasher.combine(sharedInvitedTasksRefs)
-    }
+class AccountCKModel {
     
     var recordName: String?
     var personalTasksRefs: [String]

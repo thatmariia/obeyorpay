@@ -25,12 +25,14 @@ class SignInAppleModel {
             Task.init {
                 do {
                     if let _ = credential.email, let _ = credential.fullName {
-                        try await registerNewAccount(credential: credential, signedInUser: signedInUser)
+                        try registerNewAccount(credential: credential, signedInUser: signedInUser)
                     } else {
-                        try await signInWithExistingAccount(credential: credential, signedInUser: signedInUser)
+                        try signInWithExistingAccount(credential: credential, signedInUser: signedInUser)
                     }
-                } catch {
+                } catch let err {
                     // handle error
+                    print("meow", err.localizedDescription)
+                    
                 }
             }
         case .failure (let error):
@@ -38,7 +40,9 @@ class SignInAppleModel {
         }
     }
     
-    private func registerNewAccount(credential: ASAuthorizationAppleIDCredential, signedInUser: SignedInUserModel) async throws {
+    private func registerNewAccount(credential: ASAuthorizationAppleIDCredential, signedInUser: SignedInUserModel) throws {
+        DispatchQueue.main.async {
+            Task.init {
         do {
             //let account = AccountStoreModel()
             let account = try await accountDB.addAccount(account: AccountStoreModel())
@@ -52,28 +56,39 @@ class SignInAppleModel {
                     account: account
                 )
             )
-            updateSignedInUser(user: user, signedInUser: signedInUser)
+            self.updateSignedInUser(user: user, signedInUser: signedInUser)
         } catch let err {
+            print("registerNewAccount: ", err.localizedDescription)
             throw err
+        }
+            }
         }
     }
     
-    private func signInWithExistingAccount(credential: ASAuthorizationAppleIDCredential, signedInUser: SignedInUserModel) async throws {
+    private func signInWithExistingAccount(credential: ASAuthorizationAppleIDCredential, signedInUser: SignedInUserModel) throws {
+        DispatchQueue.main.async {
+            Task.init {
         do {
+            print("start signInWithExistingAccount")
             let user = try await userDB.queryUser(withKey: UserCKKeys.uid, .equal, to: credential.user)
-            updateSignedInUser(user: user, signedInUser: signedInUser)
+            print(user.uid)
+            self.updateSignedInUser(user: user, signedInUser: signedInUser)
         } catch let err {
+            print("signInWithExistingAccount: ", err)
+            // print(err.localizedDescription)
             throw err
+        }
+            }
         }
     }
     
     private func updateSignedInUser(user: UserStoreModel, signedInUser: SignedInUserModel) {
         userCD.clearCDEntity()
         userCD.addUser(with: user.uid)
-        DispatchQueue.main.async {
+        //DispatchQueue.main.async {
             signedInUser.user = user
             signedInUser.status = .signedIn
-        }
+        //}
     }
     
     func signOut(signedInUser: SignedInUserModel) {

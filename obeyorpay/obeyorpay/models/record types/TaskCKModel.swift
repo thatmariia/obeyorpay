@@ -50,55 +50,7 @@ enum TaskCKKeys: String, CaseIterable {
     case sharedInvitedUsersRefs = "sharedInvitedUsers"
 }
 
-class TaskCKModel: Identifiable, Equatable, Hashable {
-    
-    // conforms to Equatable
-    static func == (lhs: TaskCKModel, rhs: TaskCKModel) -> Bool {
-        return (lhs.recordName == rhs.recordName) &&
-                (lhs.title == rhs.title) &&
-                (lhs.creatorUserRef == rhs.creatorUserRef) &&
-                (lhs.createdDate == rhs.createdDate) &&
-                (lhs.jointUsersRefs == rhs.jointUsersRefs) &&
-                (lhs.sharedUsersRefs == rhs.sharedUsersRefs) &&
-                (lhs.span == rhs.span) &&
-                (lhs.spanStartDate == rhs.spanStartDate) &&
-                (lhs.lastPeriodStartDate == rhs.lastPeriodStartDate) &&
-                (lhs.countCost == rhs.countCost) &&
-                (lhs.entriesRefs == rhs.entriesRefs) &&
-                (lhs.trackBeforeStart == rhs.trackBeforeStart) &&
-                (lhs.paymentsRefs == rhs.paymentsRefs) &&
-                (lhs.target == rhs.target) &&
-                (lhs.currentCount == rhs.currentCount) &&
-                (lhs.evaluationsRefs == rhs.evaluationsRefs) &&
-                (lhs.color == rhs.color) &&
-                (lhs.build == rhs.build) &&
-                (lhs.jointInvitedUsersRefs == rhs.jointInvitedUsersRefs) &&
-                (lhs.sharedInvitedUsersRefs == rhs.sharedInvitedUsersRefs)
-    }
-    
-    // conforms to Hashable
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(recordName)
-        hasher.combine(title)
-        hasher.combine(creatorUserRef)
-        hasher.combine(createdDate)
-        hasher.combine(jointUsersRefs)
-        hasher.combine(sharedUsersRefs)
-        hasher.combine(span)
-        hasher.combine(spanStartDate)
-        hasher.combine(lastPeriodStartDate)
-        hasher.combine(countCost)
-        hasher.combine(entriesRefs)
-        hasher.combine(trackBeforeStart)
-        hasher.combine(paymentsRefs)
-        hasher.combine(target)
-        hasher.combine(currentCount)
-        hasher.combine(evaluationsRefs)
-        hasher.combine(color)
-        hasher.combine(build)
-        hasher.combine(jointInvitedUsersRefs)
-        hasher.combine(sharedInvitedUsersRefs)
-    }
+class TaskCKModel {
     
     var recordName: String?
     var title: String
@@ -143,40 +95,6 @@ class TaskCKModel: Identifiable, Equatable, Hashable {
         self.build = true
         self.jointInvitedUsersRefs = []
         self.sharedInvitedUsersRefs = []
-    }
-    
-    init(
-        user: UserStoreModel,
-        title: String,
-        span: TaskSpan,
-        spanStartDate: Date,
-        trackBeforeStart: Bool,
-        target: Int,
-        build: Bool,
-        countCost: Double,
-        color: Int
-    ) {
-        self.recordName = nil
-        self.title = title
-        self.span = span
-        self.spanStartDate = spanStartDate
-        self.trackBeforeStart = trackBeforeStart
-        self.target = target
-        self.build = build
-        self.countCost = countCost
-        self.color = color
-        
-        self.creatorUserRef = user.recordName!
-        self.createdDate = Date()
-        self.jointUsersRefs = [user.recordName!]
-        self.sharedUsersRefs = []
-        self.jointInvitedUsersRefs = []
-        self.sharedInvitedUsersRefs = []
-        self.lastPeriodStartDate = Date.distantPast // TODO:: if trackBeforeStart, pick span before startDate, otherwise just startDate
-        self.entriesRefs = []
-        self.paymentsRefs = []
-        self.currentCount = 0
-        self.evaluationsRefs = []
     }
     
     init(

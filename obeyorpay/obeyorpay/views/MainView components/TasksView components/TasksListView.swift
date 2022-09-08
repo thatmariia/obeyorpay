@@ -1,63 +1,28 @@
 //
-//  TaskListView.swift
+//  TasksListView.swift
 //  obeyorpay
 //
-//  Created by Mariia Steeghs-Turchina on 04/09/2022.
+//  Created by Mariia Steeghs-Turchina on 08/09/2022.
 //
 
 import SwiftUI
 
+
 struct TasksListView: View {
     
-    var tasks: [TaskCKModel]
-    
-    @State var editing = false
-    
+    var tasks: [TaskStoreModel]
     
     var body: some View {
-        
-        ScrollView {
-            VStack {
-                ForEach(tasks, id: \.self) { task in
-                    HStack {
-                        TaskView(task: task)
-                        
-                        Button {
-                            // TODO:: decrement count
-                        } label: {
-                            Text("-")
-                        }
-                        
-                        Button {
-                            // TODO:: increment count
-                        } label: {
-                            Text("+")
-                        }
-                        
-                        Button {
-                            // TODO:: edit task
-                            editing = true
-                        } label: {
-                            Text("edit")
-                        }
-                        
-                    }
-                }
-            }
-            .popup(
-                isPresented: $editing
-            ) {
-                TaskEditingView(editing: $editing)
+        VStack {
+            ForEach(tasks) { task in
+                Text(task.title)
             }
         }
-        
     }
 }
 
-struct TasksListView_Previews: PreviewProvider {
-    static var previews: some View {
-        TasksListView(
-            tasks: []
-        )
-    }
-}
+//struct TasksListView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TasksListView()
+//    }
+//}

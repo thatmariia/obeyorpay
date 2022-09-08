@@ -73,7 +73,7 @@ struct AddTaskView: View {
                     showingCountCostNote = false
                     countCostNote = ""
                     
-                    let task = TaskCKModel(
+                    let task = TaskStoreModel(
                         user: signedInUser.user,
                         title: title,
                         span: span,
@@ -85,10 +85,21 @@ struct AddTaskView: View {
                         color: color
                     )
                     
-                    DispatchQueue.main.async {
+                    //DispatchQueue.main.async {
+                        //Task.init {
+                            //do {
+                    do {
+                                try taskSettings.addTask(signedInUser: self.signedInUser, task: task)
+                                self.mode.wrappedValue.dismiss()
+                    } catch let err {
+                        print(err.localizedDescription)
+                    }
+                            //} catch {}
+                        //}
                         // save the task
                         // if everything goes ok: self.mode.wrappedValue.dismiss()
-                    }
+                        
+                    //}
                 }
             } label: {
                 Text("save")

@@ -55,14 +55,13 @@ class CKUserManager: CKManager {
             throw err
         }
     }
-    
-    // TODO:: move to parent
+
     func changeUser(with recordName: String, to user: UserStoreModel) async throws -> UserStoreModel {
         let user = user.toCK()
         do {
             // fetch record with id
             var record = try await fetchRecord(with: CKRecord.ID(recordName: recordName))
-            // change username in the record
+            // make changes
             record = fromUserToCKRecord(from: user, to: record)
             // save changes
             let user = try await saveObject(of: record, fromCKRecordToObject: fromCKRecordToUser) as! UserCKModel

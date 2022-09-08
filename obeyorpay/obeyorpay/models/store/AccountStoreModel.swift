@@ -8,7 +8,34 @@
 import Foundation
 
 
-class AccountStoreModel{
+class AccountStoreModel: Identifiable, Equatable, Hashable {
+    
+    // conforms to Equatable
+    static func == (lhs: AccountStoreModel, rhs: AccountStoreModel) -> Bool {
+        return (lhs.recordName == rhs.recordName) &&
+        (lhs.personalTasks == rhs.personalTasks) &&
+        (lhs.jointTasks == rhs.jointTasks) &&
+        (lhs.sharedTasks == rhs.sharedTasks) &&
+        (lhs.payments == rhs.payments) &&
+        (lhs.entries == rhs.entries) &&
+        (lhs.entries == rhs.entries) &&
+        (lhs.evaluations == rhs.evaluations) &&
+        (lhs.jointInvitedTasks == rhs.jointInvitedTasks) &&
+        (lhs.sharedInvitedTasks == rhs.sharedInvitedTasks)
+    }
+    
+    // conforms to Hashable
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(recordName)
+        hasher.combine(personalTasks)
+        hasher.combine(jointTasks)
+        hasher.combine(sharedTasks)
+        hasher.combine(payments)
+        hasher.combine(entries)
+        hasher.combine(evaluations)
+        hasher.combine(jointInvitedTasks)
+        hasher.combine(sharedInvitedTasks)
+    }
     
     var recordName: String?
     var personalTasks: [TaskStoreModel]

@@ -18,7 +18,6 @@
 		B6774A0F28C4DECF00B94B7C /* TasksTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A0E28C4DECF00B94B7C /* TasksTypeView.swift */; };
 		B6774A1328C4E46900B94B7C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A1228C4E46900B94B7C /* MainView.swift */; };
 		B6774A1728C4EBCF00B94B7C /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A1628C4EBCF00B94B7C /* TaskView.swift */; };
-		B6774A1928C4EBDE00B94B7C /* TasksListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A1828C4EBDE00B94B7C /* TasksListView.swift */; };
 		B6774A1D28C4EC9200B94B7C /* TaskCKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A1C28C4EC9200B94B7C /* TaskCKModel.swift */; };
 		B6774A2428C5141A00B94B7C /* TaskEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A2328C5141A00B94B7C /* TaskEditingView.swift */; };
 		B6774A2A28C5183D00B94B7C /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A2928C5183D00B94B7C /* PopupView.swift */; };
@@ -38,6 +37,8 @@
 		B688DE6328C964B900500C7E /* CKPaymentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE6228C964B900500C7E /* CKPaymentManager.swift */; };
 		B688DE6528C97A6A00500C7E /* CKEvaluationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE6428C97A6A00500C7E /* CKEvaluationManager.swift */; };
 		B688DE6728C97F0D00500C7E /* CKEntryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE6628C97F0D00500C7E /* CKEntryManager.swift */; };
+		B688DE6928CA66DE00500C7E /* TasksListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE6828CA66DE00500C7E /* TasksListView.swift */; };
+		B688DE6B28CA7AF600500C7E /* StoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE6A28CA7AF600500C7E /* StoreModel.swift */; };
 		B6B4327E28C7F1CD002F8B2F /* CDDataUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4327D28C7F1CD002F8B2F /* CDDataUserModel.swift */; };
 		B6B4328128C81E31002F8B2F /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4328028C81E31002F8B2F /* LoadingView.swift */; };
 		B6B4328528C82DE3002F8B2F /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4328428C82DE3002F8B2F /* AddTaskView.swift */; };
@@ -71,7 +72,6 @@
 		B6774A0E28C4DECF00B94B7C /* TasksTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTypeView.swift; sourceTree = "<group>"; };
 		B6774A1228C4E46900B94B7C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		B6774A1628C4EBCF00B94B7C /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
-		B6774A1828C4EBDE00B94B7C /* TasksListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListView.swift; sourceTree = "<group>"; };
 		B6774A1C28C4EC9200B94B7C /* TaskCKModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCKModel.swift; sourceTree = "<group>"; };
 		B6774A2328C5141A00B94B7C /* TaskEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskEditingView.swift; sourceTree = "<group>"; };
 		B6774A2928C5183D00B94B7C /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
@@ -91,6 +91,8 @@
 		B688DE6228C964B900500C7E /* CKPaymentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKPaymentManager.swift; sourceTree = "<group>"; };
 		B688DE6428C97A6A00500C7E /* CKEvaluationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKEvaluationManager.swift; sourceTree = "<group>"; };
 		B688DE6628C97F0D00500C7E /* CKEntryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKEntryManager.swift; sourceTree = "<group>"; };
+		B688DE6828CA66DE00500C7E /* TasksListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListView.swift; sourceTree = "<group>"; };
+		B688DE6A28CA7AF600500C7E /* StoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreModel.swift; sourceTree = "<group>"; };
 		B6B4327D28C7F1CD002F8B2F /* CDDataUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDDataUserModel.swift; sourceTree = "<group>"; };
 		B6B4328028C81E31002F8B2F /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		B6B4328428C82DE3002F8B2F /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
@@ -200,8 +202,8 @@
 				B6B4328428C82DE3002F8B2F /* AddTaskView.swift */,
 				B6774A0E28C4DECF00B94B7C /* TasksTypeView.swift */,
 				B6774A2328C5141A00B94B7C /* TaskEditingView.swift */,
-				B6774A1828C4EBDE00B94B7C /* TasksListView.swift */,
 				B6774A2228C4F3C200B94B7C /* TaskListView components */,
+				B688DE6828CA66DE00500C7E /* TasksListView.swift */,
 			);
 			path = "TasksView components";
 			sourceTree = "<group>";
@@ -264,6 +266,7 @@
 		B6D0BD1828C6515900B0946D /* store */ = {
 			isa = PBXGroup;
 			children = (
+				B688DE6A28CA7AF600500C7E /* StoreModel.swift */,
 				B688DE5628C9487700500C7E /* AccountStoreModel.swift */,
 				B688DE6028C94C0F00500C7E /* UserStoreModel.swift */,
 				B688DE5828C94A3F00500C7E /* TaskStoreModel.swift */,
@@ -402,6 +405,7 @@
 				B688DE5328C8D1E400500C7E /* CKTaskManager.swift in Sources */,
 				B6774A1D28C4EC9200B94B7C /* TaskCKModel.swift in Sources */,
 				B6774A0D28C4DBBB00B94B7C /* TasksView.swift in Sources */,
+				B688DE6B28CA7AF600500C7E /* StoreModel.swift in Sources */,
 				B6D0BD3B28C79C3500B0946D /* SettingsEditingView.swift in Sources */,
 				B6D0BD3928C7943F00B0946D /* UsernameSettingsModel.swift in Sources */,
 				B688DE5728C9487700500C7E /* AccountStoreModel.swift in Sources */,
@@ -414,6 +418,7 @@
 				B6774A2A28C5183D00B94B7C /* PopupView.swift in Sources */,
 				B6D0BD3128C6D29B00B0946D /* CKUserManager.swift in Sources */,
 				B6774A4328C5468200B94B7C /* SignInView.swift in Sources */,
+				B688DE6928CA66DE00500C7E /* TasksListView.swift in Sources */,
 				B688DE5F28C94BD600500C7E /* PaymentStoreModel.swift in Sources */,
 				B6D0BD2428C6B91800B0946D /* PaymentCKModel.swift in Sources */,
 				B6D0BD2228C6B7FB00B0946D /* EvaluationCKModel.swift in Sources */,
@@ -426,7 +431,6 @@
 				B688DE5D28C94B5600500C7E /* EvaluationStoreModel.swift in Sources */,
 				B67749F828C4D43200B94B7C /* obeyorpayApp.swift in Sources */,
 				B688DE5128C839D500500C7E /* CorrectnessComment.swift in Sources */,
-				B6774A1928C4EBDE00B94B7C /* TasksListView.swift in Sources */,
 				B688DE5B28C94AE300500C7E /* EntryStoreModel.swift in Sources */,
 				B6774A4928C54D5200B94B7C /* AccountCKModel.swift in Sources */,
 				B688DE6328C964B900500C7E /* CKPaymentManager.swift in Sources */,

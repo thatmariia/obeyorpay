@@ -15,13 +15,14 @@ enum TaskTypes {
 
 struct TasksView: View {
     
-    @State var task_type = TaskTypes.personal
+    @State var taskType = TaskTypes.personal
+    @EnvironmentObject var signedInUser: SignedInUserModel
     
     var body: some View {
         
         VStack {
             HStack {
-                TasksTypeView(taskType: $task_type)
+                TasksTypeView(taskType: $taskType)
                 
                 Spacer()
                 
@@ -32,8 +33,20 @@ struct TasksView: View {
             
             // TODO:: pass tasks of the $task_type
             // TasksListView(tasks: tasksData.tasks)
+            TasksListView(tasks: getTypeTasks())
             
             Spacer()
+        }
+    }
+    
+    private func getTypeTasks() -> [TaskStoreModel] {
+        switch self.taskType {
+        case .personal:
+            return self.signedInUser.user.account.personalTasks
+        case .joint:
+            return self.signedInUser.user.account.jointTasks
+        case .shared:
+            return self.signedInUser.user.account.sharedTasks
         }
     }
 }

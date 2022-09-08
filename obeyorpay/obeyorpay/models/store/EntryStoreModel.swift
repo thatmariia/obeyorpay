@@ -8,7 +8,25 @@
 import Foundation
 
 
-class EntryStoreModel {
+class EntryStoreModel: Identifiable, Equatable, Hashable {
+    
+    // conforms to Equatable
+    static func == (lhs: EntryStoreModel, rhs: EntryStoreModel) -> Bool {
+        return (lhs.recordName == rhs.recordName) &&
+        (lhs.user == rhs.user) &&
+        (lhs.task == rhs.task) &&
+        (lhs.timestamp == rhs.timestamp) &&
+        (lhs.evaluation == rhs.evaluation)
+    }
+    
+    // conforms to Hashable
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(recordName)
+        hasher.combine(user)
+        hasher.combine(task)
+        hasher.combine(timestamp)
+        hasher.combine(evaluation)
+    }
     
     var recordName: String?
     var user: UserStoreModel

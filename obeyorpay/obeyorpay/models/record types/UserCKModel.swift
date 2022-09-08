@@ -19,23 +19,7 @@ enum UserCKKeys: String, CaseIterable {
 }
 
 
-class UserCKModel: Identifiable, Equatable, Hashable {
-    
-    // conforms to Equatable
-    static func == (lhs: UserCKModel, rhs: UserCKModel) -> Bool {
-        return (lhs.recordName == rhs.recordName) && (lhs.uid == rhs.uid) && (lhs.username == rhs.username) && (lhs.email == rhs.email) && (lhs.firstName == rhs.firstName) && (lhs.lastName == rhs.lastName) && (lhs.accountRef == rhs.accountRef)
-    }
-    
-    // conforms to Hashable
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(recordName)
-        hasher.combine(uid)
-        hasher.combine(username)
-        hasher.combine(email)
-        hasher.combine(firstName)
-        hasher.combine(lastName)
-        hasher.combine(accountRef)
-    }
+class UserCKModel {
     
     var recordName: String?
     var uid: String

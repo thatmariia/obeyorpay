@@ -56,14 +56,14 @@ struct SettingsEditingView: View {
     }
     
     fileprivate func attemptUsernameChange() {
-        DispatchQueue.main.async {
-            Task.init {
+        //DispatchQueue.main.async {
+        //    Task.init {
                 do {
-                    let usernameComment = try await usernameSettings.isCorrectUsername(currUsername: currUsername, newUsername: newUsername)
+                    let usernameComment = try usernameSettings.isCorrectUsername(currUsername: currUsername, newUsername: newUsername)
                     
                     if usernameComment.isCorrect {
                         if newUsername != currUsername {
-                            try await usernameSettings.updateUser(signedInUser: signedInUser, with: newUsername)
+                            try usernameSettings.updateUser(signedInUser: signedInUser, with: newUsername)
                         }
                         showingNote = false
                         displayNote = ""
@@ -73,8 +73,8 @@ struct SettingsEditingView: View {
                         displayNote = usernameComment.note!
                     }
                 } catch {}
-            }
-        }
+            //}
+        //}
     }
 }
 

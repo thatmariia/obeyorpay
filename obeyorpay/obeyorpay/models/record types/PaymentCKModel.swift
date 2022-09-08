@@ -15,22 +15,7 @@ enum PaymentCKKeys: String, CaseIterable {
     case amount = "amount"
 }
 
-class PaymentCKModel: Identifiable, Equatable, Hashable {
-    
-    // conforms to Equatable
-    static func == (lhs: PaymentCKModel, rhs: PaymentCKModel) -> Bool {
-        return (lhs.userRef == rhs.userRef) && (lhs.taskRef == rhs.taskRef) && (lhs.timestamp == rhs.timestamp) && (lhs.evaluationRef == rhs.evaluationRef) && (lhs.amount == rhs.amount)
-    }
-    
-    // conforms to Hashable
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(recordName)
-        hasher.combine(userRef)
-        hasher.combine(taskRef)
-        hasher.combine(timestamp)
-        hasher.combine(evaluationRef)
-        hasher.combine(amount)
-    }
+class PaymentCKModel {
     
     var recordName: String?
     var userRef: String

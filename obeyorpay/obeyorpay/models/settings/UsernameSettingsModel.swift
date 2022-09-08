@@ -34,20 +34,33 @@ class UsernameSettingModel {
     func getRandomUsername() -> String {
         return String((0..<self.usernameDefaultLength).map{ _ in self.usernameallowedCharacters.randomElement()! })
     }
-
-    func updateUser(signedInUser: SignedInUserModel, with newUsername: String) async throws {
-        self.updatedUser = signedInUser.user
-        self.updatedUser.username = newUsername
-        do {
-            self.updatedUser = try await userDB.changeUser(with: signedInUser.user.recordName!, to: self.updatedUser)
-        } catch { }
+    
+    func updateUser(signedInUser: SignedInUserModel, with newUsername: String) throws {
         DispatchQueue.main.async {
-            signedInUser.user = self.updatedUser
-            self.updatedUser = UserStoreModel() // reset
+            Task.init {
+                do {
+                    signedInUser.user = try await userDB.changeUser(with: signedInUser.user.recordName!, to: self.updatedUser)
+                } catch let err {
+                    throw err
+                }
+            }
         }
     }
+
+//    func updateUser(signedInUser: SignedInUserModel, with newUsername: String) async throws {
+//        self.updatedUser = signedInUser.user
+//        self.updatedUser.username = newUsername
+//        do {
+//            self.updatedUser = try await userDB.changeUser(with: signedInUser.user.recordName!, to: self.updatedUser)
+//        } catch { }
+//        // TODO:: how to update when fails??
+//        DispatchQueue.main.async {
+//            signedInUser.user = self.updatedUser
+//            self.updatedUser = UserStoreModel() // reset
+//        }
+//    }
     
-    func isCorrectUsername(currUsername: String, newUsername: String) async throws -> CorrectnessComment {
+    func isCorrectUsername(currUsername: String, newUsername: String) throws -> CorrectnessComment {
         // no change
         if currUsername == newUsername {
             return CorrectnessComment(isCorrect: true, note: nil)
@@ -71,11 +84,15 @@ class UsernameSettingModel {
         }
         
         // already exists
-        self.noUsersWithUsername = true
-        do {
-            let nrUsers = try await userDB.countUsers(with: newUsername)
-            self.noUsersWithUsername = nrUsers == 0
-        } catch { }
+        DispatchQueue.main.async {
+            Task.init {
+                self.noUsersWithUsername = true
+                do {
+                    let nrUsers = try await userDB.countUsers(with: newUsername)
+                    self.noUsersWithUsername = nrUsers == 0
+                } catch { }
+                }
+            }
         if !self.noUsersWithUsername {
             return CorrectnessComment(isCorrect: false, note: UsernameNotes.alreadyExists.rawValue)
         }

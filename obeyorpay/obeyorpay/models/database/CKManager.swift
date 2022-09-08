@@ -68,16 +68,27 @@ class CKManager {
     }
     
     func fetchObjects(with recordIDs: [CKRecord.ID], fromCKRecordToObject: (CKRecord) -> AnyObject?) async throws -> [AnyObject] {
-        do {
-            let results = try await publicDB.records(for: recordIDs)
-            let objects = try perRecordRetrieveObjects(
-                results: results.map{ $0.value },
-                fromCKRecordToObject: fromCKRecordToObject
-            )
-            return objects
-        } catch let err {
-            throw err
+        var objects: [AnyObject] = []
+        for recordID in recordIDs {
+            do {
+                let object = try await fetchObject(with: recordID.recordName, fromCKRecordToObject: fromCKRecordToObject)
+                objects.append(object)
+            } catch let err {
+                throw err
+            }
         }
+        return objects
+
+//        do {
+//            let results = try await publicDB.records(for: recordIDs)
+//            let objects = try perRecordRetrieveObjects(
+//                results: results.map{ $0.value },
+//                fromCKRecordToObject: fromCKRecordToObject
+//            )
+//            return objects
+//        } catch let err {
+//            throw err
+//        }
     }
     
     private func perRecordRetrieveObjects(results: [Result<CKRecord, Error>], fromCKRecordToObject: (CKRecord) -> AnyObject?) throws -> [AnyObject] {
@@ -133,7 +144,8 @@ class CKManager {
         } catch let err {
             throw err
         }
-    } 
+    }
+    
     
     
 }

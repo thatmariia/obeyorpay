@@ -8,7 +8,35 @@
 import Foundation
 
 
-class EvaluationStoreModel {
+class EvaluationStoreModel: Identifiable, Equatable, Hashable {
+    
+    // conforms to Equatable
+    static func == (lhs: EvaluationStoreModel, rhs: EvaluationStoreModel) -> Bool {
+        return (lhs.recordName == rhs.recordName) &&
+        (lhs.periodStartDate == rhs.periodStartDate) &&
+        (lhs.periodEndDate == rhs.periodEndDate) &&
+        (lhs.jointUsers == rhs.jointUsers) &&
+        (lhs.payments == rhs.payments) &&
+        (lhs.task == rhs.task) &&
+        (lhs.count == rhs.count) &&
+        (lhs.target == rhs.target) &&
+        (lhs.totalCost == rhs.totalCost) &&
+        (lhs.build == rhs.build)
+    }
+    
+    // conforms to Hashable
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(recordName)
+        hasher.combine(periodStartDate)
+        hasher.combine(periodEndDate)
+        hasher.combine(jointUsers)
+        hasher.combine(payments)
+        hasher.combine(task)
+        hasher.combine(count)
+        hasher.combine(target)
+        hasher.combine(totalCost)
+        hasher.combine(build)
+    }
     
     var recordName: String?
     var periodStartDate: Date

@@ -19,26 +19,7 @@ enum EvaluationCKKeys: String, CaseIterable {
     case build = "build"
 }
 
-class EvaluationCKModel: Identifiable, Equatable, Hashable {
-    
-    // conforms to Equatable
-    static func == (lhs: EvaluationCKModel, rhs: EvaluationCKModel) -> Bool {
-        return (lhs.recordName == rhs.recordName) && (lhs.periodStartDate == rhs.periodStartDate) && (lhs.periodEndDate == rhs.periodEndDate) && (lhs.jointUsersRefs == rhs.jointUsersRefs) && (lhs.paymentsRefs == rhs.paymentsRefs) && (lhs.taskRef == rhs.taskRef) && (lhs.count == rhs.count) && (lhs.target == rhs.count) && (lhs.totalCost == rhs.totalCost) && (lhs.build == rhs.build)
-    }
-    
-    // conforms to Hashable
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(recordName)
-        hasher.combine(periodStartDate)
-        hasher.combine(periodEndDate)
-        hasher.combine(jointUsersRefs)
-        hasher.combine(paymentsRefs)
-        hasher.combine(taskRef)
-        hasher.combine(count)
-        hasher.combine(target)
-        hasher.combine(totalCost)
-        hasher.combine(build)
-    }
+class EvaluationCKModel {
     
     var recordName: String?
     var periodStartDate: Date
