@@ -56,7 +56,7 @@ class CKAccountManager: CKManager {
         let account = account.toCK()
         do {
             let account = try await addObject(of: .account, object: account, fromObjectToCKRecord: fromAccountToCKRecord, fromCKRecordToObject: fromCKRecordToAccount) as! AccountCKModel
-            return account.toStore()
+            return await account.toStore()
         } catch let err {
             throw err
         }
@@ -65,7 +65,7 @@ class CKAccountManager: CKManager {
     func fetchAccount(with recordName: String) async throws -> AccountStoreModel {
         do {
             let account = try await fetchObject(with: recordName, fromCKRecordToObject: fromCKRecordToAccount) as! AccountCKModel
-            return account.toStore()
+            return await account.toStore()
         } catch let err {
             throw err
         }
@@ -74,7 +74,7 @@ class CKAccountManager: CKManager {
     func fetchAccounts(with recordNames: [String]) async throws -> [AccountStoreModel] {
         do {
             let accounts = try await fetchObjects(with: recordNames.map { CKRecord.ID(recordName: $0) }, fromCKRecordToObject: fromCKRecordToAccount) as! [AccountCKModel]
-            return accounts.map { $0.toStore() }
+            return await accounts.asyncMap { await $0.toStore() }
         } catch let err {
             throw err
         }

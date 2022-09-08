@@ -44,21 +44,21 @@ struct AddTaskView: View {
             Button {
                 var canSave = true
                 
-                let titleComment = addTaskSettings.isTitleCorrect(title: title)
+                let titleComment = taskSettings.isTitleCorrect(title: title)
                 if !titleComment.isCorrect {
                     canSave = false
                     showingTitleNote = true
                     titleNote = titleComment.note!
                 }
                 
-                let targetComment = addTaskSettings.isTargetCorrect(target: target)
+                let targetComment = taskSettings.isTargetCorrect(target: target)
                 if !targetComment.isCorrect {
                     canSave = false
                     showingTargetNote = true
                     targetNote = targetComment.note!
                 }
                 
-                let countCostComment = addTaskSettings.isCostCorrect(countCost: countCost)
+                let countCostComment = taskSettings.isCostCorrect(countCost: countCost)
                 if !countCostComment.isCorrect {
                     canSave = false
                     showingCountCostNote = true

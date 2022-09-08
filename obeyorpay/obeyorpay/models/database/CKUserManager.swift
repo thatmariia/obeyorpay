@@ -50,7 +50,7 @@ class CKUserManager: CKManager {
         let user = user.toCK()
         do {
             let user = try await addObject(of: .user, object: user, fromObjectToCKRecord: fromUserToCKRecord, fromCKRecordToObject: fromCKRecordToUser) as! UserCKModel
-            return user.toStore()
+            return await user.toStore()
         } catch let err {
             throw err
         }
@@ -66,7 +66,7 @@ class CKUserManager: CKManager {
             record = fromUserToCKRecord(from: user, to: record)
             // save changes
             let user = try await saveObject(of: record, fromCKRecordToObject: fromCKRecordToUser) as! UserCKModel
-            return user.toStore()
+            return await user.toStore()
         } catch let err {
             throw err
         }
@@ -92,7 +92,7 @@ class CKUserManager: CKManager {
                 throw CKError.noRecords
             }
             let user = users.first!
-            return user.toStore()
+            return await user.toStore()
         } catch let err {
             throw err
         }
@@ -101,7 +101,7 @@ class CKUserManager: CKManager {
     func fetchUser(with recordName: String) async throws -> UserStoreModel {
         do {
             let user = try await fetchObject(with: recordName, fromCKRecordToObject: fromCKRecordToUser) as! UserCKModel
-            return user.toStore()
+            return await user.toStore()
         } catch let err {
             throw err
         }
@@ -110,7 +110,7 @@ class CKUserManager: CKManager {
     func fetchUsers(with recordNames: [String]) async throws -> [UserStoreModel] {
         do {
             let users = try await fetchObjects(with: recordNames.map { CKRecord.ID(recordName: $0) }, fromCKRecordToObject: fromCKRecordToUser) as! [UserCKModel]
-            return users.map { $0.toStore() }
+            return await users.asyncMap { await $0.toStore() }
         } catch let err {
             throw err
         }

@@ -7,20 +7,20 @@
 
 import Foundation
 
-enum AddTaskTitleComment: String {
+enum TaskTitleComment: String {
     case minLength = "Task title should contain at least 1 charatcer"
 }
 
-enum AddTaskTargetComment: String {
+enum TaskTargetComment: String {
     case empty = "You cannot leave this area blank"
 }
 
-enum AddTaskCostComment: String {
+enum TaskCostComment: String {
     case empty = "You cannot leave this area blank"
     case notNumber = "Please enter a valid number"
 }
 
-class AddTaskSettingsModel {
+class TaskSettingsModel {
     
     // title
     var titleMinLength = 1
@@ -29,7 +29,7 @@ class AddTaskSettingsModel {
     func isTitleCorrect(title: String) -> CorrectnessComment {
         // min length - not met
         if title.count < self.titleMinLength {
-            return CorrectnessComment(isCorrect: false, note: AddTaskTitleComment.minLength.rawValue)
+            return CorrectnessComment(isCorrect: false, note: TaskTitleComment.minLength.rawValue)
         }
         // all good
         return CorrectnessComment(isCorrect: true, note: "")
@@ -38,7 +38,7 @@ class AddTaskSettingsModel {
     func isTargetCorrect(target: String) -> CorrectnessComment {
         // empty string
         if target.count == 0 {
-            return CorrectnessComment(isCorrect: false, note: AddTaskTargetComment.empty.rawValue)
+            return CorrectnessComment(isCorrect: false, note: TaskTargetComment.empty.rawValue)
         }
         // all good
         return CorrectnessComment(isCorrect: true, note: "")
@@ -47,13 +47,13 @@ class AddTaskSettingsModel {
     func isCostCorrect(countCost: String) -> CorrectnessComment {
         // empty string
         if countCost.count == 0 {
-            return CorrectnessComment(isCorrect: false, note: AddTaskCostComment.empty.rawValue)
+            return CorrectnessComment(isCorrect: false, note: TaskCostComment.empty.rawValue)
         }
         
         // not a number
         let number = Double(countCost.replacingOccurrences(of: ",", with: "."))
         if number == nil {
-            return CorrectnessComment(isCorrect: false, note: AddTaskCostComment.notNumber.rawValue)
+            return CorrectnessComment(isCorrect: false, note: TaskCostComment.notNumber.rawValue)
         }
         
         // all good

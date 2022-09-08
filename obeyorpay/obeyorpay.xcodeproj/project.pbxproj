@@ -25,7 +25,7 @@
 		B6774A4328C5468200B94B7C /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A4228C5468200B94B7C /* SignInView.swift */; };
 		B6774A4928C54D5200B94B7C /* AccountCKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A4828C54D5200B94B7C /* AccountCKModel.swift */; };
 		B6774A4B28C61A1D00B94B7C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6774A4A28C61A1D00B94B7C /* SettingsView.swift */; };
-		B688DE4D28C838A100500C7E /* AddTaskSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE4C28C838A100500C7E /* AddTaskSettingsModel.swift */; };
+		B688DE4D28C838A100500C7E /* TaskSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE4C28C838A100500C7E /* TaskSettingsModel.swift */; };
 		B688DE5128C839D500500C7E /* CorrectnessComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE5028C839D500500C7E /* CorrectnessComment.swift */; };
 		B688DE5328C8D1E400500C7E /* CKTaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE5228C8D1E300500C7E /* CKTaskManager.swift */; };
 		B688DE5528C8D6E000500C7E /* misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE5428C8D6E000500C7E /* misc.swift */; };
@@ -78,7 +78,7 @@
 		B6774A4228C5468200B94B7C /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		B6774A4828C54D5200B94B7C /* AccountCKModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCKModel.swift; sourceTree = "<group>"; };
 		B6774A4A28C61A1D00B94B7C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		B688DE4C28C838A100500C7E /* AddTaskSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskSettingsModel.swift; sourceTree = "<group>"; };
+		B688DE4C28C838A100500C7E /* TaskSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSettingsModel.swift; sourceTree = "<group>"; };
 		B688DE5028C839D500500C7E /* CorrectnessComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrectnessComment.swift; sourceTree = "<group>"; };
 		B688DE5228C8D1E300500C7E /* CKTaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKTaskManager.swift; sourceTree = "<group>"; };
 		B688DE5428C8D6E000500C7E /* misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = misc.swift; sourceTree = "<group>"; };
@@ -231,7 +231,7 @@
 			children = (
 				B6D0BD3828C7943F00B0946D /* UsernameSettingsModel.swift */,
 				B688DE5028C839D500500C7E /* CorrectnessComment.swift */,
-				B688DE4C28C838A100500C7E /* AddTaskSettingsModel.swift */,
+				B688DE4C28C838A100500C7E /* TaskSettingsModel.swift */,
 			);
 			path = settings;
 			sourceTree = "<group>";
@@ -433,7 +433,7 @@
 				B6D0BD2028C6B54900B0946D /* EntryCKModel.swift in Sources */,
 				B6D0BD3528C7036400B0946D /* SignInAppleModel.swift in Sources */,
 				B688DE6128C94C0F00500C7E /* UserStoreModel.swift in Sources */,
-				B688DE4D28C838A100500C7E /* AddTaskSettingsModel.swift in Sources */,
+				B688DE4D28C838A100500C7E /* TaskSettingsModel.swift in Sources */,
 				B6774A4B28C61A1D00B94B7C /* SettingsView.swift in Sources */,
 				B6B4328928C82EF6002F8B2F /* SpanButtonView.swift in Sources */,
 				B6D0BD3E28C7E3AE00B0946D /* AddTaskButtonView.swift in Sources */,

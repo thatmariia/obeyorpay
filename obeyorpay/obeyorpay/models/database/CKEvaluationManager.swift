@@ -58,7 +58,7 @@ class CKEvaluationManager: CKManager {
     func fetchEvaluation(with recordName: String) async throws -> EvaluationStoreModel {
         do {
             let evaluation = try await fetchObject(with: recordName, fromCKRecordToObject: fromCKRecordToEvaluation) as! EvaluationCKModel
-            return evaluation.toStore()
+            return await evaluation.toStore()
         } catch let err {
             throw err
         }
@@ -67,7 +67,7 @@ class CKEvaluationManager: CKManager {
     func fetchEvaluations(with recordNames: [String]) async throws -> [EvaluationStoreModel] {
         do {
             let evaluations = try await fetchObjects(with: recordNames.map { CKRecord.ID(recordName: $0) }, fromCKRecordToObject: fromCKRecordToEvaluation) as! [EvaluationCKModel]
-            return evaluations.map { $0.toStore() }
+            return await evaluations.asyncMap { await $0.toStore() }
         } catch let err {
             throw err
         }

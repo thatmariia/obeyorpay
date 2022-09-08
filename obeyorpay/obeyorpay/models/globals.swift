@@ -29,4 +29,4 @@ let paymentDB = CKPaymentManager()
 
 // MARK: - settings
 let usernameSettings = UsernameSettingModel()
-let addTaskSettings = AddTaskSettingsModel()
+let taskSettings = TaskSettingsModel()
