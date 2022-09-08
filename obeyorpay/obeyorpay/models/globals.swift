@@ -21,6 +21,11 @@ let userCD = CDDataUserModel()
 
 // MARK: - database models
 let userDB = CKUserManager()
+let accountDB = CKAccountManager()
+let evaluationDB = CKEvaluationManager()
+let entryDB = CKEntryManager()
+let taskDB = CKTaskManager()
+let paymentDB = CKPaymentManager()
 
 // MARK: - settings
 let usernameSettings = UsernameSettingModel()

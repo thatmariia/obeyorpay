@@ -146,7 +146,7 @@ class TaskCKModel: Identifiable, Equatable, Hashable {
     }
     
     init(
-        user: UserCKModel,
+        user: UserStoreModel,
         title: String,
         span: TaskSpan,
         spanStartDate: Date,
@@ -221,5 +221,10 @@ class TaskCKModel: Identifiable, Equatable, Hashable {
         self.build = build
         self.jointInvitedUsersRefs = jointInvitedUsersRefs
         self.sharedInvitedUsersRefs = sharedInvitedUsersRefs
+    }
+    
+    func toStore() -> TaskStoreModel {
+        // TODO:: implement
+        return TaskStoreModel()
     }
 }

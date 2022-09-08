@@ -9,12 +9,15 @@ import Foundation
 
 
 class EntryStoreModel {
+    
+    var recordName: String?
     var user: UserStoreModel
     var task: TaskStoreModel
     var timestamp: Date
     var evaluation: EvaluationStoreModel
     
     init() {
+        self.recordName = nil
         self.user = UserStoreModel()
         self.task = TaskStoreModel()
         self.timestamp = Date()

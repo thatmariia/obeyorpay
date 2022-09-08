@@ -10,9 +10,9 @@ import Foundation
 enum EvaluationCKKeys: String, CaseIterable {
     case periodStartDate = "periodStartDate"
     case periodEndDate = "periodEndDate"
-    case jointUsers = "jointUsers"
-    case payments = "payments"
-    case task = "task"
+    case jointUsersRefs = "jointUsers"
+    case paymentsRefs = "payments"
+    case taskRef = "task"
     case count = "count"
     case target = "target"
     case totalCost = "totalCost"
@@ -23,41 +23,73 @@ class EvaluationCKModel: Identifiable, Equatable, Hashable {
     
     // conforms to Equatable
     static func == (lhs: EvaluationCKModel, rhs: EvaluationCKModel) -> Bool {
-        return (lhs.periodStartDate == rhs.periodStartDate) && (lhs.periodEndDate == rhs.periodEndDate) && (lhs.jointUsers == rhs.jointUsers) && (lhs.payments == rhs.payments) && (lhs.task == rhs.task) && (lhs.count == rhs.count) && (lhs.target == rhs.count) && (lhs.totalCost == rhs.totalCost) && (lhs.build == rhs.build)
+        return (lhs.recordName == rhs.recordName) && (lhs.periodStartDate == rhs.periodStartDate) && (lhs.periodEndDate == rhs.periodEndDate) && (lhs.jointUsersRefs == rhs.jointUsersRefs) && (lhs.paymentsRefs == rhs.paymentsRefs) && (lhs.taskRef == rhs.taskRef) && (lhs.count == rhs.count) && (lhs.target == rhs.count) && (lhs.totalCost == rhs.totalCost) && (lhs.build == rhs.build)
     }
     
     // conforms to Hashable
     func hash(into hasher: inout Hasher) {
+        hasher.combine(recordName)
         hasher.combine(periodStartDate)
         hasher.combine(periodEndDate)
-        hasher.combine(jointUsers)
-        hasher.combine(payments)
-        hasher.combine(task)
+        hasher.combine(jointUsersRefs)
+        hasher.combine(paymentsRefs)
+        hasher.combine(taskRef)
         hasher.combine(count)
         hasher.combine(target)
         hasher.combine(totalCost)
         hasher.combine(build)
     }
     
+    var recordName: String?
     var periodStartDate: Date
     var periodEndDate: Date
-    var jointUsers: [UserCKModel]
-    var payments: [PaymentModel]
-    var task: TaskCKModel
+    var jointUsersRefs: [String]
+    var paymentsRefs: [String]
+    var taskRef: String
     var count: Int
     var target: Int
     var totalCost: Double
     var build: Bool
     
     init() {
-        self.periodStartDate = Date.now
-        self.periodEndDate = Date.now
-        self.jointUsers = []
-        self.payments = []
-        self.task = TaskCKModel()
+        self.recordName = nil
+        self.periodStartDate = Date()
+        self.periodEndDate = Date()
+        self.jointUsersRefs = []
+        self.paymentsRefs = []
+        self.taskRef = ""
         self.count = 0
         self.target = 0
         self.totalCost = 0
         self.build = true
+    }
+    
+    init(
+        recordName: String,
+        periodStartDate: Date,
+        periodEndDate: Date,
+        jointUsersRefs: [String],
+        paymentsRefs: [String],
+        taskRef: String,
+        count: Int,
+        target: Int,
+        totalCost: Double,
+        build: Bool
+    ) {
+        self.recordName = nil
+        self.periodStartDate = Date()
+        self.periodEndDate = Date()
+        self.jointUsersRefs = []
+        self.paymentsRefs = []
+        self.taskRef = ""
+        self.count = 0
+        self.target = 0
+        self.totalCost = 0
+        self.build = true
+    }
+    
+    func toStore() -> EvaluationStoreModel {
+        // TODO:: implement
+        return EvaluationStoreModel()
     }
 }

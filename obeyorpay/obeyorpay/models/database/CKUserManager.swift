@@ -46,25 +46,27 @@ class CKUserManager: CKManager {
     
     // MARK: - database actions
     
-    func addUser(user: UserCKModel) async throws -> UserCKModel {
-        
+    func addUser(user: UserStoreModel) async throws -> UserStoreModel {
+        let user = user.toCK()
         do {
             let user = try await addObject(of: .user, object: user, fromObjectToCKRecord: fromUserToCKRecord, fromCKRecordToObject: fromCKRecordToUser) as! UserCKModel
-            return user
+            return user.toStore()
         } catch let err {
             throw err
         }
     }
     
-    func changeUser(with recordName: String, to user: UserCKModel) async throws -> UserCKModel {
+    // TODO:: move to parent
+    func changeUser(with recordName: String, to user: UserStoreModel) async throws -> UserStoreModel {
+        let user = user.toCK()
         do {
             // fetch record with id
             var record = try await fetchRecord(with: CKRecord.ID(recordName: recordName))
             // change username in the record
             record = fromUserToCKRecord(from: user, to: record)
             // save changes
-            let user = try await saveObject(of: record, fromCKRecordToObject: fromCKRecordToUser)
-            return user as! UserCKModel
+            let user = try await saveObject(of: record, fromCKRecordToObject: fromCKRecordToUser) as! UserCKModel
+            return user.toStore()
         } catch let err {
             throw err
         }
@@ -81,7 +83,7 @@ class CKUserManager: CKManager {
         }
     }
     
-    func queryUser(withKey key: UserCKKeys, _ operation: CKQueryOperation, to value: String) async throws -> UserCKModel {
+    func queryUser(withKey key: UserCKKeys, _ operation: CKQueryOperation, to value: String) async throws -> UserStoreModel {
         let predicate = NSPredicate(format: "%K \(operation.rawValue) %@", key.rawValue, value)
         
         do {
@@ -89,18 +91,19 @@ class CKUserManager: CKManager {
             if users.count == 0 {
                 throw CKError.noRecords
             }
-            return users.first!
+            let user = users.first!
+            return user.toStore()
         } catch let err {
             throw err
         }
     }
     
-    func fetchUser(with recordName: String) async throws -> UserCKModel {
+    func fetchUser(with recordName: String) async throws -> UserStoreModel {
         do {
-            let user = try await fetchObject(with: recordName, fromCKRecordToObject: fromCKRecordToUser)
-            return user as! UserCKModel
+            let user = try await fetchObject(with: recordName, fromCKRecordToObject: fromCKRecordToUser) as! UserCKModel
+            return user.toStore()
         } catch let err {
             throw err
         }
     }
-}
+} 

@@ -25,7 +25,7 @@ class UsernameSettingModel {
     
     // supporting
     private var noUsersWithUsername = true
-    private var updatedUser = UserCKModel()
+    private var updatedUser = UserStoreModel()
     
     func getDefaultUsername() -> String {
         return getRandomUsername()
@@ -36,14 +36,14 @@ class UsernameSettingModel {
     }
 
     func updateUser(signedInUser: SignedInUserModel, with newUsername: String) async throws {
-        self.updatedUser = signedInUser.user_old
+        self.updatedUser = signedInUser.user
         self.updatedUser.username = newUsername
         do {
-            self.updatedUser = try await userDB.changeUser(with: signedInUser.user_old.recordName!, to: self.updatedUser)
+            self.updatedUser = try await userDB.changeUser(with: signedInUser.user.recordName!, to: self.updatedUser)
         } catch { }
         DispatchQueue.main.async {
-            signedInUser.user_old = self.updatedUser
-            self.updatedUser = UserCKModel()
+            signedInUser.user = self.updatedUser
+            self.updatedUser = UserStoreModel() // reset
         }
     }
     

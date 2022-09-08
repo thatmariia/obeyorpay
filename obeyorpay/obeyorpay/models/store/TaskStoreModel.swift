@@ -9,6 +9,8 @@ import Foundation
 
 
 class TaskStoreModel {
+    
+    var recordName: String?
     var title: String
     var creatorUser: UserStoreModel
     var createdDate: Date
@@ -30,24 +32,25 @@ class TaskStoreModel {
     var sharedInvitedUsers: [UserStoreModel]
     
     init() {
-            self.title = ""
-            self.creatorUser = UserStoreModel()
-            self.createdDate = Date()
-            self.jointUsers = []
-            self.sharedUsers = []
-            self.span = TaskSpan.day
-            self.spanStartDate = Date()
-            self.lastPeriodStartDate = Date.distantPast
-            self.countCost = 0
-            self.entries = []
-            self.trackBeforeStart = true
-            self.payments = []
-            self.target = 0
-            self.currentCount = 0
-            self.evaluations = []
-            self.color = 0
-            self.build = false
-            self.jointInvitedUsers = []
-            self.sharedInvitedUsers = []
-        }
+        self.recordName = nil
+        self.title = ""
+        self.creatorUser = UserStoreModel()
+        self.createdDate = Date()
+        self.jointUsers = []
+        self.sharedUsers = []
+        self.span = TaskSpan.day
+        self.spanStartDate = Date()
+        self.lastPeriodStartDate = Date.distantPast
+        self.countCost = 0
+        self.entries = []
+        self.trackBeforeStart = false
+        self.payments = []
+        self.target = 0
+        self.currentCount = 0
+        self.evaluations = []
+        self.color = 0
+        self.build = true
+        self.jointInvitedUsers = []
+        self.sharedInvitedUsers = []
+    }
 }

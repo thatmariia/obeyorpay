@@ -35,15 +35,18 @@
 		B688DE5D28C94B5600500C7E /* EvaluationStoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE5C28C94B5600500C7E /* EvaluationStoreModel.swift */; };
 		B688DE5F28C94BD600500C7E /* PaymentStoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE5E28C94BD600500C7E /* PaymentStoreModel.swift */; };
 		B688DE6128C94C0F00500C7E /* UserStoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE6028C94C0F00500C7E /* UserStoreModel.swift */; };
+		B688DE6328C964B900500C7E /* CKPaymentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE6228C964B900500C7E /* CKPaymentManager.swift */; };
+		B688DE6528C97A6A00500C7E /* CKEvaluationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE6428C97A6A00500C7E /* CKEvaluationManager.swift */; };
+		B688DE6728C97F0D00500C7E /* CKEntryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE6628C97F0D00500C7E /* CKEntryManager.swift */; };
 		B6B4327E28C7F1CD002F8B2F /* CDDataUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4327D28C7F1CD002F8B2F /* CDDataUserModel.swift */; };
 		B6B4328128C81E31002F8B2F /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4328028C81E31002F8B2F /* LoadingView.swift */; };
 		B6B4328528C82DE3002F8B2F /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4328428C82DE3002F8B2F /* AddTaskView.swift */; };
 		B6B4328928C82EF6002F8B2F /* SpanButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4328828C82EF6002F8B2F /* SpanButtonView.swift */; };
 		B6D0BD1B28C6542200B0946D /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D0BD1A28C6542200B0946D /* CloudKit.framework */; };
 		B6D0BD1E28C6AE1300B0946D /* UserCKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD1D28C6AE1300B0946D /* UserCKModel.swift */; };
-		B6D0BD2028C6B54900B0946D /* EntryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD1F28C6B54900B0946D /* EntryModel.swift */; };
+		B6D0BD2028C6B54900B0946D /* EntryCKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD1F28C6B54900B0946D /* EntryCKModel.swift */; };
 		B6D0BD2228C6B7FB00B0946D /* EvaluationCKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD2128C6B7FB00B0946D /* EvaluationCKModel.swift */; };
-		B6D0BD2428C6B91800B0946D /* PaymentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD2328C6B91800B0946D /* PaymentModel.swift */; };
+		B6D0BD2428C6B91800B0946D /* PaymentCKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD2328C6B91800B0946D /* PaymentCKModel.swift */; };
 		B6D0BD2628C6C09E00B0946D /* SignedInUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD2528C6C09E00B0946D /* SignedInUserModel.swift */; };
 		B6D0BD2A28C6C50300B0946D /* CKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD2928C6C50300B0946D /* CKManager.swift */; };
 		B6D0BD2F28C6D1E700B0946D /* CKAccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD2E28C6D1E700B0946D /* CKAccountManager.swift */; };
@@ -85,6 +88,9 @@
 		B688DE5C28C94B5600500C7E /* EvaluationStoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationStoreModel.swift; sourceTree = "<group>"; };
 		B688DE5E28C94BD600500C7E /* PaymentStoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentStoreModel.swift; sourceTree = "<group>"; };
 		B688DE6028C94C0F00500C7E /* UserStoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStoreModel.swift; sourceTree = "<group>"; };
+		B688DE6228C964B900500C7E /* CKPaymentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKPaymentManager.swift; sourceTree = "<group>"; };
+		B688DE6428C97A6A00500C7E /* CKEvaluationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKEvaluationManager.swift; sourceTree = "<group>"; };
+		B688DE6628C97F0D00500C7E /* CKEntryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKEntryManager.swift; sourceTree = "<group>"; };
 		B6B4327D28C7F1CD002F8B2F /* CDDataUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDDataUserModel.swift; sourceTree = "<group>"; };
 		B6B4328028C81E31002F8B2F /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		B6B4328428C82DE3002F8B2F /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
@@ -92,9 +98,9 @@
 		B6D0BD1628C64EBC00B0946D /* obeyorpay.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = obeyorpay.entitlements; sourceTree = "<group>"; };
 		B6D0BD1A28C6542200B0946D /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		B6D0BD1D28C6AE1300B0946D /* UserCKModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCKModel.swift; sourceTree = "<group>"; };
-		B6D0BD1F28C6B54900B0946D /* EntryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryModel.swift; sourceTree = "<group>"; };
+		B6D0BD1F28C6B54900B0946D /* EntryCKModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryCKModel.swift; sourceTree = "<group>"; };
 		B6D0BD2128C6B7FB00B0946D /* EvaluationCKModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationCKModel.swift; sourceTree = "<group>"; };
-		B6D0BD2328C6B91800B0946D /* PaymentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentModel.swift; sourceTree = "<group>"; };
+		B6D0BD2328C6B91800B0946D /* PaymentCKModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCKModel.swift; sourceTree = "<group>"; };
 		B6D0BD2528C6C09E00B0946D /* SignedInUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignedInUserModel.swift; sourceTree = "<group>"; };
 		B6D0BD2928C6C50300B0946D /* CKManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKManager.swift; sourceTree = "<group>"; };
 		B6D0BD2E28C6D1E700B0946D /* CKAccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKAccountManager.swift; sourceTree = "<group>"; };
@@ -281,9 +287,9 @@
 			children = (
 				B6D0BD1D28C6AE1300B0946D /* UserCKModel.swift */,
 				B6774A4828C54D5200B94B7C /* AccountCKModel.swift */,
-				B6D0BD1F28C6B54900B0946D /* EntryModel.swift */,
+				B6D0BD1F28C6B54900B0946D /* EntryCKModel.swift */,
 				B6D0BD2128C6B7FB00B0946D /* EvaluationCKModel.swift */,
-				B6D0BD2328C6B91800B0946D /* PaymentModel.swift */,
+				B6D0BD2328C6B91800B0946D /* PaymentCKModel.swift */,
 				B6774A1C28C4EC9200B94B7C /* TaskCKModel.swift */,
 			);
 			path = "record types";
@@ -295,7 +301,10 @@
 				B6D0BD2928C6C50300B0946D /* CKManager.swift */,
 				B6D0BD2E28C6D1E700B0946D /* CKAccountManager.swift */,
 				B6D0BD3028C6D29B00B0946D /* CKUserManager.swift */,
+				B688DE6428C97A6A00500C7E /* CKEvaluationManager.swift */,
+				B688DE6628C97F0D00500C7E /* CKEntryManager.swift */,
 				B688DE5228C8D1E300500C7E /* CKTaskManager.swift */,
+				B688DE6228C964B900500C7E /* CKPaymentManager.swift */,
 			);
 			path = database;
 			sourceTree = "<group>";
@@ -398,6 +407,7 @@
 				B688DE5728C9487700500C7E /* AccountStoreModel.swift in Sources */,
 				B6B4328528C82DE3002F8B2F /* AddTaskView.swift in Sources */,
 				B6774A0428C4D43400B94B7C /* obeyorpay.xcdatamodeld in Sources */,
+				B688DE6528C97A6A00500C7E /* CKEvaluationManager.swift in Sources */,
 				B6B4328128C81E31002F8B2F /* LoadingView.swift in Sources */,
 				B6774A2428C5141A00B94B7C /* TaskEditingView.swift in Sources */,
 				B688DE5528C8D6E000500C7E /* misc.swift in Sources */,
@@ -405,8 +415,9 @@
 				B6D0BD3128C6D29B00B0946D /* CKUserManager.swift in Sources */,
 				B6774A4328C5468200B94B7C /* SignInView.swift in Sources */,
 				B688DE5F28C94BD600500C7E /* PaymentStoreModel.swift in Sources */,
-				B6D0BD2428C6B91800B0946D /* PaymentModel.swift in Sources */,
+				B6D0BD2428C6B91800B0946D /* PaymentCKModel.swift in Sources */,
 				B6D0BD2228C6B7FB00B0946D /* EvaluationCKModel.swift in Sources */,
+				B688DE6728C97F0D00500C7E /* CKEntryManager.swift in Sources */,
 				B6774A0128C4D43400B94B7C /* Persistence.swift in Sources */,
 				B67749FA28C4D43200B94B7C /* ContentView.swift in Sources */,
 				B688DE5928C94A3F00500C7E /* TaskStoreModel.swift in Sources */,
@@ -418,7 +429,8 @@
 				B6774A1928C4EBDE00B94B7C /* TasksListView.swift in Sources */,
 				B688DE5B28C94AE300500C7E /* EntryStoreModel.swift in Sources */,
 				B6774A4928C54D5200B94B7C /* AccountCKModel.swift in Sources */,
-				B6D0BD2028C6B54900B0946D /* EntryModel.swift in Sources */,
+				B688DE6328C964B900500C7E /* CKPaymentManager.swift in Sources */,
+				B6D0BD2028C6B54900B0946D /* EntryCKModel.swift in Sources */,
 				B6D0BD3528C7036400B0946D /* SignInAppleModel.swift in Sources */,
 				B688DE6128C94C0F00500C7E /* UserStoreModel.swift in Sources */,
 				B688DE4D28C838A100500C7E /* AddTaskSettingsModel.swift in Sources */,

@@ -56,16 +56,6 @@ class UserCKModel: Identifiable, Equatable, Hashable {
         self.accountRef = accountRef
     }
     
-    init(uid: String, username: String, email: String, firstName: String, lastName: String) {
-        self.recordName = nil
-        self.uid = uid
-        self.username = username
-        self.email = email
-        self.firstName = firstName
-        self.lastName = lastName
-        self.accountRef = ""
-    }
-    
     init() {
         self.recordName = nil
         self.uid = ""
@@ -74,5 +64,24 @@ class UserCKModel: Identifiable, Equatable, Hashable {
         self.firstName = ""
         self.lastName = ""
         self.accountRef = ""
+    }
+    
+    func toStore() -> UserStoreModel {
+//        do {
+        let account = AccountStoreModel()
+        account.recordName = accountRef
+            let user = UserStoreModel(
+                recordName: recordName ?? "",
+                uid: uid,
+                username: username,
+                email: email,
+                firstName: firstName,
+                lastName: lastName,
+                account: account
+            )
+            return user
+//        } catch let err {
+//
+//        }
     }
 }

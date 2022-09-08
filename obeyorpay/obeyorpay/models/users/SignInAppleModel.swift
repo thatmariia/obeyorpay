@@ -39,16 +39,19 @@ class SignInAppleModel {
     }
     
     private func registerNewAccount(credential: ASAuthorizationAppleIDCredential, signedInUser: SignedInUserModel) async throws {
-        
-        var user = UserCKModel(
-            uid: credential.user,
-            username: usernameSettings.getDefaultUsername(),
-            email: credential.email ?? "email N/A",
-            firstName: credential.fullName?.givenName ?? "name N/A",
-            lastName: credential.fullName?.familyName ?? "lastname N/A"
-        )
         do {
-            user = try await userDB.addUser(user: user)
+            //let account = AccountStoreModel()
+            let account = try await accountDB.addAccount(account: AccountStoreModel())
+            let user = try await userDB.addUser(
+                user: UserStoreModel(
+                    uid: credential.user,
+                    username: usernameSettings.getDefaultUsername(),
+                    email: credential.email ?? "email N/A",
+                    firstName: credential.fullName?.givenName ?? "name N/A",
+                    lastName: credential.fullName?.familyName ?? "lastname N/A",
+                    account: account
+                )
+            )
             updateSignedInUser(user: user, signedInUser: signedInUser)
         } catch let err {
             throw err
@@ -56,7 +59,6 @@ class SignInAppleModel {
     }
     
     private func signInWithExistingAccount(credential: ASAuthorizationAppleIDCredential, signedInUser: SignedInUserModel) async throws {
-        
         do {
             let user = try await userDB.queryUser(withKey: UserCKKeys.uid, .equal, to: credential.user)
             updateSignedInUser(user: user, signedInUser: signedInUser)
@@ -65,11 +67,11 @@ class SignInAppleModel {
         }
     }
     
-    private func updateSignedInUser(user: UserCKModel, signedInUser: SignedInUserModel) {
+    private func updateSignedInUser(user: UserStoreModel, signedInUser: SignedInUserModel) {
         userCD.clearCDEntity()
         userCD.addUser(with: user.uid)
         DispatchQueue.main.async {
-            signedInUser.user_old = user
+            signedInUser.user = user
             signedInUser.status = .signedIn
         }
     }
@@ -77,7 +79,7 @@ class SignInAppleModel {
     func signOut(signedInUser: SignedInUserModel) {
         userCD.clearCDEntity()
         DispatchQueue.main.async {
-            signedInUser.user_old = UserCKModel()
+            signedInUser.user = UserStoreModel()
             signedInUser.status = .notSignedIn
         }
     }

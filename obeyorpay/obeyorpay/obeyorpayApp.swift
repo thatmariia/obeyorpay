@@ -44,7 +44,7 @@ struct obeyorpayApp: App {
             Task.init {
                 do {
                     let user = try await userDB.queryUser(withKey: UserCKKeys.uid, CKQueryOperation.equal, to: uid!)
-                    signedInUser.user_old = user
+                    signedInUser.user = user
                     signedInUser.status = .signedIn
                     signedInUser.checkedStatusOnStart = true
                 } catch {

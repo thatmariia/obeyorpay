@@ -84,11 +84,10 @@ class CKTaskManager: CKManager {
     
     // MARK: - database actions
     
-    func addTask(task: TaskCKModel) async throws -> TaskCKModel {
-        
+    func fetchTasks(with recordNames: [String]) async throws -> [TaskStoreModel] {
         do {
-            let task = try await addObject(of: .task, object: task, fromObjectToCKRecord: fromTaskToCKRecord, fromCKRecordToObject: fromCKRecordToTask) as! TaskCKModel
-            return task
+            let tasks = try await fetchObjects(with: recordNames.map { CKRecord.ID(recordName: $0) }, fromCKRecordToObject: fromCKRecordToTask) as! [TaskCKModel]
+            return tasks.map { $0.toStore() }
         } catch let err {
             throw err
         }

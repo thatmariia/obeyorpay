@@ -9,6 +9,8 @@ import Foundation
 
 
 class EvaluationStoreModel {
+    
+    var recordName: String?
     var periodStartDate: Date
     var periodEndDate: Date
     var jointUsers: [UserStoreModel]
@@ -19,6 +21,7 @@ class EvaluationStoreModel {
     var totalCost: Double
     
     init() {
+        self.recordName = nil
         self.periodStartDate = Date()
         self.periodEndDate = Date()
         self.jointUsers = []

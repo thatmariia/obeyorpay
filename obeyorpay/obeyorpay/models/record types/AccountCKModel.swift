@@ -23,7 +23,8 @@ class AccountCKModel: Identifiable, Equatable, Hashable {
     
     // conforms to Equatable
     static func == (lhs: AccountCKModel, rhs: AccountCKModel) -> Bool {
-        return (lhs.personalTasksRefs == rhs.personalTasksRefs) &&
+        return (lhs.recordName == rhs.recordName) &&
+        (lhs.personalTasksRefs == rhs.personalTasksRefs) &&
         (lhs.jointTasksRefs == rhs.jointTasksRefs) &&
         (lhs.sharedTasksRefs == rhs.sharedTasksRefs) &&
         (lhs.paymentsRefs == rhs.paymentsRefs) &&
@@ -36,6 +37,7 @@ class AccountCKModel: Identifiable, Equatable, Hashable {
     
     // conforms to Hashable
     func hash(into hasher: inout Hasher) {
+        hasher.combine(recordName)
         hasher.combine(personalTasksRefs)
         hasher.combine(jointTasksRefs)
         hasher.combine(sharedTasksRefs)
@@ -46,6 +48,7 @@ class AccountCKModel: Identifiable, Equatable, Hashable {
         hasher.combine(sharedInvitedTasksRefs)
     }
     
+    var recordName: String?
     var personalTasksRefs: [String]
     var jointTasksRefs: [String]
     var sharedTasksRefs: [String]
@@ -56,6 +59,7 @@ class AccountCKModel: Identifiable, Equatable, Hashable {
     var sharedInvitedTasksRefs: [String]
     
     init() {
+        self.recordName = nil
         self.personalTasksRefs = []
         self.jointTasksRefs = []
         self.sharedTasksRefs = []
@@ -64,6 +68,44 @@ class AccountCKModel: Identifiable, Equatable, Hashable {
         self.evaluationsRefs = []
         self.jointInvitedTasksRefs = []
         self.sharedInvitedTasksRefs = []
+    }
+    
+    init(
+        recordName: String,
+        personalTasksRefs: [String],
+        jointTasksRefs: [String],
+        sharedTasksRefs: [String],
+        paymentsRefs: [String],
+        entriesRefs: [String],
+        evaluationsRefs: [String],
+        jointInvitedTasksRefs: [String],
+        sharedInvitedTasksRefs: [String]
+    ) {
+        self.recordName = recordName
+        self.personalTasksRefs = personalTasksRefs
+        self.jointTasksRefs = jointTasksRefs
+        self.sharedTasksRefs = sharedTasksRefs
+        self.paymentsRefs = paymentsRefs
+        self.entriesRefs = entriesRefs
+        self.evaluationsRefs = evaluationsRefs
+        self.jointInvitedTasksRefs = jointInvitedTasksRefs
+        self.sharedInvitedTasksRefs = sharedInvitedTasksRefs
+    }
+    
+    func toStore() -> AccountStoreModel {
+        // TODO:: implement
+        let account = AccountStoreModel(
+            recordName: self.recordName ?? "",
+            personalTasks: [],
+            jointTasks: [],
+            sharedTasks: [],
+            payments: [],
+            entries: [],
+            evaluations: [],
+            jointInvitedTasks: [],
+            sharedInvitedTasks: []
+        )
+        return account
     }
     
 }

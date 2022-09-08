@@ -53,6 +53,7 @@ class CKManager {
         }
     }
     
+    
     func fetchObject(with recordName: String, fromCKRecordToObject: (CKRecord) -> AnyObject?) async throws -> AnyObject {
         do {
             let record = try await fetchRecord(with: CKRecord.ID(recordName: recordName))
@@ -66,27 +67,46 @@ class CKManager {
         }
     }
     
+    func fetchObjects(with recordIDs: [CKRecord.ID], fromCKRecordToObject: (CKRecord) -> AnyObject?) async throws -> [AnyObject] {
+        do {
+            let results = try await publicDB.records(for: recordIDs)
+            let objects = try perRecordRetrieveObjects(
+                results: results.map{ $0.value },
+                fromCKRecordToObject: fromCKRecordToObject
+            )
+            return objects
+        } catch let err {
+            throw err
+        }
+    }
+    
+    private func perRecordRetrieveObjects(results: [Result<CKRecord, Error>], fromCKRecordToObject: (CKRecord) -> AnyObject?) throws -> [AnyObject] {
+        var objects: [AnyObject] = []
+        for result in results {
+            switch result {
+            case .success(let record):
+                let object = fromCKRecordToObject(record)
+                if object != nil {
+                    objects.append(object!)
+                }
+                break
+            case .failure(let err):
+                throw err
+            }
+        }
+        return objects
+    }
+    
     func queryObjects(of recordType: CKRecordType, with predicate: NSPredicate, fromCKRecordToObject: (CKRecord) -> AnyObject?) async throws -> [AnyObject] {
         let query = CKQuery(recordType: recordType.rawValue, predicate: predicate)
         
         do {
             let (results, _) = try await publicDB.records(matching: query)
-            var retrievedObjects: [AnyObject] = []
-            
-            for result in results {
-                switch result.1 {
-                case .success(let record):
-                    let object = fromCKRecordToObject(record)
-                    if object != nil {
-                        retrievedObjects.append(object!)
-                    }
-                    break
-                case .failure(let err):
-                    throw err
-                }
-            }
-            
-            return retrievedObjects
+            let objects = try perRecordRetrieveObjects(
+                results: results.map { $0.1 },
+                fromCKRecordToObject: fromCKRecordToObject
+            )
+            return objects
         } catch let err {
             throw err
         }
