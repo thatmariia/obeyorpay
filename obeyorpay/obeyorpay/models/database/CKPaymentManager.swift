@@ -43,6 +43,15 @@ class CKPaymentManager: CKManager {
     
     // MARK: - database actions
     
+    func fetchPayment(with recordName: String) async throws -> PaymentStoreModel {
+        do {
+            let payment = try await fetchObject(with: recordName, fromCKRecordToObject: fromCKRecordToPayment) as! PaymentCKModel
+            return payment.toStore()
+        } catch let err {
+            throw err
+        }
+    }
+    
     func fetchPayments(with recordNames: [String]) async throws -> [PaymentStoreModel] {
         do {
             let payments = try await fetchObjects(with: recordNames.map { CKRecord.ID(recordName: $0) }, fromCKRecordToObject: fromCKRecordToPayment) as! [PaymentCKModel]

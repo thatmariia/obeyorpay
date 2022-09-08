@@ -64,8 +64,22 @@ class PaymentCKModel: Identifiable, Equatable, Hashable {
         self.amount = amount
     }
     
-    func toStore() -> PaymentStoreModel {
-        // TODO:: implement
-        return PaymentStoreModel()
+    func toStore() async -> PaymentStoreModel {
+        do {
+            let user = try await userDB.fetchUser(with: self.userRef)
+            let task = try await taskDB.fetchTask(with: self.taskRef)
+            let evaluation = try await evaluationDB.fetchEvaluation(with: self.evaluationRef)
+            let payment = PaymentStoreModel(
+                recordName: self.recordName ?? "",
+                user: user,
+                task: task,
+                timestamp: self.timestamp,
+                evaluation: evaluation,
+                amount: self.amount
+            )
+            return payment
+        } catch {
+            return PaymentStoreModel()
+        }
     }
 }

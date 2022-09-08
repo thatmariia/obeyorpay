@@ -92,20 +92,31 @@ class AccountCKModel: Identifiable, Equatable, Hashable {
         self.sharedInvitedTasksRefs = sharedInvitedTasksRefs
     }
     
-    func toStore() -> AccountStoreModel {
-        // TODO:: implement
-        let account = AccountStoreModel(
-            recordName: self.recordName ?? "",
-            personalTasks: [],
-            jointTasks: [],
-            sharedTasks: [],
-            payments: [],
-            entries: [],
-            evaluations: [],
-            jointInvitedTasks: [],
-            sharedInvitedTasks: []
-        )
-        return account
+    func toStore() async -> AccountStoreModel {
+        do {
+            let personalTasks = try await taskDB.fetchTasks(with: self.personalTasksRefs)
+            let jointTasks = try await taskDB.fetchTasks(with: self.jointTasksRefs)
+            let sharedTasks = try await taskDB.fetchTasks(with: self.sharedTasksRefs)
+            let payments = try await paymentDB.fetchPayments(with: self.paymentsRefs)
+            let entries = try await entryDB.fetchEntries(with: self.entriesRefs)
+            let evaluations = try await evaluationDB.fetchEvaluations(with: self.evaluationsRefs)
+            let jointInvitedTasks = try await taskDB.fetchTasks(with: self.jointInvitedTasksRefs)
+            let sharedInvitedTasks = try await taskDB.fetchTasks(with: self.sharedInvitedTasksRefs)
+            let account = AccountStoreModel(
+                recordName: self.recordName ?? "",
+                personalTasks: personalTasks,
+                jointTasks: jointTasks,
+                sharedTasks: sharedTasks,
+                payments: payments,
+                entries: entries,
+                evaluations: evaluations,
+                jointInvitedTasks: jointInvitedTasks,
+                sharedInvitedTasks: sharedInvitedTasks
+            )
+            return account
+        } catch {
+            return AccountStoreModel()
+        }
     }
     
 }

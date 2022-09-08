@@ -62,6 +62,15 @@ class CKAccountManager: CKManager {
         }
     }
     
+    func fetchAccount(with recordName: String) async throws -> AccountStoreModel {
+        do {
+            let account = try await fetchObject(with: recordName, fromCKRecordToObject: fromCKRecordToAccount) as! AccountCKModel
+            return account.toStore()
+        } catch let err {
+            throw err
+        }
+    }
+    
     func fetchAccounts(with recordNames: [String]) async throws -> [AccountStoreModel] {
         do {
             let accounts = try await fetchObjects(with: recordNames.map { CKRecord.ID(recordName: $0) }, fromCKRecordToObject: fromCKRecordToAccount) as! [AccountCKModel]

@@ -59,8 +59,21 @@ class EntryCKModel: Identifiable, Equatable, Hashable {
         self.evaluationRef = evaluationRef
     }
     
-    func toStore() -> EntryStoreModel {
-        // TODO:: implement
-        return EntryStoreModel()
+    func toStore() async -> EntryStoreModel {
+        do {
+            let user = try await userDB.fetchUser(with: self.userRef)
+            let task = try await taskDB.fetchTask(with: self.taskRef)
+            let evaluation = try await evaluationDB.fetchEvaluation(with: self.evaluationRef)
+            let entry = EntryStoreModel(
+                recordName: self.recordName ?? "",
+                user: user,
+                task: task,
+                timestamp: timestamp,
+                evaluation: evaluation
+            )
+            return entry
+        } catch {
+            return EntryStoreModel()
+        }
     }
 }

@@ -19,6 +19,7 @@ class EvaluationStoreModel {
     var count: Int
     var target: Int
     var totalCost: Double
+    var build: Bool
     
     init() {
         self.recordName = nil
@@ -30,5 +31,30 @@ class EvaluationStoreModel {
         self.count = 0
         self.target = 0
         self.totalCost = 0
+        self.build = true
+    }
+    
+    init(
+        recordName: String,
+        periodStartDate: Date,
+        periodEndDate: Date,
+        jointUsers: [UserStoreModel],
+        payments: [PaymentStoreModel],
+        task: TaskStoreModel,
+        count: Int,
+        target: Int,
+        totalCost: Double,
+        build: Bool
+    ) {
+        self.recordName = recordName
+        self.periodStartDate = periodStartDate
+        self.periodEndDate = periodEndDate
+        self.jointUsers = jointUsers
+        self.payments = payments
+        self.task = task
+        self.count = count
+        self.target = target
+        self.totalCost = totalCost
+        self.build = build
     }
 }

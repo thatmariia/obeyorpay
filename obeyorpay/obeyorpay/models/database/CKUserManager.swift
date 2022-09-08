@@ -106,4 +106,13 @@ class CKUserManager: CKManager {
             throw err
         }
     }
+    
+    func fetchUsers(with recordNames: [String]) async throws -> [UserStoreModel] {
+        do {
+            let users = try await fetchObjects(with: recordNames.map { CKRecord.ID(recordName: $0) }, fromCKRecordToObject: fromCKRecordToUser) as! [UserCKModel]
+            return users.map { $0.toStore() }
+        } catch let err {
+            throw err
+        }
+    }
 } 

@@ -88,8 +88,26 @@ class EvaluationCKModel: Identifiable, Equatable, Hashable {
         self.build = true
     }
     
-    func toStore() -> EvaluationStoreModel {
-        // TODO:: implement
-        return EvaluationStoreModel()
+    func toStore() async -> EvaluationStoreModel {
+        do {
+            let jointUsers = try await userDB.fetchUsers(with: self.jointUsersRefs)
+            let payments = try await paymentDB.fetchPayments(with: self.paymentsRefs)
+            let task = try await taskDB.fetchTask(with: self.taskRef)
+            let evaluation = EvaluationStoreModel(
+                recordName: self.recordName ?? "",
+                periodStartDate: self.periodStartDate,
+                periodEndDate: self.periodEndDate,
+                jointUsers: jointUsers,
+                payments: payments,
+                task: task,
+                count: self.count,
+                target: self.target,
+                totalCost: self.totalCost,
+                build: self.build
+            )
+            return evaluation
+        } catch {
+            return EvaluationStoreModel()
+        }
     }
 }

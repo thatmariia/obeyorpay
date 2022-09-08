@@ -40,6 +40,15 @@ class CKEntryManager: CKManager {
     
     // MARK: - database actions
     
+    func fetchEntry(with recordName: String) async throws -> EntryStoreModel {
+        do {
+            let entry = try await fetchObject(with: recordName, fromCKRecordToObject: fromCKRecordToEntry) as! EntryCKModel
+            return entry.toStore()
+        } catch let err {
+            throw err
+        }
+    }
+    
     func fetchEntries(with recordNames: [String]) async throws -> [EntryStoreModel] {
         do {
             let entries = try await fetchObjects(with: recordNames.map { CKRecord.ID(recordName: $0) }, fromCKRecordToObject: fromCKRecordToEntry) as! [EntryCKModel]

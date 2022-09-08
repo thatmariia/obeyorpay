@@ -55,6 +55,15 @@ class CKEvaluationManager: CKManager {
     
     // MARK: - database actions
     
+    func fetchEvaluation(with recordName: String) async throws -> EvaluationStoreModel {
+        do {
+            let evaluation = try await fetchObject(with: recordName, fromCKRecordToObject: fromCKRecordToEvaluation) as! EvaluationCKModel
+            return evaluation.toStore()
+        } catch let err {
+            throw err
+        }
+    }
+    
     func fetchEvaluations(with recordNames: [String]) async throws -> [EvaluationStoreModel] {
         do {
             let evaluations = try await fetchObjects(with: recordNames.map { CKRecord.ID(recordName: $0) }, fromCKRecordToObject: fromCKRecordToEvaluation) as! [EvaluationCKModel]

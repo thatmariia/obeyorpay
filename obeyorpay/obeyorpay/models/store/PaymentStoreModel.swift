@@ -25,4 +25,20 @@ class PaymentStoreModel {
         self.evaluation = EvaluationStoreModel()
         self.amount = 0
     }
+    
+    init(
+        recordName: String,
+        user: UserStoreModel,
+        task: TaskStoreModel,
+        timestamp: Date,
+        evaluation: EvaluationStoreModel,
+        amount: Double
+    ) {
+        self.recordName = recordName
+        self.user = user
+        self.task = task
+        self.timestamp = timestamp
+        self.evaluation = evaluation
+        self.amount = amount
+    }
 }

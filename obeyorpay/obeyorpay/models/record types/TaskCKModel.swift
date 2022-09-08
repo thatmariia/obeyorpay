@@ -223,8 +223,41 @@ class TaskCKModel: Identifiable, Equatable, Hashable {
         self.sharedInvitedUsersRefs = sharedInvitedUsersRefs
     }
     
-    func toStore() -> TaskStoreModel {
-        // TODO:: implement
-        return TaskStoreModel()
+    func toStore() async -> TaskStoreModel {
+        do {
+            let creatorUser = try await userDB.fetchUser(with: self.creatorUserRef)
+            let jointUsers = try await userDB.fetchUsers(with: self.jointUsersRefs)
+            let sharedUsers = try await userDB.fetchUsers(with: self.sharedUsersRefs)
+            let entries = try await entryDB.fetchEntries(with: self.entriesRefs)
+            let payments = try await paymentDB.fetchPayments(with: self.paymentsRefs)
+            let evaluations = try await evaluationDB.fetchEvaluations(with: self.evaluationsRefs)
+            let jointInvitedUsers = try await userDB.fetchUsers(with: self.jointInvitedUsersRefs)
+            let sharedInvitedUsers = try await userDB.fetchUsers(with: self.sharedInvitedUsersRefs)
+            let task = TaskStoreModel(
+                recordName: self.recordName ?? "",
+                title: self.title,
+                creatorUser: creatorUser,
+                createdDate: self.createdDate,
+                jointUsers: jointUsers,
+                sharedUsers: sharedUsers,
+                span: self.span,
+                spanStartDate: self.spanStartDate,
+                lastPeriodStartDate: self.lastPeriodStartDate,
+                countCost: self.countCost,
+                entries: entries,
+                trackBeforeStart: self.trackBeforeStart,
+                payments: payments,
+                target: self.target,
+                currentCount: self.currentCount,
+                evaluations: evaluations,
+                color: self.color,
+                build: self.build,
+                jointInvitedUsers: jointInvitedUsers,
+                sharedInvitedUsers: sharedInvitedUsers
+            )
+            return task
+        } catch {
+            return TaskStoreModel()
+        }
     }
 }

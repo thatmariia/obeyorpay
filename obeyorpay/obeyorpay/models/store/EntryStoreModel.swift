@@ -23,4 +23,18 @@ class EntryStoreModel {
         self.timestamp = Date()
         self.evaluation = EvaluationStoreModel()
     }
+    
+    init(
+        recordName: String,
+        user: UserStoreModel,
+        task: TaskStoreModel,
+        timestamp: Date,
+        evaluation: EvaluationStoreModel
+    ) {
+        self.recordName =  recordName
+        self.user = user
+        self.task = task
+        self.timestamp = timestamp
+        self.evaluation = evaluation
+    }
 }

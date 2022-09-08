@@ -66,10 +66,9 @@ class UserCKModel: Identifiable, Equatable, Hashable {
         self.accountRef = ""
     }
     
-    func toStore() -> UserStoreModel {
-//        do {
-        let account = AccountStoreModel()
-        account.recordName = accountRef
+    func toStore() async -> UserStoreModel {
+        do {
+            let account = try await accountDB.fetchAccount(with: self.accountRef)
             let user = UserStoreModel(
                 recordName: recordName ?? "",
                 uid: uid,
@@ -80,8 +79,9 @@ class UserCKModel: Identifiable, Equatable, Hashable {
                 account: account
             )
             return user
-//        } catch let err {
-//
-//        }
+        } catch {
+            return UserStoreModel()
+        }
+        
     }
 }
