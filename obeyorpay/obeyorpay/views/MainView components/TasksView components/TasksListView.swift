@@ -18,7 +18,15 @@ struct TasksListView: View {
     var body: some View {
         VStack {
             ForEach(signedInUser.user.account.tasks[taskType]!) { task in
-                Text(task.title)
+                HStack {
+                    NavigationLink {
+                        TaskEditingView(task: task, taskType: taskType)
+                    } label: {
+                        Text("edit")
+                    }
+
+                    TaskView(task: task)
+                }
             }
         }
     }

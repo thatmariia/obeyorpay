@@ -10,7 +10,7 @@ import SwiftUI
 
 struct TaskView: View {
     
-    @State var task: TaskCKModel
+    var task: TaskStoreModel
     
     var body: some View {
         
@@ -23,10 +23,10 @@ struct TaskView: View {
     }
 }
 
-struct TaskView_Previews: PreviewProvider {
-    static var previews: some View {
-        TaskView(
-            task: TaskCKModel()
-        )
-    }
-}
+//struct TaskView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TaskView(
+//            task: TaskCKModel()
+//        )
+//    }
+//}

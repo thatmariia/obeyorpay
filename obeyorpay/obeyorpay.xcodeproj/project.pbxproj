@@ -204,8 +204,8 @@
 				B6B4328428C82DE3002F8B2F /* AddTaskView.swift */,
 				B6774A0E28C4DECF00B94B7C /* TasksTypeView.swift */,
 				B6774A2328C5141A00B94B7C /* TaskEditingView.swift */,
-				B6774A2228C4F3C200B94B7C /* TaskListView components */,
 				B688DE6828CA66DE00500C7E /* TasksListView.swift */,
+				B6774A2228C4F3C200B94B7C /* TaskListView components */,
 			);
 			path = "TasksView components";
 			sourceTree = "<group>";

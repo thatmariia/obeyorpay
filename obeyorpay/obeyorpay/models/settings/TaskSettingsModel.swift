@@ -25,6 +25,26 @@ class TaskSettingsModel {
     // title
     var titleMinLength = 1
     
+    func editTask(signedInUser: SignedInUserModel, task: TaskStoreModel, taskType: TaskTypes) throws {
+        DispatchQueue.main.async {
+            Task.init {
+                do {
+                    let updatedUser = signedInUser.user
+                    // updatedUser.account.tasks[taskType]
+                    let updatedTask = try await taskDB.changeTask(with: task.recordName!, to: task)
+                    if let taskIndex = updatedUser.account.tasks[taskType]!.firstIndex(where: {$0.recordName == task.recordName!}) {
+                        updatedUser.account.tasks[taskType]![taskIndex] = updatedTask
+                    } else {
+                        // item could not be found
+                    }
+                    signedInUser.user = updatedUser
+                } catch let err {
+                    throw err
+                }
+            }
+        }
+    }
+    
     func addTask(signedInUser: SignedInUserModel, task: TaskStoreModel) throws {
         DispatchQueue.main.async {
             Task.init {

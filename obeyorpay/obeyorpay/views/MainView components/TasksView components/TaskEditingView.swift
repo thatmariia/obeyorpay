@@ -9,34 +9,94 @@ import SwiftUI
 
 struct TaskEditingView: View {
     
-    @Binding var editing: Bool
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    
+    @EnvironmentObject var signedInUser: SignedInUserModel
+    
+    var task: TaskStoreModel
+    var taskType: TaskTypes
+    
+    @State var title: String
+    
+    @State var titleNote: String = ""
+    @State var showingTitleNote: Bool = false
+    
+    init(task: TaskStoreModel, taskType: TaskTypes) {
+        self.task = task
+        self.taskType = taskType
+        _title = State(initialValue: task.title)
+    }
     
     var body: some View {
         
-        ZStack {
+        VStack {
             
-            Color.red.frame(width: 200, height: 200)
+            Button {
+                self.mode.wrappedValue.dismiss()
+            } label: {
+                Text("close X")
+            }
             
-            VStack {
-                
-                Text("Editing")
-                
-                Button {
-                    editing = false
-                } label: {
-                    Text("done")
+            Button {
+                attemptChangeTask()
+            } label: {
+                Text("save")
+            }
+            
+            // title
+            Group {
+                Text("Title")
+                TextField("Title", text: $title)
+                if showingTitleNote {
+                    Text(titleNote)
                 }
             }
+            
         }
         
     }
-}
-
-struct TaskEditingView_Previews: PreviewProvider {
     
-    @State static var editing = true
-    
-    static var previews: some View {
-        TaskEditingView(editing: $editing)
+    private func attemptChangeTask() {
+        var canSave = true
+        
+        let titleComment = taskSettings.isTitleCorrect(title: title)
+        if !titleComment.isCorrect {
+            canSave = false
+            showingTitleNote = true
+            titleNote = titleComment.note!
+        }
+        
+        if canSave {
+            
+//            let task = TaskStoreModel(
+//                user: signedInUser.user,
+//                title: title,
+//                span: span,
+//                spanStartDate: spanStartDate,
+//                trackBeforeStart: trackBeforeStart,
+//                target: Int(target)!,
+//                build: build == 1 ? true : false,
+//                countCost: Double(countCost.replacingOccurrences(of: ",", with: "."))!,
+//                color: color
+//            )
+            
+            //var task = task
+            task.title = title
+            do {
+                try taskSettings.editTask(signedInUser: signedInUser, task: task, taskType: taskType)
+            } catch let err {
+                print(err.localizedDescription)
+            }
+            
+            showingTitleNote = false
+            titleNote = ""
+            self.mode.wrappedValue.dismiss()
+        }
     }
 }
+
+//struct TaskEditingView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TaskEditingView()
+//    }
+//}
