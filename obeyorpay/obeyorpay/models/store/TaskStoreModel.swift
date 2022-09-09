@@ -22,12 +22,12 @@ class TaskStoreModel: Identifiable, Equatable, Hashable {
         (lhs.spanStartDate == rhs.spanStartDate) &&
         (lhs.lastPeriodStartDate == rhs.lastPeriodStartDate) &&
         (lhs.countCost == rhs.countCost) &&
-        (lhs.entries == rhs.entries) &&
+        (lhs.entriesRefs == rhs.entriesRefs) &&
         (lhs.trackBeforeStart == rhs.trackBeforeStart) &&
-        (lhs.payments == rhs.payments) &&
+        (lhs.paymentsRefs == rhs.paymentsRefs) &&
         (lhs.target == rhs.target) &&
         (lhs.currentCount == rhs.currentCount) &&
-        (lhs.evaluations == rhs.evaluations) &&
+        (lhs.evaluationsRefs == rhs.evaluationsRefs) &&
         (lhs.color == rhs.color) &&
         (lhs.build == rhs.build) &&
         (lhs.jointInvitedUsers == rhs.jointInvitedUsers) &&
@@ -46,12 +46,12 @@ class TaskStoreModel: Identifiable, Equatable, Hashable {
         hasher.combine(spanStartDate)
         hasher.combine(lastPeriodStartDate)
         hasher.combine(countCost)
-        hasher.combine(entries)
+        hasher.combine(entriesRefs)
         hasher.combine(trackBeforeStart)
-        hasher.combine(payments)
+        hasher.combine(paymentsRefs)
         hasher.combine(target)
         hasher.combine(currentCount)
-        hasher.combine(evaluations)
+        hasher.combine(evaluationsRefs)
         hasher.combine(color)
         hasher.combine(build)
         hasher.combine(jointInvitedUsers)
@@ -68,12 +68,12 @@ class TaskStoreModel: Identifiable, Equatable, Hashable {
     var spanStartDate: Date
     var lastPeriodStartDate: Date
     var countCost: Double
-    var entries: [EntryStoreModel]
+    var entriesRefs: [String]
     var trackBeforeStart: Bool
-    var payments: [PaymentStoreModel]
+    var paymentsRefs: [String]
     var target: Int
     var currentCount: Int
-    var evaluations: [EvaluationStoreModel]
+    var evaluationsRefs: [String]
     var color: Int
     var build: Bool
     var jointInvitedUsers: [UserStoreModel]
@@ -90,12 +90,12 @@ class TaskStoreModel: Identifiable, Equatable, Hashable {
         self.spanStartDate = Date()
         self.lastPeriodStartDate = Date.distantPast
         self.countCost = 0
-        self.entries = []
+        self.entriesRefs = []
         self.trackBeforeStart = false
-        self.payments = []
+        self.paymentsRefs = []
         self.target = 0
         self.currentCount = 0
-        self.evaluations = []
+        self.evaluationsRefs = []
         self.color = 0
         self.build = true
         self.jointInvitedUsers = []
@@ -113,12 +113,12 @@ class TaskStoreModel: Identifiable, Equatable, Hashable {
         spanStartDate: Date,
         lastPeriodStartDate: Date,
         countCost: Double,
-        entries: [EntryStoreModel],
+        entriesRefs: [String],
         trackBeforeStart: Bool,
-        payments: [PaymentStoreModel],
+        paymentsRefs: [String],
         target: Int,
         currentCount: Int,
-        evaluations: [EvaluationStoreModel],
+        evaluationsRefs: [String],
         color: Int,
         build: Bool,
         jointInvitedUsers: [UserStoreModel],
@@ -134,12 +134,12 @@ class TaskStoreModel: Identifiable, Equatable, Hashable {
         self.spanStartDate = spanStartDate
         self.lastPeriodStartDate = lastPeriodStartDate
         self.countCost = countCost
-        self.entries = entries
+        self.entriesRefs = entriesRefs
         self.trackBeforeStart = trackBeforeStart
-        self.payments = payments
+        self.paymentsRefs = paymentsRefs
         self.target = target
         self.currentCount = currentCount
-        self.evaluations = evaluations
+        self.evaluationsRefs = evaluationsRefs
         self.color = color
         self.build = build
         self.jointInvitedUsers = jointInvitedUsers
@@ -147,7 +147,7 @@ class TaskStoreModel: Identifiable, Equatable, Hashable {
     }
     
     init(
-        user: UserStoreModel,
+        user: MainUserStoreModel,
         title: String,
         span: TaskSpan,
         spanStartDate: Date,
@@ -167,17 +167,17 @@ class TaskStoreModel: Identifiable, Equatable, Hashable {
         self.countCost = countCost
         self.color = color
 
-        self.creatorUser = user
+        self.creatorUser = user.toUser()
         self.createdDate = Date()
-        self.jointUsers = [user]
+        self.jointUsers = [user.toUser()]
         self.sharedUsers = []
         self.jointInvitedUsers = []
         self.sharedInvitedUsers = []
         self.lastPeriodStartDate = Date.distantPast // TODO:: if trackBeforeStart, pick span before startDate, otherwise just startDate
-        self.entries = []
-        self.payments = []
+        self.entriesRefs = []
+        self.paymentsRefs = []
         self.currentCount = 0
-        self.evaluations = []
+        self.evaluationsRefs = []
     }
     
     func toCK() -> TaskCKModel {
@@ -192,12 +192,12 @@ class TaskStoreModel: Identifiable, Equatable, Hashable {
             spanStartDate: self.spanStartDate,
             lastPeriodStartDate: self.lastPeriodStartDate,
             countCost: self.countCost,
-            entriesRefs: self.entries.map { $0.recordName ?? "" },
+            entriesRefs: self.entriesRefs,
             trackBeforeStart: self.trackBeforeStart,
-            paymentsRefs: self.payments.map { $0.recordName ?? "" },
+            paymentsRefs: self.paymentsRefs,
             target: self.target,
             currentCount: self.currentCount,
-            evaluationsRefs: self.evaluations.map { $0.recordName ?? "" },
+            evaluationsRefs: self.evaluationsRefs,
             color: self.color,
             build: self.build,
             jointInvitedUsersRefs: self.jointInvitedUsers.map { $0.recordName ?? "" },

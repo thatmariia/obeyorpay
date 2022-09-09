@@ -14,9 +14,9 @@ class PaymentStoreModel: Identifiable, Equatable, Hashable {
     static func == (lhs: PaymentStoreModel, rhs: PaymentStoreModel) -> Bool {
         return (lhs.recordName == rhs.recordName) &&
         (lhs.user == rhs.user) &&
-        (lhs.task == rhs.task) &&
+        (lhs.taskRef == rhs.taskRef) &&
         (lhs.timestamp == rhs.timestamp) &&
-        (lhs.evaluation == rhs.evaluation) &&
+        (lhs.evaluationRef == rhs.evaluationRef) &&
         (lhs.amount == rhs.amount)
     }
     
@@ -24,41 +24,41 @@ class PaymentStoreModel: Identifiable, Equatable, Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(recordName)
         hasher.combine(user)
-        hasher.combine(task)
+        hasher.combine(taskRef)
         hasher.combine(timestamp)
-        hasher.combine(evaluation)
+        hasher.combine(evaluationRef)
         hasher.combine(amount)
     }
     
     var recordName: String?
     var user: UserStoreModel
-    var task: TaskStoreModel
+    var taskRef: String
     var timestamp: Date
-    var evaluation: EvaluationStoreModel
+    var evaluationRef: String
     var amount: Double
     
     init() {
         self.recordName = nil
         self.user = UserStoreModel()
-        self.task = TaskStoreModel()
+        self.taskRef = ""
         self.timestamp = Date()
-        self.evaluation = EvaluationStoreModel()
+        self.evaluationRef = ""
         self.amount = 0
     }
     
     init(
         recordName: String,
         user: UserStoreModel,
-        task: TaskStoreModel,
+        taskRef: String,
         timestamp: Date,
-        evaluation: EvaluationStoreModel,
+        evaluationRef: String,
         amount: Double
     ) {
         self.recordName = recordName
         self.user = user
-        self.task = task
+        self.taskRef = taskRef
         self.timestamp = timestamp
-        self.evaluation = evaluation
+        self.evaluationRef = evaluationRef
         self.amount = amount
     }
 }

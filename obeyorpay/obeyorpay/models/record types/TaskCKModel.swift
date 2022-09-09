@@ -146,9 +146,9 @@ class TaskCKModel {
             let creatorUser = try await userDB.fetchUser(with: self.creatorUserRef)
             let jointUsers = try await userDB.fetchUsers(with: self.jointUsersRefs)
             let sharedUsers = try await userDB.fetchUsers(with: self.sharedUsersRefs)
-            let entries = try await entryDB.fetchEntries(with: self.entriesRefs)
-            let payments = try await paymentDB.fetchPayments(with: self.paymentsRefs)
-            let evaluations = try await evaluationDB.fetchEvaluations(with: self.evaluationsRefs)
+            // let entries = try await entryDB.fetchEntries(with: self.entriesRefs)
+            // let payments = try await paymentDB.fetchPayments(with: self.paymentsRefs)
+            // let evaluations = try await evaluationDB.fetchEvaluations(with: self.evaluationsRefs)
             let jointInvitedUsers = try await userDB.fetchUsers(with: self.jointInvitedUsersRefs)
             let sharedInvitedUsers = try await userDB.fetchUsers(with: self.sharedInvitedUsersRefs)
             let task = TaskStoreModel(
@@ -162,12 +162,12 @@ class TaskCKModel {
                 spanStartDate: self.spanStartDate,
                 lastPeriodStartDate: self.lastPeriodStartDate,
                 countCost: self.countCost,
-                entries: entries,
+                entriesRefs: self.entriesRefs,
                 trackBeforeStart: self.trackBeforeStart,
-                payments: payments,
+                paymentsRefs: self.entriesRefs,
                 target: self.target,
                 currentCount: self.currentCount,
-                evaluations: evaluations,
+                evaluationsRefs: self.evaluationsRefs,
                 color: self.color,
                 build: self.build,
                 jointInvitedUsers: jointInvitedUsers,

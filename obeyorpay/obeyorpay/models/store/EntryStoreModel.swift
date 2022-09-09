@@ -14,45 +14,45 @@ class EntryStoreModel: Identifiable, Equatable, Hashable {
     static func == (lhs: EntryStoreModel, rhs: EntryStoreModel) -> Bool {
         return (lhs.recordName == rhs.recordName) &&
         (lhs.user == rhs.user) &&
-        (lhs.task == rhs.task) &&
+        (lhs.taskRef == rhs.taskRef) &&
         (lhs.timestamp == rhs.timestamp) &&
-        (lhs.evaluation == rhs.evaluation)
+        (lhs.evaluationRef == rhs.evaluationRef)
     }
     
     // conforms to Hashable
     func hash(into hasher: inout Hasher) {
         hasher.combine(recordName)
         hasher.combine(user)
-        hasher.combine(task)
+        hasher.combine(taskRef)
         hasher.combine(timestamp)
-        hasher.combine(evaluation)
+        hasher.combine(evaluationRef)
     }
     
     var recordName: String?
     var user: UserStoreModel
-    var task: TaskStoreModel
+    var taskRef: String
     var timestamp: Date
-    var evaluation: EvaluationStoreModel
+    var evaluationRef: String
     
     init() {
         self.recordName = nil
         self.user = UserStoreModel()
-        self.task = TaskStoreModel()
+        self.taskRef = ""
         self.timestamp = Date()
-        self.evaluation = EvaluationStoreModel()
+        self.evaluationRef = ""
     }
     
     init(
         recordName: String,
         user: UserStoreModel,
-        task: TaskStoreModel,
+        taskRef: String,
         timestamp: Date,
-        evaluation: EvaluationStoreModel
+        evaluationRef: String
     ) {
         self.recordName =  recordName
         self.user = user
-        self.task = task
+        self.taskRef = taskRef
         self.timestamp = timestamp
-        self.evaluation = evaluation
+        self.evaluationRef = evaluationRef
     }
 }

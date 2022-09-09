@@ -46,8 +46,8 @@ class SignInAppleModel {
         do {
             //let account = AccountStoreModel()
             let account = try await accountDB.addAccount(account: AccountStoreModel())
-            let user = try await userDB.addUser(
-                user: UserStoreModel(
+            let user = try await mainUserDB.addMainUser(
+                user: MainUserStoreModel(
                     uid: credential.user,
                     username: usernameSettings.getDefaultUsername(),
                     email: credential.email ?? "email N/A",
@@ -70,7 +70,7 @@ class SignInAppleModel {
             Task.init {
         do {
             print("start signInWithExistingAccount")
-            let user = try await userDB.queryUser(withKey: UserCKKeys.uid, .equal, to: credential.user)
+            let user = try await mainUserDB.queryMainUser(withKey: UserCKKeys.uid, .equal, to: credential.user)
             print(user.uid)
             self.updateSignedInUser(user: user, signedInUser: signedInUser)
         } catch let err {
@@ -82,7 +82,7 @@ class SignInAppleModel {
         }
     }
     
-    private func updateSignedInUser(user: UserStoreModel, signedInUser: SignedInUserModel) {
+    private func updateSignedInUser(user: MainUserStoreModel, signedInUser: SignedInUserModel) {
         userCD.clearCDEntity()
         userCD.addUser(with: user.uid)
         //DispatchQueue.main.async {
@@ -94,7 +94,7 @@ class SignInAppleModel {
     func signOut(signedInUser: SignedInUserModel) {
         userCD.clearCDEntity()
         DispatchQueue.main.async {
-            signedInUser.user = UserStoreModel()
+            signedInUser.user = MainUserStoreModel()
             signedInUser.status = .notSignedIn
         }
     }

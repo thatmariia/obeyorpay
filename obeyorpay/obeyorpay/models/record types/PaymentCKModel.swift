@@ -52,14 +52,14 @@ class PaymentCKModel {
     func toStore() async -> PaymentStoreModel {
         do {
             let user = try await userDB.fetchUser(with: self.userRef)
-            let task = try await taskDB.fetchTask(with: self.taskRef)
-            let evaluation = try await evaluationDB.fetchEvaluation(with: self.evaluationRef)
+            //let task = try await taskDB.fetchTask(with: self.taskRef)
+            //let evaluation = try await evaluationDB.fetchEvaluation(with: self.evaluationRef)
             let payment = PaymentStoreModel(
                 recordName: self.recordName ?? "",
                 user: user,
-                task: task,
+                taskRef: self.taskRef,
                 timestamp: self.timestamp,
-                evaluation: evaluation,
+                evaluationRef: self.evaluationRef,
                 amount: self.amount
             )
             return payment

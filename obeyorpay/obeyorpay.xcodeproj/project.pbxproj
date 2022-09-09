@@ -33,12 +33,13 @@
 		B688DE5B28C94AE300500C7E /* EntryStoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE5A28C94AE300500C7E /* EntryStoreModel.swift */; };
 		B688DE5D28C94B5600500C7E /* EvaluationStoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE5C28C94B5600500C7E /* EvaluationStoreModel.swift */; };
 		B688DE5F28C94BD600500C7E /* PaymentStoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE5E28C94BD600500C7E /* PaymentStoreModel.swift */; };
-		B688DE6128C94C0F00500C7E /* UserStoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE6028C94C0F00500C7E /* UserStoreModel.swift */; };
+		B688DE6128C94C0F00500C7E /* MainUserStoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE6028C94C0F00500C7E /* MainUserStoreModel.swift */; };
 		B688DE6328C964B900500C7E /* CKPaymentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE6228C964B900500C7E /* CKPaymentManager.swift */; };
 		B688DE6528C97A6A00500C7E /* CKEvaluationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE6428C97A6A00500C7E /* CKEvaluationManager.swift */; };
 		B688DE6728C97F0D00500C7E /* CKEntryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE6628C97F0D00500C7E /* CKEntryManager.swift */; };
 		B688DE6928CA66DE00500C7E /* TasksListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE6828CA66DE00500C7E /* TasksListView.swift */; };
-		B688DE6B28CA7AF600500C7E /* StoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE6A28CA7AF600500C7E /* StoreModel.swift */; };
+		B6ACAAB628CAAF9700A47330 /* UserStoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ACAAB528CAAF9700A47330 /* UserStoreModel.swift */; };
+		B6ACAAB828CAB08100A47330 /* CKUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ACAAB728CAB08100A47330 /* CKUserManager.swift */; };
 		B6B4327E28C7F1CD002F8B2F /* CDDataUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4327D28C7F1CD002F8B2F /* CDDataUserModel.swift */; };
 		B6B4328128C81E31002F8B2F /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4328028C81E31002F8B2F /* LoadingView.swift */; };
 		B6B4328528C82DE3002F8B2F /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4328428C82DE3002F8B2F /* AddTaskView.swift */; };
@@ -51,7 +52,7 @@
 		B6D0BD2628C6C09E00B0946D /* SignedInUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD2528C6C09E00B0946D /* SignedInUserModel.swift */; };
 		B6D0BD2A28C6C50300B0946D /* CKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD2928C6C50300B0946D /* CKManager.swift */; };
 		B6D0BD2F28C6D1E700B0946D /* CKAccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD2E28C6D1E700B0946D /* CKAccountManager.swift */; };
-		B6D0BD3128C6D29B00B0946D /* CKUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD3028C6D29B00B0946D /* CKUserManager.swift */; };
+		B6D0BD3128C6D29B00B0946D /* CKMainUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD3028C6D29B00B0946D /* CKMainUserManager.swift */; };
 		B6D0BD3528C7036400B0946D /* SignInAppleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD3428C7036400B0946D /* SignInAppleModel.swift */; };
 		B6D0BD3728C7931500B0946D /* globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD3628C7931500B0946D /* globals.swift */; };
 		B6D0BD3928C7943F00B0946D /* UsernameSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD3828C7943F00B0946D /* UsernameSettingsModel.swift */; };
@@ -87,12 +88,13 @@
 		B688DE5A28C94AE300500C7E /* EntryStoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryStoreModel.swift; sourceTree = "<group>"; };
 		B688DE5C28C94B5600500C7E /* EvaluationStoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationStoreModel.swift; sourceTree = "<group>"; };
 		B688DE5E28C94BD600500C7E /* PaymentStoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentStoreModel.swift; sourceTree = "<group>"; };
-		B688DE6028C94C0F00500C7E /* UserStoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStoreModel.swift; sourceTree = "<group>"; };
+		B688DE6028C94C0F00500C7E /* MainUserStoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUserStoreModel.swift; sourceTree = "<group>"; };
 		B688DE6228C964B900500C7E /* CKPaymentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKPaymentManager.swift; sourceTree = "<group>"; };
 		B688DE6428C97A6A00500C7E /* CKEvaluationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKEvaluationManager.swift; sourceTree = "<group>"; };
 		B688DE6628C97F0D00500C7E /* CKEntryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKEntryManager.swift; sourceTree = "<group>"; };
 		B688DE6828CA66DE00500C7E /* TasksListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListView.swift; sourceTree = "<group>"; };
-		B688DE6A28CA7AF600500C7E /* StoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreModel.swift; sourceTree = "<group>"; };
+		B6ACAAB528CAAF9700A47330 /* UserStoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStoreModel.swift; sourceTree = "<group>"; };
+		B6ACAAB728CAB08100A47330 /* CKUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKUserManager.swift; sourceTree = "<group>"; };
 		B6B4327D28C7F1CD002F8B2F /* CDDataUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDDataUserModel.swift; sourceTree = "<group>"; };
 		B6B4328028C81E31002F8B2F /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		B6B4328428C82DE3002F8B2F /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
@@ -106,7 +108,7 @@
 		B6D0BD2528C6C09E00B0946D /* SignedInUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignedInUserModel.swift; sourceTree = "<group>"; };
 		B6D0BD2928C6C50300B0946D /* CKManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKManager.swift; sourceTree = "<group>"; };
 		B6D0BD2E28C6D1E700B0946D /* CKAccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKAccountManager.swift; sourceTree = "<group>"; };
-		B6D0BD3028C6D29B00B0946D /* CKUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKUserManager.swift; sourceTree = "<group>"; };
+		B6D0BD3028C6D29B00B0946D /* CKMainUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKMainUserManager.swift; sourceTree = "<group>"; };
 		B6D0BD3428C7036400B0946D /* SignInAppleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAppleModel.swift; sourceTree = "<group>"; };
 		B6D0BD3628C7931500B0946D /* globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = globals.swift; sourceTree = "<group>"; };
 		B6D0BD3828C7943F00B0946D /* UsernameSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameSettingsModel.swift; sourceTree = "<group>"; };
@@ -266,9 +268,9 @@
 		B6D0BD1828C6515900B0946D /* store */ = {
 			isa = PBXGroup;
 			children = (
-				B688DE6A28CA7AF600500C7E /* StoreModel.swift */,
 				B688DE5628C9487700500C7E /* AccountStoreModel.swift */,
-				B688DE6028C94C0F00500C7E /* UserStoreModel.swift */,
+				B688DE6028C94C0F00500C7E /* MainUserStoreModel.swift */,
+				B6ACAAB528CAAF9700A47330 /* UserStoreModel.swift */,
 				B688DE5828C94A3F00500C7E /* TaskStoreModel.swift */,
 				B688DE5A28C94AE300500C7E /* EntryStoreModel.swift */,
 				B688DE5C28C94B5600500C7E /* EvaluationStoreModel.swift */,
@@ -302,8 +304,9 @@
 			isa = PBXGroup;
 			children = (
 				B6D0BD2928C6C50300B0946D /* CKManager.swift */,
+				B6D0BD3028C6D29B00B0946D /* CKMainUserManager.swift */,
+				B6ACAAB728CAB08100A47330 /* CKUserManager.swift */,
 				B6D0BD2E28C6D1E700B0946D /* CKAccountManager.swift */,
-				B6D0BD3028C6D29B00B0946D /* CKUserManager.swift */,
 				B688DE6428C97A6A00500C7E /* CKEvaluationManager.swift */,
 				B688DE6628C97F0D00500C7E /* CKEntryManager.swift */,
 				B688DE5228C8D1E300500C7E /* CKTaskManager.swift */,
@@ -400,12 +403,12 @@
 				B6D0BD1E28C6AE1300B0946D /* UserCKModel.swift in Sources */,
 				B6774A1328C4E46900B94B7C /* MainView.swift in Sources */,
 				B6D0BD2A28C6C50300B0946D /* CKManager.swift in Sources */,
+				B6ACAAB828CAB08100A47330 /* CKUserManager.swift in Sources */,
 				B6774A0B28C4DB4800B94B7C /* AppTabView.swift in Sources */,
 				B6D0BD2628C6C09E00B0946D /* SignedInUserModel.swift in Sources */,
 				B688DE5328C8D1E400500C7E /* CKTaskManager.swift in Sources */,
 				B6774A1D28C4EC9200B94B7C /* TaskCKModel.swift in Sources */,
 				B6774A0D28C4DBBB00B94B7C /* TasksView.swift in Sources */,
-				B688DE6B28CA7AF600500C7E /* StoreModel.swift in Sources */,
 				B6D0BD3B28C79C3500B0946D /* SettingsEditingView.swift in Sources */,
 				B6D0BD3928C7943F00B0946D /* UsernameSettingsModel.swift in Sources */,
 				B688DE5728C9487700500C7E /* AccountStoreModel.swift in Sources */,
@@ -416,9 +419,10 @@
 				B6774A2428C5141A00B94B7C /* TaskEditingView.swift in Sources */,
 				B688DE5528C8D6E000500C7E /* misc.swift in Sources */,
 				B6774A2A28C5183D00B94B7C /* PopupView.swift in Sources */,
-				B6D0BD3128C6D29B00B0946D /* CKUserManager.swift in Sources */,
+				B6D0BD3128C6D29B00B0946D /* CKMainUserManager.swift in Sources */,
 				B6774A4328C5468200B94B7C /* SignInView.swift in Sources */,
 				B688DE6928CA66DE00500C7E /* TasksListView.swift in Sources */,
+				B6ACAAB628CAAF9700A47330 /* UserStoreModel.swift in Sources */,
 				B688DE5F28C94BD600500C7E /* PaymentStoreModel.swift in Sources */,
 				B6D0BD2428C6B91800B0946D /* PaymentCKModel.swift in Sources */,
 				B6D0BD2228C6B7FB00B0946D /* EvaluationCKModel.swift in Sources */,
@@ -436,7 +440,7 @@
 				B688DE6328C964B900500C7E /* CKPaymentManager.swift in Sources */,
 				B6D0BD2028C6B54900B0946D /* EntryCKModel.swift in Sources */,
 				B6D0BD3528C7036400B0946D /* SignInAppleModel.swift in Sources */,
-				B688DE6128C94C0F00500C7E /* UserStoreModel.swift in Sources */,
+				B688DE6128C94C0F00500C7E /* MainUserStoreModel.swift in Sources */,
 				B688DE4D28C838A100500C7E /* TaskSettingsModel.swift in Sources */,
 				B6774A4B28C61A1D00B94B7C /* SettingsView.swift in Sources */,
 				B6B4328928C82EF6002F8B2F /* SpanButtonView.swift in Sources */,

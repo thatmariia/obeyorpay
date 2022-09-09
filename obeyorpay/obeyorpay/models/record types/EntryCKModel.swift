@@ -48,14 +48,14 @@ class EntryCKModel {
     func toStore() async -> EntryStoreModel {
         do {
             let user = try await userDB.fetchUser(with: self.userRef)
-            let task = try await taskDB.fetchTask(with: self.taskRef)
-            let evaluation = try await evaluationDB.fetchEvaluation(with: self.evaluationRef)
+            //let task = try await taskDB.fetchTask(with: self.taskRef)
+            //let evaluation = try await evaluationDB.fetchEvaluation(with: self.evaluationRef)
             let entry = EntryStoreModel(
                 recordName: self.recordName ?? "",
                 user: user,
-                task: task,
+                taskRef: self.taskRef,
                 timestamp: timestamp,
-                evaluation: evaluation
+                evaluationRef: self.evaluationRef
             )
             return entry
         } catch {

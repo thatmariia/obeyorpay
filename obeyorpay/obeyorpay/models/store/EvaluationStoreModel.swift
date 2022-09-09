@@ -16,8 +16,8 @@ class EvaluationStoreModel: Identifiable, Equatable, Hashable {
         (lhs.periodStartDate == rhs.periodStartDate) &&
         (lhs.periodEndDate == rhs.periodEndDate) &&
         (lhs.jointUsers == rhs.jointUsers) &&
-        (lhs.payments == rhs.payments) &&
-        (lhs.task == rhs.task) &&
+        (lhs.paymentsRefs == rhs.paymentsRefs) &&
+        (lhs.taskRef == rhs.taskRef) &&
         (lhs.count == rhs.count) &&
         (lhs.target == rhs.target) &&
         (lhs.totalCost == rhs.totalCost) &&
@@ -30,8 +30,8 @@ class EvaluationStoreModel: Identifiable, Equatable, Hashable {
         hasher.combine(periodStartDate)
         hasher.combine(periodEndDate)
         hasher.combine(jointUsers)
-        hasher.combine(payments)
-        hasher.combine(task)
+        hasher.combine(paymentsRefs)
+        hasher.combine(taskRef)
         hasher.combine(count)
         hasher.combine(target)
         hasher.combine(totalCost)
@@ -42,8 +42,8 @@ class EvaluationStoreModel: Identifiable, Equatable, Hashable {
     var periodStartDate: Date
     var periodEndDate: Date
     var jointUsers: [UserStoreModel]
-    var payments: [PaymentStoreModel]
-    var task: TaskStoreModel
+    var paymentsRefs: [String]
+    var taskRef: String
     var count: Int
     var target: Int
     var totalCost: Double
@@ -54,8 +54,8 @@ class EvaluationStoreModel: Identifiable, Equatable, Hashable {
         self.periodStartDate = Date()
         self.periodEndDate = Date()
         self.jointUsers = []
-        self.payments = []
-        self.task = TaskStoreModel()
+        self.paymentsRefs = []
+        self.taskRef = ""
         self.count = 0
         self.target = 0
         self.totalCost = 0
@@ -67,8 +67,8 @@ class EvaluationStoreModel: Identifiable, Equatable, Hashable {
         periodStartDate: Date,
         periodEndDate: Date,
         jointUsers: [UserStoreModel],
-        payments: [PaymentStoreModel],
-        task: TaskStoreModel,
+        paymentsRefs: [String],
+        taskRef: String,
         count: Int,
         target: Int,
         totalCost: Double,
@@ -78,8 +78,8 @@ class EvaluationStoreModel: Identifiable, Equatable, Hashable {
         self.periodStartDate = periodStartDate
         self.periodEndDate = periodEndDate
         self.jointUsers = jointUsers
-        self.payments = payments
-        self.task = task
+        self.paymentsRefs = paymentsRefs
+        self.taskRef = taskRef
         self.count = count
         self.target = target
         self.totalCost = totalCost

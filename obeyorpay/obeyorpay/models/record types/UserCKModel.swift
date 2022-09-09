@@ -1,5 +1,5 @@
 //
-//  UserCKModel.swift
+//  MainUserCKModel.swift
 //  obeyorpay
 //
 //  Created by Mariia Steeghs-Turchina on 06/09/2022.
@@ -29,17 +29,6 @@ class UserCKModel {
     var lastName: String
     var accountRef: String
     
-    
-    init(recordName: String, uid: String, username: String, email: String, firstName: String, lastName: String, accountRef: String) {
-        self.recordName = recordName
-        self.uid = uid
-        self.username = username
-        self.email = email
-        self.firstName = firstName
-        self.lastName = lastName
-        self.accountRef = accountRef
-    }
-    
     init() {
         self.recordName = nil
         self.uid = ""
@@ -50,22 +39,66 @@ class UserCKModel {
         self.accountRef = ""
     }
     
-    func toStore() async -> UserStoreModel {
+    init(
+        recordName: String,
+        uid: String,
+        username: String,
+        email: String,
+        firstName: String,
+        lastName: String,
+        accountRef: String
+    ) {
+        self.recordName = recordName
+        self.uid = uid
+        self.username = username
+        self.email = email
+        self.firstName = firstName
+        self.lastName = lastName
+        self.accountRef = accountRef
+    }
+    
+    init(
+        recordName: String,
+        username: String,
+        email: String,
+        firstName: String,
+        lastName: String
+    ) {
+        self.recordName = recordName
+        self.uid = ""
+        self.username = username
+        self.email = email
+        self.firstName = firstName
+        self.lastName = lastName
+        self.accountRef = ""
+    }
+    
+    
+    func toMainStore() async -> MainUserStoreModel {
         do {
             let account = try await accountDB.fetchAccount(with: self.accountRef)
-            let user = UserStoreModel(
-                recordName: recordName ?? "",
-                uid: uid,
-                username: username,
-                email: email,
-                firstName: firstName,
-                lastName: lastName,
+            let user = MainUserStoreModel(
+                recordName: self.recordName ?? "",
+                uid: self.uid,
+                username: self.username,
+                email: self.email,
+                firstName: self.firstName,
+                lastName: self.lastName,
                 account: account
             )
             return user
         } catch {
-            return UserStoreModel()
+            return MainUserStoreModel()
         }
-        
+    }
+    
+    func toStore() -> UserStoreModel {
+        return UserStoreModel(
+            recordName: self.recordName ?? "",
+            username: self.username,
+            email: self.email,
+            firstName: self.firstName,
+            lastName: self.lastName
+        )
     }
 }

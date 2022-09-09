@@ -25,7 +25,7 @@ class UsernameSettingModel {
     
     // supporting
     private var noUsersWithUsername = true
-    private var updatedUser = UserStoreModel()
+    private var updatedUser = MainUserStoreModel()
     
     func getDefaultUsername() -> String {
         return getRandomUsername()
@@ -39,7 +39,7 @@ class UsernameSettingModel {
         DispatchQueue.main.async {
             Task.init {
                 do {
-                    signedInUser.user = try await userDB.changeUser(with: signedInUser.user.recordName!, to: self.updatedUser)
+                    signedInUser.user = try await mainUserDB.changeMainUser(with: signedInUser.user.recordName!, to: self.updatedUser)
                 } catch let err {
                     throw err
                 }
@@ -88,7 +88,7 @@ class UsernameSettingModel {
             Task.init {
                 self.noUsersWithUsername = true
                 do {
-                    let nrUsers = try await userDB.countUsers(with: newUsername)
+                    let nrUsers = try await mainUserDB.countUsers(with: newUsername)
                     self.noUsersWithUsername = nrUsers == 0
                 } catch { }
                 }
