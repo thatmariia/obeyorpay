@@ -29,26 +29,26 @@ class CKEvaluationManager: CKManager {
     
     func fromCKRecordToEvaluation(from record: CKRecord) -> AnyObject? {
         let recordName = record.recordID.recordName
-        guard let periodStartDate   = record[EvaluationCKKeys.periodStartDate.rawValue] as? Date        else { return nil }
-        guard let periodEndDate     = record[EvaluationCKKeys.periodEndDate.rawValue]   as? Date        else { return nil }
-        guard let jointUsersRefs    = record[EvaluationCKKeys.jointUsersRefs.rawValue]  as? [String]    else { return nil }
-        guard let paymentsRefs      = record[EvaluationCKKeys.paymentsRefs.rawValue]    as? [String]    else { return nil }
-        guard let taskRef           = record[EvaluationCKKeys.taskRef.rawValue]         as? String      else { return nil }
-        guard let count             = record[EvaluationCKKeys.count.rawValue]           as? Int         else { return nil }
-        guard let target            = record[EvaluationCKKeys.target.rawValue]          as? Int         else { return nil }
-        guard let totalCost         = record[EvaluationCKKeys.totalCost.rawValue]       as? Double      else { return nil }
-        guard let build             = record[EvaluationCKKeys.build.rawValue]           as? Int         else { return nil }
+        let periodStartDate   = record[EvaluationCKKeys.periodStartDate.rawValue] as? Date
+        let periodEndDate     = record[EvaluationCKKeys.periodEndDate.rawValue]   as? Date
+        let jointUsersRefs    = record[EvaluationCKKeys.jointUsersRefs.rawValue]  as? [String]
+        let paymentsRefs      = record[EvaluationCKKeys.paymentsRefs.rawValue]    as? [String]
+        let taskRef           = record[EvaluationCKKeys.taskRef.rawValue]         as? String
+        let count             = record[EvaluationCKKeys.count.rawValue]           as? Int
+        let target            = record[EvaluationCKKeys.target.rawValue]          as? Int
+        let totalCost         = record[EvaluationCKKeys.totalCost.rawValue]       as? Double
+        let build             = record[EvaluationCKKeys.build.rawValue]           as? Int
         let evaluation = EvaluationCKModel(
             recordName: recordName,
-            periodStartDate: periodStartDate,
-            periodEndDate: periodEndDate,
-            jointUsersRefs: jointUsersRefs,
-            paymentsRefs: paymentsRefs,
-            taskRef: taskRef,
-            count: count,
-            target: target,
-            totalCost: totalCost,
-            build: build.toBool()
+            periodStartDate: periodStartDate!,
+            periodEndDate: periodEndDate!,
+            jointUsersRefs: jointUsersRefs ?? [],
+            paymentsRefs: paymentsRefs ?? [],
+            taskRef: taskRef!,
+            count: count!,
+            target: target!,
+            totalCost: totalCost!,
+            build: build!.toBool()
         )
         return evaluation
     }

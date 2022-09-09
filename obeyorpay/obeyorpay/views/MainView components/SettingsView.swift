@@ -17,7 +17,6 @@ struct SettingsView: View {
         VStack {
             
             Text(signedInUser.user.username)
-            Text(signedInUser.user.account.recordName ?? "nope")
         
             Spacer()
             

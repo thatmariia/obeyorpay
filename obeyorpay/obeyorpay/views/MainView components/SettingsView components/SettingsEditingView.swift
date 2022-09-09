@@ -56,25 +56,22 @@ struct SettingsEditingView: View {
     }
     
     fileprivate func attemptUsernameChange() {
-        //DispatchQueue.main.async {
-        //    Task.init {
-                do {
-                    let usernameComment = try usernameSettings.isCorrectUsername(currUsername: currUsername, newUsername: newUsername)
-                    
-                    if usernameComment.isCorrect {
-                        if newUsername != currUsername {
-                            try usernameSettings.updateUser(signedInUser: signedInUser, with: newUsername)
-                        }
-                        showingNote = false
-                        displayNote = ""
-                        self.mode.wrappedValue.dismiss()
-                    } else {
-                        showingNote = true
-                        displayNote = usernameComment.note!
-                    }
-                } catch {}
-            //}
-        //}
+        do {
+            let usernameComment = try usernameSettings.isCorrectUsername(currUsername: currUsername, newUsername: newUsername)
+            
+            if usernameComment.isCorrect {
+                if newUsername != currUsername {
+                    try usernameSettings.updateUser(signedInUser: signedInUser, with: newUsername)
+                }
+                showingNote = false
+                displayNote = ""
+                self.mode.wrappedValue.dismiss()
+            } else {
+                showingNote = true
+                displayNote = usernameComment.note!
+            }
+        } catch {}
+        
     }
 }
 

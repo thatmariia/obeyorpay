@@ -10,11 +10,14 @@ import SwiftUI
 
 struct TasksListView: View {
     
-    var tasks: [TaskStoreModel]
+    @EnvironmentObject var signedInUser: SignedInUserModel
+    
+    //var tasks: [TaskStoreModel]
+    var taskType: TaskTypes
     
     var body: some View {
         VStack {
-            ForEach(tasks) { task in
+            ForEach(signedInUser.user.account.tasks[taskType]!) { task in
                 Text(task.title)
             }
         }

@@ -15,16 +15,16 @@ class CKUserManager: CKManager {
 
     func fromCKRecordToUser(from record: CKRecord) -> AnyObject? {
         let recordName = record.recordID.recordName
-        guard let username      = record[UserCKKeys.username.rawValue]   as? String else { return nil }
-        guard let email         = record[UserCKKeys.email.rawValue]      as? String else { return nil }
-        guard let firstName     = record[UserCKKeys.firstName.rawValue]  as? String else { return nil }
-        guard let lastName      = record[UserCKKeys.lastName.rawValue]   as? String else { return nil }
+        let username      = record[UserCKKeys.username.rawValue]   as? String
+        let email         = record[UserCKKeys.email.rawValue]      as? String
+        let firstName     = record[UserCKKeys.firstName.rawValue]  as? String
+        let lastName      = record[UserCKKeys.lastName.rawValue]   as? String
         let user = UserCKModel(
             recordName: recordName,
-            username: username,
-            email: email,
-            firstName: firstName,
-            lastName: lastName
+            username: username!,
+            email: email!,
+            firstName: firstName!,
+            lastName: lastName!
         )
         return user
     }

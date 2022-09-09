@@ -8,13 +8,10 @@
 import SwiftUI
 
 struct AddTaskButtonView: View {
+    
     var body: some View {
         
-        NavigationLink {
-            AddTaskView()
-        } label: {
-            Text("add+")
-        }
+        Text("add+")
 
 
     }

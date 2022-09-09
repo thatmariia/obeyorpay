@@ -26,20 +26,20 @@ class CKMainUserManager: CKManager {
     
     func fromCKRecordToMainUser(from record: CKRecord) -> AnyObject? {
         let recordName = record.recordID.recordName
-        guard let uid           = record[UserCKKeys.uid.rawValue]        as? String else { return nil }
-        guard let username      = record[UserCKKeys.username.rawValue]   as? String else { return nil }
-        guard let email         = record[UserCKKeys.email.rawValue]      as? String else { return nil }
-        guard let firstName     = record[UserCKKeys.firstName.rawValue]  as? String else { return nil }
-        guard let lastName      = record[UserCKKeys.lastName.rawValue]   as? String else { return nil }
-        guard let accountRef    = record[UserCKKeys.accountRef.rawValue] as? String else { return nil }
+        let uid           = record[UserCKKeys.uid.rawValue]        as? String
+        let username      = record[UserCKKeys.username.rawValue]   as? String
+        let email         = record[UserCKKeys.email.rawValue]      as? String
+        let firstName     = record[UserCKKeys.firstName.rawValue]  as? String
+        let lastName      = record[UserCKKeys.lastName.rawValue]   as? String
+        let accountRef    = record[UserCKKeys.accountRef.rawValue] as? String
         let user = UserCKModel(
             recordName: recordName,
-            uid: uid,
-            username: username,
-            email: email,
-            firstName: firstName,
-            lastName: lastName,
-            accountRef: accountRef
+            uid: uid!,
+            username: username!,
+            email: email!,
+            firstName: firstName!,
+            lastName: lastName!,
+            accountRef: accountRef!
         )
         return user
     }

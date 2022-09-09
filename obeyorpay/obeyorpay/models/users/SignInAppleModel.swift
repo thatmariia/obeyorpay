@@ -31,8 +31,6 @@ class SignInAppleModel {
                     }
                 } catch let err {
                     // handle error
-                    print("meow", err.localizedDescription)
-                    
                 }
             }
         case .failure (let error):
@@ -58,7 +56,6 @@ class SignInAppleModel {
             )
             self.updateSignedInUser(user: user, signedInUser: signedInUser)
         } catch let err {
-            print("registerNewAccount: ", err.localizedDescription)
             throw err
         }
             }
@@ -69,13 +66,10 @@ class SignInAppleModel {
         DispatchQueue.main.async {
             Task.init {
         do {
-            print("start signInWithExistingAccount")
             let user = try await mainUserDB.queryMainUser(withKey: UserCKKeys.uid, .equal, to: credential.user)
             print(user.uid)
             self.updateSignedInUser(user: user, signedInUser: signedInUser)
         } catch let err {
-            print("signInWithExistingAccount: ", err)
-            // print(err.localizedDescription)
             throw err
         }
             }

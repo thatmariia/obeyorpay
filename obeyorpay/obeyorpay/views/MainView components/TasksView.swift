@@ -26,27 +26,22 @@ struct TasksView: View {
                 
                 Spacer()
                 
-                AddTaskButtonView()
+                NavigationLink {
+                    AddTaskView()
+                } label: {
+                    AddTaskButtonView()
+                }
             }
             
             Spacer()
             
-            // TODO:: pass tasks of the $task_type
-            // TasksListView(tasks: tasksData.tasks)
-            TasksListView(tasks: getTypeTasks())
+            Text("\(signedInUser.user.account.tasks[.personal]!.count)")
             
             Spacer()
-        }
-    }
-    
-    private func getTypeTasks() -> [TaskStoreModel] {
-        switch self.taskType {
-        case .personal:
-            return self.signedInUser.user.account.personalTasks
-        case .joint:
-            return self.signedInUser.user.account.jointTasks
-        case .shared:
-            return self.signedInUser.user.account.sharedTasks
+            
+            TasksListView(taskType: taskType)
+            
+            Spacer()
         }
     }
 }

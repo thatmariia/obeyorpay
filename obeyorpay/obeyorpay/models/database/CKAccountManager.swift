@@ -28,24 +28,24 @@ class CKAccountManager: CKManager {
     
     func fromCKRecordToAccount(from record: CKRecord) -> AnyObject? {
         let recordName = record.recordID.recordName
-        guard let personalTasksRefs         = record[AccountCKKeys.personalTasksRefs.rawValue]      as? [String] else { return nil }
-        guard let jointTasksRefs            = record[AccountCKKeys.jointTasksRefs.rawValue]         as? [String] else { return nil }
-        guard let sharedTasksRefs           = record[AccountCKKeys.sharedTasksRefs.rawValue]        as? [String] else { return nil }
-        guard let paymentsRefs              = record[AccountCKKeys.paymentsRefs.rawValue]           as? [String] else { return nil }
-        guard let entriesRefs               = record[AccountCKKeys.entriesRefs.rawValue]            as? [String] else { return nil }
-        guard let evaluationsRefs           = record[AccountCKKeys.evaluationsRefs.rawValue]        as? [String] else { return nil }
-        guard let jointInvitedTasksRefs     = record[AccountCKKeys.jointInvitedTasksRefs.rawValue]  as? [String] else { return nil }
-        guard let sharedInvitedTasksRefs    = record[AccountCKKeys.sharedInvitedTasksRefs.rawValue] as? [String] else { return nil }
+        let personalTasksRefs         = record[AccountCKKeys.personalTasksRefs.rawValue]      as? [String]
+        let jointTasksRefs            = record[AccountCKKeys.jointTasksRefs.rawValue]         as? [String]
+        let sharedTasksRefs           = record[AccountCKKeys.sharedTasksRefs.rawValue]        as? [String]
+        let paymentsRefs              = record[AccountCKKeys.paymentsRefs.rawValue]           as? [String]
+        let entriesRefs               = record[AccountCKKeys.entriesRefs.rawValue]            as? [String]
+        let evaluationsRefs           = record[AccountCKKeys.evaluationsRefs.rawValue]        as? [String]
+        let jointInvitedTasksRefs     = record[AccountCKKeys.jointInvitedTasksRefs.rawValue]  as? [String]
+        let sharedInvitedTasksRefs    = record[AccountCKKeys.sharedInvitedTasksRefs.rawValue] as? [String]
         let account = AccountCKModel(
             recordName: recordName,
-            personalTasksRefs: personalTasksRefs,
-            jointTasksRefs: jointTasksRefs,
-            sharedTasksRefs: sharedTasksRefs,
-            paymentsRefs: paymentsRefs,
-            entriesRefs: entriesRefs,
-            evaluationsRefs: evaluationsRefs,
-            jointInvitedTasksRefs: jointInvitedTasksRefs,
-            sharedInvitedTasksRefs: sharedInvitedTasksRefs
+            personalTasksRefs: personalTasksRefs ?? [],
+            jointTasksRefs: jointTasksRefs ?? [],
+            sharedTasksRefs: sharedTasksRefs ?? [],
+            paymentsRefs: paymentsRefs ?? [],
+            entriesRefs: entriesRefs ?? [],
+            evaluationsRefs: evaluationsRefs ?? [],
+            jointInvitedTasksRefs: jointInvitedTasksRefs ?? [],
+            sharedInvitedTasksRefs: sharedInvitedTasksRefs ?? []
         )
         return account
     }

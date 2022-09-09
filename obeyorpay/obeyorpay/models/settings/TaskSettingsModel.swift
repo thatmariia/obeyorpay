@@ -29,11 +29,13 @@ class TaskSettingsModel {
         DispatchQueue.main.async {
             Task.init {
                 do {
+                    // adding new task
                     let newTask = try await taskDB.addTask(task: task)
-                    
-                    let updatedAccount = signedInUser.user.account
-                    updatedAccount.personalTasks.append(newTask)
-                    signedInUser.user.account = try await accountDB.changeAccount(with: signedInUser.user.account.recordName!, to: updatedAccount)
+                    let updatedUser = signedInUser.user
+                    updatedUser.account.tasks[.personal]!.append(newTask)
+                    // adding task to personal tasks of user
+                    updatedUser.account = try await accountDB.changeAccount(with: updatedUser.account.recordName!, to: updatedUser.account)
+                    signedInUser.user = updatedUser
                 } catch let err {
                     throw err
                 }

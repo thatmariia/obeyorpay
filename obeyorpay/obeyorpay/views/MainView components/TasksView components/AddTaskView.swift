@@ -34,6 +34,9 @@ struct AddTaskView: View {
     
     var body: some View {
         VStack {
+            Group{
+            Text("\(signedInUser.user.account.tasks[.personal]!.count)")
+            }
             
             Button {
                 self.mode.wrappedValue.dismiss()
@@ -42,65 +45,7 @@ struct AddTaskView: View {
             }
             
             Button {
-                var canSave = true
-                
-                let titleComment = taskSettings.isTitleCorrect(title: title)
-                if !titleComment.isCorrect {
-                    canSave = false
-                    showingTitleNote = true
-                    titleNote = titleComment.note!
-                }
-                
-                let targetComment = taskSettings.isTargetCorrect(target: target)
-                if !targetComment.isCorrect {
-                    canSave = false
-                    showingTargetNote = true
-                    targetNote = targetComment.note!
-                }
-                
-                let countCostComment = taskSettings.isCostCorrect(countCost: countCost)
-                if !countCostComment.isCorrect {
-                    canSave = false
-                    showingCountCostNote = true
-                    countCostNote = countCostComment.note!
-                }
-                
-                if canSave {
-                    showingTitleNote = false
-                    titleNote = ""
-                    showingTargetNote = false
-                    targetNote = ""
-                    showingCountCostNote = false
-                    countCostNote = ""
-                    
-                    let task = TaskStoreModel(
-                        user: signedInUser.user,
-                        title: title,
-                        span: span,
-                        spanStartDate: spanStartDate,
-                        trackBeforeStart: trackBeforeStart,
-                        target: Int(target)!,
-                        build: build == 1 ? true : false,
-                        countCost: Double(countCost.replacingOccurrences(of: ",", with: "."))!,
-                        color: color
-                    )
-                    
-                    //DispatchQueue.main.async {
-                        //Task.init {
-                            //do {
-                    do {
-                                try taskSettings.addTask(signedInUser: self.signedInUser, task: task)
-                                self.mode.wrappedValue.dismiss()
-                    } catch let err {
-                        print(err.localizedDescription)
-                    }
-                            //} catch {}
-                        //}
-                        // save the task
-                        // if everything goes ok: self.mode.wrappedValue.dismiss()
-                        
-                    //}
-                }
+                attemptAddingTask()
             } label: {
                 Text("save")
             }
@@ -189,6 +134,59 @@ struct AddTaskView: View {
         }
         .navigationTitle("")
         .navigationBarHidden(true)
+    }
+    
+    private func attemptAddingTask() {
+        var canSave = true
+        
+        let titleComment = taskSettings.isTitleCorrect(title: title)
+        if !titleComment.isCorrect {
+            canSave = false
+            showingTitleNote = true
+            titleNote = titleComment.note!
+        }
+        
+        let targetComment = taskSettings.isTargetCorrect(target: target)
+        if !targetComment.isCorrect {
+            canSave = false
+            showingTargetNote = true
+            targetNote = targetComment.note!
+        }
+        
+        let countCostComment = taskSettings.isCostCorrect(countCost: countCost)
+        if !countCostComment.isCorrect {
+            canSave = false
+            showingCountCostNote = true
+            countCostNote = countCostComment.note!
+        }
+        
+        if canSave {
+            
+            let task = TaskStoreModel(
+                user: signedInUser.user,
+                title: title,
+                span: span,
+                spanStartDate: spanStartDate,
+                trackBeforeStart: trackBeforeStart,
+                target: Int(target)!,
+                build: build == 1 ? true : false,
+                countCost: Double(countCost.replacingOccurrences(of: ",", with: "."))!,
+                color: color
+            )
+            do {
+                try taskSettings.addTask(signedInUser: signedInUser, task: task)
+            } catch let err {
+                print(err.localizedDescription)
+            }
+            
+            showingTitleNote = false
+            titleNote = ""
+            showingTargetNote = false
+            targetNote = ""
+            showingCountCostNote = false
+            countCostNote = ""
+            self.mode.wrappedValue.dismiss()
+        }
     }
 }
 

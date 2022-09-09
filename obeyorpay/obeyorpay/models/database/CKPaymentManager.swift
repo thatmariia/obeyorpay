@@ -25,18 +25,18 @@ class CKPaymentManager: CKManager {
     
     func fromCKRecordToPayment(from record: CKRecord) -> AnyObject? {
         let recordName = record.recordID.recordName
-        guard let userRef       = record[PaymentCKKeys.userRef.rawValue]        as? String  else { return nil }
-        guard let taskRef       = record[PaymentCKKeys.taskRef.rawValue]        as? String  else { return nil }
-        guard let timestamp     = record[PaymentCKKeys.timestamp.rawValue]      as? Date    else { return nil }
-        guard let evaluationRef = record[PaymentCKKeys.evaluationRef.rawValue]  as? String  else { return nil }
-        guard let amount        = record[PaymentCKKeys.amount.rawValue]         as? Double  else { return nil }
+        let userRef       = record[PaymentCKKeys.userRef.rawValue]        as? String
+        let taskRef       = record[PaymentCKKeys.taskRef.rawValue]        as? String
+        let timestamp     = record[PaymentCKKeys.timestamp.rawValue]      as? Date
+        let evaluationRef = record[PaymentCKKeys.evaluationRef.rawValue]  as? String
+        let amount        = record[PaymentCKKeys.amount.rawValue]         as? Double
         let payment = PaymentCKModel(
             recordName: recordName,
-            userRef: userRef,
-            taskRef: taskRef,
-            timestamp: timestamp,
-            evaluationRef: evaluationRef,
-            amount: amount
+            userRef: userRef!,
+            taskRef: taskRef!,
+            timestamp: timestamp!,
+            evaluationRef: evaluationRef!,
+            amount: amount!
         )
         return payment
     }

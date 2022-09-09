@@ -233,8 +233,8 @@
 		B688DE4E28C838CD00500C7E /* settings */ = {
 			isa = PBXGroup;
 			children = (
-				B6D0BD3828C7943F00B0946D /* UsernameSettingsModel.swift */,
 				B688DE5028C839D500500C7E /* CorrectnessComment.swift */,
+				B6D0BD3828C7943F00B0946D /* UsernameSettingsModel.swift */,
 				B688DE4C28C838A100500C7E /* TaskSettingsModel.swift */,
 			);
 			path = settings;

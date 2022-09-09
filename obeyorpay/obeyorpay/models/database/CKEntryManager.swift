@@ -24,16 +24,16 @@ class CKEntryManager: CKManager {
     
     func fromCKRecordToEntry(from record: CKRecord) -> AnyObject? {
         let recordName = record.recordID.recordName
-        guard let userRef = record[EntryCKKeys.userRef.rawValue] as? String else { return nil }
-        guard let taskRef = record[EntryCKKeys.taskRef.rawValue] as? String else { return nil }
-        guard let timestamp = record[EntryCKKeys.timestamp.rawValue] as? Date else { return nil }
-        guard let evaluationRef = record[EntryCKKeys.evaluationRef.rawValue] as? String else { return nil }
+        let userRef         = record[EntryCKKeys.userRef.rawValue]          as? String
+        let taskRef         = record[EntryCKKeys.taskRef.rawValue]          as? String
+        let timestamp       = record[EntryCKKeys.timestamp.rawValue]        as? Date
+        let evaluationRef   = record[EntryCKKeys.evaluationRef.rawValue]    as? String
         let entry = EntryCKModel(
             recordName: recordName,
-            userRef: userRef,
-            taskRef: taskRef,
-            timestamp: timestamp,
-            evaluationRef: evaluationRef
+            userRef: userRef!,
+            taskRef: taskRef!,
+            timestamp: timestamp!,
+            evaluationRef: evaluationRef!
         )
         return entry
     }
