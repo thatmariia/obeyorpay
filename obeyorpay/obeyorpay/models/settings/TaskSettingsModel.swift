@@ -62,12 +62,14 @@ class TaskSettingsModel {
                     let updatedUser = signedInUser.user
                     
                     if let taskIndex = updatedUser.account.tasks[taskUserType]!.firstIndex(where: {$0.recordName == task.recordName!}) {
-                        if taskInvitedType == .joint {
-                            updatedUser.account.tasks[taskUserType]![taskIndex].jointInvitedUsers.append(updatedInvitedUser.toUser())
-                        }
-                        if taskInvitedType == .shared {
-                            updatedUser.account.tasks[taskUserType]![taskIndex].sharedInvitedUsers.append(updatedInvitedUser.toUser())
-                        }
+                        updatedUser.account.tasks[taskUserType]![taskIndex].invitedUsers[taskInvitedType]?.append(updatedInvitedUser.toUser())
+//
+//                        if taskInvitedType == .joint {
+//                            updatedUser.account.tasks[taskUserType]![taskIndex].jointInvitedUsers.append(updatedInvitedUser.toUser())
+//                        }
+//                        if taskInvitedType == .shared {
+//                            updatedUser.account.tasks[taskUserType]![taskIndex].sharedInvitedUsers.append(updatedInvitedUser.toUser())
+//                        }
                     } else {
                         // item could not be found
                     }

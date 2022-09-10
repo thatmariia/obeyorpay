@@ -19,6 +19,11 @@ struct TasksListView: View {
     
     var body: some View {
         VStack {
+            
+            Text("Invitations")
+            
+            
+            Text("Tasks")
             ForEach(signedInUser.user.account.tasks[taskType]!) { task in
                 HStack {
                     

@@ -36,7 +36,7 @@ struct InviteTaskView: View {
             }
             
             // list all joint
-            ForEach(task.jointUsers) { user in
+            ForEach(task.users[taskInvitedType]!) { user in
                 HStack {
                     Text(user.username)
                     Spacer()
@@ -44,7 +44,7 @@ struct InviteTaskView: View {
             }
             
             // list all invited
-            ForEach(task.jointInvitedUsers) { user in
+            ForEach(task.invitedUsers[taskInvitedType]!) { user in
                 HStack {
                     Text(user.username)
                     Spacer()
