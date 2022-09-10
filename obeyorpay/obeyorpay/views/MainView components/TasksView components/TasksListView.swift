@@ -12,6 +12,8 @@ struct TasksListView: View {
     
     @EnvironmentObject var signedInUser: SignedInUserModel
     
+    @State var showingInviteJoinTask = false
+    
     //var tasks: [TaskStoreModel]
     var taskType: TaskTypes
     
@@ -26,8 +28,8 @@ struct TasksListView: View {
                         Text("edit")
                     }
                     
-                    NavigationLink {
-                        JoinInviteTaskView(task: task, taskType: taskType)
+                    NavigationLink(isActive: $showingInviteJoinTask) {
+                        InviteTaskView(showingThisView: $showingInviteJoinTask, task: task, taskUserType: taskType, taskInvitedType: .joint)
                     } label: {
                         Text("inv-J")
                     }

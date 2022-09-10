@@ -40,7 +40,7 @@
 		B688DE6928CA66DE00500C7E /* TasksListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688DE6828CA66DE00500C7E /* TasksListView.swift */; };
 		B6ACAAB628CAAF9700A47330 /* UserStoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ACAAB528CAAF9700A47330 /* UserStoreModel.swift */; };
 		B6ACAAB828CAB08100A47330 /* CKUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ACAAB728CAB08100A47330 /* CKUserManager.swift */; };
-		B6ACAABA28CB7EE700A47330 /* JoinInviteTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ACAAB928CB7EE700A47330 /* JoinInviteTaskView.swift */; };
+		B6ACAABA28CB7EE700A47330 /* InviteTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ACAAB928CB7EE700A47330 /* InviteTaskView.swift */; };
 		B6B4327E28C7F1CD002F8B2F /* CDDataUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4327D28C7F1CD002F8B2F /* CDDataUserModel.swift */; };
 		B6B4328128C81E31002F8B2F /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4328028C81E31002F8B2F /* LoadingView.swift */; };
 		B6B4328528C82DE3002F8B2F /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4328428C82DE3002F8B2F /* AddTaskView.swift */; };
@@ -96,7 +96,7 @@
 		B688DE6828CA66DE00500C7E /* TasksListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListView.swift; sourceTree = "<group>"; };
 		B6ACAAB528CAAF9700A47330 /* UserStoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStoreModel.swift; sourceTree = "<group>"; };
 		B6ACAAB728CAB08100A47330 /* CKUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKUserManager.swift; sourceTree = "<group>"; };
-		B6ACAAB928CB7EE700A47330 /* JoinInviteTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinInviteTaskView.swift; sourceTree = "<group>"; };
+		B6ACAAB928CB7EE700A47330 /* InviteTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteTaskView.swift; sourceTree = "<group>"; };
 		B6B4327D28C7F1CD002F8B2F /* CDDataUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDDataUserModel.swift; sourceTree = "<group>"; };
 		B6B4328028C81E31002F8B2F /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		B6B4328428C82DE3002F8B2F /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
@@ -215,7 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				B6774A2328C5141A00B94B7C /* TaskEditingView.swift */,
-				B6ACAAB928CB7EE700A47330 /* JoinInviteTaskView.swift */,
+				B6ACAAB928CB7EE700A47330 /* InviteTaskView.swift */,
 				B6774A1628C4EBCF00B94B7C /* TaskView.swift */,
 			);
 			path = "TaskListView components";
@@ -443,7 +443,7 @@
 				B688DE6328C964B900500C7E /* CKPaymentManager.swift in Sources */,
 				B6D0BD2028C6B54900B0946D /* EntryCKModel.swift in Sources */,
 				B6D0BD3528C7036400B0946D /* SignInAppleModel.swift in Sources */,
-				B6ACAABA28CB7EE700A47330 /* JoinInviteTaskView.swift in Sources */,
+				B6ACAABA28CB7EE700A47330 /* InviteTaskView.swift in Sources */,
 				B688DE6128C94C0F00500C7E /* MainUserStoreModel.swift in Sources */,
 				B688DE4D28C838A100500C7E /* TaskSettingsModel.swift in Sources */,
 				B6774A4B28C61A1D00B94B7C /* SettingsView.swift in Sources */,

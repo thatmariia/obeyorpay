@@ -58,28 +58,28 @@ class TaskSettingsModel {
                     // find main user with this username
                     let updatedInvitedUser = try await mainUserDB.queryMainUser(withKey: .username, .equal, to: username)
                     
+                    // envi change
+                    let updatedUser = signedInUser.user
+                    
+                    if let taskIndex = updatedUser.account.tasks[taskUserType]!.firstIndex(where: {$0.recordName == task.recordName!}) {
+                        if taskInvitedType == .joint {
+                            updatedUser.account.tasks[taskUserType]![taskIndex].jointInvitedUsers.append(updatedInvitedUser.toUser())
+                        }
+                        if taskInvitedType == .shared {
+                            updatedUser.account.tasks[taskUserType]![taskIndex].sharedInvitedUsers.append(updatedInvitedUser.toUser())
+                        }
+                    } else {
+                        // item could not be found
+                    }
+                    signedInUser.user = updatedUser
+                    
                     // append task to user's account's invited list
                     updatedInvitedUser.account.invitedTasks[taskInvitedType]!.append(task)
                     let _ = try await accountDB.changeAccount(with: updatedInvitedUser.account.recordName!, to: updatedInvitedUser.account)
                     
                     // append user to task' invited list
-                    if taskInvitedType == .joint {
-                        task.jointInvitedUsers.append(updatedInvitedUser.toUser())
-                    }
-                    if taskInvitedType == .shared {
-                        task.sharedInvitedUsers.append(updatedInvitedUser.toUser())
-                    }
-                    let updatedTask = try await taskDB.changeTask(with: task.recordName!, to: task)
+                    let _ = try await taskDB.changeTask(with: task.recordName!, to: task)
                     
-                    // envi change
-                    let updatedUser = signedInUser.user
-                    
-                    if let taskIndex = updatedUser.account.tasks[taskUserType]!.firstIndex(where: {$0.recordName == task.recordName!}) {
-                        updatedUser.account.tasks[taskUserType]![taskIndex] = updatedTask
-                    } else {
-                        // item could not be found
-                    }
-                    signedInUser.user = updatedUser
                 } catch let err {
                     throw err
                 }

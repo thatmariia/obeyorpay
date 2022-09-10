@@ -1,5 +1,5 @@
 //
-//  JoinInviteTaskView.swift
+//  InviteTaskView.swift
 //  obeyorpay
 //
 //  Created by Mariia Steeghs-Turchina on 09/09/2022.
@@ -7,14 +7,17 @@
 
 import SwiftUI
 
-struct JoinInviteTaskView: View {
+struct InviteTaskView: View {
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     @EnvironmentObject var signedInUser: SignedInUserModel
     
+    @Binding var showingThisView: Bool
+    
     var task: TaskStoreModel
-    var taskType: TaskTypes
+    var taskUserType: TaskTypes
+    var taskInvitedType: TaskTypes
     
     @State var inviting: Bool = false
     @State var invitedUsername: String = ""
@@ -26,6 +29,7 @@ struct JoinInviteTaskView: View {
         VStack {
             
             Button {
+                showingThisView = false
                 self.mode.wrappedValue.dismiss()
             } label: {
                 Text("close X")
@@ -72,6 +76,9 @@ struct JoinInviteTaskView: View {
 
             
         }
+        .onAppear {
+            showingThisView = true
+        }
     }
     
     private func attemptInvitingUser() {
@@ -87,7 +94,7 @@ struct JoinInviteTaskView: View {
         if canInvite {
             // invite
             do {
-                try taskSettings.inviteUser(with: invitedUsername, to: task, taskUserType: taskType, taskInvitedType: .joint, signedInUser: signedInUser)
+                try taskSettings.inviteUser(with: invitedUsername, to: task, taskUserType: taskUserType, taskInvitedType: taskInvitedType, signedInUser: signedInUser)
             } catch let err {
             }
             showingInvitedNote = false
