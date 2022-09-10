@@ -67,20 +67,7 @@ struct TaskEditingView: View {
         }
         
         if canSave {
-            
-//            let task = TaskStoreModel(
-//                user: signedInUser.user,
-//                title: title,
-//                span: span,
-//                spanStartDate: spanStartDate,
-//                trackBeforeStart: trackBeforeStart,
-//                target: Int(target)!,
-//                build: build == 1 ? true : false,
-//                countCost: Double(countCost.replacingOccurrences(of: ",", with: "."))!,
-//                color: color
-//            )
-            
-            //var task = task
+
             task.title = title
             do {
                 try taskSettings.editTask(signedInUser: signedInUser, task: task, taskType: taskType)

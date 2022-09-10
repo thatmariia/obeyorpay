@@ -48,19 +48,19 @@ class UsernameSettingModel {
             }
         }
     }
-
-//    func updateUser(signedInUser: SignedInUserModel, with newUsername: String) async throws {
-//        self.updatedUser = signedInUser.user
-//        self.updatedUser.username = newUsername
-//        do {
-//            self.updatedUser = try await userDB.changeUser(with: signedInUser.user.recordName!, to: self.updatedUser)
-//        } catch { }
-//        // TODO:: how to update when fails??
-//        DispatchQueue.main.async {
-//            signedInUser.user = self.updatedUser
-//            self.updatedUser = UserStoreModel() // reset
-//        }
-//    }
+    
+    //    func updateUser(signedInUser: SignedInUserModel, with newUsername: String) async throws {
+    //        self.updatedUser = signedInUser.user
+    //        self.updatedUser.username = newUsername
+    //        do {
+    //            self.updatedUser = try await userDB.changeUser(with: signedInUser.user.recordName!, to: self.updatedUser)
+    //        } catch { }
+    //        // TODO:: how to update when fails??
+    //        DispatchQueue.main.async {
+    //            signedInUser.user = self.updatedUser
+    //            self.updatedUser = UserStoreModel() // reset
+    //        }
+    //    }
     
     func isCorrectUsername(currUsername: String, newUsername: String) throws -> CorrectnessComment {
         // no change
@@ -90,11 +90,11 @@ class UsernameSettingModel {
             Task.init {
                 self.noUsersWithUsername = true
                 do {
-                    let nrUsers = try await mainUserDB.countUsers(with: newUsername)
+                    let nrUsers = try await userDB.countUsers(with: newUsername)
                     self.noUsersWithUsername = nrUsers == 0
                 } catch { }
-                }
             }
+        }
         if !self.noUsersWithUsername {
             return CorrectnessComment(isCorrect: false, note: UsernameNotes.alreadyExists.rawValue)
         }

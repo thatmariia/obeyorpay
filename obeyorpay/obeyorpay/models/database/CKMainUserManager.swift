@@ -71,19 +71,6 @@ class CKMainUserManager: CKManager {
         }
     }
     
-    
-    // TODO:: move?
-    func countUsers(with username: String) async throws -> Int {
-        let predicate = NSPredicate(format: "%K == %@", UserCKKeys.username.rawValue, username)
-        
-        do {
-            let users = try await queryObjects(of: .user, with: predicate, fromCKRecordToObject: fromCKRecordToMainUser)
-            return users.count
-        } catch let err {
-            throw err
-        }
-    }
-    
     func queryMainUser(withKey key: UserCKKeys, _ operation: CKQueryOperation, to value: String) async throws -> MainUserStoreModel {
         let predicate = NSPredicate(format: "%K \(operation.rawValue) %@", key.rawValue, value)
         

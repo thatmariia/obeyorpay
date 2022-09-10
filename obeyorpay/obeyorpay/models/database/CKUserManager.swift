@@ -48,4 +48,26 @@ class CKUserManager: CKManager {
             throw err
         }
     }
+    
+    func countUsers(with username: String) async throws -> Int {
+        let predicate = NSPredicate(format: "%K == %@", UserCKKeys.username.rawValue, username)
+        
+        do {
+            let users = try await queryObjects(of: .user, with: predicate, fromCKRecordToObject: fromCKRecordToUser)
+            return users.count
+        } catch let err {
+            throw err
+        }
+    }
+    
+//    func countUsers(with username: String) async throws -> Int {
+//        let predicate = NSPredicate(format: "%K == %@", UserCKKeys.username.rawValue, username)
+//
+//        do {
+//            let users = try await queryObjects(of: .user, with: predicate, fromCKRecordToObject: fromCKRecordToMainUser)
+//            return users.count
+//        } catch let err {
+//            throw err
+//        }
+//    }
 }
