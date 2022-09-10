@@ -83,16 +83,12 @@ class CKAccountManager: CKManager {
     func changeAccount(with recordName: String, to account: AccountStoreModel) async throws -> AccountStoreModel {
         let account = account.toCK()
         do {
-            print("___ changing account...")
             // fetch record with id
             var record = try await fetchRecord(with: CKRecord.ID(recordName: recordName))
-            print("___ fetched record:", record.recordID.recordName)
             // make changes
             record = fromAccountToCKRecord(from: account, to: record)
-            print("___ made changes")
             // save changes
             let account = try await saveObject(of: record, fromCKRecordToObject: fromCKRecordToAccount) as! AccountCKModel
-            print("___ saved changes")
             return await account.toStore()
         } catch let err {
             throw err

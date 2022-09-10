@@ -53,6 +53,61 @@ class TaskSettingsModel {
         }
     }
     
+    func acceptTask(task: TaskStoreModel, taskType: TaskTypes, signedInUser: SignedInUserModel) throws {
+        
+        DispatchQueue.main.async {
+            Task.init {
+                do {
+                    let updatedUser = signedInUser.user
+                    
+                    // remove task from the user's list of invited tasks
+                    if let taskIndex = updatedUser.account.invitedTasks[taskType]!.firstIndex(where: {$0.recordName == task.recordName!}) {
+                        updatedUser.account.invitedTasks[taskType]!.remove(at: taskIndex)
+                    }
+                    // add task to the user's list of type tasks
+                    updatedUser.account.tasks[taskType]!.append(task)
+                    signedInUser.user = updatedUser
+                    
+                    // remove user from the task's list of invited type users
+                    if let taskIndex = task.invitedUsers[taskType]!.firstIndex(where: {$0.recordName == signedInUser.user.recordName!}) {
+                        task.invitedUsers[taskType]!.remove(at: taskIndex)
+                    }
+                    // add user to the task's list of type users
+                    task.users[taskType]!.append(signedInUser.user.toUser())
+                    let _ = try await taskDB.changeTask(with: task.recordName!, to: task)
+                    
+                    if taskType == .joint {
+                        
+                        // if user had this task in their shared tasks, remove it from there
+                        let updatedUser = signedInUser.user
+                        if let taskIndex = updatedUser.account.tasks[.shared]!.firstIndex(where: {$0.recordName == task.recordName!}) {
+                            updatedUser.account.tasks[taskType]!.remove(at: taskIndex)
+                        }
+                        signedInUser.user = updatedUser
+                        
+                        // for every user that had this task in their personal tasks, move to joint
+                        for user in task.users[.joint]! {
+                            
+                            // in the user, move task to joint
+                            let updatedOtherUser = try await mainUserDB.fetchMainUser(with: user.recordName!)
+                            if let taskIndex = updatedOtherUser.account.tasks[.personal]!.firstIndex(where: {$0.recordName == task.recordName!}) {
+                                updatedOtherUser.account.tasks[.personal]!.remove(at: taskIndex)
+                                updatedOtherUser.account.tasks[.joint]!.append(task)
+                                let _ = try await accountDB.changeAccount(with: updatedOtherUser.account.recordName!, to: updatedOtherUser.account)
+                            }
+                        }
+                        task.users[.personal] = []
+                    }
+                    
+                    let _ = try await accountDB.changeAccount(with: updatedUser.account.recordName!, to: updatedUser.account)
+                    
+                } catch let err {
+                    throw err
+                }
+            }
+        }
+    }
+    
     func rejectTask(task: TaskStoreModel, taskType: TaskTypes, signedInUser: SignedInUserModel) throws {
         DispatchQueue.main.async {
             Task.init {
@@ -63,6 +118,7 @@ class TaskSettingsModel {
                         updatedUser.account.invitedTasks[taskType]!.remove(at: taskIndex)
                     }
                     signedInUser.user = updatedUser
+                    let _ = try await accountDB.changeAccount(with: updatedUser.account.recordName!, to: updatedUser.account)
                     
                     // remove user from the list of invited users to the task
                     if let userIndex = task.invitedUsers[taskType]!.firstIndex(where: {$0.recordName == signedInUser.user.recordName}) {
@@ -83,12 +139,10 @@ class TaskSettingsModel {
                 do {
                     // find main user with this username
                     let updatedInvitedUser = try await mainUserDB.queryMainUser(withKey: .username, .equal, to: username)
-                    
                     // envi change
                     let updatedUser = signedInUser.user
-                    
                     if let taskIndex = updatedUser.account.tasks[taskUserType]!.firstIndex(where: {$0.recordName == task.recordName!}) {
-                        updatedUser.account.tasks[taskUserType]![taskIndex].invitedUsers[taskInvitedType]?.append(updatedInvitedUser.toUser())
+                        updatedUser.account.tasks[taskUserType]![taskIndex].invitedUsers[taskInvitedType]!.append(updatedInvitedUser.toUser())
                     } else {
                         // item could not be found
                     }

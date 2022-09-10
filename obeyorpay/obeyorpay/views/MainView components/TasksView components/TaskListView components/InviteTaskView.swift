@@ -28,6 +28,8 @@ struct InviteTaskView: View {
     var body: some View {
         VStack {
             
+            Text(task.title)
+            
             Button {
                 showingThisView = false
                 self.mode.wrappedValue.dismiss()

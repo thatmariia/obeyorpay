@@ -28,12 +28,12 @@ struct TasksListView: View {
                         Divider()
                         Spacer()
                         Button {
-                            // TODO:: accept
+                            acceptTask(task: task)
                         } label: {
                             Text("accept")
                         }
                         Button {
-                            // TODO:: reject
+                            rejectTask(task: task)
                         } label: {
                             Text("reject")
                         }
@@ -44,7 +44,7 @@ struct TasksListView: View {
             
             
             Text("Tasks")
-            ForEach(signedInUser.user.account.tasks[taskType]!) { task in
+            ForEach(signedInUser.user.account.tasks[taskType]!, id: \.self) { task in
                 HStack {
                     
                     NavigationLink {
@@ -65,8 +65,16 @@ struct TasksListView: View {
         }
     }
     
-    private func rejectTask() {
-        
+    private func acceptTask(task: TaskStoreModel) {
+        do {
+            try taskSettings.acceptTask(task: task, taskType: taskType, signedInUser: signedInUser)
+        } catch let err {}
+    }
+    
+    private func rejectTask(task: TaskStoreModel) {
+        do {
+            try taskSettings.rejectTask(task: task, taskType: taskType, signedInUser: signedInUser)
+        } catch let err {}
     }
 }
 
