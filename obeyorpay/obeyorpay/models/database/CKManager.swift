@@ -146,6 +146,14 @@ class CKManager {
         }
     }
     
+    func deleteObject(with recordID: CKRecord.ID) async throws {
+        do {
+            try await publicDB.deleteRecord(withID: recordID)
+        } catch let err {
+            throw err
+        }
+    }
+    
     
     
 }

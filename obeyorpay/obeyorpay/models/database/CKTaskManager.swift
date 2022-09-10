@@ -126,4 +126,12 @@ class CKTaskManager: CKManager {
             throw err
         }
     }
+    
+    func deleteTask(with recordName: String) async throws {
+        do {
+            try await deleteObject(with: CKRecord.ID(recordName: recordName))
+        } catch let err {
+            throw err
+        }
+    }
 }

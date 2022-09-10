@@ -13,6 +13,7 @@ struct TasksListView: View {
     @EnvironmentObject var signedInUser: SignedInUserModel
     
     @State var showingInviteJoinTask = false
+    @State var showingInviteShareTask = false
     
     //var tasks: [TaskStoreModel]
     var taskType: TaskTypes
@@ -53,16 +54,35 @@ struct TasksListView: View {
                         Text("edit")
                     }
                     
+                    Button {
+                        leaveTask(task: task)
+                    } label: {
+                        Text("leave")
+                    }
+
+                    
                     NavigationLink(isActive: $showingInviteJoinTask) {
                         InviteTaskView(showingThisView: $showingInviteJoinTask, task: task, taskUserType: taskType, taskInvitedType: .joint)
                     } label: {
                         Text("inv-J")
+                    }
+                    
+                    NavigationLink(isActive: $showingInviteShareTask) {
+                        InviteTaskView(showingThisView: $showingInviteShareTask, task: task, taskUserType: taskType, taskInvitedType: .shared)
+                    } label: {
+                        Text("inv-S")
                     }
 
                     TaskView(task: task)
                 }
             }
         }
+    }
+    
+    private func leaveTask(task: TaskStoreModel) {
+        do {
+            try taskSettings.leaveTask(task: task, taskType: taskType == .shared ? .shared : .joint, taskUserType: taskType, signedInUser: signedInUser)
+        } catch let err {}
     }
     
     private func acceptTask(task: TaskStoreModel) {

@@ -218,4 +218,17 @@ class TaskStoreModel: Identifiable, Equatable, Hashable {
             sharedInvitedUsersRefs: self.invitedUsers[.shared]!.map { $0.recordName ?? "" }
         )
     }
+    
+    func resetUsers() {
+        self.users = [
+            .personal: [],
+            .joint: [],
+            .shared: []
+        ]
+        self.invitedUsers = [
+            .personal: [],
+            .joint: [],
+            .shared: []
+        ]
+    }
 }

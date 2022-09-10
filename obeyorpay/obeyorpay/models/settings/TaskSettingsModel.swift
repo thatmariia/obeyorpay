@@ -34,6 +34,31 @@ class TaskSettingsModel {
     var userFound = false
     var userInvited = false
     
+    func leaveTask(task: TaskStoreModel, taskType: TaskTypes, taskUserType: TaskTypes, signedInUser: SignedInUserModel) throws {
+        DispatchQueue.main.async {
+            Task.init {
+                do {
+            
+                    // remove task from the user
+                    let updatedUser = signedInUser.user
+                    if let taskIndex = updatedUser.account.tasks[taskUserType]!.firstIndex(where: { $0.recordName == task.recordName }) {
+                        updatedUser.account.tasks[taskUserType]!.remove(at: taskIndex)
+                    }
+                    signedInUser.user = updatedUser
+                    let _ = try await accountDB.changeAccount(with: updatedUser.account.recordName!, to: updatedUser.account)
+                    
+                    // remove user from the task
+                    if let userIndex = task.users[taskUserType]!.firstIndex(where: { $0.recordName == signedInUser.user.recordName! }) {
+                        task.users[taskUserType]?.remove(at: userIndex)
+                    }
+                    
+                } catch let err {
+                    throw err
+                }
+            }
+        }
+    }
+    
     func editTask(signedInUser: SignedInUserModel, task: TaskStoreModel, taskType: TaskTypes) throws {
         DispatchQueue.main.async {
             Task.init {
