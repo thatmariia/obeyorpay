@@ -20,7 +20,27 @@ struct TasksListView: View {
     var body: some View {
         VStack {
             
-            Text("Invitations")
+            if taskType != .personal {
+                Text("Invitations")
+                ForEach(signedInUser.user.account.invitedTasks[taskType]!) { task in
+                    HStack {
+                        Text(task.title)
+                        Divider()
+                        Spacer()
+                        Button {
+                            // TODO:: accept
+                        } label: {
+                            Text("accept")
+                        }
+                        Button {
+                            // TODO:: reject
+                        } label: {
+                            Text("reject")
+                        }
+
+                    }
+                }
+            }
             
             
             Text("Tasks")
@@ -43,6 +63,10 @@ struct TasksListView: View {
                 }
             }
         }
+    }
+    
+    private func rejectTask() {
+        
     }
 }
 

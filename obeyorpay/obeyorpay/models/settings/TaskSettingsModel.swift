@@ -22,6 +22,7 @@ enum TaskCostComment: String {
 
 enum InvitedUserComment: String {
     case notExist = "This user does not exist."
+    case alreadyInvited = "This user has already been invited."
 }
 
 class TaskSettingsModel {
@@ -31,6 +32,7 @@ class TaskSettingsModel {
     
     // supporting
     var userFound = false
+    var userInvited = false
     
     func editTask(signedInUser: SignedInUserModel, task: TaskStoreModel, taskType: TaskTypes) throws {
         DispatchQueue.main.async {
@@ -51,6 +53,30 @@ class TaskSettingsModel {
         }
     }
     
+    func rejectTask(task: TaskStoreModel, taskType: TaskTypes, signedInUser: SignedInUserModel) throws {
+        DispatchQueue.main.async {
+            Task.init {
+                do {
+                    // remove task from the list of invited to
+                    let updatedUser = signedInUser.user
+                    if let taskIndex = updatedUser.account.invitedTasks[taskType]!.firstIndex(where: {$0.recordName == task.recordName!}) {
+                        updatedUser.account.invitedTasks[taskType]!.remove(at: taskIndex)
+                    }
+                    signedInUser.user = updatedUser
+                    
+                    // remove user from the list of invited users to the task
+                    if let userIndex = task.invitedUsers[taskType]!.firstIndex(where: {$0.recordName == signedInUser.user.recordName}) {
+                        task.invitedUsers[taskType]!.remove(at: userIndex)
+                    }
+                    let _ = try await taskDB.changeTask(with: task.recordName!, to: task)
+                } catch let err {
+                    throw err
+                }
+            }
+        }
+        
+    }
+    
     func inviteUser(with username: String, to task: TaskStoreModel, taskUserType: TaskTypes, taskInvitedType: TaskTypes, signedInUser: SignedInUserModel) throws {
         DispatchQueue.main.async {
             Task.init {
@@ -63,13 +89,6 @@ class TaskSettingsModel {
                     
                     if let taskIndex = updatedUser.account.tasks[taskUserType]!.firstIndex(where: {$0.recordName == task.recordName!}) {
                         updatedUser.account.tasks[taskUserType]![taskIndex].invitedUsers[taskInvitedType]?.append(updatedInvitedUser.toUser())
-//
-//                        if taskInvitedType == .joint {
-//                            updatedUser.account.tasks[taskUserType]![taskIndex].jointInvitedUsers.append(updatedInvitedUser.toUser())
-//                        }
-//                        if taskInvitedType == .shared {
-//                            updatedUser.account.tasks[taskUserType]![taskIndex].sharedInvitedUsers.append(updatedInvitedUser.toUser())
-//                        }
                     } else {
                         // item could not be found
                     }
@@ -89,7 +108,7 @@ class TaskSettingsModel {
         }
     }
     
-    func invitedUsernameExists(username: String) -> CorrectnessComment {
+    func canInviteUser(username: String, task: TaskStoreModel, taskInvitedType: TaskTypes) -> CorrectnessComment {
         // already exists
         let group = DispatchGroup()
         group.enter()
@@ -98,14 +117,28 @@ class TaskSettingsModel {
             Task.init {
                 do {
                     self.userFound = false
-                    let nrUsers = try await userDB.countUsers(with: username)
-                    self.userFound = nrUsers != 0
+                    self.userInvited = false
+                    
+                    let users = try await userDB.queryUsers(withKey: .username, .equal, to: username)
+                    //let nrUsers = try await userDB.countUsers(with: username)
+                    for user in users {
+                        if task.invitedUsers[taskInvitedType]!.contains(user) {
+                            self.userInvited = true
+                            break
+                        }
+                    }
+                    self.userFound = users.count != 0
                     group.leave()
                 } catch { }
             }
         }
         
         group.wait()
+        
+        if userInvited {
+            return CorrectnessComment(isCorrect: false, note: InvitedUserComment.alreadyInvited.rawValue)
+        }
+        
         if !userFound {
             return CorrectnessComment(isCorrect: false, note: InvitedUserComment.notExist.rawValue)
         }
@@ -122,9 +155,9 @@ class TaskSettingsModel {
                     let newTask = try await taskDB.addTask(task: task)
                     let updatedUser = signedInUser.user
                     updatedUser.account.tasks[.personal]!.append(newTask)
+                    signedInUser.user = updatedUser
                     // adding task to personal tasks of user
                     updatedUser.account = try await accountDB.changeAccount(with: updatedUser.account.recordName!, to: updatedUser.account)
-                    signedInUser.user = updatedUser
                 } catch let err {
                     throw err
                 }

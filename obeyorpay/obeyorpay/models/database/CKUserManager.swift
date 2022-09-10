@@ -60,14 +60,14 @@ class CKUserManager: CKManager {
         }
     }
     
-//    func countUsers(with username: String) async throws -> Int {
-//        let predicate = NSPredicate(format: "%K == %@", UserCKKeys.username.rawValue, username)
-//
-//        do {
-//            let users = try await queryObjects(of: .user, with: predicate, fromCKRecordToObject: fromCKRecordToMainUser)
-//            return users.count
-//        } catch let err {
-//            throw err
-//        }
-//    }
+    func queryUsers(withKey key: UserCKKeys, _ operation: CKQueryOperation, to value: String) async throws -> [UserStoreModel] {
+        let predicate = NSPredicate(format: "%K \(operation.rawValue) %@", key.rawValue, value)
+        
+        do {
+            let users = try await queryObjects(of: .user, with: predicate, fromCKRecordToObject: fromCKRecordToUser) as! [UserCKModel]
+            return await users.asyncMap { $0.toStore() }
+        } catch let err {
+            throw err
+        }
+    }
 }

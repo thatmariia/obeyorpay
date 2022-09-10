@@ -84,7 +84,7 @@ struct InviteTaskView: View {
     private func attemptInvitingUser() {
         var canInvite = true
         
-        let invitedComment = taskSettings.invitedUsernameExists(username: invitedUsername)
+        let invitedComment = taskSettings.canInviteUser(username: invitedUsername, task: task, taskInvitedType: taskInvitedType)
         if !invitedComment.isCorrect {
             canInvite = false
             showingInvitedNote = true
