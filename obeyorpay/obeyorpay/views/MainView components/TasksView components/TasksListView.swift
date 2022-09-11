@@ -12,19 +12,13 @@ struct TasksListView: View {
     
     @EnvironmentObject var signedInUser: SignedInUserModel
     
-    @State var showingInviteJoinTask = false
-    @State var showingInviteShareTask = false
-    
-    
-    //var tasks: [TaskStoreModel]
     var taskType: TaskTypes
     
     var viewWidth = UIScreen.main.bounds.width
     
     var body: some View {
         
-        ScrollView {
-            VStack(spacing: 0) {
+        VStack(spacing: -10) {
             
             if taskType != .personal {
                 ForEach(signedInUser.user.account.invitedTasks[taskType]!) { task in
@@ -47,57 +41,19 @@ struct TasksListView: View {
                 }
             }
             
- 
+            
             ForEach(signedInUser.user.account.tasks[taskType]!) { task in
                 
-                        TaskView(task: task, taskType: taskType)
-                    .frame(height: 110)
-                        
-                        /*
-                         NavigationLink {
-                         TaskEditingView(task: task, taskType: taskType)
-                         } label: {
-                         Text("edit")
-                         }
-                         
-                         Button {
-                         leaveTask(task: task)
-                         } label: {
-                         Text("leave")
-                         }
-                         
-                         
-                         NavigationLink(isActive: $showingInviteJoinTask) {
-                         InviteTaskView(showingThisView: $showingInviteJoinTask, task: task, taskUserType: taskType, taskInvitedType: .joint)
-                         } label: {
-                         Text("inv-J")
-                         }
-                         
-                         NavigationLink(isActive: $showingInviteShareTask) {
-                         InviteTaskView(showingThisView: $showingInviteShareTask, task: task, taskUserType: taskType, taskInvitedType: .shared)
-                         } label: {
-                         Text("inv-S")
-                         }
-                         */
-                        
-                        
-                    
-                    
+                HStack {
+                    TaskRowView(task: task, taskType: taskType)
+                        .frame(height: 110)
+                        .shadow(color: theme.shadowColor, radius: 14, x: 10, y: 10)
                 }
-            
-            
-            
-            
-            Spacer()
+                .padding()
+                
+            }
         }
-        }
-
-    }
-    
-    private func leaveTask(task: TaskStoreModel) {
-        do {
-            try taskSettings.leaveTask(task: task, taskType: taskType == .shared ? .shared : .joint, taskUserType: taskType, signedInUser: signedInUser)
-        } catch let err {}
+        
     }
     
     private func acceptTask(task: TaskStoreModel) {

@@ -31,3 +31,6 @@ let paymentDB = CKPaymentManager()
 // MARK: - settings
 let usernameSettings = UsernameSettingModel()
 let taskSettings = TaskSettingsModel()
+
+// MARK: - UI stuff
+let theme = AppTheme()

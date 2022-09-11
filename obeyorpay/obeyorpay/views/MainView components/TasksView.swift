@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ScrollViewIfNeeded
 
 enum TaskTypes {
     case personal
@@ -20,17 +21,20 @@ struct TasksView: View {
     
     var body: some View {
         
-        VStack {
-            
-            Spacer().frame(height: 10)
+        ScrollViewIfNeeded {
+            VStack {
                 
-            TasksTypeView(taskType: $taskType)
-            
-            Spacer().frame(height: 30)
-            
-            TasksListView(taskType: taskType)
-            
-            Spacer()
+                Spacer().frame(height: 10)
+                
+                Group {
+                    TasksTypeView(taskType: $taskType)
+                }
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: -15, trailing: 0))
+                
+                TasksListView(taskType: taskType)
+                
+                Spacer()
+            }
         }
     }
 }

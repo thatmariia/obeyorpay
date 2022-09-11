@@ -13,7 +13,10 @@ struct MainView: View {
     
     var body: some View {
         
+        
         NavigationView {
+            ZStack{
+                theme.backgroundColor.ignoresSafeArea()
             
             VStack {
         
@@ -28,9 +31,13 @@ struct MainView: View {
                 
                 AppTabView(tab: $tab)
             }
+            .foregroundColor(theme.textColor)
+            }
             .navigationTitle("")
             .navigationBarHidden(true)
+        
         }
+        
         
     }
     

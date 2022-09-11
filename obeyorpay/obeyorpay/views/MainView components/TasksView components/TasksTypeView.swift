@@ -15,11 +15,13 @@ struct TasksTypeView: View {
     var body: some View {
         HStack {
             
+            HStack {
             NavigationLink {
                 AddTaskView()
             } label: {
                 AddTaskButtonView()
             }
+            }.padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 5))
             
             Spacer()
             
@@ -27,7 +29,7 @@ struct TasksTypeView: View {
                 taskType = TaskTypes.personal
             } label: {
                 Text("PERSONAL")
-                    .foregroundColor(taskType == .personal ? .black : .gray)
+                    .foregroundColor(taskType == .personal ? theme.textColor : theme.unselectedTextColor)
             }
 
             
@@ -37,7 +39,7 @@ struct TasksTypeView: View {
                 taskType = TaskTypes.joint
             } label: {
                 Text("JOINT")
-                    .foregroundColor(taskType == .joint ? .black : .gray)
+                    .foregroundColor(taskType == .joint ? theme.textColor : theme.unselectedTextColor)
             }
             
             Spacer()
@@ -46,10 +48,11 @@ struct TasksTypeView: View {
                 taskType = TaskTypes.shared
             } label: {
                 Text("SHARED")
-                    .foregroundColor(taskType == .shared ? .black : .gray)
+                    .foregroundColor(taskType == .shared ? theme.textColor : theme.unselectedTextColor)
             }
         }
         .font(.system(size: 15, weight: .semibold))
+        .padding()
     }
 }
 

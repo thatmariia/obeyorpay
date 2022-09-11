@@ -25,7 +25,7 @@ struct ContentView: View {
                     .preferredColorScheme(.light)
             }
         }
-        .padding()
+        //.padding()
         //.edgesIgnoringSafeArea(.all)
         
         

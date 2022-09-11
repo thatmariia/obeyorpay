@@ -11,9 +11,10 @@ struct AddTaskButtonView: View {
     
     var body: some View {
         
-        Image(systemName: "plus.circle.fill")
-            .foregroundColor(Color.green)
-            .font(.system(size: 25, weight: .regular))
+        Image(systemName: "plus")
+            .foregroundColor(theme.buttonColor)
+            .shadow(color: theme.shadowColor, radius: 3, x: 3, y: 3)
+            .font(.system(size: 30, weight: .bold))
 
 
     }
