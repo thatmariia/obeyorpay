@@ -15,10 +15,19 @@ struct TasksTypeView: View {
     var body: some View {
         HStack {
             
+            NavigationLink {
+                AddTaskView()
+            } label: {
+                AddTaskButtonView()
+            }
+            
+            Spacer()
+            
             Button {
                 taskType = TaskTypes.personal
             } label: {
-                Text("personal")
+                Text("PERSONAL")
+                    .foregroundColor(taskType == .personal ? .black : .gray)
             }
 
             
@@ -27,7 +36,8 @@ struct TasksTypeView: View {
             Button {
                 taskType = TaskTypes.joint
             } label: {
-                Text("joint")
+                Text("JOINT")
+                    .foregroundColor(taskType == .joint ? .black : .gray)
             }
             
             Spacer()
@@ -35,9 +45,11 @@ struct TasksTypeView: View {
             Button {
                 taskType = TaskTypes.shared
             } label: {
-                Text("shared")
+                Text("SHARED")
+                    .foregroundColor(taskType == .shared ? .black : .gray)
             }
         }
+        .font(.system(size: 15, weight: .semibold))
     }
 }
 

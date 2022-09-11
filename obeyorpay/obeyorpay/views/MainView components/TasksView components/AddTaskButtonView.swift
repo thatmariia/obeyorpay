@@ -11,7 +11,9 @@ struct AddTaskButtonView: View {
     
     var body: some View {
         
-        Text("add+")
+        Image(systemName: "plus.circle.fill")
+            .foregroundColor(Color.green)
+            .font(.system(size: 25, weight: .regular))
 
 
     }

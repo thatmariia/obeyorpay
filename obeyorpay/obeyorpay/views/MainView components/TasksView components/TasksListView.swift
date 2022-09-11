@@ -15,14 +15,18 @@ struct TasksListView: View {
     @State var showingInviteJoinTask = false
     @State var showingInviteShareTask = false
     
+    
     //var tasks: [TaskStoreModel]
     var taskType: TaskTypes
     
+    var viewWidth = UIScreen.main.bounds.width
+    
     var body: some View {
-        VStack {
+        
+        ScrollView {
+            VStack(spacing: 0) {
             
             if taskType != .personal {
-                Text("Invitations")
                 ForEach(signedInUser.user.account.invitedTasks[taskType]!) { task in
                     HStack {
                         Text(task.title)
@@ -38,45 +42,56 @@ struct TasksListView: View {
                         } label: {
                             Text("reject")
                         }
-
+                        
                     }
                 }
             }
             
-            
-            Text("Tasks")
-            ForEach(signedInUser.user.account.tasks[taskType]!, id: \.self) { task in
-                HStack {
+ 
+            ForEach(signedInUser.user.account.tasks[taskType]!) { task in
+                
+                        TaskView(task: task, taskType: taskType)
+                    .frame(height: 110)
+                        
+                        /*
+                         NavigationLink {
+                         TaskEditingView(task: task, taskType: taskType)
+                         } label: {
+                         Text("edit")
+                         }
+                         
+                         Button {
+                         leaveTask(task: task)
+                         } label: {
+                         Text("leave")
+                         }
+                         
+                         
+                         NavigationLink(isActive: $showingInviteJoinTask) {
+                         InviteTaskView(showingThisView: $showingInviteJoinTask, task: task, taskUserType: taskType, taskInvitedType: .joint)
+                         } label: {
+                         Text("inv-J")
+                         }
+                         
+                         NavigationLink(isActive: $showingInviteShareTask) {
+                         InviteTaskView(showingThisView: $showingInviteShareTask, task: task, taskUserType: taskType, taskInvitedType: .shared)
+                         } label: {
+                         Text("inv-S")
+                         }
+                         */
+                        
+                        
                     
-                    NavigationLink {
-                        TaskEditingView(task: task, taskType: taskType)
-                    } label: {
-                        Text("edit")
-                    }
                     
-                    Button {
-                        leaveTask(task: task)
-                    } label: {
-                        Text("leave")
-                    }
-
-                    
-                    NavigationLink(isActive: $showingInviteJoinTask) {
-                        InviteTaskView(showingThisView: $showingInviteJoinTask, task: task, taskUserType: taskType, taskInvitedType: .joint)
-                    } label: {
-                        Text("inv-J")
-                    }
-                    
-                    NavigationLink(isActive: $showingInviteShareTask) {
-                        InviteTaskView(showingThisView: $showingInviteShareTask, task: task, taskUserType: taskType, taskInvitedType: .shared)
-                    } label: {
-                        Text("inv-S")
-                    }
-
-                    TaskView(task: task)
                 }
-            }
+            
+            
+            
+            
+            Spacer()
         }
+        }
+
     }
     
     private func leaveTask(task: TaskStoreModel) {

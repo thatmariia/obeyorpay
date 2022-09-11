@@ -21,23 +21,12 @@ struct TasksView: View {
     var body: some View {
         
         VStack {
-            HStack {
-                TasksTypeView(taskType: $taskType)
+            
+            Spacer().frame(height: 10)
                 
-                Spacer()
-                
-                NavigationLink {
-                    AddTaskView()
-                } label: {
-                    AddTaskButtonView()
-                }
-            }
+            TasksTypeView(taskType: $taskType)
             
-            Spacer()
-            
-            Text("\(signedInUser.user.account.tasks[.personal]!.count)")
-            
-            Spacer()
+            Spacer().frame(height: 30)
             
             TasksListView(taskType: taskType)
             
