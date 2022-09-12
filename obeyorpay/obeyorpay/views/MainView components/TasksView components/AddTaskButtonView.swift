@@ -15,8 +15,6 @@ struct AddTaskButtonView: View {
             .foregroundColor(theme.buttonColor)
             .shadow(color: theme.shadowColor, radius: 3, x: 3, y: 3)
             .font(.system(size: 30, weight: .bold))
-
-
     }
 }
 

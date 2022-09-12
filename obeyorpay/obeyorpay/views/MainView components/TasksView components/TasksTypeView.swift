@@ -50,6 +50,8 @@ struct TasksTypeView: View {
                 Text("SHARED")
                     .foregroundColor(taskType == .shared ? theme.textColor : theme.unselectedTextColor)
             }
+            
+            //Spacer()
         }
         .font(.system(size: 15, weight: .semibold))
         .padding()

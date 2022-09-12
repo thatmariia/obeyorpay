@@ -19,11 +19,13 @@ struct MainView: View {
                 theme.backgroundColor.ignoresSafeArea()
             
             VStack {
-        
-            
-                if tab == TabItems.tasks {
+                
+                switch tab {
+                case .tasks:
                     TasksView()
-                } else if tab == TabItems.settings {
+                case .evaluations:
+                    Text("Evaluations")
+                case .settings:
                     SettingsView()
                 }
                 

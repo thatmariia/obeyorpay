@@ -20,6 +20,8 @@ struct TaskRowView: View {
     var task: TaskStoreModel
     var taskType: TaskTypes
     
+    var rowHeight: Double
+    
     @State var presentation: TaskViewPresentation = .task
     
     var body: some View {
@@ -28,10 +30,10 @@ struct TaskRowView: View {
             
             TabView(selection: $presentation) {
                 
-                TaskView(task: task, taskType: taskType)
+                TaskView(task: task, taskType: taskType, height: rowHeight)
                     .tag(TaskViewPresentation.task)
                 
-                TaskActionsView(task: task, taskType: taskType)
+                TaskActionsView(task: task, taskType: taskType, height: rowHeight)
                     .tag(TaskViewPresentation.editing)
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))

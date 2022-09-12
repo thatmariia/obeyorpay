@@ -18,6 +18,9 @@ struct obeyorpayApp: App {
     var signedInUser: SignedInUserModel
     
     init() {
+        //UIDatePicker.appearance().backgroundColor = UIColor(theme.cardColor)
+        // datePicker.setValue(UIColor.white, forKey: "backgroundColor")
+        
         signedInUser = SignedInUserModel()
         checkIfUserSignedIn()
     }

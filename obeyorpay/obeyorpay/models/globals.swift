@@ -34,3 +34,20 @@ let taskSettings = TaskSettingsModel()
 
 // MARK: - UI stuff
 let theme = AppTheme()
+
+// MARK: - dates and times
+let dateFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "d MMM yyyy"
+    return formatter
+}()
+let timeFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "HH:mm"
+    return formatter
+}()
+let fullDateFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "d MMM yyyy, HH:mm"
+    return formatter
+}()

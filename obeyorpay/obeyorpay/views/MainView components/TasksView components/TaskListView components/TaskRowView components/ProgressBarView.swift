@@ -10,6 +10,7 @@ import SwiftUI
 struct ProgressBarView: View {
     
     var color: Int
+    var height: Double
     
     var body: some View {
         GeometryReader { geometry in
@@ -17,14 +18,14 @@ struct ProgressBarView: View {
                 Rectangle()
                     .frame(
                         //width: geometry.size.width,
-                        height: 95//geometry.size.height
+                        height: height//geometry.size.height
                     )
                     .foregroundColor(theme.cardColor)
                 
                 Rectangle()
                     .frame(
                         width: min(CGFloat(/*task.currentCount / task.target*/ 0.3) * geometry.size.width, geometry.size.width),
-                        height: 95//geometry.size.height
+                        height: height//geometry.size.height
                     )
                     .foregroundColor(theme.taskColors[color])
                     

@@ -10,6 +10,7 @@ import SwiftUI
 
 enum TabItems: CaseIterable {
     case tasks
+    case evaluations
     case settings
 }
 
@@ -25,7 +26,15 @@ struct AppTabView: View {
             Button {
                 tab = TabItems.tasks
             } label: {
-                Text("tasks")
+                AppTabButtonView(isSelected: tab == TabItems.tasks, imageSystemName: "paperclip.circle.fill")
+            }
+            
+            Spacer()
+            
+            Button {
+                tab = TabItems.evaluations
+            } label: {
+                AppTabButtonView(isSelected: tab == TabItems.evaluations, imageSystemName: "eurosign.circle.fill")
             }
             
             Spacer()
@@ -33,11 +42,11 @@ struct AppTabView: View {
             Button {
                 tab = TabItems.settings
             } label: {
-                Text("settings")
+                AppTabButtonView(isSelected: tab == TabItems.settings, imageSystemName: "gearshape.circle.fill")
             }
             
-
         }
+        .padding()
         
     }
 }

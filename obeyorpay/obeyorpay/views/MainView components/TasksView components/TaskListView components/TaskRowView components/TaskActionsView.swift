@@ -17,6 +17,8 @@ struct TaskActionsView: View {
     @State var showingInviteJoinTask = false
     @State var showingInviteShareTask = false
     
+    var height: Double
+    
     var body: some View {
         HStack {
             
@@ -27,7 +29,7 @@ struct TaskActionsView: View {
                 Button {
                     // TODO:: removing last entry
                 } label: {
-                    TaskActionView(imageSystemName: "gobackward", color: task.color)
+                    TaskActionView(imageSystemName: "gobackward", color: task.color, height: height)
                 }
                 Spacer()
             }
@@ -37,7 +39,7 @@ struct TaskActionsView: View {
                 NavigationLink {
                     TaskEditingView(task: task, taskType: taskType)
                 } label: {
-                    TaskActionView(imageSystemName: "square.and.pencil", color: task.color)
+                    TaskActionView(imageSystemName: "square.and.pencil", color: task.color, height: height)
                 }
                 Spacer()
             }
@@ -48,7 +50,7 @@ struct TaskActionsView: View {
                 NavigationLink(isActive: $showingInviteJoinTask) {
                     InviteTaskView(showingThisView: $showingInviteJoinTask, task: task, taskUserType: taskType, taskInvitedType: .joint)
                 } label: {
-                    TaskActionView(imageSystemName: "person.fill.badge.plus", color: task.color)
+                    TaskActionView(imageSystemName: "person.fill.badge.plus", color: task.color, height: height)
                 }
                 Spacer()
             }
@@ -59,7 +61,7 @@ struct TaskActionsView: View {
                 NavigationLink(isActive: $showingInviteShareTask) {
                     InviteTaskView(showingThisView: $showingInviteShareTask, task: task, taskUserType: taskType, taskInvitedType: .shared)
                 } label: {
-                    TaskActionView(imageSystemName: "person.wave.2.fill", color: task.color)
+                    TaskActionView(imageSystemName: "person.wave.2.fill", color: task.color, height: height)
                 }
                 Spacer()
             }
@@ -69,7 +71,7 @@ struct TaskActionsView: View {
                 Button {
                     leaveTask(task: task)
                 } label: {
-                    TaskActionView(imageSystemName: "eject.fill", color: task.color)
+                    TaskActionView(imageSystemName: "eject.fill", color: task.color, height: height)
                 }
                 Spacer()
             }

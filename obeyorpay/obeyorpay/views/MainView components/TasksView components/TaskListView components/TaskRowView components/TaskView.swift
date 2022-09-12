@@ -14,10 +14,12 @@ struct TaskView: View {
     var task: TaskStoreModel
     var taskType: TaskTypes
     
+    var height: Double
+    
     var body: some View {
         ZStack(alignment: .center) {
             
-            ProgressBarView(color: task.color)
+            ProgressBarView(color: task.color, height: height)
             
             HStack {
                 VStack(alignment: .leading) {
@@ -29,7 +31,7 @@ struct TaskView: View {
                     // task title
                     Text("\(task.title.uppercased())")
                         .font(.system(size: 20, weight: .semibold))
-                        .tracking(5)
+                        .tracking(3)
                     
                     Spacer().frame(height: 3)
                     

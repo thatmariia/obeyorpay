@@ -16,6 +16,8 @@ struct TasksListView: View {
     
     var viewWidth = UIScreen.main.bounds.width
     
+    var rowHeight: Double = 100
+    
     var body: some View {
         
         VStack(spacing: -10) {
@@ -45,8 +47,8 @@ struct TasksListView: View {
             ForEach(signedInUser.user.account.tasks[taskType]!) { task in
                 
                 HStack {
-                    TaskRowView(task: task, taskType: taskType)
-                        .frame(height: 110)
+                    TaskRowView(task: task, taskType: taskType, rowHeight: rowHeight)
+                        .frame(height: rowHeight + 5)
                         .shadow(color: theme.shadowColor, radius: 14, x: 10, y: 10)
                 }
                 .padding()

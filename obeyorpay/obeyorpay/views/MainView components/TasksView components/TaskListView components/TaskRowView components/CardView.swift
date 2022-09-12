@@ -10,13 +10,14 @@ import SwiftUI
 struct CardView: View {
     
     var color: Color
+    var height: Double
     
     var body: some View {
         GeometryReader { geometry in
         Rectangle()
             .frame(
                 width: geometry.size.width,
-                height: 95
+                height: height
             )
             .foregroundColor(color)
             .cornerRadius(20)

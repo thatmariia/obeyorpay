@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ScrollViewIfNeeded
 
 struct AddTaskView: View {
     
@@ -13,14 +14,14 @@ struct AddTaskView: View {
     
     @EnvironmentObject var signedInUser: SignedInUserModel
     
-    @State var title: String = ""
+    @State var title: String = "title"
     @State var span: TaskSpan = .day
     @State var spanStartDate: Date = Date()
     @State var trackBeforeStart: Bool = false
     @State var target: String = "5"
     @State var build: Int = 1
     @State var countCost: String = "1,0"
-    @State var color: Int = 1
+    @State var color: Int = 0
     
     @State var titleNote: String = ""
     @State var showingTitleNote: Bool = false
@@ -33,107 +34,67 @@ struct AddTaskView: View {
     
     
     var body: some View {
-        VStack {
-            Group{
-            Text("\(signedInUser.user.account.tasks[.personal]!.count)")
-            }
-            
-            Button {
-                self.mode.wrappedValue.dismiss()
-            } label: {
-                Text("close X")
-            }
-            
-            Button {
-                attemptAddingTask()
-            } label: {
-                Text("save")
-            }
-            
-            
-            // title
-            Group {
-                Text("Title")
-                TextField("Title", text: $title)
-                if showingTitleNote {
-                    Text(titleNote)
-                }
-            }
-            
-            // span
-            Group {
-                Text("Span")
-                HStack {
-                    ForEach(TaskSpan.allCases, id: \.self) { s in
-                        HStack {
-                            Button {
-                                span = s
-                            } label: {
-                                SpanButtonView(txt: s.rawValue)
-                            }
-                            Divider()
-                        }
-                    }
+        ZStack {
+            theme.backgroundColor.ignoresSafeArea()
+            ScrollView(.vertical, showsIndicators: false) {
+
+            VStack(alignment: .leading, spacing: 35) {
+                
+                HStack(spacing: 20) {
                     Spacer()
-                }
-            }
-            
-            // span start date
-            Group {
-                Text("Span start date")
-                DatePicker("date picker", selection: $spanStartDate, in: Date()..., displayedComponents: [.date, .hourAndMinute])
-            }
-            
-            // track before start
-            Group {
-                Toggle("Track before start", isOn: $trackBeforeStart)
-            }
-            
-            //
-            Group {
-                Text("Target")
-                HStack {
-                    // build (at most vs at least)
-                    Menu(build == 1 ? "at least" : "at most") {
-                        Button {
-                            build = 1
-                        } label: {
-                            Text("at least")
-                        }
-                        Button {
-                            build = 0
-                        } label: {
-                            Text("at most")
-                        }
-                        
+                    
+                    Button {
+                        attemptAddingTask()
+                    } label: {
+                        Text("SAVE")
                     }
-                    // target
-                    TextField("Target", text: $target)
-                        .keyboardType(.numberPad)
-                    if showingTargetNote {
-                        Text(targetNote)
+                    .buttonStyle(ConfirmButtonStyle())
+                    
+                    Button {
+                        self.mode.wrappedValue.dismiss()
+                    } label: {
+                        Image(systemName: "multiply")
                     }
+                    .buttonStyle(DismissButtonStyle())
                 }
-            }
+                .padding(EdgeInsets(top: 15, leading: 15, bottom: 0, trailing: 15))
+                
+                
+                // title
+                TitleInputFieldView(title: $title, showingTitleNote: showingTitleNote, titleNote: titleNote, color: color)
+                    .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
+                
+                // span
+                SpanInputButtonsView(span: $span, color: color)
+                    .padding(EdgeInsets(top: 0, leading: 15, bottom: -30, trailing: 0))
+                
+                // span start date
+                SpanStartDateInputView(spanStartDate: $spanStartDate, color: color)
+                    .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
+                
+                // track before start
+                // TrackBeforeStartInputView(trackBeforeStart: $trackBeforeStart, color: color)
+                //    .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
+                
+                // target and build
+                TargetInputView(build: $build, target: $target, showingTargetNote: showingTargetNote, targetNote: targetNote, color: color)
+                    .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
+                
+                // cost per count (unit)
+                CostInputView(countCost: $countCost, showingCountCostNote: showingCountCostNote, countCostNote: countCostNote, color: color)
+                    .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
+                
+                // color
+                ColorInputView(color: $color)
+                    .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 0))
             
-            // cost per count (unit)
-            Group {
-                Text("Cost per unit")
-                TextField("Cost", text: $countCost)
-                    .keyboardType(.decimalPad)
-                if showingCountCostNote {
-                    Text(countCostNote)
-                }
             }
-            
-            // TODO:: color
-            Group {
-                Text("Color")
+            .navigationTitle("")
+            .navigationBarHidden(true)
             }
-            
         }
-        .navigationTitle("")
-        .navigationBarHidden(true)
+        .foregroundColor(theme.textColor)
+        //.font(.system(size: 15, weight: .semibold))
     }
     
     private func attemptAddingTask() {
@@ -187,11 +148,12 @@ struct AddTaskView: View {
             countCostNote = ""
             self.mode.wrappedValue.dismiss()
         }
+        
     }
 }
 
-struct AddTaskView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddTaskView()
-    }
-}
+//struct AddTaskView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AddTaskView()
+//    }
+//}

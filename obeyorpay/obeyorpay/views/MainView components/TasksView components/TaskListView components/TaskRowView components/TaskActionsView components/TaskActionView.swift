@@ -12,9 +12,11 @@ struct TaskActionView: View {
     var imageSystemName: String
     var color: Int
     
+    var height: Double
+    
     var body: some View {
         ZStack(alignment: .center) {
-            CardView(color: theme.taskColors[color])
+            CardView(color: theme.taskColors[color], height: height)
             
             VStack {
                 Image(systemName: imageSystemName)
