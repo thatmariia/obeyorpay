@@ -187,7 +187,7 @@ class TaskStoreModel: Identifiable, Equatable, Hashable {
             .joint: [],
             .shared: []
         ]
-        self.lastPeriodStartDate = Date.distantPast // TODO:: if trackBeforeStart, pick span before startDate, otherwise just startDate
+        self.lastPeriodStartDate = spanStartDate // TODO:: if trackBeforeStart, pick span before startDate, otherwise just startDate
         self.entriesRefs = []
         self.paymentsRefs = []
         self.currentCount = 0

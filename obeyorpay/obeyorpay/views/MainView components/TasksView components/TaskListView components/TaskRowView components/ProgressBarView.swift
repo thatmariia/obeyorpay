@@ -24,7 +24,7 @@ struct ProgressBarView: View {
                 
                 Rectangle()
                     .frame(
-                        width: min(CGFloat(/*task.currentCount / task.target*/ 0.3) * geometry.size.width, geometry.size.width),
+                        width: min(CGFloat(/*task.currentCount / task.target*/ 1) * geometry.size.width, geometry.size.width),
                         height: height//geometry.size.height
                     )
                     .foregroundColor(theme.taskColors[color])

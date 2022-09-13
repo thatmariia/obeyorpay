@@ -16,6 +16,8 @@ struct TaskView: View {
     
     var height: Double
     
+    var isInviting: Bool
+    
     var body: some View {
         ZStack(alignment: .center) {
             
@@ -36,12 +38,28 @@ struct TaskView: View {
                     Spacer().frame(height: 3)
                     
                     // progress
+                    if isInviting {
+                        Text("ACCEPT TO VIEW COUNT")
+                            .font(.caption)
+                    }
                     Text("\(task.currentCount) OUT OF AT \(task.build ? "LEAST" : "MOST") \(task.target)")
                         .font(.caption)
                     
                     Spacer().frame(height: 10)
                 }
                 Spacer()
+                
+                if isInviting {
+                    DecisionButtonsView(task: task, taskType: taskType)
+                } else {
+                    Button {
+                        // TODO:: add entry
+                    } label: {
+                        Image(systemName: "plus.circle.fill")
+                    }
+                    .buttonStyle(BigPlusButtonStyle(color: task.color))
+
+                }
             }
             .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
         }

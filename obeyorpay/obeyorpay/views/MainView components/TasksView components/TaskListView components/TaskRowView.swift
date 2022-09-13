@@ -22,6 +22,8 @@ struct TaskRowView: View {
     
     var rowHeight: Double
     
+    var isInviting: Bool
+    
     @State var presentation: TaskViewPresentation = .task
     
     var body: some View {
@@ -30,11 +32,13 @@ struct TaskRowView: View {
             
             TabView(selection: $presentation) {
                 
-                TaskView(task: task, taskType: taskType, height: rowHeight)
+                TaskView(task: task, taskType: taskType, height: rowHeight, isInviting: isInviting)
                     .tag(TaskViewPresentation.task)
                 
-                TaskActionsView(task: task, taskType: taskType, height: rowHeight)
-                    .tag(TaskViewPresentation.editing)
+                if !isInviting {
+                    TaskActionsView(task: task, taskType: taskType, height: rowHeight)
+                        .tag(TaskViewPresentation.editing)
+                }
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
         }

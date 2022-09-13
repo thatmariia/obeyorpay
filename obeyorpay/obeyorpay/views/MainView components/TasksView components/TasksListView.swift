@@ -24,30 +24,24 @@ struct TasksListView: View {
             
             if taskType != .personal {
                 ForEach(signedInUser.user.account.invitedTasks[taskType]!) { task in
-                    HStack {
-                        Text(task.title)
-                        Divider()
-                        Spacer()
-                        Button {
-                            acceptTask(task: task)
-                        } label: {
-                            Text("accept")
-                        }
-                        Button {
-                            rejectTask(task: task)
-                        } label: {
-                            Text("reject")
-                        }
-                        
-                    }
+                    TaskRowView(task: task, taskType: taskType, rowHeight: rowHeight, isInviting: true)
+                        .frame(height: rowHeight + 5)
+                        .shadow(color: theme.shadowColor, radius: 14, x: 10, y: 10)
                 }
             }
             
+            if signedInUser.user.account.invitedTasks[taskType]!.count > 0 {
+                Spacer().frame(height: 30)
+                Divider()
+                    .frame(height: 2)
+                    .overlay(theme.unselectedTextColor)
+                Spacer().frame(height: 30)
+            }
             
             ForEach(signedInUser.user.account.tasks[taskType]!) { task in
                 
                 HStack {
-                    TaskRowView(task: task, taskType: taskType, rowHeight: rowHeight)
+                    TaskRowView(task: task, taskType: taskType, rowHeight: rowHeight, isInviting: false)
                         .frame(height: rowHeight + 5)
                         .shadow(color: theme.shadowColor, radius: 14, x: 10, y: 10)
                 }
@@ -58,17 +52,6 @@ struct TasksListView: View {
         
     }
     
-    private func acceptTask(task: TaskStoreModel) {
-        do {
-            try taskSettings.acceptTask(task: task, taskType: taskType, signedInUser: signedInUser)
-        } catch let err {}
-    }
-    
-    private func rejectTask(task: TaskStoreModel) {
-        do {
-            try taskSettings.rejectTask(task: task, taskType: taskType, signedInUser: signedInUser)
-        } catch let err {}
-    }
 }
 
 //struct TasksListView_Previews: PreviewProvider {

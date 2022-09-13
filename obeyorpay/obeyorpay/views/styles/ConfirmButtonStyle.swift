@@ -11,7 +11,7 @@ struct ConfirmButtonStyle: ButtonStyle {
     
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .padding(10)
+            .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
             .foregroundColor(.white)
             .background {
                 Rectangle()

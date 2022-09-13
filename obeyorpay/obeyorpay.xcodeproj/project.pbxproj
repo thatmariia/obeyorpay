@@ -10,6 +10,9 @@
 		B64DEBCC28D11C0B0011584E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEBCB28D11C0B0011584E /* AppDelegate.swift */; };
 		B64DEBCF28D1219A0011584E /* CKSubscriptionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEBCE28D1219A0011584E /* CKSubscriptionsManager.swift */; };
 		B64DEBD128D139540011584E /* MainSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEBD028D139540011584E /* MainSettingsModel.swift */; };
+		B64DEBD328D13F140011584E /* BigPlusButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEBD228D13F140011584E /* BigPlusButtonStyle.swift */; };
+		B64DEBD728D140E10011584E /* DecisionButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEBD628D140E10011584E /* DecisionButtonsView.swift */; };
+		B64DEBD928D141210011584E /* DecisionButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEBD828D141210011584E /* DecisionButtonStyle.swift */; };
 		B67749F828C4D43200B94B7C /* obeyorpayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67749F728C4D43200B94B7C /* obeyorpayApp.swift */; };
 		B67749FA28C4D43200B94B7C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67749F928C4D43200B94B7C /* ContentView.swift */; };
 		B67749FC28C4D43400B94B7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B67749FB28C4D43400B94B7C /* Assets.xcassets */; };
@@ -87,6 +90,9 @@
 		B64DEBCB28D11C0B0011584E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B64DEBCE28D1219A0011584E /* CKSubscriptionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKSubscriptionsManager.swift; sourceTree = "<group>"; };
 		B64DEBD028D139540011584E /* MainSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSettingsModel.swift; sourceTree = "<group>"; };
+		B64DEBD228D13F140011584E /* BigPlusButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigPlusButtonStyle.swift; sourceTree = "<group>"; };
+		B64DEBD628D140E10011584E /* DecisionButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionButtonsView.swift; sourceTree = "<group>"; };
+		B64DEBD828D141210011584E /* DecisionButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionButtonStyle.swift; sourceTree = "<group>"; };
 		B67749F428C4D43200B94B7C /* obeyorpay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = obeyorpay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B67749F728C4D43200B94B7C /* obeyorpayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = obeyorpayApp.swift; sourceTree = "<group>"; };
 		B67749F928C4D43200B94B7C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -285,8 +291,8 @@
 				B6774A0A28C4DB4800B94B7C /* AppTabView.swift */,
 				B6ACAAD428CE3B9000A47330 /* AppTabView components */,
 				B6774A4A28C61A1D00B94B7C /* SettingsView.swift */,
-				B6774A0C28C4DBBB00B94B7C /* TasksView.swift */,
 				B6D0BD3C28C79CA500B0946D /* SettingsView components */,
+				B6774A0C28C4DBBB00B94B7C /* TasksView.swift */,
 				B6774A2128C4F3A500B94B7C /* TasksView components */,
 			);
 			path = "MainView components";
@@ -320,6 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				B6ACAACC28CE354600A47330 /* UsernamesView.swift */,
+				B64DEBD628D140E10011584E /* DecisionButtonsView.swift */,
 			);
 			path = "TaskView components";
 			sourceTree = "<group>";
@@ -349,6 +356,8 @@
 				B6ACAADC28CE57BD00A47330 /* SpanButtonStyle.swift */,
 				B6ACAAF328CEBA4D00A47330 /* DismissButtonStyle.swift */,
 				B6ACAAF528CEBB6B00A47330 /* ConfirmButtonStyle.swift */,
+				B64DEBD228D13F140011584E /* BigPlusButtonStyle.swift */,
+				B64DEBD828D141210011584E /* DecisionButtonStyle.swift */,
 			);
 			path = styles;
 			sourceTree = "<group>";
@@ -538,6 +547,7 @@
 				B6ACAAEE28CE5F5800A47330 /* ColorInputView.swift in Sources */,
 				B6ACAAB828CAB08100A47330 /* CKUserManager.swift in Sources */,
 				B6774A0B28C4DB4800B94B7C /* AppTabView.swift in Sources */,
+				B64DEBD328D13F140011584E /* BigPlusButtonStyle.swift in Sources */,
 				B6ACAAF628CEBB6B00A47330 /* ConfirmButtonStyle.swift in Sources */,
 				B6D0BD2628C6C09E00B0946D /* SignedInUserModel.swift in Sources */,
 				B688DE5328C8D1E400500C7E /* CKTaskManager.swift in Sources */,
@@ -567,6 +577,7 @@
 				B688DE6728C97F0D00500C7E /* CKEntryManager.swift in Sources */,
 				B64DEBD128D139540011584E /* MainSettingsModel.swift in Sources */,
 				B6774A0128C4D43400B94B7C /* Persistence.swift in Sources */,
+				B64DEBD728D140E10011584E /* DecisionButtonsView.swift in Sources */,
 				B67749FA28C4D43200B94B7C /* ContentView.swift in Sources */,
 				B688DE5928C94A3F00500C7E /* TaskStoreModel.swift in Sources */,
 				B6774A1728C4EBCF00B94B7C /* TaskRowView.swift in Sources */,
@@ -579,6 +590,7 @@
 				B6ACAABE28CDFF2900A47330 /* AppTheme.swift in Sources */,
 				B688DE5128C839D500500C7E /* CorrectnessComment.swift in Sources */,
 				B688DE5B28C94AE300500C7E /* EntryStoreModel.swift in Sources */,
+				B64DEBD928D141210011584E /* DecisionButtonStyle.swift in Sources */,
 				B6774A4928C54D5200B94B7C /* AccountCKModel.swift in Sources */,
 				B688DE6328C964B900500C7E /* CKPaymentManager.swift in Sources */,
 				B6D0BD2028C6B54900B0946D /* EntryCKModel.swift in Sources */,
