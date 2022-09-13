@@ -83,6 +83,7 @@ class SignInAppleModel {
             signedInUser.user = user
             signedInUser.status = .signedIn
         //}
+        subscriptionDB.subscribe(signedInUser: signedInUser)
     }
     
     func signOut(signedInUser: SignedInUserModel) {

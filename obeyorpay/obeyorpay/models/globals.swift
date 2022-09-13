@@ -20,6 +20,7 @@ let authentificator = SignInAppleModel()
 let userCD = CDDataUserModel()
 
 // MARK: - database models
+let globalDB = CKManager()
 let mainUserDB = CKMainUserManager()
 let userDB = CKUserManager()
 let accountDB = CKAccountManager()
@@ -28,7 +29,11 @@ let entryDB = CKEntryManager()
 let taskDB = CKTaskManager()
 let paymentDB = CKPaymentManager()
 
+let subscriptionDB = CKSubscriptionsManager()
+let subscriptionIDs = CKSubscriptionsID()
+
 // MARK: - settings
+let mainSettings = MainSettingsModel()
 let usernameSettings = UsernameSettingModel()
 let taskSettings = TaskSettingsModel()
 

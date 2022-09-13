@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B64DEBCC28D11C0B0011584E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEBCB28D11C0B0011584E /* AppDelegate.swift */; };
+		B64DEBCF28D1219A0011584E /* CKSubscriptionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEBCE28D1219A0011584E /* CKSubscriptionsManager.swift */; };
+		B64DEBD128D139540011584E /* MainSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEBD028D139540011584E /* MainSettingsModel.swift */; };
 		B67749F828C4D43200B94B7C /* obeyorpayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67749F728C4D43200B94B7C /* obeyorpayApp.swift */; };
 		B67749FA28C4D43200B94B7C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67749F928C4D43200B94B7C /* ContentView.swift */; };
 		B67749FC28C4D43400B94B7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B67749FB28C4D43400B94B7C /* Assets.xcassets */; };
@@ -44,7 +47,6 @@
 		B6ACAABE28CDFF2900A47330 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ACAABD28CDFF2900A47330 /* AppTheme.swift */; };
 		B6ACAAC128CE13A500A47330 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ACAAC028CE13A500A47330 /* ProgressBarView.swift */; };
 		B6ACAAC328CE151F00A47330 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ACAAC228CE151F00A47330 /* CardView.swift */; };
-		B6ACAAC828CE33E900A47330 /* ScrollViewIfNeeded in Frameworks */ = {isa = PBXBuildFile; productRef = B6ACAAC728CE33E900A47330 /* ScrollViewIfNeeded */; };
 		B6ACAACA28CE34A200A47330 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ACAAC928CE34A200A47330 /* TaskView.swift */; };
 		B6ACAACD28CE354600A47330 /* UsernamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ACAACC28CE354600A47330 /* UsernamesView.swift */; };
 		B6ACAACF28CE362B00A47330 /* TaskActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ACAACE28CE362B00A47330 /* TaskActionsView.swift */; };
@@ -82,6 +84,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B64DEBCB28D11C0B0011584E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B64DEBCE28D1219A0011584E /* CKSubscriptionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKSubscriptionsManager.swift; sourceTree = "<group>"; };
+		B64DEBD028D139540011584E /* MainSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSettingsModel.swift; sourceTree = "<group>"; };
 		B67749F428C4D43200B94B7C /* obeyorpay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = obeyorpay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B67749F728C4D43200B94B7C /* obeyorpayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = obeyorpayApp.swift; sourceTree = "<group>"; };
 		B67749F928C4D43200B94B7C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -163,7 +168,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6ACAAC828CE33E900A47330 /* ScrollViewIfNeeded in Frameworks */,
 				B6D0BD1B28C6542200B0946D /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -171,6 +175,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B64DEBCD28D121800011584E /* database subscriptions */ = {
+			isa = PBXGroup;
+			children = (
+				B64DEBCE28D1219A0011584E /* CKSubscriptionsManager.swift */,
+			);
+			path = "database subscriptions";
+			sourceTree = "<group>";
+		};
 		B67749EB28C4D43200B94B7C = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +206,7 @@
 				B6ACAAF228CE854600A47330 /* Info.plist */,
 				B6D0BD1628C64EBC00B0946D /* obeyorpay.entitlements */,
 				B67749F728C4D43200B94B7C /* obeyorpayApp.swift */,
+				B64DEBCB28D11C0B0011584E /* AppDelegate.swift */,
 				B6774A2928C5183D00B94B7C /* PopupView.swift */,
 				B6ACAABD28CDFF2900A47330 /* AppTheme.swift */,
 				B6774A1E28C4EDAF00B94B7C /* views */,
@@ -231,6 +244,7 @@
 		B6774A1F28C4EDB800B94B7C /* models */ = {
 			isa = PBXGroup;
 			children = (
+				B64DEBCD28D121800011584E /* database subscriptions */,
 				B6B4327F28C80ACB002F8B2F /* core data */,
 				B6D0BD2D28C6D12C00B0946D /* database */,
 				B6D0BD1C28C6A5BC00B0946D /* record types */,
@@ -284,6 +298,7 @@
 				B688DE5028C839D500500C7E /* CorrectnessComment.swift */,
 				B6D0BD3828C7943F00B0946D /* UsernameSettingsModel.swift */,
 				B688DE4C28C838A100500C7E /* TaskSettingsModel.swift */,
+				B64DEBD028D139540011584E /* MainSettingsModel.swift */,
 			);
 			path = settings;
 			sourceTree = "<group>";
@@ -452,7 +467,6 @@
 			);
 			name = obeyorpay;
 			packageProductDependencies = (
-				B6ACAAC728CE33E900A47330 /* ScrollViewIfNeeded */,
 			);
 			productName = obeyorpay;
 			productReference = B67749F428C4D43200B94B7C /* obeyorpay.app */;
@@ -483,7 +497,6 @@
 			);
 			mainGroup = B67749EB28C4D43200B94B7C;
 			packageReferences = (
-				B6ACAAC628CE33E900A47330 /* XCRemoteSwiftPackageReference "ScrollViewIfNeeded" */,
 			);
 			productRefGroup = B67749F528C4D43200B94B7C /* Products */;
 			projectDirPath = "";
@@ -552,10 +565,12 @@
 				B6D0BD2428C6B91800B0946D /* PaymentCKModel.swift in Sources */,
 				B6D0BD2228C6B7FB00B0946D /* EvaluationCKModel.swift in Sources */,
 				B688DE6728C97F0D00500C7E /* CKEntryManager.swift in Sources */,
+				B64DEBD128D139540011584E /* MainSettingsModel.swift in Sources */,
 				B6774A0128C4D43400B94B7C /* Persistence.swift in Sources */,
 				B67749FA28C4D43200B94B7C /* ContentView.swift in Sources */,
 				B688DE5928C94A3F00500C7E /* TaskStoreModel.swift in Sources */,
 				B6774A1728C4EBCF00B94B7C /* TaskRowView.swift in Sources */,
+				B64DEBCC28D11C0B0011584E /* AppDelegate.swift in Sources */,
 				B6ACAACD28CE354600A47330 /* UsernamesView.swift in Sources */,
 				B6D0BD3728C7931500B0946D /* globals.swift in Sources */,
 				B688DE5D28C94B5600500C7E /* EvaluationStoreModel.swift in Sources */,
@@ -576,6 +591,7 @@
 				B688DE6128C94C0F00500C7E /* MainUserStoreModel.swift in Sources */,
 				B6ACAAD228CE36D600A47330 /* TaskActionView.swift in Sources */,
 				B688DE4D28C838A100500C7E /* TaskSettingsModel.swift in Sources */,
+				B64DEBCF28D1219A0011584E /* CKSubscriptionsManager.swift in Sources */,
 				B6ACAADD28CE57BD00A47330 /* SpanButtonStyle.swift in Sources */,
 				B6774A4B28C61A1D00B94B7C /* SettingsView.swift in Sources */,
 				B6D0BD3E28C7E3AE00B0946D /* AddTaskButtonView.swift in Sources */,
@@ -718,9 +734,11 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = NO;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -754,9 +772,11 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = NO;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -793,25 +813,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		B6ACAAC628CE33E900A47330 /* XCRemoteSwiftPackageReference "ScrollViewIfNeeded" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/dkk/ScrollViewIfNeeded";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		B6ACAAC728CE33E900A47330 /* ScrollViewIfNeeded */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B6ACAAC628CE33E900A47330 /* XCRemoteSwiftPackageReference "ScrollViewIfNeeded" */;
-			productName = ScrollViewIfNeeded;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		B6774A0228C4D43400B94B7C /* obeyorpay.xcdatamodeld */ = {

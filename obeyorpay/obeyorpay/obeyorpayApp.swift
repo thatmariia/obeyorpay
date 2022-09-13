@@ -15,12 +15,21 @@ struct obeyorpayApp: App {
     
     //@StateObject private var userController = CDDataUserModel()
     
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     var signedInUser: SignedInUserModel
+    
+    //let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     
     init() {
         //UIDatePicker.appearance().backgroundColor = UIColor(theme.cardColor)
         // datePicker.setValue(UIColor.white, forKey: "backgroundColor")
         
+        
+        
+        
+        //signedInUser = SignedInUserModel()
         signedInUser = SignedInUserModel()
         checkIfUserSignedIn()
     }
@@ -35,6 +44,10 @@ struct obeyorpayApp: App {
     }
     
     private func checkIfUserSignedIn() {
+        self.signedInUser.user = appDelegate.signedInUser.user
+        self.signedInUser.status = appDelegate.signedInUser.status
+        self.signedInUser.checkedStatusOnStart = appDelegate.signedInUser.checkedStatusOnStart
+        
         // check if the core data contains a user
         let uid = userCD.fetchUser()
         if uid == nil {
@@ -50,6 +63,7 @@ struct obeyorpayApp: App {
                     signedInUser.user = user
                     signedInUser.status = .signedIn
                     signedInUser.checkedStatusOnStart = true
+                    subscriptionDB.subscribe(signedInUser: signedInUser)
                 } catch {
                     signedInUser.checkedStatusOnStart = true
                 }
@@ -57,3 +71,4 @@ struct obeyorpayApp: App {
         }
     }
 }
+

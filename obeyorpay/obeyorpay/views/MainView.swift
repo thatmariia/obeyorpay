@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MainView: View {
     
+    @EnvironmentObject var signedInUser: SignedInUserModel
+    
     @State var tab = TabItems.tasks
     
     var body: some View {
@@ -37,6 +39,13 @@ struct MainView: View {
             }
             .navigationTitle("")
             .navigationBarHidden(true)
+            .refreshable {
+                do {
+                    try mainSettings.refreshUserData(signedInUser: signedInUser)
+                } catch let err {
+                    print("err: ", err.localizedDescription)
+                }
+            }
         
         }
         

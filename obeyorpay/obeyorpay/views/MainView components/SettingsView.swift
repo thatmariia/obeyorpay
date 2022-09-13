@@ -13,20 +13,21 @@ struct SettingsView: View {
     
     var body: some View {
         
-        
-        VStack {
-            
-            Text(signedInUser.user.username)
-        
-            Spacer()
-            
-            NavigationLink {
-                SettingsEditingView(currUsername: signedInUser.user.username, newUsername: signedInUser.user.username)
-            } label: {
-                Text("edit (username)")
+        ScrollView {
+            VStack {
+                
+                Text(signedInUser.user.username)
+                
+                Spacer()
+                
+                NavigationLink {
+                    SettingsEditingView(currUsername: signedInUser.user.username, newUsername: signedInUser.user.username)
+                } label: {
+                    Text("edit (username)")
+                }
+                
+                Spacer()
             }
-            
-            Spacer()
         }
 
     }

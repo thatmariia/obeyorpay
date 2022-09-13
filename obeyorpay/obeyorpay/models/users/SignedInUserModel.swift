@@ -8,7 +8,6 @@
 import Foundation
 import CloudKit
 import CoreData
-import Combine
 
 
 enum signInStatus {
@@ -22,9 +21,11 @@ class SignedInUserModel: ObservableObject {
     @Published var status: signInStatus
     @Published var checkedStatusOnStart: Bool
     
+    
     init() {
         self.user = MainUserStoreModel()
         self.status = .notSignedIn
         self.checkedStatusOnStart = false
     }
+    
 }
