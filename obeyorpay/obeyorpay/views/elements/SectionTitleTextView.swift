@@ -10,6 +10,7 @@ import SwiftUI
 struct SectionTitleTextView: View {
     
     var txt: String
+    var centering = false
     
     var body: some View {
         HStack {
@@ -17,7 +18,9 @@ struct SectionTitleTextView: View {
                 .tracking(2)
                 .foregroundColor(theme.textColor)
                 .font(.system(size: 15, weight: .semibold))
-            Spacer()
+            if !centering {
+                Spacer()
+            }
         }
     }
 }

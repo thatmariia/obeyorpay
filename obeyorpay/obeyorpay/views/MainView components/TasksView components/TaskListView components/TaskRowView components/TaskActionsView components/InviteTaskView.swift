@@ -26,62 +26,74 @@ struct InviteTaskView: View {
     @State var showingInvitedNote = false
     
     var body: some View {
-        VStack {
-            
-            Text(task.title)
-            
-            Button {
-                showingThisView = false
-                self.mode.wrappedValue.dismiss()
-            } label: {
-                Text("close X")
-            }
-            
-            // list all joint
-            ForEach(task.users[taskInvitedType]!) { user in
-                HStack {
-                    Text(user.username)
-                    Spacer()
-                }
-            }
-            
-            // list all invited
-            ForEach(task.invitedUsers[taskInvitedType]!) { user in
-                HStack {
-                    Text(user.username)
-                    Spacer()
-                    Text("invited")
-                }
-            }
-            
-            
-            if inviting {
-                TextField("Username", text: $invitedUsername)
+        
+        
+        
+        ZStack {
+            theme.backgroundColor.ignoresSafeArea()
+            ScrollView(.vertical, showsIndicators: false) {
                 
-                if showingInvitedNote {
-                    Text(invitedNote)
+                VStack(alignment: .leading, spacing: 35) {
+                    
+                    HStack(spacing: 20) {
+                        Spacer()
+                        
+                        Button {
+                            self.mode.wrappedValue.dismiss()
+                        } label: {
+                            Image(systemName: "multiply")
+                        }
+                        .buttonStyle(DismissButtonStyle())
+                    }
+                    .padding(EdgeInsets(top: 15, leading: 15, bottom: 0, trailing: 15))
                 }
                 
-                Button {
-                    attemptInvitingUser()
-                } label: {
-                    Text("invite")
+                
+                VStack(spacing: 35) {
+                    
+                    SectionTitleTextView(txt: task.title.uppercased(), centering: true)
+                    
+                    
+                    MemberUsersView(task: task, taskInvitedType: taskInvitedType)
+                        .padding(25)
+                    
+                    // inviting
+                    
+                    if inviting {
+                        HStack {
+                            UsernameInputFieldView(username: $invitedUsername, showingUsernameNote: showingInvitedNote, usernameNote: invitedNote, color: task.color)
+                            
+                            Spacer().frame(width: 30)
+                            
+                            Button {
+                                attemptInvitingUser()
+                            } label: {
+                                Text("INVITE")
+                            }
+                            .buttonStyle(ConfirmButtonStyle())
+                        }
+                    } else {
+                        Button {
+                            inviting = true
+                        } label: {
+                            Text("INVITE MORE")
+                        }
+                        .buttonStyle(ConfirmButtonStyle())
+                    }
+                    
+                    Spacer()
+                    
                 }
-
-            } else {
-                Button {
-                    inviting = true
-                } label: {
-                    Text("invite +")
-                }
+                .padding()
+                .navigationTitle("")
+                .navigationBarHidden(true)
             }
-
-            
         }
         .onAppear {
             showingThisView = true
         }
     }
+    
     
     private func attemptInvitingUser() {
         var canInvite = true

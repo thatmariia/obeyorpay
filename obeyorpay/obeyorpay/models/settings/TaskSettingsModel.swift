@@ -200,26 +200,34 @@ class TaskSettingsModel {
                     
                     let users = try await userDB.queryUsers(withKey: .username, .equal, to: username)
                     //let nrUsers = try await userDB.countUsers(with: username)
-                    for user in users {
-                        if task.invitedUsers[taskInvitedType]!.contains(user) {
-                            self.userInvited = true
-                            break
+                    if users.count != 0 {
+                        for user in users {
+                            if task.invitedUsers[taskInvitedType]!.contains(user) {
+                                self.userInvited = true
+                                break
+                            }
                         }
+                        self.userFound = true
+                    } else {
+                        self.userInvited = false
+                        self.userFound = false
                     }
-                    self.userFound = users.count != 0
+                    
                     group.leave()
-                } catch { }
+                } catch let err {
+
+                }
             }
         }
         
         group.wait()
         
-        if userInvited {
-            return CorrectnessComment(isCorrect: false, note: InvitedUserComment.alreadyInvited.rawValue)
-        }
-        
         if !userFound {
             return CorrectnessComment(isCorrect: false, note: InvitedUserComment.notExist.rawValue)
+        }
+        
+        if userInvited {
+            return CorrectnessComment(isCorrect: false, note: InvitedUserComment.alreadyInvited.rawValue)
         }
         
         // all good

@@ -14,6 +14,8 @@
 		B64DEBD728D140E10011584E /* DecisionButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEBD628D140E10011584E /* DecisionButtonsView.swift */; };
 		B64DEBD928D141210011584E /* DecisionButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEBD828D141210011584E /* DecisionButtonStyle.swift */; };
 		B64DEBDB28D144910011584E /* EntrySettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEBDA28D144910011584E /* EntrySettingsModel.swift */; };
+		B64DEBDE28D164FD0011584E /* UsernameInputFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEBDD28D164FD0011584E /* UsernameInputFieldView.swift */; };
+		B64DEBE028D167A50011584E /* MemberUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEBDF28D167A50011584E /* MemberUsersView.swift */; };
 		B67749F828C4D43200B94B7C /* obeyorpayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67749F728C4D43200B94B7C /* obeyorpayApp.swift */; };
 		B67749FA28C4D43200B94B7C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67749F928C4D43200B94B7C /* ContentView.swift */; };
 		B67749FC28C4D43400B94B7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B67749FB28C4D43400B94B7C /* Assets.xcassets */; };
@@ -95,6 +97,8 @@
 		B64DEBD628D140E10011584E /* DecisionButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionButtonsView.swift; sourceTree = "<group>"; };
 		B64DEBD828D141210011584E /* DecisionButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionButtonStyle.swift; sourceTree = "<group>"; };
 		B64DEBDA28D144910011584E /* EntrySettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntrySettingsModel.swift; sourceTree = "<group>"; };
+		B64DEBDD28D164FD0011584E /* UsernameInputFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameInputFieldView.swift; sourceTree = "<group>"; };
+		B64DEBDF28D167A50011584E /* MemberUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberUsersView.swift; sourceTree = "<group>"; };
 		B67749F428C4D43200B94B7C /* obeyorpay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = obeyorpay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B67749F728C4D43200B94B7C /* obeyorpayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = obeyorpayApp.swift; sourceTree = "<group>"; };
 		B67749F928C4D43200B94B7C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -189,6 +193,15 @@
 				B64DEBCE28D1219A0011584E /* CKSubscriptionsManager.swift */,
 			);
 			path = "database subscriptions";
+			sourceTree = "<group>";
+		};
+		B64DEBDC28D164BB0011584E /* InviteTaskView components */ = {
+			isa = PBXGroup;
+			children = (
+				B64DEBDD28D164FD0011584E /* UsernameInputFieldView.swift */,
+				B64DEBDF28D167A50011584E /* MemberUsersView.swift */,
+			);
+			path = "InviteTaskView components";
 			sourceTree = "<group>";
 		};
 		B67749EB28C4D43200B94B7C = {
@@ -340,6 +353,7 @@
 				B6ACAAD128CE36D600A47330 /* TaskActionView.swift */,
 				B6774A2328C5141A00B94B7C /* TaskEditingView.swift */,
 				B6ACAAB928CB7EE700A47330 /* InviteTaskView.swift */,
+				B64DEBDC28D164BB0011584E /* InviteTaskView components */,
 			);
 			path = "TaskActionsView components";
 			sourceTree = "<group>";
@@ -562,6 +576,7 @@
 				B6ACAACA28CE34A200A47330 /* TaskView.swift in Sources */,
 				B6B4328528C82DE3002F8B2F /* AddTaskView.swift in Sources */,
 				B6ACAAC128CE13A500A47330 /* ProgressBarView.swift in Sources */,
+				B64DEBDE28D164FD0011584E /* UsernameInputFieldView.swift in Sources */,
 				B6774A0428C4D43400B94B7C /* obeyorpay.xcdatamodeld in Sources */,
 				B6ACAAE428CE5C7500A47330 /* SpanInputButtonsView.swift in Sources */,
 				B688DE6528C97A6A00500C7E /* CKEvaluationManager.swift in Sources */,
@@ -571,6 +586,7 @@
 				B6774A2A28C5183D00B94B7C /* PopupView.swift in Sources */,
 				B6D0BD3128C6D29B00B0946D /* CKMainUserManager.swift in Sources */,
 				B6774A4328C5468200B94B7C /* SignInView.swift in Sources */,
+				B64DEBE028D167A50011584E /* MemberUsersView.swift in Sources */,
 				B688DE6928CA66DE00500C7E /* TasksListView.swift in Sources */,
 				B6ACAAB628CAAF9700A47330 /* UserStoreModel.swift in Sources */,
 				B6ACAAEC28CE5E8500A47330 /* CostInputView.swift in Sources */,
