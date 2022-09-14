@@ -16,42 +16,55 @@ struct TargetInputView: View {
     var targetNote: String
     var color: Int
     
+    var editing = false
+    
     var body: some View {
         VStack(alignment: .leading) {
             SectionTitleTextView(txt: "TARGET")
             HStack {
                 // build (at most vs at least)
-                
-                Menu() {
-                    Button {
-                        build = 1
+                if !editing {
+                    Menu() {
+                        Button {
+                            build = 1
+                        } label: {
+                            Text("AT LEAST")
+                                .foregroundColor(theme.textColor)
+                                .font(.system(size: 16, weight: .medium))
+                        }
+                        
+                        Button {
+                            build = 0
+                        } label: {
+                            Text("AT MOST")
+                                .foregroundColor(theme.textColor)
+                                .font(.system(size: 16, weight: .medium))
+                        }
+                        
                     } label: {
-                        Text("AT LEAST")
-                            .foregroundColor(theme.textColor)
-                            .font(.system(size: 16, weight: .medium))
+                        HStack {
+                            Text(build == 1 ? "at least" : "at most")
+                            Image(systemName: "chevron.down")
+                        }
+                        .foregroundColor(theme.taskColors[color])
+                        .padding(EdgeInsets(top: 15, leading: 15, bottom: 15, trailing: 15))
+                        .background {
+                            Rectangle()
+                                .foregroundColor(theme.cardColor)
+                                .cornerRadius(20)
+                                .shadow(color: theme.shadowColor, radius: 10, x: 10, y: 10)
+                        }
                     }
-                    
-                    Button {
-                        build = 0
-                    } label: {
-                        Text("AT MOST")
-                            .foregroundColor(theme.textColor)
-                            .font(.system(size: 16, weight: .medium))
-                    }
-                    
-                } label: {
-                    HStack {
-                        Text(build == 1 ? "at least" : "at most")
-                        Image(systemName: "chevron.down")
-                    }
-                    .foregroundColor(theme.taskColors[color])
-                    .padding(EdgeInsets(top: 15, leading: 15, bottom: 15, trailing: 15))
-                    .background {
-                        Rectangle()
-                            .foregroundColor(theme.cardColor)
-                            .cornerRadius(20)
-                            .shadow(color: theme.shadowColor, radius: 10, x: 10, y: 10)
-                    }
+                } else {
+                    Text(build == 1 ? "at least" : "at most")
+                        .foregroundColor(theme.unselectedTextColor)
+                        .padding(EdgeInsets(top: 15, leading: 15, bottom: 15, trailing: 15))
+                        .background {
+                            Rectangle()
+                                .foregroundColor(theme.cardColor)
+                                .cornerRadius(20)
+                                .shadow(color: theme.shadowColor, radius: 10, x: 10, y: 10)
+                        }
                 }
                 
                 Spacer().frame(width: 30)

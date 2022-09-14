@@ -16,7 +16,7 @@ struct AddTaskView: View {
     @State var title: String = "title"
     @State var span: TaskSpan = .day
     @State var spanStartDate: Date = Date()
-    @State var trackBeforeStart: Bool = false
+    //@State var trackBeforeStart: Bool = false
     @State var target: String = "5"
     @State var build: Int = 1
     @State var countCost: String = "1,0"
@@ -87,6 +87,7 @@ struct AddTaskView: View {
                 ColorInputView(color: $color)
                     .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 0))
             
+                Spacer()
             }
             .navigationTitle("")
             .navigationBarHidden(true)
@@ -127,7 +128,7 @@ struct AddTaskView: View {
                 title: title,
                 span: span,
                 spanStartDate: spanStartDate,
-                trackBeforeStart: trackBeforeStart,
+                trackBeforeStart: false,
                 target: Int(target)!,
                 build: build == 1 ? true : false,
                 countCost: Double(countCost.replacingOccurrences(of: ",", with: "."))!,

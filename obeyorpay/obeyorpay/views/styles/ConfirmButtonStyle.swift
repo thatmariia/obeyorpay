@@ -19,9 +19,9 @@ struct ConfirmButtonStyle: ButtonStyle {
                     .cornerRadius(20)
                     .shadow(
                         color: theme.shadowColor,
-                        radius: 10,
-                        x: 10,
-                        y: 10
+                        radius: configuration.isPressed ? 5 : 10,
+                        x: configuration.isPressed ? 5 : 10,
+                        y: configuration.isPressed ? 5 : 10
                     )
             }
             .font(.system(size: 15, weight: .medium))
