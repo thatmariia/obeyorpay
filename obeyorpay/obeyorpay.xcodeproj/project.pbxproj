@@ -13,6 +13,7 @@
 		B64DEBD328D13F140011584E /* BigPlusButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEBD228D13F140011584E /* BigPlusButtonStyle.swift */; };
 		B64DEBD728D140E10011584E /* DecisionButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEBD628D140E10011584E /* DecisionButtonsView.swift */; };
 		B64DEBD928D141210011584E /* DecisionButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEBD828D141210011584E /* DecisionButtonStyle.swift */; };
+		B64DEBDB28D144910011584E /* EntrySettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEBDA28D144910011584E /* EntrySettingsModel.swift */; };
 		B67749F828C4D43200B94B7C /* obeyorpayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67749F728C4D43200B94B7C /* obeyorpayApp.swift */; };
 		B67749FA28C4D43200B94B7C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67749F928C4D43200B94B7C /* ContentView.swift */; };
 		B67749FC28C4D43400B94B7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B67749FB28C4D43400B94B7C /* Assets.xcassets */; };
@@ -93,6 +94,7 @@
 		B64DEBD228D13F140011584E /* BigPlusButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigPlusButtonStyle.swift; sourceTree = "<group>"; };
 		B64DEBD628D140E10011584E /* DecisionButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionButtonsView.swift; sourceTree = "<group>"; };
 		B64DEBD828D141210011584E /* DecisionButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionButtonStyle.swift; sourceTree = "<group>"; };
+		B64DEBDA28D144910011584E /* EntrySettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntrySettingsModel.swift; sourceTree = "<group>"; };
 		B67749F428C4D43200B94B7C /* obeyorpay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = obeyorpay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B67749F728C4D43200B94B7C /* obeyorpayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = obeyorpayApp.swift; sourceTree = "<group>"; };
 		B67749F928C4D43200B94B7C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 			children = (
 				B688DE5028C839D500500C7E /* CorrectnessComment.swift */,
 				B6D0BD3828C7943F00B0946D /* UsernameSettingsModel.swift */,
+				B64DEBDA28D144910011584E /* EntrySettingsModel.swift */,
 				B688DE4C28C838A100500C7E /* TaskSettingsModel.swift */,
 				B64DEBD028D139540011584E /* MainSettingsModel.swift */,
 			);
@@ -600,6 +603,7 @@
 				B6ACAAE228CE5BEC00A47330 /* SectionTitleTextView.swift in Sources */,
 				B6ACAAC328CE151F00A47330 /* CardView.swift in Sources */,
 				B6ACAAF428CEBA4D00A47330 /* DismissButtonStyle.swift in Sources */,
+				B64DEBDB28D144910011584E /* EntrySettingsModel.swift in Sources */,
 				B688DE6128C94C0F00500C7E /* MainUserStoreModel.swift in Sources */,
 				B6ACAAD228CE36D600A47330 /* TaskActionView.swift in Sources */,
 				B688DE4D28C838A100500C7E /* TaskSettingsModel.swift in Sources */,

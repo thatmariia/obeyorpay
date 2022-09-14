@@ -36,6 +36,7 @@ let subscriptionIDs = CKSubscriptionsID()
 let mainSettings = MainSettingsModel()
 let usernameSettings = UsernameSettingModel()
 let taskSettings = TaskSettingsModel()
+let entrySettings = EntrySettingsModel()
 
 // MARK: - UI stuff
 let theme = AppTheme()

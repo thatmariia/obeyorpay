@@ -25,9 +25,9 @@ struct TaskActionsView: View {
             Spacer()
             
             Group {
-                // emoving last entry
+                // removing last entry
                 Button {
-                    // TODO:: removing last entry
+                    deleteLastEntry()
                 } label: {
                     TaskActionView(imageSystemName: "gobackward", color: task.color, height: height)
                 }
@@ -83,6 +83,14 @@ struct TaskActionsView: View {
         do {
             try taskSettings.leaveTask(task: task, taskType: taskType == .shared ? .shared : .joint, taskUserType: taskType, signedInUser: signedInUser)
         } catch let err {}
+    }
+    
+    private func deleteLastEntry() {
+        do {
+            try entrySettings.deleteLastEntry(from: task, taskType: taskType, signedInUser: signedInUser)
+        } catch let err {
+            print(":(((((((")
+        }
     }
 }
 

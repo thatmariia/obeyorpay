@@ -164,7 +164,7 @@ class TaskCKModel {
                 countCost: self.countCost,
                 entriesRefs: self.entriesRefs,
                 trackBeforeStart: self.trackBeforeStart,
-                paymentsRefs: self.entriesRefs,
+                paymentsRefs: self.paymentsRefs,
                 target: self.target,
                 currentCount: self.currentCount,
                 evaluationsRefs: self.evaluationsRefs,

@@ -43,6 +43,17 @@ class EntryStoreModel: Identifiable, Equatable, Hashable {
     }
     
     init(
+        user: MainUserStoreModel,
+        task: TaskStoreModel
+    ) {
+        self.recordName = nil
+        self.user = user.toUser()
+        self.taskRef = task.recordName!
+        self.timestamp = Date()
+        self.evaluationRef = ""
+    }
+    
+    init(
         recordName: String,
         user: UserStoreModel,
         taskRef: String,
@@ -54,5 +65,15 @@ class EntryStoreModel: Identifiable, Equatable, Hashable {
         self.taskRef = taskRef
         self.timestamp = timestamp
         self.evaluationRef = evaluationRef
+    }
+    
+    func toCK() -> EntryCKModel {
+        return EntryCKModel(
+            recordName: self.recordName ?? "",
+            userRef: self.user.recordName!,
+            taskRef: self.taskRef,
+            timestamp: self.timestamp,
+            evaluationRef: self.evaluationRef
+        )
     }
 }

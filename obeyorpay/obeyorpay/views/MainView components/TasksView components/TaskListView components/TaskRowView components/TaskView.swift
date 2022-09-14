@@ -21,7 +21,7 @@ struct TaskView: View {
     var body: some View {
         ZStack(alignment: .center) {
             
-            ProgressBarView(color: task.color, height: height)
+            ProgressBarView(color: task.color, height: height, count: task.currentCount, target: task.target)
             
             HStack {
                 VStack(alignment: .leading) {
@@ -53,7 +53,7 @@ struct TaskView: View {
                     DecisionButtonsView(task: task, taskType: taskType)
                 } else {
                     Button {
-                        // TODO:: add entry
+                        addEntry()
                     } label: {
                         Image(systemName: "plus.circle.fill")
                     }
@@ -62,6 +62,15 @@ struct TaskView: View {
                 }
             }
             .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+        }
+    }
+    
+    func addEntry() {
+        let entry = EntryStoreModel(user: signedInUser.user, task: task)
+        do {
+            try entrySettings.addEntry(entry: entry, task: task, taskType: taskType, signedInUser: signedInUser)
+        } catch let err {
+
         }
     }
 }

@@ -57,4 +57,22 @@ class CKEntryManager: CKManager {
             throw err
         }
     }
+    
+    func addEntry(entry: EntryStoreModel) async throws -> EntryStoreModel {
+        let entry = entry.toCK()
+        do {
+            let entry = try await addObject(of: .entry, object: entry, fromObjectToCKRecord: fromEntryToCKRecord, fromCKRecordToObject: fromCKRecordToEntry) as! EntryCKModel
+            return await entry.toStore()
+        } catch let err {
+            throw err
+        }
+    }
+    
+    func deleteEntry(with recordName: String) async throws {
+        do {
+            try await deleteObject(with: CKRecord.ID(recordName: recordName))
+        } catch let err {
+            throw err
+        }
+    }
 }

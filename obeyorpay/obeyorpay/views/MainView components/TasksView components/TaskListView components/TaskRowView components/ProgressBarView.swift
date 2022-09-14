@@ -12,6 +12,9 @@ struct ProgressBarView: View {
     var color: Int
     var height: Double
     
+    var count: Int
+    var target: Int
+    
     var body: some View {
         GeometryReader { geometry in
             ZStack(alignment: .leading) {
@@ -22,13 +25,16 @@ struct ProgressBarView: View {
                     )
                     .foregroundColor(theme.cardColor)
                 
+                
                 Rectangle()
                     .frame(
-                        width: min(CGFloat(/*task.currentCount / task.target*/ 1) * geometry.size.width, geometry.size.width),
+                        width: min(CGFloat(Double(count) / Double(target)) * geometry.size.width, geometry.size.width),
                         height: height//geometry.size.height
                     )
                     .foregroundColor(theme.taskColors[color])
-                    
+                    .animation(.linear(duration: 0.5))
+                
+                
             }
             .cornerRadius(20)
             
