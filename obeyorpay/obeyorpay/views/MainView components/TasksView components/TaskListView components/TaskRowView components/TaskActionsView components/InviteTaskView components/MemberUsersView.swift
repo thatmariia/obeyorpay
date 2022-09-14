@@ -13,7 +13,16 @@ struct MemberUsersView: View {
     var taskInvitedType: TaskTypes
     
     var body: some View {
+        // TODO:: what to show when shared
         VStack {
+            
+            if task.users[taskInvitedType]!.count + task.invitedUsers[taskInvitedType]!.count == 0 {
+                if taskInvitedType == .shared {
+                    Text("this task has not been shared with anyone")
+                        .font(.system(size: 15, weight: .medium))
+                }
+            }
+            
             // list all joint
             ForEach(task.users[taskInvitedType]!) { user in
                 HStack {

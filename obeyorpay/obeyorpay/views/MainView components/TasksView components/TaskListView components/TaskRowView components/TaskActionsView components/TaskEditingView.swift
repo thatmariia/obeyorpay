@@ -50,6 +50,7 @@ struct TaskEditingView: View {
             theme.backgroundColor.ignoresSafeArea()
             ScrollView(.vertical, showsIndicators: false) {
                 
+                
                 VStack(alignment: .leading, spacing: 35) {
                     
                     HStack(spacing: 20) {
@@ -70,29 +71,32 @@ struct TaskEditingView: View {
                         .buttonStyle(DismissButtonStyle())
                     }
                     .padding(EdgeInsets(top: 15, leading: 15, bottom: 0, trailing: 15))
+                    
+                    
+                    // title
+                    TitleInputFieldView(title: $title, showingTitleNote: showingTitleNote, titleNote: titleNote, color: color)
+                        .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
+                    
+                    // span
+                    SpanInputButtonsView(span: $span, color: color)
+                        .padding(EdgeInsets(top: 0, leading: 15, bottom: -30, trailing: 0))
+                    
+                    // target and build
+                    TargetInputView(build: $build, target: $target, showingTargetNote: showingTargetNote, targetNote: targetNote, color: color, editing: true)
+                        .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
+                    
+                    // cost per count (unit)
+                    CostInputView(countCost: $countCost, showingCountCostNote: showingCountCostNote, countCostNote: countCostNote, color: color)
+                        .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
+                    
+                    // color
+                    ColorInputView(color: $color)
+                        .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 0))
+                    
+                    Spacer()
                 }
-                
-                // title
-                TitleInputFieldView(title: $title, showingTitleNote: showingTitleNote, titleNote: titleNote, color: color)
-                    .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
-                
-                // span
-                SpanInputButtonsView(span: $span, color: color)
-                    .padding(EdgeInsets(top: 0, leading: 15, bottom: -30, trailing: 0))
-                
-                // target and build
-                TargetInputView(build: $build, target: $target, showingTargetNote: showingTargetNote, targetNote: targetNote, color: color, editing: true)
-                    .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
-                
-                // cost per count (unit)
-                CostInputView(countCost: $countCost, showingCountCostNote: showingCountCostNote, countCostNote: countCostNote, color: color)
-                    .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
-                
-                // color
-                ColorInputView(color: $color)
-                    .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 0))
-                
-                Spacer()
+                .navigationTitle("")
+                .navigationBarHidden(true)
             }
         }
         .foregroundColor(theme.textColor)
