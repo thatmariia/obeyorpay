@@ -20,10 +20,6 @@ struct SignInView: View {
         
         ZStack {
             
-            if alertShowing {
-                AlertView(bodyMessage: "Authentification failed", alertShowing: $alertShowing, alertAction: $alertAction)
-            }
-            
             ZStack {
                 SignInWithAppleButton(.signIn) { request in
                     authentificator.onRequest(request)

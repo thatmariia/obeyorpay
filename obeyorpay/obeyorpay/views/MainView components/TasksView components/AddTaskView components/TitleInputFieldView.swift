@@ -10,19 +10,31 @@ import SwiftUI
 struct TitleInputFieldView: View {
     
     @Binding var title: String
-    var showingTitleNote: Bool
-    var titleNote: String
+    @Binding var showingTitleNote: Bool
+    @Binding var titleNote: String
     
     var color: Int
+    
+    @State var alertAction = AlertActions.none
     
     var body: some View {
         VStack(alignment: .leading) {
             SectionTitleTextView(txt: "TITLE")
-            TextField("", text: $title)
-                .textFieldStyle(AppTextfieldStyle(accentColor: theme.unselectedTextColor, foregroundColor: theme.taskColors[color]))
-            if showingTitleNote {
-                Text(titleNote)
+
+            WithPopover(showPopover: $showingTitleNote, popoverSize: CGSize(width: UIScreen.main.bounds.width - theme.alertSize.0, height: theme.alertSize.1)) {
+                
+                TextField("", text: $title)
+                    .textFieldStyle(AppTextfieldStyle(accentColor: theme.unselectedTextColor, foregroundColor: theme.taskColors[color]))
+                
+            } popoverContent: {
+                AlertView(
+                    bodyMessage: $titleNote,
+                    alertShowing: $showingTitleNote,
+                    alertAction: $alertAction
+                )
             }
+            
+
         }
     }
 }

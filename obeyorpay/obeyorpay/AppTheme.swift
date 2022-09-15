@@ -16,6 +16,7 @@ class AppTheme {
     var cardColor = Color(red: 250/255, green: 250/255, blue: 250/255) //Color.white
     var textColor = Color(red: 69.0/255.0, green: 83.0/255.0, blue: 109.0/255.0)
     var unselectedTextColor = Color(red: 181.0/255.0, green: 186.0/255.0, blue: 196.0/255.0)
+    var lightTextColor = Color.white
     var taskColors = [
         Color(red: 183/255, green: 220/255, blue: 225/255),
         //Color(red: 214/255, green: 235/255, blue: 238/255),
@@ -31,6 +32,8 @@ class AppTheme {
         Color(red: 255/255, green: 216/255, blue: 173/255)
     ]
     var buttonColor = Color(red: 88/255, green: 218/255, blue: 127/255)
+    var alertSize: (CGFloat, CGFloat) = (150, 200)
+    // UIScreen.main.bounds.width-150
     
     func getDarkerColor(color: Color) -> Color {
         let factor = 0.7
@@ -47,7 +50,7 @@ extension Color {
     struct Components {
         var r, g, b, a: Double
     }
-
+    
     var components: Components? {
         guard let components = UIColor(self).cgColor.components?.compactMap(Double.init),
               components.count == 4

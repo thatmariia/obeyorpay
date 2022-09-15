@@ -8,7 +8,7 @@
 import Foundation
 
 enum TaskTitleComment: String {
-    case minLength = "Task title should contain at least 1 charatcer"
+    case minLength = "Task title should contain at least 1 character"
 }
 
 enum TaskTargetComment: String {
@@ -21,8 +21,9 @@ enum TaskCostComment: String {
 }
 
 enum InvitedUserComment: String {
-    case notExist = "This user does not exist."
-    case alreadyInvited = "This user has already been invited."
+    case emptyUsername = "The username cannot be empty"
+    case notExist = "This user does not exist"
+    case alreadyInvited = "This user has already been invited"
 }
 
 class TaskSettingsModel {
@@ -189,6 +190,11 @@ class TaskSettingsModel {
     }
     
     func canInviteUser(username: String, task: TaskStoreModel, taskInvitedType: TaskTypes) -> CorrectnessComment {
+        
+        if username.count == 0 {
+            return CorrectnessComment(isCorrect: false, note: InvitedUserComment.emptyUsername.rawValue)
+        }
+        
         // already exists
         let group = DispatchGroup()
         group.enter()

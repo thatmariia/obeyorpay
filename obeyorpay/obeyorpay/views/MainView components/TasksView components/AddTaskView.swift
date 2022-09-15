@@ -13,7 +13,7 @@ struct AddTaskView: View {
     
     @EnvironmentObject var signedInUser: SignedInUserModel
     
-    @State var title: String = "title"
+    @State var title: String = "Title"
     @State var span: TaskSpan = .day
     @State var spanStartDate: Date = Date()
     //@State var trackBeforeStart: Bool = false
@@ -60,7 +60,7 @@ struct AddTaskView: View {
                 
                 
                 // title
-                TitleInputFieldView(title: $title, showingTitleNote: showingTitleNote, titleNote: titleNote, color: color)
+                TitleInputFieldView(title: $title, showingTitleNote: $showingTitleNote, titleNote: $titleNote, color: color)
                     .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
                 
                 // span
@@ -76,11 +76,11 @@ struct AddTaskView: View {
                 //    .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
                 
                 // target and build
-                TargetInputView(build: $build, target: $target, showingTargetNote: showingTargetNote, targetNote: targetNote, color: color)
+                TargetInputView(build: $build, target: $target, showingTargetNote: $showingTargetNote, targetNote: $targetNote, color: color)
                     .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
                 
                 // cost per count (unit)
-                CostInputView(countCost: $countCost, showingCountCostNote: showingCountCostNote, countCostNote: countCostNote, color: color)
+                CostInputView(countCost: $countCost, showingCountCostNote: $showingCountCostNote, countCostNote: $countCostNote, color: color)
                     .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
                 
                 // color

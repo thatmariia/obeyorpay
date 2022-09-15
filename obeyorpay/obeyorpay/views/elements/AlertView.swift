@@ -16,7 +16,7 @@ enum AlertActions {
 
 struct AlertView: View {
     
-    var bodyMessage: String
+    @Binding var bodyMessage: String
     var showingOkButton: Bool = false
     
     @Binding var alertShowing: Bool
@@ -29,6 +29,7 @@ struct AlertView: View {
             
             Text(bodyMessage)
                 .foregroundColor(theme.textColor)
+                .multilineTextAlignment(.center)
             
             Spacer()
             
@@ -54,18 +55,18 @@ struct AlertView: View {
             }
         }
         .padding()
-        .frame(width: UIScreen.main.bounds.width-150, height: 200)
-        .background {
-            Rectangle()
-                .foregroundColor(theme.cardColor)
-                .cornerRadius(20)
-                .shadow(
-                    color: theme.shadowColor,
-                    radius: 10,
-                    x: 10,
-                    y: 10
-                )
-        }
+        .frame(width: UIScreen.main.bounds.width-theme.alertSize.0, height: theme.alertSize.1)
+//        .background {
+//            Rectangle()
+//                .foregroundColor(theme.cardColor)
+//                .cornerRadius(20)
+//                .shadow(
+//                    color: theme.shadowColor,
+//                    radius: 10,
+//                    x: 10,
+//                    y: 10
+//                )
+//        }
     }
 }
 

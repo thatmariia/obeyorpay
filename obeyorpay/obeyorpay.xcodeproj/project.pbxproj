@@ -72,6 +72,8 @@
 		B6ACAAF628CEBB6B00A47330 /* ConfirmButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ACAAF528CEBB6B00A47330 /* ConfirmButtonStyle.swift */; };
 		B6B3B8B228D205080023AF5F /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B3B8B128D205080023AF5F /* AlertView.swift */; };
 		B6B3B8B428D208E20023AF5F /* OkButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B3B8B328D208E20023AF5F /* OkButtonStyle.swift */; };
+		B6B3B8B728D2E0E00023AF5F /* AlertX in Frameworks */ = {isa = PBXBuildFile; productRef = B6B3B8B628D2E0E00023AF5F /* AlertX */; };
+		B6B3B8B928D3C9BE0023AF5F /* WithPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B3B8B828D3C9BE0023AF5F /* WithPopover.swift */; };
 		B6B4327E28C7F1CD002F8B2F /* CDDataUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4327D28C7F1CD002F8B2F /* CDDataUserModel.swift */; };
 		B6B4328128C81E31002F8B2F /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4328028C81E31002F8B2F /* LoadingView.swift */; };
 		B6B4328528C82DE3002F8B2F /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4328428C82DE3002F8B2F /* AddTaskView.swift */; };
@@ -159,6 +161,7 @@
 		B6ACAAF528CEBB6B00A47330 /* ConfirmButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmButtonStyle.swift; sourceTree = "<group>"; };
 		B6B3B8B128D205080023AF5F /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		B6B3B8B328D208E20023AF5F /* OkButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OkButtonStyle.swift; sourceTree = "<group>"; };
+		B6B3B8B828D3C9BE0023AF5F /* WithPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithPopover.swift; sourceTree = "<group>"; };
 		B6B4327D28C7F1CD002F8B2F /* CDDataUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDDataUserModel.swift; sourceTree = "<group>"; };
 		B6B4328028C81E31002F8B2F /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		B6B4328428C82DE3002F8B2F /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
@@ -184,6 +187,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6B3B8B728D2E0E00023AF5F /* AlertX in Frameworks */,
 				B6D0BD1B28C6542200B0946D /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -233,6 +237,7 @@
 				B67749F728C4D43200B94B7C /* obeyorpayApp.swift */,
 				B64DEBCB28D11C0B0011584E /* AppDelegate.swift */,
 				B6774A2928C5183D00B94B7C /* PopupView.swift */,
+				B6B3B8B828D3C9BE0023AF5F /* WithPopover.swift */,
 				B6ACAABD28CDFF2900A47330 /* AppTheme.swift */,
 				B6774A1E28C4EDAF00B94B7C /* views */,
 				B6774A1F28C4EDB800B94B7C /* models */,
@@ -499,6 +504,7 @@
 			);
 			name = obeyorpay;
 			packageProductDependencies = (
+				B6B3B8B628D2E0E00023AF5F /* AlertX */,
 			);
 			productName = obeyorpay;
 			productReference = B67749F428C4D43200B94B7C /* obeyorpay.app */;
@@ -529,6 +535,7 @@
 			);
 			mainGroup = B67749EB28C4D43200B94B7C;
 			packageReferences = (
+				B6B3B8B528D2E0E00023AF5F /* XCRemoteSwiftPackageReference "AlertX" */,
 			);
 			productRefGroup = B67749F528C4D43200B94B7C /* Products */;
 			projectDirPath = "";
@@ -559,6 +566,7 @@
 				B6774A0F28C4DECF00B94B7C /* TasksTypeView.swift in Sources */,
 				B6B4327E28C7F1CD002F8B2F /* CDDataUserModel.swift in Sources */,
 				B6ACAAEA28CE5DCE00A47330 /* TargetInputView.swift in Sources */,
+				B6B3B8B928D3C9BE0023AF5F /* WithPopover.swift in Sources */,
 				B6D0BD2F28C6D1E700B0946D /* CKAccountManager.swift in Sources */,
 				B6D0BD1E28C6AE1300B0946D /* UserCKModel.swift in Sources */,
 				B6ACAAE628CE5CDD00A47330 /* SpanStartDateInputView.swift in Sources */,
@@ -853,6 +861,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B6B3B8B528D2E0E00023AF5F /* XCRemoteSwiftPackageReference "AlertX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/neel-makhecha/AlertX.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B6B3B8B628D2E0E00023AF5F /* AlertX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6B3B8B528D2E0E00023AF5F /* XCRemoteSwiftPackageReference "AlertX" */;
+			productName = AlertX;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		B6774A0228C4D43400B94B7C /* obeyorpay.xcdatamodeld */ = {
