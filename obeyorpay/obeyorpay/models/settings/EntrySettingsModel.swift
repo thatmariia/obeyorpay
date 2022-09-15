@@ -11,33 +11,45 @@ import Foundation
 class EntrySettingsModel {
     
     func addEntry(entry: EntryStoreModel, task: TaskStoreModel, taskType: TaskTypes, signedInUser: SignedInUserModel) throws {
-        DispatchQueue.main.async {
+        
+        let group = DispatchGroup()
+        group.enter()
+        
+        let updatedUser = signedInUser.user
+        
+        DispatchQueue.global(qos: .default).async {
             Task.init {
                 do {
                     // adding new entry
                     task.currentCount += 1
                     let newEntry = try await entryDB.addEntry(entry: entry)
-                    task.entriesRefs.append(newEntry.recordName!)
+                    //task.entriesRefs.append(newEntry.recordName!)
                     
                     // add entry to the account's task
-                    let updatedUser = signedInUser.user
+                    ///let updatedUser = signedInUser.user
                     if let taskIndex = updatedUser.account.tasks[taskType]!.firstIndex(where: { $0.recordName == task.recordName }) {
                         updatedUser.account.tasks[taskType]![taskIndex].entriesRefs.append(newEntry.recordName!)
                     }
                     
                     // adding entry to the account
                     updatedUser.account.entries.append(newEntry)
-                    signedInUser.user = updatedUser
-                    let _ = try await accountDB.changeAccount(with: updatedUser.account.recordName!, to: updatedUser.account)
+                    print("meow:", updatedUser.account.entries)
+                    ///signedInUser.user = updatedUser
+                    try await accountDB.changeAccountVoid(with: updatedUser.account.recordName!, to: updatedUser.account)
                     
                     // adding entries to the task
-                    let _ = try await taskDB.changeTask(with: task.recordName!, to: task)
+                    try await taskDB.changeTaskVoid(with: task.recordName!, to: task)
                     
+                    group.leave()
                 } catch let err {
                     throw err
                 }
             }
         }
+        
+        group.wait()
+        
+        signedInUser.user = updatedUser
     }
     
     func deleteLastEntry(from task: TaskStoreModel, taskType: TaskTypes, signedInUser: SignedInUserModel) throws {
@@ -65,7 +77,7 @@ class EntrySettingsModel {
                         if let entryTaskIndex = task.entriesRefs.firstIndex(where: { $0 == lastEntry.recordName }) {
                             task.entriesRefs.remove(at: entryTaskIndex)
                         }
-                        let _ = try await taskDB.changeTask(with: task.recordName!, to: task)
+                        try await taskDB.changeTaskVoid(with: task.recordName!, to: task)
                         
                         
                         // removing entry from the account's task
@@ -82,11 +94,12 @@ class EntrySettingsModel {
                         }
                         signedInUser.user = updatedUser
                         
-                        let _ = try await accountDB.changeAccount(with: updatedUser.account.recordName!, to: updatedUser.account)
+                        try await accountDB.changeAccountVoid(with: updatedUser.account.recordName!, to: updatedUser.account)
                         
                         // removing entry
-                        let _ = try await entryDB.deleteEntry(with: lastEntry.recordName!)
+                        try await entryDB.deleteEntry(with: lastEntry.recordName!)
                     } catch let err {
+                        print("ERRRRRRR", err.localizedDescription)
                         throw err
                     }
                 }

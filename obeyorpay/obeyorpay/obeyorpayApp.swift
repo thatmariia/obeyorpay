@@ -49,6 +49,7 @@ struct obeyorpayApp: App {
         self.signedInUser.checkedStatusOnStart = appDelegate.signedInUser.checkedStatusOnStart
         
         // check if the core data contains a user
+        // userCD.clearCDEntity()
         let uid = userCD.fetchUser()
         if uid == nil {
             signedInUser.checkedStatusOnStart = true

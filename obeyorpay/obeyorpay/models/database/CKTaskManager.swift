@@ -102,8 +102,22 @@ class CKTaskManager: CKManager {
             // make changes
             record = fromTaskToCKRecord(from: task, to: record)
             // save changes
-            let user = try await saveObject(of: record, fromCKRecordToObject: fromCKRecordToTask) as! TaskCKModel
-            return await user.toStore()
+            let task = try await saveObject(of: record, fromCKRecordToObject: fromCKRecordToTask) as! TaskCKModel
+            return await task.toStore()
+        } catch let err {
+            throw err
+        }
+    }
+    
+    func changeTaskVoid(with recordName: String, to task: TaskStoreModel) async throws {
+        let task = task.toCK()
+        do {
+            // fetch record with id
+            var record = try await fetchRecord(with: CKRecord.ID(recordName: recordName))
+            // make changes
+            record = fromTaskToCKRecord(from: task, to: record)
+            // save changes
+            let _ = try await saveObject(of: record, fromCKRecordToObject: fromCKRecordToTask) as! TaskCKModel
         } catch let err {
             throw err
         }

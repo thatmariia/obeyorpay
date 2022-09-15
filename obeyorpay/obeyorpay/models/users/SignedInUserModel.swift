@@ -11,6 +11,7 @@ import CoreData
 
 
 enum signInStatus {
+    case errorSigningIn
     case signedIn
     case notSignedIn
 }

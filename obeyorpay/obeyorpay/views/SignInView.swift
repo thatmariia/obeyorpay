@@ -13,18 +13,33 @@ struct SignInView: View {
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var signedInUser: SignedInUserModel
     
+    @State var alertShowing = false
+    @State var alertAction = AlertActions.none
+    
     var body: some View {
         
         ZStack {
             
-            SignInWithAppleButton(.signIn) { request in
-                authentificator.onRequest(request)
-            } onCompletion: { result in
-                authentificator.onCompletion(result, signedInUser: signedInUser)
+            if alertShowing {
+                AlertView(bodyMessage: "Authentification failed", alertShowing: $alertShowing, alertAction: $alertAction)
             }
-            .signInWithAppleButtonStyle(colorScheme == .dark ? .white : .black)
-            .frame(width: 200, height: 60, alignment: .center)
+            
+            ZStack {
+                SignInWithAppleButton(.signIn) { request in
+                    authentificator.onRequest(request)
+                } onCompletion: { result in
+                    authentificator.onCompletion(result, signedInUser: signedInUser)
+                }
+                .signInWithAppleButtonStyle(colorScheme == .dark ? .white : .black)
+                .frame(width: 200, height: 60, alignment: .center)
+            }
+            .blur(radius: alertShowing ? 30 : 0)
 
+        }
+        .onChange(of: signedInUser.status) { newValue in
+            if newValue == .signedIn {
+                alertShowing = true
+            }
         }
     }
 }

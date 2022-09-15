@@ -11,9 +11,10 @@ struct LoadingView: View {
     var body: some View {
         
         ZStack {
-            Color.yellow
+            theme.backgroundColor.ignoresSafeArea()
             VStack {
                 Text("Loading....")
+                    .foregroundColor(theme.textColor)
             }
         }
     }

@@ -21,7 +21,13 @@ struct TaskView: View {
     var body: some View {
         ZStack(alignment: .center) {
             
-            ProgressBarView(color: task.color, height: height, count: task.currentCount, target: task.target)
+            
+            ProgressBarView(
+                color: task.color,
+                height: height,
+                count: isInviting ? task.target : task.currentCount,
+                target: task.target
+            )
             
             HStack {
                 VStack(alignment: .leading) {
@@ -39,11 +45,12 @@ struct TaskView: View {
                     
                     // progress
                     if isInviting {
-                        Text("ACCEPT TO VIEW COUNT")
+                        Text("ACCEPT TO VIEW PROGRESS")
+                            .font(.caption)
+                    } else {
+                        Text("\(task.currentCount) OUT OF AT \(task.build ? "LEAST" : "MOST") \(task.target)")
                             .font(.caption)
                     }
-                    Text("\(task.currentCount) OUT OF AT \(task.build ? "LEAST" : "MOST") \(task.target)")
-                        .font(.caption)
                     
                     Spacer().frame(height: 10)
                 }

@@ -25,12 +25,16 @@ class SignInAppleModel {
             Task.init {
                 do {
                     if let _ = credential.email, let _ = credential.fullName {
-                        try registerNewAccount(credential: credential, signedInUser: signedInUser)
+                        do {
+                            try signInWithExistingAccount(credential: credential, signedInUser: signedInUser)
+                        } catch {
+                            try registerNewAccount(credential: credential, signedInUser: signedInUser)
+                        }
                     } else {
                         try signInWithExistingAccount(credential: credential, signedInUser: signedInUser)
                     }
-                } catch let err {
-                    // handle error
+                } catch {
+                    signedInUser.status = .errorSigningIn
                 }
             }
         case .failure (let error):

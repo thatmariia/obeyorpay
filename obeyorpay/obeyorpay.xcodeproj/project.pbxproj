@@ -70,6 +70,8 @@
 		B6ACAAEE28CE5F5800A47330 /* ColorInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ACAAED28CE5F5800A47330 /* ColorInputView.swift */; };
 		B6ACAAF428CEBA4D00A47330 /* DismissButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ACAAF328CEBA4D00A47330 /* DismissButtonStyle.swift */; };
 		B6ACAAF628CEBB6B00A47330 /* ConfirmButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ACAAF528CEBB6B00A47330 /* ConfirmButtonStyle.swift */; };
+		B6B3B8B228D205080023AF5F /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B3B8B128D205080023AF5F /* AlertView.swift */; };
+		B6B3B8B428D208E20023AF5F /* OkButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B3B8B328D208E20023AF5F /* OkButtonStyle.swift */; };
 		B6B4327E28C7F1CD002F8B2F /* CDDataUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4327D28C7F1CD002F8B2F /* CDDataUserModel.swift */; };
 		B6B4328128C81E31002F8B2F /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4328028C81E31002F8B2F /* LoadingView.swift */; };
 		B6B4328528C82DE3002F8B2F /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4328428C82DE3002F8B2F /* AddTaskView.swift */; };
@@ -155,6 +157,8 @@
 		B6ACAAF228CE854600A47330 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B6ACAAF328CEBA4D00A47330 /* DismissButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissButtonStyle.swift; sourceTree = "<group>"; };
 		B6ACAAF528CEBB6B00A47330 /* ConfirmButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmButtonStyle.swift; sourceTree = "<group>"; };
+		B6B3B8B128D205080023AF5F /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		B6B3B8B328D208E20023AF5F /* OkButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OkButtonStyle.swift; sourceTree = "<group>"; };
 		B6B4327D28C7F1CD002F8B2F /* CDDataUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDDataUserModel.swift; sourceTree = "<group>"; };
 		B6B4328028C81E31002F8B2F /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		B6B4328428C82DE3002F8B2F /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
@@ -372,6 +376,7 @@
 				B6ACAADA28CE4CF100A47330 /* AppTextfieldStyle.swift */,
 				B6ACAADC28CE57BD00A47330 /* SpanButtonStyle.swift */,
 				B6ACAAF328CEBA4D00A47330 /* DismissButtonStyle.swift */,
+				B6B3B8B328D208E20023AF5F /* OkButtonStyle.swift */,
 				B6ACAAF528CEBB6B00A47330 /* ConfirmButtonStyle.swift */,
 				B64DEBD228D13F140011584E /* BigPlusButtonStyle.swift */,
 				B64DEBD828D141210011584E /* DecisionButtonStyle.swift */,
@@ -405,6 +410,7 @@
 			isa = PBXGroup;
 			children = (
 				B6ACAAE128CE5BEC00A47330 /* SectionTitleTextView.swift */,
+				B6B3B8B128D205080023AF5F /* AlertView.swift */,
 			);
 			path = elements;
 			sourceTree = "<group>";
@@ -597,6 +603,7 @@
 				B64DEBD128D139540011584E /* MainSettingsModel.swift in Sources */,
 				B6774A0128C4D43400B94B7C /* Persistence.swift in Sources */,
 				B64DEBD728D140E10011584E /* DecisionButtonsView.swift in Sources */,
+				B6B3B8B228D205080023AF5F /* AlertView.swift in Sources */,
 				B67749FA28C4D43200B94B7C /* ContentView.swift in Sources */,
 				B688DE5928C94A3F00500C7E /* TaskStoreModel.swift in Sources */,
 				B6774A1728C4EBCF00B94B7C /* TaskRowView.swift in Sources */,
@@ -620,6 +627,7 @@
 				B6ACAAC328CE151F00A47330 /* CardView.swift in Sources */,
 				B6ACAAF428CEBA4D00A47330 /* DismissButtonStyle.swift in Sources */,
 				B64DEBDB28D144910011584E /* EntrySettingsModel.swift in Sources */,
+				B6B3B8B428D208E20023AF5F /* OkButtonStyle.swift in Sources */,
 				B688DE6128C94C0F00500C7E /* MainUserStoreModel.swift in Sources */,
 				B6ACAAD228CE36D600A47330 /* TaskActionView.swift in Sources */,
 				B688DE4D28C838A100500C7E /* TaskSettingsModel.swift in Sources */,
