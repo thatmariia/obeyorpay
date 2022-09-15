@@ -33,7 +33,6 @@ class EntrySettingsModel {
                     
                     // adding entry to the account
                     updatedUser.account.entries.append(newEntry)
-                    print("meow:", updatedUser.account.entries)
                     ///signedInUser.user = updatedUser
                     try await accountDB.changeAccountVoid(with: updatedUser.account.recordName!, to: updatedUser.account)
                     
@@ -63,25 +62,32 @@ class EntrySettingsModel {
             }
         
         if let lastEntry = entries.first {
-            DispatchQueue.main.async {
+            
+            let group = DispatchGroup()
+            group.enter()
+            
+            if (lastEntry.timestamp > task.lastPeriodStartDate) {
+                if (task.currentCount > 0) {
+                    task.currentCount -= 1
+                }
+            } else {
+                return
+            }
+            if let entryTaskIndex = task.entriesRefs.firstIndex(where: { $0 == lastEntry.recordName }) {
+                task.entriesRefs.remove(at: entryTaskIndex)
+            }
+            
+            let updatedUser = signedInUser.user
+            
+            DispatchQueue.global(qos: .default).async {
                 Task.init {
                     do {
                         // removing entry from task
-                        if (lastEntry.timestamp > task.lastPeriodStartDate) {
-                            if (task.currentCount > 0) {
-                                task.currentCount -= 1
-                            }
-                        } else {
-                            return
-                        }
-                        if let entryTaskIndex = task.entriesRefs.firstIndex(where: { $0 == lastEntry.recordName }) {
-                            task.entriesRefs.remove(at: entryTaskIndex)
-                        }
                         try await taskDB.changeTaskVoid(with: task.recordName!, to: task)
                         
                         
                         // removing entry from the account's task
-                        let updatedUser = signedInUser.user
+                        ///let updatedUser = signedInUser.user
                         if let taskIndex = updatedUser.account.tasks[taskType]!.firstIndex(where: { $0.recordName == task.recordName }) {
                             if let entryTaskIndex = updatedUser.account.tasks[taskType]![taskIndex].entriesRefs.firstIndex(where: { $0 == lastEntry.recordName }) {
                                 updatedUser.account.tasks[taskType]![taskIndex].entriesRefs.remove(at: entryTaskIndex)
@@ -92,18 +98,24 @@ class EntrySettingsModel {
                         if let entryAccountIndex = updatedUser.account.entries.firstIndex(where: { $0.recordName == lastEntry.recordName }) {
                             updatedUser.account.entries.remove(at: entryAccountIndex)
                         }
-                        signedInUser.user = updatedUser
+                        ///signedInUser.user = updatedUser
                         
                         try await accountDB.changeAccountVoid(with: updatedUser.account.recordName!, to: updatedUser.account)
                         
                         // removing entry
                         try await entryDB.deleteEntry(with: lastEntry.recordName!)
+                        
+                        group.leave()
+                        
                     } catch let err {
-                        print("ERRRRRRR", err.localizedDescription)
                         throw err
                     }
                 }
             }
+            
+            group.wait()
+            
+            signedInUser.user = updatedUser
             
         }
         

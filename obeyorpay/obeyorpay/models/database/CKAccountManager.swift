@@ -105,7 +105,6 @@ class CKAccountManager: CKManager {
             // save changes
             let _ = try await saveObject(of: record, fromCKRecordToObject: fromCKRecordToAccount) as! AccountCKModel
         } catch let err {
-            print("ERR????", err.localizedDescription)
             throw err
         }
     }
