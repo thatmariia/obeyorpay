@@ -45,12 +45,13 @@ class TaskSettingsModel {
                         updatedUser.account.tasks[taskUserType]!.remove(at: taskIndex)
                     }
                     signedInUser.user = updatedUser
-                    let _ = try await accountDB.changeAccount(with: updatedUser.account.recordName!, to: updatedUser.account)
+                    try await accountDB.changeAccountVoid(with: updatedUser.account.recordName!, to: updatedUser.account)
                     
                     // remove user from the task
-                    if let userIndex = task.users[taskUserType]!.firstIndex(where: { $0.recordName == signedInUser.user.recordName! }) {
-                        task.users[taskUserType]?.remove(at: userIndex)
+                    if let userIndex = task.users[taskType]!.firstIndex(where: { $0.recordName == signedInUser.user.recordName! }) {
+                        task.users[taskType]?.remove(at: userIndex)
                     }
+                    try await taskDB.changeTaskVoid(with: task.recordName!, to: task)
                     
                 } catch let err {
                     throw err
@@ -235,21 +236,31 @@ class TaskSettingsModel {
     }
     
     func addTask(signedInUser: SignedInUserModel, task: TaskStoreModel) throws {
-        DispatchQueue.main.async {
+        let group = DispatchGroup()
+        group.enter()
+        
+        let updatedUser = signedInUser.user
+        
+        DispatchQueue.global(qos: .default).async {
             Task.init {
                 do {
                     // adding new task
                     let newTask = try await taskDB.addTask(task: task)
-                    let updatedUser = signedInUser.user
                     updatedUser.account.tasks[.personal]!.append(newTask)
-                    signedInUser.user = updatedUser
+                    
                     // adding task to personal tasks of user
                     updatedUser.account = try await accountDB.changeAccount(with: updatedUser.account.recordName!, to: updatedUser.account)
+                    
+                    group.leave()
                 } catch let err {
                     throw err
                 }
             }
         }
+        
+        group.wait()
+        
+        signedInUser.user = updatedUser
     }
     
     
