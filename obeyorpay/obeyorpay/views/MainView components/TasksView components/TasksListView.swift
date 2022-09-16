@@ -27,7 +27,7 @@ struct TasksListView: View {
                     TaskRowView(task: task, taskType: taskType, rowHeight: rowHeight, isInviting: true)
                         .frame(height: rowHeight + 5)
                         .shadow(color: theme.shadowColor, radius: 14, x: 10, y: 10)
-                }
+                }.padding()
             }
             
             if signedInUser.user.account.invitedTasks[taskType]!.count > 0 {

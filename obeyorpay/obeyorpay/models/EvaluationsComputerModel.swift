@@ -172,6 +172,8 @@ class EvaluationsComputerModel {
                 } else {
                     stop = true
                 }
+            } else {
+                stop = true
             }
         }
     }

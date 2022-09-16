@@ -26,7 +26,7 @@ struct MainView: View {
                 case .tasks:
                     TasksView()
                 case .evaluations:
-                    Text("Evaluations")
+                    EvaluationsView()
                 case .settings:
                     SettingsView()
                 }
