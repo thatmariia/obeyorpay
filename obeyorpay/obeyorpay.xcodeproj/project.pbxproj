@@ -75,6 +75,7 @@
 		B6B3B8B728D2E0E00023AF5F /* AlertX in Frameworks */ = {isa = PBXBuildFile; productRef = B6B3B8B628D2E0E00023AF5F /* AlertX */; };
 		B6B3B8B928D3C9BE0023AF5F /* WithPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B3B8B828D3C9BE0023AF5F /* WithPopover.swift */; };
 		B6B3B8BB28D3F9B10023AF5F /* TopActionButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B3B8BA28D3F9B10023AF5F /* TopActionButtonStyle.swift */; };
+		B6B3B8BE28D3FD9E0023AF5F /* MainUsernameInputFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B3B8BD28D3FD9E0023AF5F /* MainUsernameInputFieldView.swift */; };
 		B6B4327E28C7F1CD002F8B2F /* CDDataUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4327D28C7F1CD002F8B2F /* CDDataUserModel.swift */; };
 		B6B4328128C81E31002F8B2F /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4328028C81E31002F8B2F /* LoadingView.swift */; };
 		B6B4328528C82DE3002F8B2F /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4328428C82DE3002F8B2F /* AddTaskView.swift */; };
@@ -163,6 +164,7 @@
 		B6B3B8B328D208E20023AF5F /* OkButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OkButtonStyle.swift; sourceTree = "<group>"; };
 		B6B3B8B828D3C9BE0023AF5F /* WithPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithPopover.swift; sourceTree = "<group>"; };
 		B6B3B8BA28D3F9B10023AF5F /* TopActionButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopActionButtonStyle.swift; sourceTree = "<group>"; };
+		B6B3B8BD28D3FD9E0023AF5F /* MainUsernameInputFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUsernameInputFieldView.swift; sourceTree = "<group>"; };
 		B6B4327D28C7F1CD002F8B2F /* CDDataUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDDataUserModel.swift; sourceTree = "<group>"; };
 		B6B4328028C81E31002F8B2F /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		B6B4328428C82DE3002F8B2F /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
@@ -403,6 +405,14 @@
 			path = "AddTaskView components";
 			sourceTree = "<group>";
 		};
+		B6B3B8BC28D3FD480023AF5F /* SettingsEditingView components */ = {
+			isa = PBXGroup;
+			children = (
+				B6B3B8BD28D3FD9E0023AF5F /* MainUsernameInputFieldView.swift */,
+			);
+			path = "SettingsEditingView components";
+			sourceTree = "<group>";
+		};
 		B6B4327F28C80ACB002F8B2F /* core data */ = {
 			isa = PBXGroup;
 			children = (
@@ -483,6 +493,7 @@
 			isa = PBXGroup;
 			children = (
 				B6D0BD3A28C79C3500B0946D /* SettingsEditingView.swift */,
+				B6B3B8BC28D3FD480023AF5F /* SettingsEditingView components */,
 			);
 			path = "SettingsView components";
 			sourceTree = "<group>";
@@ -642,6 +653,7 @@
 				B688DE4D28C838A100500C7E /* TaskSettingsModel.swift in Sources */,
 				B64DEBCF28D1219A0011584E /* CKSubscriptionsManager.swift in Sources */,
 				B6ACAADD28CE57BD00A47330 /* SpanButtonStyle.swift in Sources */,
+				B6B3B8BE28D3FD9E0023AF5F /* MainUsernameInputFieldView.swift in Sources */,
 				B6774A4B28C61A1D00B94B7C /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -22,36 +22,51 @@ struct SettingsEditingView: View {
     var body: some View {
         
         ZStack {
-            
-            Color.red
+            theme.backgroundColor.ignoresSafeArea()
             
             VStack {
-                TextField("Username", text: $newUsername)
                 
-                if showingNote {
-                    Text(displayNote)
+                VStack(alignment: .leading, spacing: 35) {
+                    
+                    HStack(spacing: 20) {
+                        Spacer()
+                        
+                        Button {
+                            attemptUsernameChange()
+                        } label: {
+                            Text("SAVE")
+                        }
+                        .buttonStyle(ConfirmButtonStyle())
+                        
+                        Button {
+                            self.mode.wrappedValue.dismiss()
+                        } label: {
+                            Image(systemName: "multiply")
+                        }
+                        .buttonStyle(DismissButtonStyle())
+                    }
+                    .padding(EdgeInsets(top: 15, leading: 15, bottom: 0, trailing: 15))
+                    
+                    MainUsernameInputFieldView(username: $newUsername, showingUsernameNote: $showingNote, usernameNote: $displayNote)
+                        .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
+                    
+                    
+                    Spacer()
+                    
                 }
                 
-                Spacer()
-                
-                Button {
-                    attemptUsernameChange()
-                } label: {
-                    Text("done")
+                VStack {
+                    Button {
+                        authentificator.signOut(signedInUser: signedInUser)
+                    } label: {
+                        Text("SIGN OUT")
+                    }
+                    .buttonStyle(DismissButtonStyle())
                 }
-                
-                Spacer()
-                
-                Button {
-                    authentificator.signOut(signedInUser: signedInUser)
-                } label: {
-                    Text("sign out")
-                }
-                
             }
+            .navigationTitle("")
+            .navigationBarHidden(true)
         }
-        .navigationTitle("")
-        .navigationBarHidden(true)
         
     }
     
