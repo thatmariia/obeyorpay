@@ -61,8 +61,8 @@ struct InviteTaskView: View {
                     
                     if inviting {
                         HStack {
-                            UsernameInputFieldView(username: $invitedUsername, showingUsernameNote: showingInvitedNote, usernameNote: invitedNote, color: task.color)
-                            
+                            UsernameInputFieldView(username: $invitedUsername, showingUsernameNote: $showingInvitedNote, usernameNote: $invitedNote, color: task.color)
+                             
                             Spacer().frame(width: 30)
                             
                             Button {
