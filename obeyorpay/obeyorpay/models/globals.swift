@@ -57,3 +57,5 @@ let fullDateFormatter: DateFormatter = {
     formatter.dateFormat = "d MMM yyyy, HH:mm"
     return formatter
 }()
+
+let calendar = Calendar.current

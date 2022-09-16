@@ -11,6 +11,7 @@ import CloudKit
 enum TaskSpan: String, CaseIterable {
     case day = "daily"
     case week = "weekly"
+    case biweek = "biweekly"
     case month = "monthly"
     case year = "yearly"
     
@@ -20,10 +21,12 @@ enum TaskSpan: String, CaseIterable {
             return 1
         case .week:
             return 2
-        case .month:
+        case .biweek:
             return 3
-        case .year:
+        case .month:
             return 4
+        case .year:
+            return 5
         }
     }
 }

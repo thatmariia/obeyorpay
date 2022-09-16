@@ -63,6 +63,28 @@ class EvaluationStoreModel: Identifiable, Equatable, Hashable {
     }
     
     init(
+        periodStartDate: Date,
+        periodEndDate: Date,
+        jointUsers: [UserStoreModel],
+        taskRef: String,
+        count: Int,
+        target: Int,
+        totalCost: Double,
+        build: Bool
+    ) {
+        self.recordName = nil
+        self.periodStartDate = periodStartDate
+        self.periodEndDate = periodEndDate
+        self.jointUsers = jointUsers
+        self.paymentsRefs = []
+        self.taskRef = taskRef
+        self.count = count
+        self.target = target
+        self.totalCost = totalCost
+        self.build = build
+    }
+    
+    init(
         recordName: String,
         periodStartDate: Date,
         periodEndDate: Date,
@@ -84,5 +106,20 @@ class EvaluationStoreModel: Identifiable, Equatable, Hashable {
         self.target = target
         self.totalCost = totalCost
         self.build = build
+    }
+    
+    func toCK() -> EvaluationCKModel {
+        return EvaluationCKModel(
+            recordName: self.recordName ?? "",
+            periodStartDate: self.periodStartDate,
+            periodEndDate: self.periodEndDate,
+            jointUsersRefs: self.jointUsers.map { $0.recordName ?? "" },
+            paymentsRefs: self.paymentsRefs,
+            taskRef: self.taskRef,
+            count: self.count,
+            target: self.target,
+            totalCost: self.totalCost,
+            build: self.build
+        )
     }
 }
