@@ -16,11 +16,12 @@ struct TasksTypeView: View {
         HStack {
             
             HStack {
-            NavigationLink {
-                AddTaskView()
-            } label: {
-                AddTaskButtonView()
-            }
+                NavigationLink {
+                    AddTaskView()
+                } label: {
+                    Image(systemName: "plus")
+                }
+                .buttonStyle(TopActionButtonStyle())
             }.padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 5))
             
             Spacer()
@@ -31,7 +32,7 @@ struct TasksTypeView: View {
                 Text("PERSONAL")
                     .foregroundColor(taskType == .personal ? theme.textColor : theme.unselectedTextColor)
             }
-
+            
             
             Spacer()
             

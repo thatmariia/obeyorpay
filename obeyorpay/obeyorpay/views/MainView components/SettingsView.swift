@@ -14,22 +14,37 @@ struct SettingsView: View {
     var body: some View {
         
         ScrollView {
-            VStack {
-                
-                Text(signedInUser.user.username)
-                
-                Spacer()
-                
-                NavigationLink {
-                    SettingsEditingView(currUsername: signedInUser.user.username, newUsername: signedInUser.user.username)
-                } label: {
-                    Text("edit (username)")
+            VStack(alignment: .leading) {
+                VStack {
+                    Spacer().frame(height: 10)
+                    
+                    HStack {
+                        Spacer()
+                        NavigationLink {
+                            SettingsEditingView(currUsername: signedInUser.user.username, newUsername: signedInUser.user.username)
+                        } label: {
+                            Image(systemName: "square.and.pencil")
+                                .font(.system(size: 25, weight: .bold))
+                        }
+                        .buttonStyle(TopActionButtonStyle())
+                    }
                 }
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 5))
                 
-                Spacer()
+                VStack(alignment: .leading/*, spacing: 35*/) {
+                    
+                    Text("Hi,")
+                        .font(.system(size: 35, weight: .heavy))
+                    Text("@" + signedInUser.user.username)
+                        .font(.system(size: 20, weight: .semibold))
+                        .tracking(3)
+                    
+                    
+                    Spacer()
+                }
             }
+            .padding()
         }
-
     }
 }
 

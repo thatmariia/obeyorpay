@@ -74,6 +74,7 @@
 		B6B3B8B428D208E20023AF5F /* OkButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B3B8B328D208E20023AF5F /* OkButtonStyle.swift */; };
 		B6B3B8B728D2E0E00023AF5F /* AlertX in Frameworks */ = {isa = PBXBuildFile; productRef = B6B3B8B628D2E0E00023AF5F /* AlertX */; };
 		B6B3B8B928D3C9BE0023AF5F /* WithPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B3B8B828D3C9BE0023AF5F /* WithPopover.swift */; };
+		B6B3B8BB28D3F9B10023AF5F /* TopActionButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B3B8BA28D3F9B10023AF5F /* TopActionButtonStyle.swift */; };
 		B6B4327E28C7F1CD002F8B2F /* CDDataUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4327D28C7F1CD002F8B2F /* CDDataUserModel.swift */; };
 		B6B4328128C81E31002F8B2F /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4328028C81E31002F8B2F /* LoadingView.swift */; };
 		B6B4328528C82DE3002F8B2F /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4328428C82DE3002F8B2F /* AddTaskView.swift */; };
@@ -90,7 +91,6 @@
 		B6D0BD3728C7931500B0946D /* globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD3628C7931500B0946D /* globals.swift */; };
 		B6D0BD3928C7943F00B0946D /* UsernameSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD3828C7943F00B0946D /* UsernameSettingsModel.swift */; };
 		B6D0BD3B28C79C3500B0946D /* SettingsEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD3A28C79C3500B0946D /* SettingsEditingView.swift */; };
-		B6D0BD3E28C7E3AE00B0946D /* AddTaskButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D0BD3D28C7E3AE00B0946D /* AddTaskButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -162,6 +162,7 @@
 		B6B3B8B128D205080023AF5F /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		B6B3B8B328D208E20023AF5F /* OkButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OkButtonStyle.swift; sourceTree = "<group>"; };
 		B6B3B8B828D3C9BE0023AF5F /* WithPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithPopover.swift; sourceTree = "<group>"; };
+		B6B3B8BA28D3F9B10023AF5F /* TopActionButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopActionButtonStyle.swift; sourceTree = "<group>"; };
 		B6B4327D28C7F1CD002F8B2F /* CDDataUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDDataUserModel.swift; sourceTree = "<group>"; };
 		B6B4328028C81E31002F8B2F /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		B6B4328428C82DE3002F8B2F /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
@@ -179,7 +180,6 @@
 		B6D0BD3628C7931500B0946D /* globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = globals.swift; sourceTree = "<group>"; };
 		B6D0BD3828C7943F00B0946D /* UsernameSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameSettingsModel.swift; sourceTree = "<group>"; };
 		B6D0BD3A28C79C3500B0946D /* SettingsEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEditingView.swift; sourceTree = "<group>"; };
-		B6D0BD3D28C7E3AE00B0946D /* AddTaskButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -290,7 +290,6 @@
 		B6774A2128C4F3A500B94B7C /* TasksView components */ = {
 			isa = PBXGroup;
 			children = (
-				B6D0BD3D28C7E3AE00B0946D /* AddTaskButtonView.swift */,
 				B6B4328428C82DE3002F8B2F /* AddTaskView.swift */,
 				B6ACAADE28CE5B1F00A47330 /* AddTaskView components */,
 				B6774A0E28C4DECF00B94B7C /* TasksTypeView.swift */,
@@ -383,6 +382,7 @@
 				B6ACAAF328CEBA4D00A47330 /* DismissButtonStyle.swift */,
 				B6B3B8B328D208E20023AF5F /* OkButtonStyle.swift */,
 				B6ACAAF528CEBB6B00A47330 /* ConfirmButtonStyle.swift */,
+				B6B3B8BA28D3F9B10023AF5F /* TopActionButtonStyle.swift */,
 				B64DEBD228D13F140011584E /* BigPlusButtonStyle.swift */,
 				B64DEBD828D141210011584E /* DecisionButtonStyle.swift */,
 			);
@@ -609,6 +609,7 @@
 				B6D0BD2228C6B7FB00B0946D /* EvaluationCKModel.swift in Sources */,
 				B688DE6728C97F0D00500C7E /* CKEntryManager.swift in Sources */,
 				B64DEBD128D139540011584E /* MainSettingsModel.swift in Sources */,
+				B6B3B8BB28D3F9B10023AF5F /* TopActionButtonStyle.swift in Sources */,
 				B6774A0128C4D43400B94B7C /* Persistence.swift in Sources */,
 				B64DEBD728D140E10011584E /* DecisionButtonsView.swift in Sources */,
 				B6B3B8B228D205080023AF5F /* AlertView.swift in Sources */,
@@ -642,7 +643,6 @@
 				B64DEBCF28D1219A0011584E /* CKSubscriptionsManager.swift in Sources */,
 				B6ACAADD28CE57BD00A47330 /* SpanButtonStyle.swift in Sources */,
 				B6774A4B28C61A1D00B94B7C /* SettingsView.swift in Sources */,
-				B6D0BD3E28C7E3AE00B0946D /* AddTaskButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
