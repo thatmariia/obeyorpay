@@ -136,35 +136,39 @@ class EvaluationsComputerModel {
                     // everyone pays equally
                     //let costPerPerson = totalCost / Double(task.users[.joint]!.count)
                     
-                    // creating a new evaluation
-                    let evaluation = EvaluationStoreModel(
-                        periodStartDate: lastStartDate,
-                        periodEndDate: endDate,
-                        jointUsers: task.users[.joint]!,
-                        taskRef: task.recordName!,
-                        count: relevantEntries.count,
-                        target: task.target,
-                        totalCost: totalCost,
-                        build: task.build
-                    )
-                    
-                    // ading the evaluation to the database
-                    let group = DispatchGroup()
-                    group.enter()
-                    DispatchQueue.global(qos: .default).async {
-                        Task.init {
-                            do {
-                                // add the evaluation to the database
-                                let evaluation = try await evaluationDB.addEvaluation(evaluation: evaluation)
-                                self.newEvaluations.append(evaluation)
-                                
-                                group.leave()
-                            } catch let err {
-                                throw err
+                    // if there's something to pay
+                    if totalCost != 0 {
+                        
+                        // creating a new evaluation
+                        let evaluation = EvaluationStoreModel(
+                            periodStartDate: lastStartDate,
+                            periodEndDate: endDate,
+                            jointUsers: task.users[.joint]!,
+                            taskRef: task.recordName!,
+                            count: relevantEntries.count,
+                            target: task.target,
+                            totalCost: totalCost,
+                            build: task.build
+                        )
+                        
+                        // ading the evaluation to the database
+                        let group = DispatchGroup()
+                        group.enter()
+                        DispatchQueue.global(qos: .default).async {
+                            Task.init {
+                                do {
+                                    // add the evaluation to the database
+                                    let evaluation = try await evaluationDB.addEvaluation(evaluation: evaluation)
+                                    self.newEvaluations.append(evaluation)
+                                    
+                                    group.leave()
+                                } catch let err {
+                                    throw err
+                                }
                             }
                         }
+                        group.wait()
                     }
-                    group.wait()
                     
                     // updating lastStartDate
                     lastStartDate = endDate

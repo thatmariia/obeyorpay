@@ -12,8 +12,8 @@ struct ProgressBarView: View {
     var color: Int
     var height: Double
     
-    var count: Int
-    var target: Int
+    var count: Int = 1
+    var target: Int = 1
     
     var body: some View {
         GeometryReader { geometry in

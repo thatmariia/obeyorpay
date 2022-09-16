@@ -80,6 +80,8 @@
 		B6B3B8C228D4A4210023AF5F /* EvaluationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B3B8C128D4A4210023AF5F /* EvaluationsView.swift */; };
 		B6B3B8C528D4A4FF0023AF5F /* EvaluationsTabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B3B8C428D4A4FF0023AF5F /* EvaluationsTabsView.swift */; };
 		B6B3B8C728D4A5CC0023AF5F /* EvaluationsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B3B8C628D4A5CC0023AF5F /* EvaluationsListView.swift */; };
+		B6B3B8C928D4B23B0023AF5F /* OutstandingEvaluationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B3B8C828D4B23B0023AF5F /* OutstandingEvaluationsView.swift */; };
+		B6B3B8CD28D4B52F0023AF5F /* EvaluationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B3B8CC28D4B52F0023AF5F /* EvaluationView.swift */; };
 		B6B4327E28C7F1CD002F8B2F /* CDDataUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4327D28C7F1CD002F8B2F /* CDDataUserModel.swift */; };
 		B6B4328128C81E31002F8B2F /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4328028C81E31002F8B2F /* LoadingView.swift */; };
 		B6B4328528C82DE3002F8B2F /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4328428C82DE3002F8B2F /* AddTaskView.swift */; };
@@ -173,6 +175,8 @@
 		B6B3B8C128D4A4210023AF5F /* EvaluationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationsView.swift; sourceTree = "<group>"; };
 		B6B3B8C428D4A4FF0023AF5F /* EvaluationsTabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationsTabsView.swift; sourceTree = "<group>"; };
 		B6B3B8C628D4A5CC0023AF5F /* EvaluationsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationsListView.swift; sourceTree = "<group>"; };
+		B6B3B8C828D4B23B0023AF5F /* OutstandingEvaluationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutstandingEvaluationsView.swift; sourceTree = "<group>"; };
+		B6B3B8CC28D4B52F0023AF5F /* EvaluationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationView.swift; sourceTree = "<group>"; };
 		B6B4327D28C7F1CD002F8B2F /* CDDataUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDDataUserModel.swift; sourceTree = "<group>"; };
 		B6B4328028C81E31002F8B2F /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		B6B4328428C82DE3002F8B2F /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
@@ -428,9 +432,27 @@
 			isa = PBXGroup;
 			children = (
 				B6B3B8C428D4A4FF0023AF5F /* EvaluationsTabsView.swift */,
-				B6B3B8C628D4A5CC0023AF5F /* EvaluationsListView.swift */,
+				B6B3B8C828D4B23B0023AF5F /* OutstandingEvaluationsView.swift */,
+				B6B3B8CA28D4B25E0023AF5F /* OutstandingEvaluationsView components */,
 			);
 			path = "EvaluationsView components";
+			sourceTree = "<group>";
+		};
+		B6B3B8CA28D4B25E0023AF5F /* OutstandingEvaluationsView components */ = {
+			isa = PBXGroup;
+			children = (
+				B6B3B8C628D4A5CC0023AF5F /* EvaluationsListView.swift */,
+				B6B3B8CB28D4B5200023AF5F /* EvaluationsListView components */,
+			);
+			path = "OutstandingEvaluationsView components";
+			sourceTree = "<group>";
+		};
+		B6B3B8CB28D4B5200023AF5F /* EvaluationsListView components */ = {
+			isa = PBXGroup;
+			children = (
+				B6B3B8CC28D4B52F0023AF5F /* EvaluationView.swift */,
+			);
+			path = "EvaluationsListView components";
 			sourceTree = "<group>";
 		};
 		B6B4327F28C80ACB002F8B2F /* core data */ = {
@@ -602,6 +624,7 @@
 				B6D0BD1E28C6AE1300B0946D /* UserCKModel.swift in Sources */,
 				B6ACAAE628CE5CDD00A47330 /* SpanStartDateInputView.swift in Sources */,
 				B6774A1328C4E46900B94B7C /* MainView.swift in Sources */,
+				B6B3B8C928D4B23B0023AF5F /* OutstandingEvaluationsView.swift in Sources */,
 				B6ACAAE028CE5B4D00A47330 /* TitleInputFieldView.swift in Sources */,
 				B6ACAADB28CE4CF100A47330 /* AppTextfieldStyle.swift in Sources */,
 				B6B3B8C028D400080023AF5F /* EvaluationsComputerModel.swift in Sources */,
@@ -661,6 +684,7 @@
 				B688DE5B28C94AE300500C7E /* EntryStoreModel.swift in Sources */,
 				B64DEBD928D141210011584E /* DecisionButtonStyle.swift in Sources */,
 				B6774A4928C54D5200B94B7C /* AccountCKModel.swift in Sources */,
+				B6B3B8CD28D4B52F0023AF5F /* EvaluationView.swift in Sources */,
 				B688DE6328C964B900500C7E /* CKPaymentManager.swift in Sources */,
 				B6D0BD2028C6B54900B0946D /* EntryCKModel.swift in Sources */,
 				B6D0BD3528C7036400B0946D /* SignInAppleModel.swift in Sources */,

@@ -16,6 +16,7 @@ struct EvaluationsView: View {
     
     @State var tab = EvaluationsTabs.outstanding
     
+    
     var body: some View {
         ScrollView {
             VStack {
@@ -27,7 +28,12 @@ struct EvaluationsView: View {
                 }
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: -15, trailing: 0))
                 
-                // stuff view
+                switch tab {
+                case .outstanding:
+                    OutstandingEvaluationsView()
+                case .history:
+                    Text("HISTORY")
+                }
                 
                 Spacer()
             }
