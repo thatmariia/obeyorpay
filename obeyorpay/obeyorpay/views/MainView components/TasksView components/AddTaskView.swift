@@ -105,6 +105,7 @@ struct AddTaskView: View {
             canSave = false
             showingTitleNote = true
             titleNote = titleComment.note!
+            return
         }
         
         let targetComment = taskSettings.isTargetCorrect(target: target)
@@ -112,6 +113,7 @@ struct AddTaskView: View {
             canSave = false
             showingTargetNote = true
             targetNote = targetComment.note!
+            return
         }
         
         let countCostComment = taskSettings.isCostCorrect(countCost: countCost)
@@ -119,6 +121,7 @@ struct AddTaskView: View {
             canSave = false
             showingCountCostNote = true
             countCostNote = countCostComment.note!
+            return
         }
         
         if canSave {

@@ -12,7 +12,7 @@ import SwiftUI
 class AppTheme {
     
     var backgroundColor = Color(red: 250/255, green: 250/255, blue: 250/255)
-    var shadowColor = Color(red: 213/255, green: 221/255, blue: 230/255)
+    var shadowColor = Color(red: 220/255, green: 227/255, blue: 228/255) //Color(red: 213/255, green: 221/255, blue: 230/255)
     var cardColor = Color(red: 250/255, green: 250/255, blue: 250/255) //Color.white
     var textColor = Color(red: 69.0/255.0, green: 83.0/255.0, blue: 109.0/255.0)
     var unselectedTextColor = Color(red: 181.0/255.0, green: 186.0/255.0, blue: 196.0/255.0)
@@ -32,7 +32,7 @@ class AppTheme {
         Color(red: 255/255, green: 216/255, blue: 173/255)
     ]
     var buttonColor = Color(red: 88/255, green: 218/255, blue: 127/255)
-    var alertSize: (CGFloat, CGFloat) = (150, 200)
+    var alertSize: (CGFloat, CGFloat) = (150, 160)
     // UIScreen.main.bounds.width-150
     
     func getDarkerColor(color: Color) -> Color {
