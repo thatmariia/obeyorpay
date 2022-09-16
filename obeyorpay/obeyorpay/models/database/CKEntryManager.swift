@@ -18,7 +18,6 @@ class CKEntryManager: CKManager {
         record[EntryCKKeys.userRef.rawValue]        = entry.userRef         as CKRecordValue
         record[EntryCKKeys.taskRef.rawValue]        = entry.taskRef         as CKRecordValue
         record[EntryCKKeys.timestamp.rawValue]      = entry.timestamp       as CKRecordValue
-        record[EntryCKKeys.evaluationRef.rawValue]  = entry.evaluationRef   as CKRecordValue
         return record
     }
     
@@ -27,13 +26,11 @@ class CKEntryManager: CKManager {
         let userRef         = record[EntryCKKeys.userRef.rawValue]          as? String
         let taskRef         = record[EntryCKKeys.taskRef.rawValue]          as? String
         let timestamp       = record[EntryCKKeys.timestamp.rawValue]        as? Date
-        let evaluationRef   = record[EntryCKKeys.evaluationRef.rawValue]    as? String
         let entry = EntryCKModel(
             recordName: recordName,
             userRef: userRef!,
             taskRef: taskRef!,
-            timestamp: timestamp!,
-            evaluationRef: evaluationRef!
+            timestamp: timestamp!
         )
         return entry
     }

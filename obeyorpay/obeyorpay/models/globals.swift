@@ -32,6 +32,9 @@ let paymentDB = CKPaymentManager()
 let subscriptionDB = CKSubscriptionsManager()
 let subscriptionIDs = CKSubscriptionsID()
 
+// MARK: - evaluations
+let evaluationsComputer = EvaluationsComputerModel()
+
 // MARK: - settings
 let mainSettings = MainSettingsModel()
 let usernameSettings = UsernameSettingModel()

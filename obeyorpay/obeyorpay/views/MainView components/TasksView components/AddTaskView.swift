@@ -125,6 +125,7 @@ struct AddTaskView: View {
         }
         
         if canSave {
+            self.mode.wrappedValue.dismiss()
             
             let task = TaskStoreModel(
                 user: signedInUser.user,
@@ -149,7 +150,6 @@ struct AddTaskView: View {
             targetNote = ""
             showingCountCostNote = false
             countCostNote = ""
-            self.mode.wrappedValue.dismiss()
         }
         
     }

@@ -12,7 +12,6 @@ enum EntryCKKeys: String, CaseIterable {
     case userRef = "user"
     case taskRef = "task"
     case timestamp = "timestamp"
-    case evaluationRef = "evaluation"
 }
 
 class EntryCKModel {
@@ -21,28 +20,24 @@ class EntryCKModel {
     var userRef: String
     var taskRef: String
     var timestamp: Date
-    var evaluationRef: String
     
     init() {
         self.recordName = nil
         self.userRef = ""
         self.taskRef = ""
         self.timestamp = Date()
-        self.evaluationRef = ""
     }
     
     init(
         recordName: String,
         userRef: String,
         taskRef: String,
-        timestamp: Date,
-        evaluationRef: String
+        timestamp: Date
     ) {
         self.recordName = recordName
         self.userRef = userRef
         self.taskRef = taskRef
         self.timestamp = timestamp
-        self.evaluationRef = evaluationRef
     }
     
     func toStore() async -> EntryStoreModel {
@@ -54,8 +49,7 @@ class EntryCKModel {
                 recordName: self.recordName ?? "",
                 user: user,
                 taskRef: self.taskRef,
-                timestamp: timestamp,
-                evaluationRef: self.evaluationRef
+                timestamp: timestamp
             )
             return entry
         } catch {

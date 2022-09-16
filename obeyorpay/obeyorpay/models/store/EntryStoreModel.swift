@@ -15,8 +15,7 @@ class EntryStoreModel: Identifiable, Equatable, Hashable {
         return (lhs.recordName == rhs.recordName) &&
         (lhs.user == rhs.user) &&
         (lhs.taskRef == rhs.taskRef) &&
-        (lhs.timestamp == rhs.timestamp) &&
-        (lhs.evaluationRef == rhs.evaluationRef)
+        (lhs.timestamp == rhs.timestamp)
     }
     
     // conforms to Hashable
@@ -25,21 +24,18 @@ class EntryStoreModel: Identifiable, Equatable, Hashable {
         hasher.combine(user)
         hasher.combine(taskRef)
         hasher.combine(timestamp)
-        hasher.combine(evaluationRef)
     }
     
     var recordName: String?
     var user: UserStoreModel
     var taskRef: String
     var timestamp: Date
-    var evaluationRef: String
     
     init() {
         self.recordName = nil
         self.user = UserStoreModel()
         self.taskRef = ""
         self.timestamp = Date()
-        self.evaluationRef = ""
     }
     
     init(
@@ -50,21 +46,18 @@ class EntryStoreModel: Identifiable, Equatable, Hashable {
         self.user = user.toUser()
         self.taskRef = task.recordName!
         self.timestamp = Date()
-        self.evaluationRef = ""
     }
     
     init(
         recordName: String,
         user: UserStoreModel,
         taskRef: String,
-        timestamp: Date,
-        evaluationRef: String
+        timestamp: Date
     ) {
         self.recordName =  recordName
         self.user = user
         self.taskRef = taskRef
         self.timestamp = timestamp
-        self.evaluationRef = evaluationRef
     }
     
     func toCK() -> EntryCKModel {
@@ -72,8 +65,7 @@ class EntryStoreModel: Identifiable, Equatable, Hashable {
             recordName: self.recordName ?? "",
             userRef: self.user.recordName!,
             taskRef: self.taskRef,
-            timestamp: self.timestamp,
-            evaluationRef: self.evaluationRef
+            timestamp: self.timestamp
         )
     }
 }

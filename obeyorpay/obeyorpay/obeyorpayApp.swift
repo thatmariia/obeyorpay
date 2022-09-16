@@ -64,7 +64,8 @@ struct obeyorpayApp: App {
                     signedInUser.user = user
                     signedInUser.status = .signedIn
                     signedInUser.checkedStatusOnStart = true
-                    subscriptionDB.subscribe(signedInUser: signedInUser)
+                    evaluationsComputer.computeNewEvaluations(signedInUser: signedInUser)
+                    // subscriptionDB.subscribe(signedInUser: signedInUser)
                 } catch {
                     signedInUser.checkedStatusOnStart = true
                 }

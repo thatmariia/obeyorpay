@@ -42,6 +42,7 @@ struct MainView: View {
             .refreshable {
                 do {
                     try mainSettings.refreshUserData(signedInUser: signedInUser)
+                    evaluationsComputer.computeNewEvaluations(signedInUser: signedInUser)
                 } catch let err {
                     print("err: ", err.localizedDescription)
                 }

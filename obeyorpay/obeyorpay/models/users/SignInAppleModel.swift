@@ -86,7 +86,8 @@ class SignInAppleModel {
             signedInUser.user = user
             signedInUser.status = .signedIn
         //}
-        subscriptionDB.subscribe(signedInUser: signedInUser)
+        evaluationsComputer.computeNewEvaluations(signedInUser: signedInUser)
+        //subscriptionDB.subscribe(signedInUser: signedInUser)
     }
     
     func signOut(signedInUser: SignedInUserModel) {
@@ -95,5 +96,6 @@ class SignInAppleModel {
             signedInUser.user = MainUserStoreModel()
             signedInUser.status = .notSignedIn
         }
+        // unsubscribe
     }
 }
