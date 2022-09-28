@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		B63BC35828E4ADB90026F6C6 /* EvaluationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63BC35728E4ADB90026F6C6 /* EvaluationRowView.swift */; };
 		B63BC35B28E501260026F6C6 /* EvaluationSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63BC35A28E501260026F6C6 /* EvaluationSettingsModel.swift */; };
+		B63BC35D28E50C100026F6C6 /* PayButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63BC35C28E50C100026F6C6 /* PayButtonView.swift */; };
+		B63BC35F28E50C6F0026F6C6 /* MarkAsPaidButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63BC35E28E50C6F0026F6C6 /* MarkAsPaidButtonView.swift */; };
 		B64DEBCC28D11C0B0011584E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEBCB28D11C0B0011584E /* AppDelegate.swift */; };
 		B64DEBCF28D1219A0011584E /* CKSubscriptionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEBCE28D1219A0011584E /* CKSubscriptionsManager.swift */; };
 		B64DEBD128D139540011584E /* MainSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEBD028D139540011584E /* MainSettingsModel.swift */; };
@@ -105,6 +107,8 @@
 /* Begin PBXFileReference section */
 		B63BC35728E4ADB90026F6C6 /* EvaluationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationRowView.swift; sourceTree = "<group>"; };
 		B63BC35A28E501260026F6C6 /* EvaluationSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationSettingsModel.swift; sourceTree = "<group>"; };
+		B63BC35C28E50C100026F6C6 /* PayButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayButtonView.swift; sourceTree = "<group>"; };
+		B63BC35E28E50C6F0026F6C6 /* MarkAsPaidButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkAsPaidButtonView.swift; sourceTree = "<group>"; };
 		B64DEBCB28D11C0B0011584E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B64DEBCE28D1219A0011584E /* CKSubscriptionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKSubscriptionsManager.swift; sourceTree = "<group>"; };
 		B64DEBD028D139540011584E /* MainSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSettingsModel.swift; sourceTree = "<group>"; };
@@ -463,6 +467,8 @@
 		B6B3B8CB28D4B5200023AF5F /* EvaluationsListView components */ = {
 			isa = PBXGroup;
 			children = (
+				B63BC35C28E50C100026F6C6 /* PayButtonView.swift */,
+				B63BC35E28E50C6F0026F6C6 /* MarkAsPaidButtonView.swift */,
 				B63BC35728E4ADB90026F6C6 /* EvaluationRowView.swift */,
 				B63BC35928E4ADCC0026F6C6 /* EvaluationRowView components */,
 			);
@@ -648,6 +654,7 @@
 				B6ACAAB828CAB08100A47330 /* CKUserManager.swift in Sources */,
 				B6774A0B28C4DB4800B94B7C /* AppTabView.swift in Sources */,
 				B64DEBD328D13F140011584E /* BigPlusButtonStyle.swift in Sources */,
+				B63BC35F28E50C6F0026F6C6 /* MarkAsPaidButtonView.swift in Sources */,
 				B6ACAAF628CEBB6B00A47330 /* ConfirmButtonStyle.swift in Sources */,
 				B6D0BD2628C6C09E00B0946D /* SignedInUserModel.swift in Sources */,
 				B688DE5328C8D1E400500C7E /* CKTaskManager.swift in Sources */,
@@ -675,6 +682,7 @@
 				B688DE6928CA66DE00500C7E /* TasksListView.swift in Sources */,
 				B6ACAAB628CAAF9700A47330 /* UserStoreModel.swift in Sources */,
 				B6ACAAEC28CE5E8500A47330 /* CostInputView.swift in Sources */,
+				B63BC35D28E50C100026F6C6 /* PayButtonView.swift in Sources */,
 				B688DE5F28C94BD600500C7E /* PaymentStoreModel.swift in Sources */,
 				B6D0BD2428C6B91800B0946D /* PaymentCKModel.swift in Sources */,
 				B6D0BD2228C6B7FB00B0946D /* EvaluationCKModel.swift in Sources */,
