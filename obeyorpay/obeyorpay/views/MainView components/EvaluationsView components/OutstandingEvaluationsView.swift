@@ -42,7 +42,7 @@ struct OutstandingEvaluationsView: View {
                     Spacer().frame(width: 15)
                     
                     Button {
-                        // TODO: add the user to the list of payments in evaluation
+                        processPayment()
                     } label: {
                         Text("MARK AS PAID")
                     }
@@ -55,6 +55,22 @@ struct OutstandingEvaluationsView: View {
 
             
             EvaluationsListView(outstandingEvaluations: $outstandingEvaluations, selectedEvaluations: $selectedEvaluations)
+        }
+    }
+    
+    private func processPayment() {
+        do {
+            try evaluationSettings.pay(for: selectedEvaluations, signedInUser: signedInUser)
+            
+            for paidEvaluation in selectedEvaluations {
+                if let evaluationIndex = outstandingEvaluations.firstIndex(where: { $0.recordName == paidEvaluation.recordName }) {
+                    outstandingEvaluations.remove(at: evaluationIndex)
+                }
+            }      
+            selectedEvaluations = []
+
+        } catch let err {
+            print(err.localizedDescription)
         }
     }
     

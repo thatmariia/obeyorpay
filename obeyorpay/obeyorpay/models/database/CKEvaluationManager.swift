@@ -83,4 +83,18 @@ class CKEvaluationManager: CKManager {
         }
     }
     
+    func changeEvaluationVoid(with recordName: String, to evaluation: EvaluationStoreModel) async throws {
+        let evaluation = evaluation.toCK()
+        do {
+            // fetch record with id
+            var record = try await fetchRecord(with: CKRecord.ID(recordName: recordName))
+            // make changes
+            record = fromEvaluationToCKRecord(from: evaluation, to: record)
+            // save changes
+            let _ = try await saveObject(of: record, fromCKRecordToObject: fromCKRecordToEvaluation) as! EvaluationCKModel
+        } catch let err {
+            throw err
+        }
+    }
+    
 }

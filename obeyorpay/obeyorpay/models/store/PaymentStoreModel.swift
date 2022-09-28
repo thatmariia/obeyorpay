@@ -47,6 +47,20 @@ class PaymentStoreModel: Identifiable, Equatable, Hashable {
     }
     
     init(
+        user: UserStoreModel,
+        taskRef: String,
+        evaluationRef: String,
+        amount: Double
+    ) {
+        self.recordName = nil
+        self.user = user
+        self.taskRef = taskRef
+        self.timestamp = Date()
+        self.evaluationRef = evaluationRef
+        self.amount = amount
+    }
+    
+    init(
         recordName: String,
         user: UserStoreModel,
         taskRef: String,
@@ -60,5 +74,16 @@ class PaymentStoreModel: Identifiable, Equatable, Hashable {
         self.timestamp = timestamp
         self.evaluationRef = evaluationRef
         self.amount = amount
+    }
+    
+    func toCK() -> PaymentCKModel {
+        return PaymentCKModel(
+            recordName: self.recordName ?? "",
+            userRef: self.user.recordName ?? "",
+            taskRef: self.taskRef,
+            timestamp: self.timestamp,
+            evaluationRef: self.evaluationRef,
+            amount: self.amount
+        )
     }
 }

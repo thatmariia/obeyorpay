@@ -40,6 +40,7 @@ let mainSettings = MainSettingsModel()
 let usernameSettings = UsernameSettingModel()
 let taskSettings = TaskSettingsModel()
 let entrySettings = EntrySettingsModel()
+let evaluationSettings = EvaluationSettingsModel()
 
 // MARK: - UI stuff
 let theme = AppTheme()

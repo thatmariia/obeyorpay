@@ -60,4 +60,14 @@ class CKPaymentManager: CKManager {
             throw err
         }
     }
+    
+    func addPayment(payment: PaymentStoreModel) async throws -> PaymentStoreModel {
+        let payment = payment.toCK()
+        do {
+            let payment = try await addObject(of: .payment, object: payment, fromObjectToCKRecord: fromPaymentToCKRecord, fromCKRecordToObject: fromCKRecordToPayment) as! PaymentCKModel
+            return await payment.toStore()
+        } catch let err {
+            throw err
+        }
+    }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B63BC35828E4ADB90026F6C6 /* EvaluationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63BC35728E4ADB90026F6C6 /* EvaluationRowView.swift */; };
+		B63BC35B28E501260026F6C6 /* EvaluationSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63BC35A28E501260026F6C6 /* EvaluationSettingsModel.swift */; };
 		B64DEBCC28D11C0B0011584E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEBCB28D11C0B0011584E /* AppDelegate.swift */; };
 		B64DEBCF28D1219A0011584E /* CKSubscriptionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEBCE28D1219A0011584E /* CKSubscriptionsManager.swift */; };
 		B64DEBD128D139540011584E /* MainSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEBD028D139540011584E /* MainSettingsModel.swift */; };
@@ -103,6 +104,7 @@
 
 /* Begin PBXFileReference section */
 		B63BC35728E4ADB90026F6C6 /* EvaluationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationRowView.swift; sourceTree = "<group>"; };
+		B63BC35A28E501260026F6C6 /* EvaluationSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationSettingsModel.swift; sourceTree = "<group>"; };
 		B64DEBCB28D11C0B0011584E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B64DEBCE28D1219A0011584E /* CKSubscriptionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKSubscriptionsManager.swift; sourceTree = "<group>"; };
 		B64DEBD028D139540011584E /* MainSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSettingsModel.swift; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 				B64DEBDA28D144910011584E /* EntrySettingsModel.swift */,
 				B688DE4C28C838A100500C7E /* TaskSettingsModel.swift */,
 				B64DEBD028D139540011584E /* MainSettingsModel.swift */,
+				B63BC35A28E501260026F6C6 /* EvaluationSettingsModel.swift */,
 			);
 			path = settings;
 			sourceTree = "<group>";
@@ -648,6 +651,7 @@
 				B6ACAAF628CEBB6B00A47330 /* ConfirmButtonStyle.swift in Sources */,
 				B6D0BD2628C6C09E00B0946D /* SignedInUserModel.swift in Sources */,
 				B688DE5328C8D1E400500C7E /* CKTaskManager.swift in Sources */,
+				B63BC35B28E501260026F6C6 /* EvaluationSettingsModel.swift in Sources */,
 				B6774A1D28C4EC9200B94B7C /* TaskCKModel.swift in Sources */,
 				B6774A0D28C4DBBB00B94B7C /* TasksView.swift in Sources */,
 				B6D0BD3B28C79C3500B0946D /* SettingsEditingView.swift in Sources */,
