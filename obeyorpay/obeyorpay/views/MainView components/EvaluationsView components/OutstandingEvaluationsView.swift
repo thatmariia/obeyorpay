@@ -21,12 +21,46 @@ struct OutstandingEvaluationsView: View {
     }
     
     var body: some View {
-        VStack {
+        VStack(alignment: .center) {
             
-            // TODO: selected amount + pay button crap
+            Spacer().frame(height: 40)
+            
+            Group {
+                Text("€" + String(format: "%.2f", getAmount()))
+                    .font(.system(size: 35, weight: .heavy))
+                    .tracking(3)
+                
+                HStack {
+                    
+                    Button {
+                        // TODO: PAYYYYYY
+                    } label: {
+                        Text("PAY NOW")
+                    }
+                    .buttonStyle(ConfirmButtonStyle())
+                    
+                    Spacer().frame(width: 15)
+                    
+                    Button {
+                        // TODO: add the user to the list of payments in evaluation
+                    } label: {
+                        Text("MARK AS PAID")
+                    }
+                    .buttonStyle(ConfirmButtonStyle())
+
+                }
+            }
+            
+            Spacer().frame(height: 40)
+
             
             EvaluationsListView(outstandingEvaluations: $outstandingEvaluations, selectedEvaluations: $selectedEvaluations)
         }
+    }
+    
+    private func getAmount() -> Double {
+        let allCosts = selectedEvaluations.map { $0.totalCost / Double($0.jointUsers.count) }
+        return allCosts.reduce(0, +)
     }
 }
 

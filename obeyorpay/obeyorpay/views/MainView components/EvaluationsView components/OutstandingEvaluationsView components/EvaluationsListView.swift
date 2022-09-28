@@ -19,20 +19,43 @@ struct EvaluationsListView: View {
     var rowHeight: Double = 60
     
     var body: some View {
-        VStack(spacing: -10) {
+        VStack(alignment: .leading) {
             
-            ForEach(outstandingEvaluations) { evaluation in
-                HStack {
-                    EvaluationRowView(evaluation: evaluation, task: getTask(evaluation: evaluation), height: rowHeight)
-                        .frame(height: rowHeight + 5)
-                        .shadow(color: theme.shadowColor, radius: 14, x: 10, y: 10)
-                    // TODO: create EvaluationRowView and make EvaluationView a part of it
-                    // TODO: in EvaluationRowView, create a selecting panel
-                    // TODO: call EvaluationRowView here
-                    //                    .frame(height: rowHeight + 5)
-                    //                    .shadow(color: theme.shadowColor, radius: 14, x: 10, y: 10)
+            Button {
+                selectAllPressed.toggle()
+                
+                if selectAllPressed {
+                    selectedEvaluations = outstandingEvaluations
+                } else {
+                    selectedEvaluations = []
                 }
-                .padding()
+                
+            } label: {
+                Text(selectAllPressed ? "DESELECT ALL" : "SELECT ALL")
+                    .font(.caption)
+            }
+            .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 0))
+            
+            VStack(spacing: -10) {
+                
+                ForEach(outstandingEvaluations) { evaluation in
+                    HStack {
+                        EvaluationRowView(evaluation: evaluation, task: getTask(evaluation: evaluation), height: rowHeight, selectedEvaluationsNonBindinding: selectedEvaluations, selectedEvaluations: $selectedEvaluations)
+                            .frame(height: rowHeight + 5)
+                            .shadow(color: theme.shadowColor, radius: 14, x: 10, y: 10)
+                        // TODO: create EvaluationRowView and make EvaluationView a part of it
+                        // TODO: in EvaluationRowView, create a selecting panel
+                        // TODO: call EvaluationRowView here
+                        //                    .frame(height: rowHeight + 5)
+                        //                    .shadow(color: theme.shadowColor, radius: 14, x: 10, y: 10)
+                    }
+                    .padding()
+                }
+            }
+        }
+        .onChange(of: selectedEvaluations) { newValue in
+            if newValue.count != outstandingEvaluations.count {
+                selectAllPressed = false
             }
         }
     }
