@@ -57,16 +57,16 @@ class EvaluationCKModel {
         totalCost: Double,
         build: Bool
     ) {
-        self.recordName = nil
-        self.periodStartDate = Date()
-        self.periodEndDate = Date()
-        self.jointUsersRefs = []
-        self.paymentsRefs = []
-        self.taskRef = ""
-        self.count = 0
-        self.target = 0
-        self.totalCost = 0
-        self.build = true
+        self.recordName = recordName
+        self.periodStartDate = periodStartDate
+        self.periodEndDate = periodEndDate
+        self.jointUsersRefs = jointUsersRefs
+        self.paymentsRefs = paymentsRefs
+        self.taskRef = taskRef
+        self.count = count
+        self.target = target
+        self.totalCost = totalCost
+        self.build = build
     }
     
     func toStore() async -> EvaluationStoreModel {

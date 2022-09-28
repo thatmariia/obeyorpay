@@ -76,7 +76,7 @@ class CKEvaluationManager: CKManager {
     func addEvaluation(evaluation: EvaluationStoreModel) async throws -> EvaluationStoreModel {
         let evaluation = evaluation.toCK()
         do {
-            let evaluation = try await addObject(of: .entry, object: evaluation, fromObjectToCKRecord: fromEvaluationToCKRecord, fromCKRecordToObject: fromCKRecordToEvaluation) as! EvaluationCKModel
+            let evaluation = try await addObject(of: .evaluation, object: evaluation, fromObjectToCKRecord: fromEvaluationToCKRecord, fromCKRecordToObject: fromCKRecordToEvaluation) as! EvaluationCKModel
             return await evaluation.toStore()
         } catch let err {
             throw err

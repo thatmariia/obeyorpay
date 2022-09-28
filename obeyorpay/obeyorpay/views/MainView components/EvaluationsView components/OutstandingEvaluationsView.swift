@@ -14,14 +14,7 @@ struct OutstandingEvaluationsView: View {
     @State var outstandingEvaluations: [EvaluationStoreModel] = []
     @State var selectedEvaluations: [EvaluationStoreModel] = []
     
-    init() {
-        
-        let evaluations = signedInUser.user.account.evaluations.filter { evaluation in
-            let paymentsRefs = evaluation.paymentsRefs
-            let payments = signedInUser.user.account.payments.filter { paymentsRefs.contains($0.recordName!) }
-            let usersRefs = payments.map { $0.user.recordName! }
-            return !usersRefs.contains(signedInUser.user.recordName!)
-        }
+    init(evaluations: [EvaluationStoreModel]) {
         
         _outstandingEvaluations = State(initialValue: evaluations)
         _selectedEvaluations = State(initialValue: evaluations)
@@ -37,8 +30,8 @@ struct OutstandingEvaluationsView: View {
     }
 }
 
-struct OutstandingEvaluationsView_Previews: PreviewProvider {
-    static var previews: some View {
-        OutstandingEvaluationsView()
-    }
-}
+//struct OutstandingEvaluationsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        OutstandingEvaluationsView()
+//    }
+//}

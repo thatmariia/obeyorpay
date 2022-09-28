@@ -14,6 +14,8 @@ enum EvaluationsTabs {
 
 struct EvaluationsView: View {
     
+    @EnvironmentObject var signedInUser: SignedInUserModel
+    
     @State var tab = EvaluationsTabs.outstanding
     
     
@@ -30,7 +32,16 @@ struct EvaluationsView: View {
                 
                 switch tab {
                 case .outstanding:
-                    OutstandingEvaluationsView()
+                    OutstandingEvaluationsView(
+                        evaluations: signedInUser.user.account.evaluations.filter { evaluation in
+                            let paymentsRefs = evaluation.paymentsRefs
+                            let payments = signedInUser.user.account.payments.filter { paymentsRefs.contains($0.recordName!)
+                                
+                            }
+                            let usersRefs = payments.map { $0.user.recordName! }
+                            return !usersRefs.contains(signedInUser.user.recordName!)
+                        }
+                    )
                 case .history:
                     Text("HISTORY")
                 }

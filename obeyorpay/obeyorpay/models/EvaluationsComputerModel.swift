@@ -21,13 +21,17 @@ class EvaluationsComputerModel {
         for task in signedInUser.user.account.tasks[.personal]! {
             do {
                 try self.createNewEvaluations(task: task, account: signedInUser.user.account)
-                self.allNewEvaluations[task] = (TaskTypes.personal, newEvaluations)
+                if newEvaluations.count > 0 {
+                    self.allNewEvaluations[task] = (TaskTypes.personal, newEvaluations)
+                }
             } catch {}
         }
         for task in signedInUser.user.account.tasks[.joint]! {
             do {
                 try self.createNewEvaluations(task: task, account: signedInUser.user.account)
-                self.allNewEvaluations[task] = (TaskTypes.joint, newEvaluations)
+                if newEvaluations.count > 0 {
+                    self.allNewEvaluations[task] = (TaskTypes.joint, newEvaluations)
+                }
             } catch {}
         }
         
@@ -111,7 +115,7 @@ class EvaluationsComputerModel {
             }
             
             // if we don't, see if the date expired
-            if evaluations.count != 0 {
+            if evaluations.count == 0 {
                 
                 let endDate = getEndDate(startDate: lastStartDate, span: task.span)
                 // if the task span is not ongoing
@@ -138,7 +142,9 @@ class EvaluationsComputerModel {
                     
                     // if there's something to pay
                     if totalCost != 0 {
-                        
+                        print(task.recordName)
+                        print(task.users)
+                        print("\n")
                         // creating a new evaluation
                         let evaluation = EvaluationStoreModel(
                             periodStartDate: lastStartDate,
@@ -158,8 +164,8 @@ class EvaluationsComputerModel {
                             Task.init {
                                 do {
                                     // add the evaluation to the database
-                                    let evaluation = try await evaluationDB.addEvaluation(evaluation: evaluation)
-                                    self.newEvaluations.append(evaluation)
+                                    let newEvaluation = try await evaluationDB.addEvaluation(evaluation: evaluation)
+                                    self.newEvaluations.append(newEvaluation)
                                     
                                     group.leave()
                                 } catch let err {
@@ -179,6 +185,32 @@ class EvaluationsComputerModel {
             } else {
                 stop = true
             }
+        }
+        
+        if task.lastPeriodStartDate < lastStartDate {
+            let updatedTask = task
+            updatedTask.lastPeriodStartDate = lastStartDate
+            let relevantEntries = account.entries.filter {
+                ($0.taskRef == task.recordName!) &&
+                ($0.timestamp > lastStartDate)
+            }
+            updatedTask.currentCount = relevantEntries.count
+            // commit task
+            let group = DispatchGroup()
+            group.enter()
+            DispatchQueue.global(qos: .default).async {
+                Task.init {
+                    do {
+                        // change the task in db
+                        try await taskDB.changeTaskVoid(with: task.recordName!, to: updatedTask)
+                        group.leave()
+                    } catch let err {
+                        throw err
+                    }
+                }
+            }
+            
+            
         }
     }
     

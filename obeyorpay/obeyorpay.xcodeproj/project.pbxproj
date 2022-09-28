@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B63BC35828E4ADB90026F6C6 /* EvaluationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63BC35728E4ADB90026F6C6 /* EvaluationRowView.swift */; };
 		B64DEBCC28D11C0B0011584E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEBCB28D11C0B0011584E /* AppDelegate.swift */; };
 		B64DEBCF28D1219A0011584E /* CKSubscriptionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEBCE28D1219A0011584E /* CKSubscriptionsManager.swift */; };
 		B64DEBD128D139540011584E /* MainSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEBD028D139540011584E /* MainSettingsModel.swift */; };
@@ -101,6 +102,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B63BC35728E4ADB90026F6C6 /* EvaluationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationRowView.swift; sourceTree = "<group>"; };
 		B64DEBCB28D11C0B0011584E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B64DEBCE28D1219A0011584E /* CKSubscriptionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKSubscriptionsManager.swift; sourceTree = "<group>"; };
 		B64DEBD028D139540011584E /* MainSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSettingsModel.swift; sourceTree = "<group>"; };
@@ -209,6 +211,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B63BC35928E4ADCC0026F6C6 /* EvaluationRowView components */ = {
+			isa = PBXGroup;
+			children = (
+				B6B3B8CC28D4B52F0023AF5F /* EvaluationView.swift */,
+			);
+			path = "EvaluationRowView components";
+			sourceTree = "<group>";
+		};
 		B64DEBCD28D121800011584E /* database subscriptions */ = {
 			isa = PBXGroup;
 			children = (
@@ -450,7 +460,8 @@
 		B6B3B8CB28D4B5200023AF5F /* EvaluationsListView components */ = {
 			isa = PBXGroup;
 			children = (
-				B6B3B8CC28D4B52F0023AF5F /* EvaluationView.swift */,
+				B63BC35728E4ADB90026F6C6 /* EvaluationRowView.swift */,
+				B63BC35928E4ADCC0026F6C6 /* EvaluationRowView components */,
 			);
 			path = "EvaluationsListView components";
 			sourceTree = "<group>";
@@ -653,6 +664,7 @@
 				B6774A2428C5141A00B94B7C /* TaskEditingView.swift in Sources */,
 				B688DE5528C8D6E000500C7E /* misc.swift in Sources */,
 				B6774A2A28C5183D00B94B7C /* PopupView.swift in Sources */,
+				B63BC35828E4ADB90026F6C6 /* EvaluationRowView.swift in Sources */,
 				B6D0BD3128C6D29B00B0946D /* CKMainUserManager.swift in Sources */,
 				B6774A4328C5468200B94B7C /* SignInView.swift in Sources */,
 				B64DEBE028D167A50011584E /* MemberUsersView.swift in Sources */,
