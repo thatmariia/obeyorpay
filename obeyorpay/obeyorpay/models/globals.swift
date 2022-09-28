@@ -38,6 +38,7 @@ let evaluationsComputer = EvaluationsComputerModel()
 // MARK: - settings
 let mainSettings = MainSettingsModel()
 let usernameSettings = UsernameSettingModel()
+let linkSettings = LinkSettingsModel()
 let taskSettings = TaskSettingsModel()
 let entrySettings = EntrySettingsModel()
 let evaluationSettings = EvaluationSettingsModel()

@@ -15,9 +15,14 @@ struct SettingsEditingView: View {
     
     var currUsername: String
     @State var newUsername: String
+    @State var newPaymentLink: String
+    @Binding var paymentLink: String
     
-    @State var showingNote = false
-    @State var displayNote = ""
+    @State var showingUsernameNote = false
+    @State var displayUsernameNote = ""
+    
+    @State var showingLinkNote = false
+    @State var displayLinkNote = ""
     
     var body: some View {
         
@@ -32,7 +37,7 @@ struct SettingsEditingView: View {
                         Spacer()
                         
                         Button {
-                            attemptUsernameChange()
+                            attemptSave()
                         } label: {
                             Text("SAVE")
                         }
@@ -47,7 +52,10 @@ struct SettingsEditingView: View {
                     }
                     .padding(EdgeInsets(top: 15, leading: 15, bottom: 0, trailing: 15))
                     
-                    MainUsernameInputFieldView(username: $newUsername, showingUsernameNote: $showingNote, usernameNote: $displayNote)
+                    MainUsernameInputFieldView(username: $newUsername, showingUsernameNote: $showingUsernameNote, usernameNote: $displayUsernameNote)
+                        .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
+                    
+                    PaymentLinkInputFieldView(paymentLink: $newPaymentLink, showingLinkNote: $showingLinkNote, linkNote: $displayLinkNote)
                         .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
                     
                     
@@ -70,7 +78,31 @@ struct SettingsEditingView: View {
         
     }
     
-    fileprivate func attemptUsernameChange() {
+    fileprivate func attemptSave() {
+        if attemptUsernameChange() && attemptingLinkChange() {
+            self.mode.wrappedValue.dismiss()
+        }
+    }
+    
+    fileprivate func attemptingLinkChange() -> Bool {
+        let linkComment = linkSettings.isCorrectLink(link: newPaymentLink)
+        
+        if linkComment.isCorrect {
+            linkSettings.updateLink(link: newPaymentLink, signedInUser: signedInUser)
+            
+            showingLinkNote = false
+            displayLinkNote = ""
+            
+            paymentLink = newPaymentLink
+            
+            return true
+        } else {
+            //
+            return false
+        }
+    }
+    
+    fileprivate func attemptUsernameChange() -> Bool {
         do {
             let usernameComment = try usernameSettings.isCorrectUsername(currUsername: currUsername, newUsername: newUsername)
             
@@ -78,14 +110,18 @@ struct SettingsEditingView: View {
                 if newUsername != currUsername {
                     try usernameSettings.updateUser(signedInUser: signedInUser, with: newUsername)
                 }
-                showingNote = false
-                displayNote = ""
-                self.mode.wrappedValue.dismiss()
+                showingUsernameNote = false
+                displayUsernameNote = ""
+                return true
             } else {
-                showingNote = true
-                displayNote = usernameComment.note!
+                showingUsernameNote = true
+                displayUsernameNote = usernameComment.note!
+                
+                return false
             }
-        } catch {}
+        } catch {
+            return false
+        }
         
     }
 }

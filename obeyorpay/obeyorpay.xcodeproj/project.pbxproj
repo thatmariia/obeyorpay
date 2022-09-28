@@ -11,6 +11,8 @@
 		B63BC35B28E501260026F6C6 /* EvaluationSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63BC35A28E501260026F6C6 /* EvaluationSettingsModel.swift */; };
 		B63BC35D28E50C100026F6C6 /* PayButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63BC35C28E50C100026F6C6 /* PayButtonView.swift */; };
 		B63BC35F28E50C6F0026F6C6 /* MarkAsPaidButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63BC35E28E50C6F0026F6C6 /* MarkAsPaidButtonView.swift */; };
+		B63BC36128E510C20026F6C6 /* PaymentLinkInputFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63BC36028E510C20026F6C6 /* PaymentLinkInputFieldView.swift */; };
+		B63BC36328E512CB0026F6C6 /* LinkSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63BC36228E512CB0026F6C6 /* LinkSettingsModel.swift */; };
 		B64DEBCC28D11C0B0011584E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEBCB28D11C0B0011584E /* AppDelegate.swift */; };
 		B64DEBCF28D1219A0011584E /* CKSubscriptionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEBCE28D1219A0011584E /* CKSubscriptionsManager.swift */; };
 		B64DEBD128D139540011584E /* MainSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEBD028D139540011584E /* MainSettingsModel.swift */; };
@@ -109,6 +111,8 @@
 		B63BC35A28E501260026F6C6 /* EvaluationSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationSettingsModel.swift; sourceTree = "<group>"; };
 		B63BC35C28E50C100026F6C6 /* PayButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayButtonView.swift; sourceTree = "<group>"; };
 		B63BC35E28E50C6F0026F6C6 /* MarkAsPaidButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkAsPaidButtonView.swift; sourceTree = "<group>"; };
+		B63BC36028E510C20026F6C6 /* PaymentLinkInputFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentLinkInputFieldView.swift; sourceTree = "<group>"; };
+		B63BC36228E512CB0026F6C6 /* LinkSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkSettingsModel.swift; sourceTree = "<group>"; };
 		B64DEBCB28D11C0B0011584E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B64DEBCE28D1219A0011584E /* CKSubscriptionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKSubscriptionsManager.swift; sourceTree = "<group>"; };
 		B64DEBD028D139540011584E /* MainSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSettingsModel.swift; sourceTree = "<group>"; };
@@ -359,6 +363,7 @@
 			children = (
 				B688DE5028C839D500500C7E /* CorrectnessComment.swift */,
 				B6D0BD3828C7943F00B0946D /* UsernameSettingsModel.swift */,
+				B63BC36228E512CB0026F6C6 /* LinkSettingsModel.swift */,
 				B64DEBDA28D144910011584E /* EntrySettingsModel.swift */,
 				B688DE4C28C838A100500C7E /* TaskSettingsModel.swift */,
 				B64DEBD028D139540011584E /* MainSettingsModel.swift */,
@@ -441,6 +446,7 @@
 			isa = PBXGroup;
 			children = (
 				B6B3B8BD28D3FD9E0023AF5F /* MainUsernameInputFieldView.swift */,
+				B63BC36028E510C20026F6C6 /* PaymentLinkInputFieldView.swift */,
 			);
 			path = "SettingsEditingView components";
 			sourceTree = "<group>";
@@ -657,6 +663,7 @@
 				B63BC35F28E50C6F0026F6C6 /* MarkAsPaidButtonView.swift in Sources */,
 				B6ACAAF628CEBB6B00A47330 /* ConfirmButtonStyle.swift in Sources */,
 				B6D0BD2628C6C09E00B0946D /* SignedInUserModel.swift in Sources */,
+				B63BC36328E512CB0026F6C6 /* LinkSettingsModel.swift in Sources */,
 				B688DE5328C8D1E400500C7E /* CKTaskManager.swift in Sources */,
 				B63BC35B28E501260026F6C6 /* EvaluationSettingsModel.swift in Sources */,
 				B6774A1D28C4EC9200B94B7C /* TaskCKModel.swift in Sources */,
@@ -665,6 +672,7 @@
 				B6D0BD3928C7943F00B0946D /* UsernameSettingsModel.swift in Sources */,
 				B688DE5728C9487700500C7E /* AccountStoreModel.swift in Sources */,
 				B6ACAACA28CE34A200A47330 /* TaskView.swift in Sources */,
+				B63BC36128E510C20026F6C6 /* PaymentLinkInputFieldView.swift in Sources */,
 				B6B4328528C82DE3002F8B2F /* AddTaskView.swift in Sources */,
 				B6ACAAC128CE13A500A47330 /* ProgressBarView.swift in Sources */,
 				B64DEBDE28D164FD0011584E /* UsernameInputFieldView.swift in Sources */,

@@ -9,9 +9,6 @@ import Foundation
 import CoreData
 import SwiftUI
 
-//class CDUserModel {
-//    var uid: String
-//}
 
 class CDDataUserModel {
     let container: NSPersistentContainer
@@ -71,9 +68,15 @@ class CDDataUserModel {
         return objects.first?.uid
     }
     
-    func addUser(with uid: String) {
+    func fetchPaymentLink() -> String {
+        let objects = fetchCDEntity()
+        return objects.first!.paymentLink ?? ""
+    }
+    
+    func addUser(with uid: String, paymentLink: String = "") {
         let userObject = CDUser(context: managedObjectContext)
         userObject.uid = uid
+        userObject.paymentLink = paymentLink
         
         saveContext()
     }
