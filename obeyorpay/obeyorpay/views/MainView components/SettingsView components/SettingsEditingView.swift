@@ -97,7 +97,9 @@ struct SettingsEditingView: View {
             
             return true
         } else {
-            //
+            showingLinkNote = true
+            displayLinkNote = linkComment.note!
+            
             return false
         }
     }

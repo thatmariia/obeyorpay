@@ -21,9 +21,16 @@ struct PayButtonView: View {
     var body: some View {
         WithPopover(showPopover: $alertPayShowing, popoverSize: CGSize(width: UIScreen.main.bounds.width - theme.alertSize.0, height: theme.alertSize.1)) {
             Button {
-                // TODO: if the link is not entered:
-                alertPayShowing = true
-                // TODO: otherwise, follow payment link
+                let paymentLink = userCD.fetchPaymentLink()
+                if paymentLink == "" {
+                    alertPayShowing = true
+                } else {
+                    if paymentLink.contains("https://") {
+                        UIApplication.shared.open(URL(string: paymentLink)!)
+                    } else {
+                        UIApplication.shared.open(URL(string: "https://" + paymentLink)!)
+                    }
+                }
             } label: {
                 Text("PAY NOW")
             }

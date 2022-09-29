@@ -7,12 +7,23 @@
 
 import Foundation
 
+enum LinkNotes: String {
+    case invalidLink = "The entered link is invalid"
+}
+
 
 class LinkSettingsModel {
     
+    let urlRegEx = "((?:http|https)://)?(?:www\\.)?[\\w\\d\\-_]+\\.\\w{2,3}(\\.\\w{2})?(/(?<=/)(?:[\\w\\d\\-./_]+)?)?"
+    
     func isCorrectLink(link: String) -> CorrectnessComment {
         // TODO: actually check if the link is correct
-        return CorrectnessComment(isCorrect: true, note: "")
+        
+        if NSPredicate(format: "SELF MATCHES %@", urlRegEx).evaluate(with: link) {
+            return CorrectnessComment(isCorrect: true, note: "")
+        }
+        
+        return CorrectnessComment(isCorrect: false, note: LinkNotes.invalidLink.rawValue)
     }
     
     func updateLink(link: String, signedInUser: SignedInUserModel) {
