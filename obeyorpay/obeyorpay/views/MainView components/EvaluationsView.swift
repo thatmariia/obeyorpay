@@ -43,7 +43,7 @@ struct EvaluationsView: View {
                         }
                     )
                 case .history:
-                    Text("HISTORY")
+                    HistoryPaymentsView()
                 }
                 
                 Spacer()

@@ -43,11 +43,6 @@ struct EvaluationsListView: View {
                         EvaluationRowView(evaluation: evaluation, task: getTask(evaluation: evaluation), height: rowHeight, selectedEvaluationsNonBindinding: selectedEvaluations, selectedEvaluations: $selectedEvaluations)
                             .frame(height: rowHeight + 5)
                             .shadow(color: theme.shadowColor, radius: 14, x: 10, y: 10)
-                        // TODO: create EvaluationRowView and make EvaluationView a part of it
-                        // TODO: in EvaluationRowView, create a selecting panel
-                        // TODO: call EvaluationRowView here
-                        //                    .frame(height: rowHeight + 5)
-                        //                    .shadow(color: theme.shadowColor, radius: 14, x: 10, y: 10)
                     }
                     .padding()
                 }
