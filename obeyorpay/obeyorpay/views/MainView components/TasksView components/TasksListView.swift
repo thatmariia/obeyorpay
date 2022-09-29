@@ -30,11 +30,12 @@ struct TasksListView: View {
                 }.padding()
             }
             
-            if signedInUser.user.account.invitedTasks[taskType]!.count > 0 {
+            if (signedInUser.user.account.invitedTasks[taskType]!.count > 0) && (signedInUser.user.account.tasks[taskType]!.count > 0) {
                 Spacer().frame(height: 30)
                 Divider()
                     .frame(height: 2)
                     .overlay(theme.unselectedTextColor)
+                    .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
                 Spacer().frame(height: 30)
             }
             

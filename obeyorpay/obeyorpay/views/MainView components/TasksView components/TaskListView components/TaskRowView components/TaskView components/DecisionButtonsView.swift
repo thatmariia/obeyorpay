@@ -17,14 +17,14 @@ struct DecisionButtonsView: View {
     var body: some View {
         VStack {
             Button {
-                // accept
+                acceptTask(task: task)
             } label: {
                 Image(systemName: "checkmark.circle.fill")
             }
             .buttonStyle(DecisionButtonStyle(color: task.color))
             
             Button {
-                // reject
+                rejectTask(task: task)
             } label: {
                 Image(systemName: "x.circle")
             }
