@@ -48,7 +48,7 @@ struct TaskView: View {
                         Text("ACCEPT TO VIEW PROGRESS")
                             .font(.caption)
                     } else {
-                        Text("\(task.currentCount) OUT OF AT \(task.build ? "LEAST" : "MOST") \(task.target)")
+                        Text("\(task.currentCount) / AT \(task.build ? "LEAST" : "MOST") \(task.target)  •  \(getPeriodLeft())")
                             .font(.caption)
                     }
                     
@@ -70,6 +70,12 @@ struct TaskView: View {
             }
             .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
         }
+    }
+    
+    func getPeriodLeft() -> String {
+        let endDate = getEndDate(startDate: task.lastPeriodStartDate, span: task.span)
+        return "\(endDate.offset(from: Date())) LEFT"
+        
     }
     
     func addEntry() {
