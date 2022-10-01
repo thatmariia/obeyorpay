@@ -28,7 +28,8 @@ struct TaskView: View {
                 color: task.color,
                 height: height,
                 count: getProgressBarCount(),
-                target: task.target
+                target: task.target,
+                build: task.build
             )
             
             HStack {
