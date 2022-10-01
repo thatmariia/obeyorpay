@@ -199,7 +199,7 @@ class TaskSettingsModel {
         let group = DispatchGroup()
         group.enter()
         
-        DispatchQueue.global(qos: .default).async {
+        DispatchQueue.global(qos: .userInitiated).async {
             Task.init {
                 do {
                     self.userFound = false
@@ -247,7 +247,7 @@ class TaskSettingsModel {
         
         let updatedUser = signedInUser.user
         
-        DispatchQueue.global(qos: .default).async {
+        DispatchQueue.global(qos: .userInitiated).async {
             Task.init {
                 do {
                     // adding new task

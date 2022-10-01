@@ -17,7 +17,7 @@ class EntrySettingsModel {
         
         let updatedUser = signedInUser.user
         
-        DispatchQueue.global(qos: .default).async {
+        DispatchQueue.global(qos: .userInitiated).async {
             Task.init {
                 do {
                     // adding new entry
@@ -78,7 +78,7 @@ class EntrySettingsModel {
             
             let updatedUser = signedInUser.user
             
-            DispatchQueue.global(qos: .default).async {
+            DispatchQueue.global(qos: .userInitiated).async {
                 Task.init {
                     do {
                         // removing entry from task

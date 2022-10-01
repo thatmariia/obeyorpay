@@ -50,7 +50,7 @@ class EvaluationsComputerModel {
         for (task, (taskType, evaluations)) in self.allNewEvaluations {
             let group = DispatchGroup()
             group.enter()
-            DispatchQueue.global(qos: .default).async {
+            DispatchQueue.global(qos: .userInitiated).async {
                 Task.init {
                     do {
                         // adding relevant evaluations to the task - locally
@@ -86,7 +86,7 @@ class EvaluationsComputerModel {
         // update in db
         let group = DispatchGroup()
         group.enter()
-        DispatchQueue.global(qos: .default).async {
+        DispatchQueue.global(qos: .userInitiated).async {
             Task.init {
                 do {
                     let _ = try await accountDB.changeAccount(with: signedInUser.user.account.recordName!, to: signedInUser.user.account)
@@ -160,7 +160,7 @@ class EvaluationsComputerModel {
                         // ading the evaluation to the database
                         let group = DispatchGroup()
                         group.enter()
-                        DispatchQueue.global(qos: .default).async {
+                        DispatchQueue.global(qos: .userInitiated).async {
                             Task.init {
                                 do {
                                     // add the evaluation to the database
@@ -198,7 +198,7 @@ class EvaluationsComputerModel {
             // commit task
             let group = DispatchGroup()
             group.enter()
-            DispatchQueue.global(qos: .default).async {
+            DispatchQueue.global(qos: .userInitiated).async {
                 Task.init {
                     do {
                         // change the task in db
