@@ -42,7 +42,20 @@ struct TasksListView: View {
                 Spacer().frame(height: 30)
             }
             
-            ForEach(signedInUser.user.account.tasks[taskType]!) { task in
+            ForEach(
+                signedInUser.user.account.tasks[taskType]!.sorted {
+                    if $0.build == $1.build {
+                        if $0.span.toInt() == $1.span.toInt() {
+                            return (Double($0.currentCount) / Double($0.target)) < (Double($1.currentCount) / Double($1.target))
+                        } else {
+                            return $0.span.toInt() < $1.span.toInt()
+                        }
+                        
+                    } else {
+                        return $0.build.toInt() > $1.build.toInt()
+                    }
+                }
+            ) { task in
                 
                 HStack {
                     TaskRowView(
