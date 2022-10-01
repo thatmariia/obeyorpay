@@ -17,7 +17,7 @@ struct ContentView: View {
         Group {
             
             if !signedInUser.checkedStatusOnStart {
-                // LoadingView
+                LoadingView()
             } else if signedInUser.status == .notSignedIn {
                 SignInView()
             } else {

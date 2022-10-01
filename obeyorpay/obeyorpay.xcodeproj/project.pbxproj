@@ -17,6 +17,7 @@
 		B63BC36828E5CACC0026F6C6 /* HistoryPaymentsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63BC36728E5CACC0026F6C6 /* HistoryPaymentsListView.swift */; };
 		B63BC36B28E5CB400026F6C6 /* HistoryPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63BC36A28E5CB400026F6C6 /* HistoryPaymentView.swift */; };
 		B63BC36D28E7C2870026F6C6 /* TaskInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63BC36C28E7C2870026F6C6 /* TaskInfoView.swift */; };
+		B63BC36F28E7E3AC0026F6C6 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B63BC36E28E7E3AC0026F6C6 /* Launch Screen.storyboard */; };
 		B64DEBCC28D11C0B0011584E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEBCB28D11C0B0011584E /* AppDelegate.swift */; };
 		B64DEBCF28D1219A0011584E /* CKSubscriptionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEBCE28D1219A0011584E /* CKSubscriptionsManager.swift */; };
 		B64DEBD128D139540011584E /* MainSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEBD028D139540011584E /* MainSettingsModel.swift */; };
@@ -121,6 +122,7 @@
 		B63BC36728E5CACC0026F6C6 /* HistoryPaymentsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPaymentsListView.swift; sourceTree = "<group>"; };
 		B63BC36A28E5CB400026F6C6 /* HistoryPaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPaymentView.swift; sourceTree = "<group>"; };
 		B63BC36C28E7C2870026F6C6 /* TaskInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInfoView.swift; sourceTree = "<group>"; };
+		B63BC36E28E7E3AC0026F6C6 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		B64DEBCB28D11C0B0011584E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B64DEBCE28D1219A0011584E /* CKSubscriptionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKSubscriptionsManager.swift; sourceTree = "<group>"; };
 		B64DEBD028D139540011584E /* MainSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSettingsModel.swift; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 				B6ACAAF228CE854600A47330 /* Info.plist */,
 				B6D0BD1628C64EBC00B0946D /* obeyorpay.entitlements */,
 				B67749F728C4D43200B94B7C /* obeyorpayApp.swift */,
+				B63BC36E28E7E3AC0026F6C6 /* Launch Screen.storyboard */,
 				B64DEBCB28D11C0B0011584E /* AppDelegate.swift */,
 				B6774A2928C5183D00B94B7C /* PopupView.swift */,
 				B6B3B8B828D3C9BE0023AF5F /* WithPopover.swift */,
@@ -658,6 +661,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B63BC36F28E7E3AC0026F6C6 /* Launch Screen.storyboard in Resources */,
 				B67749FF28C4D43400B94B7C /* Preview Assets.xcassets in Resources */,
 				B67749FC28C4D43400B94B7C /* Assets.xcassets in Resources */,
 			);
@@ -901,15 +905,17 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = obeyorpay/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Obey or Pay";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -939,15 +945,17 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = obeyorpay/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Obey or Pay";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
