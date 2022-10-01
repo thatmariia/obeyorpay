@@ -26,17 +26,35 @@ struct EvaluationView: View {
             
             HStack {
                 
-                Text("\(task.title.uppercased())")
-                    .font(.caption)
+                VStack(alignment: .leading) {
+                    Text("\(task.title.uppercased())")
+                        .font(.system(size: 13, weight: .semibold))
+                    
+                    Spacer().frame(height: 5)
+                    
+                    HStack {
+                        Text("S:")
+                            .font(.caption)
+                        Text("\(evaluation.periodStartDate, formatter: fullDateFormatter)")
+                            .font(.caption)
+                    }
+                    
+                    HStack {
+                        Text("E:")
+                            .font(.caption)
+                        Text("\(evaluation.periodEndDate, formatter: fullDateFormatter)")
+                            .font(.caption)
+                    }
+                }
                 
                 Spacer()
-                Spacer().frame(height: 3)
+                //Spacer().frame(width: 3)
                 
                 Text("€" + String(format: "%.2f", evaluation.totalCost / Double(evaluation.jointUsers.count)) )
                     .font(.system(size: 20, weight: .semibold))
                     .tracking(3)
             }
-            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+            .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
         }
     }
 

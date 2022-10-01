@@ -16,7 +16,7 @@ struct EvaluationsListView: View {
     @State var selectAllPressed = true
     @Binding var selectedEvaluations: [EvaluationStoreModel]
     
-    var rowHeight: Double = 60
+    var rowHeight: Double = 80
     
     var body: some View {
         VStack(alignment: .leading) {

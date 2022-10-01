@@ -44,7 +44,7 @@ struct EvaluationRowView: View {
                 selectedEvaluations = newSelectedEvaluations
                 
             } label: {
-                Image(systemName: selected ? "circle.fill" : "circle")
+                Image(systemName: selected ? "circle.inset.filled" : "circle")
                     .foregroundColor(theme.textColor)
                     .font(.system(size: 20, weight: .bold))
             }
