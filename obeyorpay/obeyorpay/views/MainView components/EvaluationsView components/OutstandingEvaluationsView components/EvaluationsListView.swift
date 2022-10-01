@@ -38,7 +38,11 @@ struct EvaluationsListView: View {
             
             VStack(spacing: -10) {
                 
-                ForEach(outstandingEvaluations) { evaluation in
+                ForEach(
+                    outstandingEvaluations.sorted {
+                        $0.periodEndDate > $1.periodEndDate
+                    }
+                ) { evaluation in
                     HStack {
                         EvaluationRowView(evaluation: evaluation, task: getTask(evaluation: evaluation), height: rowHeight, selectedEvaluationsNonBindinding: selectedEvaluations, selectedEvaluations: $selectedEvaluations)
                             .frame(height: rowHeight + 5)
