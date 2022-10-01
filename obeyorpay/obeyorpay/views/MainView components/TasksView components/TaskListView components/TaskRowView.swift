@@ -24,6 +24,8 @@ struct TaskRowView: View {
     
     var isInviting: Bool
     
+    @Binding var expandedTasksRefs: [String]
+    
     @State var presentation: TaskViewPresentation = .task
     
     var body: some View {
@@ -32,10 +34,10 @@ struct TaskRowView: View {
             
             TabView(selection: $presentation) {
                 
-                TaskView(task: task, taskType: taskType, height: rowHeight, isInviting: isInviting)
+                TaskView(task: task, taskType: taskType, height: rowHeight, isInviting: isInviting, expandedTasksRefs: $expandedTasksRefs)
                     .tag(TaskViewPresentation.task)
                 
-                if !isInviting {
+                if (!isInviting) && (!expandedTasksRefs.contains(task.recordName!)) {
                     TaskActionsView(task: task, taskType: taskType, height: rowHeight)
                         .tag(TaskViewPresentation.editing)
                 }

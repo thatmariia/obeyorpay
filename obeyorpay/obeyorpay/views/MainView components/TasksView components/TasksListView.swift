@@ -17,6 +17,9 @@ struct TasksListView: View {
     var viewWidth = UIScreen.main.bounds.width
     
     var rowHeight: Double = 100
+    var expandedRowHeight: Double = 150
+    
+    @State var expandedTasksRefs: [String] = []
     
     var body: some View {
         
@@ -24,7 +27,7 @@ struct TasksListView: View {
             
             if taskType != .personal {
                 ForEach(signedInUser.user.account.invitedTasks[taskType]!) { task in
-                    TaskRowView(task: task, taskType: taskType, rowHeight: rowHeight, isInviting: true)
+                    TaskRowView(task: task, taskType: taskType, rowHeight: rowHeight, isInviting: true, expandedTasksRefs: $expandedTasksRefs)
                         .frame(height: rowHeight + 5)
                         .shadow(color: theme.shadowColor, radius: 14, x: 10, y: 10)
                 }.padding()
@@ -42,8 +45,14 @@ struct TasksListView: View {
             ForEach(signedInUser.user.account.tasks[taskType]!) { task in
                 
                 HStack {
-                    TaskRowView(task: task, taskType: taskType, rowHeight: rowHeight, isInviting: false)
-                        .frame(height: rowHeight + 5)
+                    TaskRowView(
+                        task: task,
+                        taskType: taskType,
+                        rowHeight: expandedTasksRefs.contains(task.recordName!) ? expandedRowHeight : rowHeight,
+                        isInviting: false,
+                        expandedTasksRefs: $expandedTasksRefs
+                    )
+                        .frame(height: expandedTasksRefs.contains(task.recordName!) ? expandedRowHeight : rowHeight + 5)
                         .shadow(color: theme.shadowColor, radius: 14, x: 10, y: 10)
                 }
                 .padding()

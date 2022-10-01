@@ -16,6 +16,7 @@
 		B63BC36528E5C9E40026F6C6 /* HistoryPaymentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63BC36428E5C9E40026F6C6 /* HistoryPaymentsView.swift */; };
 		B63BC36828E5CACC0026F6C6 /* HistoryPaymentsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63BC36728E5CACC0026F6C6 /* HistoryPaymentsListView.swift */; };
 		B63BC36B28E5CB400026F6C6 /* HistoryPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63BC36A28E5CB400026F6C6 /* HistoryPaymentView.swift */; };
+		B63BC36D28E7C2870026F6C6 /* TaskInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63BC36C28E7C2870026F6C6 /* TaskInfoView.swift */; };
 		B64DEBCC28D11C0B0011584E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEBCB28D11C0B0011584E /* AppDelegate.swift */; };
 		B64DEBCF28D1219A0011584E /* CKSubscriptionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEBCE28D1219A0011584E /* CKSubscriptionsManager.swift */; };
 		B64DEBD128D139540011584E /* MainSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DEBD028D139540011584E /* MainSettingsModel.swift */; };
@@ -119,6 +120,7 @@
 		B63BC36428E5C9E40026F6C6 /* HistoryPaymentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPaymentsView.swift; sourceTree = "<group>"; };
 		B63BC36728E5CACC0026F6C6 /* HistoryPaymentsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPaymentsListView.swift; sourceTree = "<group>"; };
 		B63BC36A28E5CB400026F6C6 /* HistoryPaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPaymentView.swift; sourceTree = "<group>"; };
+		B63BC36C28E7C2870026F6C6 /* TaskInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInfoView.swift; sourceTree = "<group>"; };
 		B64DEBCB28D11C0B0011584E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B64DEBCE28D1219A0011584E /* CKSubscriptionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKSubscriptionsManager.swift; sourceTree = "<group>"; };
 		B64DEBD028D139540011584E /* MainSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSettingsModel.swift; sourceTree = "<group>"; };
@@ -413,6 +415,7 @@
 			children = (
 				B6ACAACC28CE354600A47330 /* UsernamesView.swift */,
 				B64DEBD628D140E10011584E /* DecisionButtonsView.swift */,
+				B63BC36C28E7C2870026F6C6 /* TaskInfoView.swift */,
 			);
 			path = "TaskView components";
 			sourceTree = "<group>";
@@ -704,6 +707,7 @@
 				B64DEBDE28D164FD0011584E /* UsernameInputFieldView.swift in Sources */,
 				B6774A0428C4D43400B94B7C /* obeyorpay.xcdatamodeld in Sources */,
 				B6ACAAE428CE5C7500A47330 /* SpanInputButtonsView.swift in Sources */,
+				B63BC36D28E7C2870026F6C6 /* TaskInfoView.swift in Sources */,
 				B688DE6528C97A6A00500C7E /* CKEvaluationManager.swift in Sources */,
 				B6B4328128C81E31002F8B2F /* LoadingView.swift in Sources */,
 				B6774A2428C5141A00B94B7C /* TaskEditingView.swift in Sources */,
