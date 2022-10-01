@@ -9,6 +9,8 @@ import SwiftUI
 
 struct TaskInfoView: View {
     
+    @EnvironmentObject var signedInUser: SignedInUserModel
+    
     var task: TaskStoreModel
     var taskType: TaskTypes
     

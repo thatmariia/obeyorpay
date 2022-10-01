@@ -21,19 +21,18 @@ class EntrySettingsModel {
             Task.init {
                 do {
                     // adding new entry
-                    task.currentCount += 1
+                    ///task.currentCount += 1
                     let newEntry = try await entryDB.addEntry(entry: entry)
-                    //task.entriesRefs.append(newEntry.recordName!)
+                    /// task.entriesRefs.append(newEntry.recordName!)
                     
                     // add entry to the account's task
-                    ///let updatedUser = signedInUser.user
                     if let taskIndex = updatedUser.account.tasks[taskType]!.firstIndex(where: { $0.recordName == task.recordName }) {
+                        updatedUser.account.tasks[taskType]![taskIndex].currentCount += 1
                         updatedUser.account.tasks[taskType]![taskIndex].entriesRefs.append(newEntry.recordName!)
                     }
                     
                     // adding entry to the account
                     updatedUser.account.entries.append(newEntry)
-                    ///signedInUser.user = updatedUser
                     try await accountDB.changeAccountVoid(with: updatedUser.account.recordName!, to: updatedUser.account)
                     
                     // adding entries to the task
