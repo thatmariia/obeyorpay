@@ -24,6 +24,7 @@ struct UsernameInputFieldView: View {
             WithPopover(showPopover: $showingUsernameNote, popoverSize: CGSize(width: UIScreen.main.bounds.width - theme.alertSize.0, height: theme.alertSize.1)) {
                 
                 TextField("", text: $username)
+                    .textInputAutocapitalization(.never)
                     .textFieldStyle(AppTextfieldStyle(accentColor: theme.unselectedTextColor, foregroundColor: theme.taskColors[color]))
                 
             } popoverContent: {

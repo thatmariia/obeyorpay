@@ -61,6 +61,7 @@ struct InviteTaskView: View {
                     
                     if inviting {
                         HStack {
+                            Text("@")
                             UsernameInputFieldView(username: $invitedUsername, showingUsernameNote: $showingInvitedNote, usernameNote: $invitedNote, color: task.color)
                              
                             Spacer().frame(width: 30)
@@ -89,6 +90,7 @@ struct InviteTaskView: View {
                 .navigationBarHidden(true)
             }
         }
+        .foregroundColor(theme.textColor)
         .onAppear {
             showingThisView = true
         }
