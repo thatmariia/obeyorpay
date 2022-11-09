@@ -70,10 +70,7 @@ class CDDataUserModel {
     
     func fetchPaymentLink() -> String {
         let objects = fetchCDEntity()
-        if let link = objects.first?.paymentLink {
-            return link
-        }
-        return ""
+        return objects.first!.paymentLink ?? ""
     }
     
     func addUser(with uid: String, paymentLink: String = "") {

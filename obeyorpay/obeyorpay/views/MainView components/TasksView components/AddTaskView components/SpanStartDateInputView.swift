@@ -24,7 +24,7 @@ struct SpanStartDateInputView: View {
             
             ZStack(alignment: .center) {
                 
-                DatePicker("", selection: $spanStartDate, in: Date()..., displayedComponents: [.date, .hourAndMinute])
+                DatePicker("", selection: $spanStartDate, displayedComponents: [.date, .hourAndMinute])
                     .datePickerStyle(CompactDatePickerStyle())
                     .labelsHidden()
                     .accentColor(theme.taskColors[color])

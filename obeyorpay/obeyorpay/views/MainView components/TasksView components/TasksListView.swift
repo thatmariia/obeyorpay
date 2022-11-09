@@ -25,6 +25,7 @@ struct TasksListView: View {
         
         VStack(spacing: -10) {
             
+            /// invitations
             if taskType != .personal {
                 ForEach(signedInUser.user.account.invitedTasks[taskType]!) { task in
                     TaskRowView(task: task, taskType: taskType, rowHeight: rowHeight, isInviting: true, expandedTasksRefs: $expandedTasksRefs)
@@ -33,6 +34,7 @@ struct TasksListView: View {
                 }.padding()
             }
             
+            /// divider
             if (signedInUser.user.account.invitedTasks[taskType]!.count > 0) && (signedInUser.user.account.tasks[taskType]!.count > 0) {
                 Spacer().frame(height: 30)
                 Divider()
@@ -42,6 +44,7 @@ struct TasksListView: View {
                 Spacer().frame(height: 30)
             }
             
+            /// tasks
             ForEach(
                 signedInUser.user.account.tasks[taskType]!.sorted {
                     if $0.build == $1.build {

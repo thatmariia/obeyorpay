@@ -56,7 +56,7 @@ struct TaskView: View {
                 if isInviting {
                     DecisionButtonsView(task: task, taskType: taskType)
                 } else {
-                    if !expandedTasksRefs.contains(task.recordName!) {
+                    if !expandedTasksRefs.contains(task.recordName!) && (taskType != .shared) {
                         Button {
                             addEntry()
                         } label: {

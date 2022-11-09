@@ -37,7 +37,7 @@ struct TaskRowView: View {
                 TaskView(task: task, taskType: taskType, height: rowHeight, isInviting: isInviting, expandedTasksRefs: $expandedTasksRefs)
                     .tag(TaskViewPresentation.task)
                 
-                if (!isInviting) && (!expandedTasksRefs.contains(task.recordName!)) {
+                if (!isInviting) && (!expandedTasksRefs.contains(task.recordName!)) && (taskType != .shared) {
                     TaskActionsView(task: task, taskType: taskType, height: rowHeight)
                         .tag(TaskViewPresentation.editing)
                 }

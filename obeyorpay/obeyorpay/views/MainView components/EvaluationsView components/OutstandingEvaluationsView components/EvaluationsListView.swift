@@ -16,37 +16,40 @@ struct EvaluationsListView: View {
     @State var selectAllPressed = true
     @Binding var selectedEvaluations: [EvaluationStoreModel]
     
-    var rowHeight: Double = 80
+    var rowHeight: Double = 60
     
     var body: some View {
         VStack(alignment: .leading) {
             
-            Button {
-                selectAllPressed.toggle()
-                
-                if selectAllPressed {
-                    selectedEvaluations = outstandingEvaluations
-                } else {
-                    selectedEvaluations = []
+            if outstandingEvaluations.count > 0 {
+                Button {
+                    selectAllPressed.toggle()
+                    
+                    if selectAllPressed {
+                        selectedEvaluations = outstandingEvaluations
+                    } else {
+                        selectedEvaluations = []
+                    }
+                    
+                } label: {
+                    Text(selectAllPressed ? "DESELECT ALL" : "SELECT ALL")
+                        .font(.caption)
                 }
-                
-            } label: {
-                Text(selectAllPressed ? "DESELECT ALL" : "SELECT ALL")
-                    .font(.caption)
+                .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 0))
             }
-            .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 0))
             
             VStack(spacing: -10) {
                 
-                ForEach(
-                    outstandingEvaluations.sorted {
-                        $0.periodEndDate > $1.periodEndDate
-                    }
-                ) { evaluation in
+                ForEach(outstandingEvaluations) { evaluation in
                     HStack {
                         EvaluationRowView(evaluation: evaluation, task: getTask(evaluation: evaluation), height: rowHeight, selectedEvaluationsNonBindinding: selectedEvaluations, selectedEvaluations: $selectedEvaluations)
                             .frame(height: rowHeight + 5)
                             .shadow(color: theme.shadowColor, radius: 14, x: 10, y: 10)
+                        // TODO: create EvaluationRowView and make EvaluationView a part of it
+                        // TODO: in EvaluationRowView, create a selecting panel
+                        // TODO: call EvaluationRowView here
+                        //                    .frame(height: rowHeight + 5)
+                        //                    .shadow(color: theme.shadowColor, radius: 14, x: 10, y: 10)
                     }
                     .padding()
                 }
